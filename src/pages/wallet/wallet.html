@@ -1,0 +1,468 @@
+<!--
+  Generated template for the WalletPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+   <ion-navbar color="primary">
+      <button ion-button menuToggle>
+         <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Wallet</ion-title>
+   </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="dt-root">
+  	<div class="site-content">
+            <!-- Site Content -->
+            <div class="">
+               <!-- Grid -->
+               <div class="row">
+                  <!-- Grid Item -->
+                  <div class="col-xl-3 col-sm-6">
+                     <!-- Card -->
+                     <div class="dt-card dt-card__full-height">
+                        <!-- Card Header -->
+                        <div class="dt-card__header">
+                           <!-- Card Heading -->
+                           <div class="dt-card__heading">
+                              <h3 class="dt-card__title">Main Wallet</h3>
+                           </div>
+                           <!-- /card heading -->
+                           <!-- Card Tools -->
+                           <div class="dt-card__tools">
+                              <a class="text-light-gray" href="javascript:void(0)" data-container="body" data-toggle="popover"
+                                 data-placement="top" data-content="This is the total wallet balance, available for withdraw.">
+                              <i class="icon icon-sweet-alert icon-lg"></i> </a>
+                              <a class="text-light-gray mx-1" href="javascript:void(0)">
+                              <i class="icon icon-invert-color icon-lg"></i> </a>
+                           </div>
+                           <!-- /card tools -->
+                        </div>
+                        <!-- /card header -->
+                        <!-- Card Body -->
+                        <div class="dt-card__body px-4">
+                           <div class="py-2 text-center">
+                              <!-- Avatar -->
+                              <img class="img-fluid mb-4" src="assets/images/icon-project.png" alt="Project">
+                              <!-- /avatar -->
+                              <!-- Project Title -->
+                              <h2 class="display-3 font-weight">$ {{wallet_income_overview.wallet_balance}}</h2>
+                              <!-- /project title -->
+                              <!-- Button -->
+                              <!-- <a href="javascript:void(0)" class="btn btn-primary"><VIDEO></VIDEO>w Full Details</a> -->
+                              <!-- /button -->
+                           </div>
+                        </div>
+                        <!-- /card body -->
+                     </div>
+                     <!-- /card -->
+                  </div>
+                  <!-- /grid item -->
+                  <!-- Grid Item -->
+                  <div class="col-xl-3 col-sm-6">
+                     <!-- Card -->
+                     <div class="dt-card dt-card__full-height">
+                        <!-- Card Body -->
+                        <div class="dt-card__bodypb-0 text-center">
+                           <div class="d-flex justify-content-around align-items-center mt-4 mb-2">
+                              <!-- Icon -->
+                              <a href="javascript:void(0)" class="d-inline-block text-light-gray">
+                              <i class="icon icon-chart icon-2x icon-fw"></i> </a>
+                              <!-- /icon -->
+                              <!-- Avatar -->
+                              <img class="dt-avatar size-70 mx-4" src="https://ui-avatars.com/api/?background=B8287A&color=fff&name={{user?.full_name}}" alt="{{user?.full_name}}">
+                              <!-- /avatar -->
+                              <!-- Icon -->
+                              <a href="javascript:void(0)" class="d-inline-block text-light-gray">
+                              <i class="icon icon-chat icon-2x icon-fw"></i> </a>
+                              <!-- /icon -->
+                           </div>
+                           <!-- Title -->
+                           <h3 class="mb-0">{{user?.full_name | titlecase }}</h3>
+                           <!-- <p class="card-text mb-2">Silver Batch Achieved</p> -->
+                           <!-- /title -->
+                        </div>
+                        <!-- /card body -->
+                        <!-- Chart -->
+                        <div class="dt-chart d-flex flex-column ">
+                           <div class="row pr-5 pl-5 text-center">
+                              <div class="col-md-6 col-sm-6 pt-1">
+                                 <h4 class="mb-0">${{wallet_income_overview.total_direct_referral_income}}</h4>
+                                 <p class="mb-0 text-light-gray f-10">Referral</p>
+                              </div>
+                              <div class="col-md-6 col-sm-6 pt-1">
+                                 <h4 class="mb-0">${{wallet_income_overview.today_direct_referral_income}}</h4>
+                                 <p class="mb-0 text-light-gray f-10">Today's Referral</p>
+                              </div>
+                              <div class="col-md-6 col-sm-6 pt-1">
+                                 <h4 class="mb-0">${{wallet_income_overview.total_task_earned_income}}</h4>
+                                 <p class="mb-0 text-light-gray f-10">Task Income</p>
+                              </div>
+                              <div class="col-md-6 col-sm-6 pt-1">
+                                 <h4 class="mb-0">${{wallet_income_overview.total_pairs_earned_income}}</h4>
+                                 <p class="mb-0 text-light-gray f-10">Pairs Income</p>
+                              </div>
+                           </div>
+                           <!-- Chart Body -->
+                           <div class="dt-chart__body">
+                              <canvas class="rounded-bottom" id="chart-productivity" #chart_productivity height="120"></canvas>
+                           </div>
+                           <!-- /chart body -->
+                        </div>
+                        <!-- /chart -->
+                     </div>
+                     <!-- /card -->
+                  </div>
+                  <!-- /grid item -->
+                  <!-- Grid Item -->
+                  <div class="col-xl-6 col-sm-6">
+                     <!-- Card -->
+                     <div class="dt-card dt-card__full-height">
+                        <!-- Card Header -->
+                        <div class="dt-card__header pt-1 mb-0">
+                           <ul class="nav nav-underline border-bottom nav-card-tabs mt-0" style="width: 100%;" role="tablist">
+                              <li class="nav-item">
+                                 <a class="nav-link active" data-toggle="tab" href="#tab-pane1" role="tab" aria-controls="tab-pane1" aria-selected="true">Withdraw</a>
+                              </li>
+                              <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab-pane2" role="tab" aria-controls="tab-pane2" aria-selected="true">Transfer  Fund</a>
+                              </li>
+                           </ul>
+                        </div>
+                        <!-- /card header -->
+                        <!-- Card Body -->
+                        <div class="dt-card__body">
+                           <div class="tab-content">
+                              <div id="tab-pane1" class="tab-pane active">
+                                 <div class="row">
+                                    <div class="col-md-6">
+                                       <div class="form-group mb-5">
+                                          <input type="text" class="form-control" placeholder="Type Amount">
+                                       </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                       <div class="form-group mb-5">
+                                          <select class="form-control" id="sel1">
+                                             <option>Select Your Bank</option>
+                                             <option>SBI</option>
+                                             <option>ICICI</option>
+                                             <option>HDFC</option>
+                                          </select>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="col-md-12">
+                                       <div class="form-group mb-5">
+                                          <input type="text" class="form-control" value="A/C No: {{user?.bank_acc_number}}" disabled>
+                                          <p>You will receive funds to this account. </p>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="col-md-6">
+                                       <div class="form-group mb-5">
+                                          <input type="password" class="form-control" placeholder="Type Password">
+                                       </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                       <div class="form-group mb-5">
+                                          <a href="javascript:void(0)" class="btn btn-primary btn-block">Withdraw</a>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div id="tab-pane2" class="tab-pane">
+                                 <div class="row">
+                                    <div class="col-md-6">
+                                       <div class="form-group mb-5">
+                                          <input type="text" class="form-control" placeholder="Type Amount">
+                                       </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                       <div class="form-group mb-5">
+                                          <input type="text" class="form-control" placeholder="To User ID">
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="col-md-6">
+                                       <div class="form-group mb-5">
+                                          <input type="password" class="form-control" placeholder="Type Password">
+                                       </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                       <div class="form-group mb-5">
+                                          <a href="javascript:void(0)" class="btn btn-success btn-block">Transfer Fund</a>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="row">
+                                    <div class="col-md-12 categories_search_block">
+                                       <div class="checkbox">
+                                          <label>
+                                          <input type="checkbox" value="">
+                                          <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>
+                                          I Agree to send funds . ** You can transfer funds only to user id with same email.
+                                          </label>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <!-- /card body -->
+                     </div>
+                     <!-- /card -->
+                  </div>
+               </div>
+               <!-- /grid -->
+               <div class="row">
+                  <div class="col-xl-12 col-sm-12">
+                     <!-- Card -->
+                     <div class="dt-card dt-card__full-height">
+                        <!-- Card Header -->
+                        <div class="dt-card__header pt-1 mb-0">
+                           <ul class="nav nav-underline border-bottom nav-card-tabs mt-0" style="width: 100%;" role="tablist">
+                              <li class="nav-item">
+                                 <a class="nav-link active" data-toggle="tab" href="#tab-pane3" role="tab" aria-controls="tab-pane1" aria-selected="true">Wallet Income</a>
+                              </li>
+                              <!-- <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab-pane4" role="tab" aria-controls="tab-pane2" aria-selected="true">Withdraw</a>
+                                 </li>
+                                 <li class="nav-item">
+                                 <a class="nav-link" data-toggle="tab" href="#tab-pane5" role="tab" aria-controls="tab-pane2" aria-selected="true">Fund Transfer</a>
+                                 </li> -->
+                           </ul>
+                        </div>
+                        <!-- /card header -->
+                        <!-- Card Body -->
+                        <div class="dt-card__body">
+                           <div class="tab-content">
+                              <div id="tab-pane3" class="tab-pane active">
+                                 <div class="table-responsive">
+                                    <table id="data-table" class="table table-striped table-bordered table-hover">
+                                       <thead>
+                                          <tr>
+                                             <th>#</th>
+                                             <th>Date</th>
+                                             <th>Time</th>
+                                             <th>Source</th>
+                                             <th>More Details</th>
+                                             <th>Amount</th>
+                                          </tr>
+                                       </thead>
+                                       <tbody *ngIf="!getArray(wallet_income_list)">
+                                          <tr class="text-center">
+                                             <td colspan="6">No Records Found</td>
+                                          </tr>
+                                       </tbody>
+                                       <tbody *ngIf="getArray(wallet_income_list)">
+                                          <tr class="gradeX" *ngFor="let item of wallet_income_list;let i = index;">
+                                             <td>{{i+1}}</td>
+                                             <td>{{item.date_n_time | date:'mediumDate'}}</td>
+                                             <td>{{item.date_n_time | date:'shortTime'}}</td>
+                                             <td *ngIf="item.transaction_type == '1'">Credit</td>
+                                             <td *ngIf="item.transaction_type == '2'">Debit</td>
+                                             <td>{{item.description}}</td>
+                                             <td>$ {{item.amount}}</td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
+                                 </div>
+                              </div>
+                              <div id="tab-pane4" class="tab-pane">
+                                 <div class="table-responsive">
+                                    <table id="data-table" class="table table-striped table-bordered table-hover">
+                                       <thead>
+                                          <tr>
+                                             <th>#</th>
+                                             <th>Date</th>
+                                             <th>Time</th>
+                                             <th>Withdraw Bank</th>
+                                             <th>Amount</th>
+                                             <th>Status</th>
+                                          </tr>
+                                       </thead>
+                                       <tbody>
+                                          <tr class="gradeX">
+                                             <td>1</td>
+                                             <td>15/04/2019</td>
+                                             <td>10:30 AM</td>
+                                             <td>ICICI 515151******</td>
+                                             <td>$ 56</td>
+                                             <td style="color: green">Success</td>
+                                          </tr>
+                                          <tr class="gradeX">
+                                             <td>2</td>
+                                             <td>15/04/2019</td>
+                                             <td>10:30 AM</td>
+                                             <td>ICICI 515151******</td>
+                                             <td>$ 56</td>
+                                             <td style="color: green">Success</td>
+                                          </tr>
+                                          <tr class="gradeX">
+                                             <td>3</td>
+                                             <td>15/04/2019</td>
+                                             <td>10:30 AM</td>
+                                             <td>ICICI 515151******</td>
+                                             <td>$ 56</td>
+                                             <td style="color: green">Success</td>
+                                          </tr>
+                                          <tr class="gradeX">
+                                             <td>4</td>
+                                             <td>15/04/2019</td>
+                                             <td>10:30 AM</td>
+                                             <td>ICICI 515151******</td>
+                                             <td>$ 56</td>
+                                             <td style="color: green">Success</td>
+                                          </tr>
+                                          <tr class="gradeX">
+                                             <td>5</td>
+                                             <td>15/04/2019</td>
+                                             <td>10:30 AM</td>
+                                             <td>ICICI 515151******</td>
+                                             <td>$ 56</td>
+                                             <td style="color: green">Success</td>
+                                          </tr>
+                                          <tr class="gradeX">
+                                             <td>6</td>
+                                             <td>15/04/2019</td>
+                                             <td>10:30 AM</td>
+                                             <td>ICICI 515151******</td>
+                                             <td>$ 56</td>
+                                             <td style="color: green">Success</td>
+                                          </tr>
+                                          <tr class="gradeX">
+                                             <td>7</td>
+                                             <td>15/04/2019</td>
+                                             <td>10:30 AM</td>
+                                             <td>ICICI 515151******</td>
+                                             <td>$ 56</td>
+                                             <td style="color: green">Success</td>
+                                          </tr>
+                                          <tr class="gradeX">
+                                             <td>8</td>
+                                             <td>15/04/2019</td>
+                                             <td>10:30 AM</td>
+                                             <td>ICICI 515151******</td>
+                                             <td>$ 56</td>
+                                             <td style="color: green">Success</td>
+                                          </tr>
+                                          <tr class="gradeX">
+                                             <td>9</td>
+                                             <td>15/04/2019</td>
+                                             <td>10:30 AM</td>
+                                             <td>ICICI 515151******</td>
+                                             <td>$ 56</td>
+                                             <td style="color: green">Success</td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
+                                 </div>
+                              </div>
+                              <div id="tab-pane5" class="tab-pane">
+                                 <div class="table-responsive">
+                                    <table id="data-table" class="table table-striped table-bordered table-hover">
+                                       <thead>
+                                          <tr>
+                                             <th>#</th>
+                                             <th>Date</th>
+                                             <th>Time</th>
+                                             <th>To User Id</th>
+                                             <th>Amount</th>
+                                             <th>Status</th>
+                                          </tr>
+                                       </thead>
+                                       <tbody>
+                                          <tr class="gradeX">
+                                             <td>1</td>
+                                             <td>15/04/2019</td>
+                                             <td>10:30 AM</td>
+                                             <td>foomaclen</td>
+                                             <td>$ 60</td>
+                                             <td style="color: green">Success</td>
+                                          </tr>
+                                          <tr class="gradeX">
+                                             <td>2</td>
+                                             <td>15/04/2019</td>
+                                             <td>10:30 AM</td>
+                                             <td>foomaclen</td>
+                                             <td>$ 60</td>
+                                             <td style="color: green">Success</td>
+                                          </tr>
+                                          <tr class="gradeX">
+                                             <td>3</td>
+                                             <td>15/04/2019</td>
+                                             <td>10:30 AM</td>
+                                             <td>foomaclen</td>
+                                             <td>$ 60</td>
+                                             <td style="color: green">Success</td>
+                                          </tr>
+                                          <tr class="gradeX">
+                                             <td>4</td>
+                                             <td>15/04/2019</td>
+                                             <td>10:30 AM</td>
+                                             <td>foomaclen</td>
+                                             <td>$ 60</td>
+                                             <td style="color: green">Success</td>
+                                          </tr>
+                                          <tr class="gradeX">
+                                             <td>5</td>
+                                             <td>15/04/2019</td>
+                                             <td>10:30 AM</td>
+                                             <td>foomaclen</td>
+                                             <td>$ 60</td>
+                                             <td style="color: green">Success</td>
+                                          </tr>
+                                          <tr class="gradeX">
+                                             <td>6</td>
+                                             <td>15/04/2019</td>
+                                             <td>10:30 AM</td>
+                                             <td>foomaclen</td>
+                                             <td>$ 60</td>
+                                             <td style="color: green">Success</td>
+                                          </tr>
+                                          <tr class="gradeX">
+                                             <td>7</td>
+                                             <td>15/04/2019</td>
+                                             <td>10:30 AM</td>
+                                             <td>foomaclen</td>
+                                             <td>$ 60</td>
+                                             <td style="color: green">Success</td>
+                                          </tr>
+                                          <tr class="gradeX">
+                                             <td>8</td>
+                                             <td>15/04/2019</td>
+                                             <td>10:30 AM</td>
+                                             <td>foomaclen</td>
+                                             <td>$ 60</td>
+                                             <td style="color: green">Success</td>
+                                          </tr>
+                                          <tr class="gradeX">
+                                             <td>9</td>
+                                             <td>15/04/2019</td>
+                                             <td>10:30 AM</td>
+                                             <td>foomaclen</td>
+                                             <td>$ 60</td>
+                                             <td style="color: green">Success</td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <!-- /card body -->
+                     </div>
+                     <!-- /card -->
+                  </div>
+               </div>
+            </div>
+         </div>
+  </div>	
+
+</ion-content>

@@ -1,0 +1,538 @@
+<!--
+  Generated template for the ViewStorePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+--><!-- 
+<ion-header>
+   <ion-navbar color="primary">
+      <button ion-button menuToggle>
+         <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Create Offer</ion-title>
+   </ion-navbar>
+</ion-header> -->
+
+
+<ion-content padding>
+  <div class="dt-root">
+   <div class="profile">
+                  <!-- Profile Banner -->
+                  <div class="profile__banner">
+                     <!-- Profile Banner Top -->
+                     <button ion-button menuToggle icon-only clear color="light">
+              <ion-icon name="menu"></ion-icon>
+           </button>
+                     <div class="profile__banner-top">
+                        <!-- Avatar Wrapper -->
+                        <div class="dt-avatar-wrapper">
+                           <!-- Avatar -->
+                           <img class="dt-avatar dt-avatar__shadow size-90 mr-sm-4" src="http://alpademo.com/zomo/uploads/stores/{{storeDetail?.store_image}}" alt="{{storeDetail?.store_name | titlecase}}">
+                           <!-- /avatar -->
+                           <!-- Info -->
+                           <div class="dt-avatar-info">
+                              <span class="dt-avatar-name display-4 mb-2 font-weight-light">{{storeDetail?.store_name | titlecase}}</span>
+                              <span class="f-16">{{storeDetail?.store_address | titlecase}} {{storeDetail?.city_name | titlecase}} {{storeDetail?.state_name | titlecase}} </span>
+                           </div>
+                           <!-- /info -->
+                        </div>
+                     </div>
+                     <!-- /profile banner top -->
+                  </div>
+                  <!-- /profile banner -->
+                  <!-- Profile Content -->
+                  <div class="profile-content">
+                     <!-- Grid -->
+                     <div class="row">
+                        <!-- Grid Item -->
+                        <div class="col-xl-4 order-xl-2">
+                           <!-- Grid -->
+                           <div class="row">
+                              <!-- Grid Item -->
+                              <div class="col-xl-12 col-md-6 col-12 order-xl-1">
+                                 <!-- Card -->
+                                 <div class="dt-card dt-card__full-height">
+                                    <!-- Card Header -->
+                                    <div class="dt-card__header">
+                                       <!-- Card Heading -->
+                                       <div class="dt-card__heading">
+                                          <h3 class="dt-card__title">Contact</h3>
+                                       </div>
+                                       <!-- /card heading -->
+                                    </div>
+                                    <!-- /card header -->
+                                    <!-- Card Body -->
+                                    <div class="dt-card__body">
+                                       <!-- Media -->
+                                       <div class="media mb-5">
+                                          <i class="icon icon-email icon-xl mr-5"></i>
+                                          <!-- Media Body -->
+                                          <div class="media-body">
+                                             <span class="d-block text-light-gray f-12 mb-1">Mail</span>
+                                             <a href="mailto:{{storeDetail?.contact_email_id}}">{{storeDetail?.contact_email_id}}</a>
+                                          </div>
+                                          <!-- /media body -->
+                                       </div>
+                                       <!-- /media -->
+                                       <!-- Media -->
+                                       <div class="media mb-5">
+                                          <i class="icon icon-link icon-xl mr-5"></i>
+                                          <!-- Media Body -->
+                                          <div class="media-body">
+                                             <span class="d-block text-light-gray f-12 mb-1">Web Page</span>
+                                             <a href="{{storeDetail?.website_link}}" target="_blank">{{storeDetail?.website_link}}</a>
+                                          </div>
+                                          <!-- /media body -->
+                                       </div>
+                                       <!-- /media -->
+                                       <!-- Media -->
+                                       <div class="media mb-5">
+                                          <i class="icon icon-phone icon-xl mr-5"></i>
+                                          <!-- Media Body -->
+                                          <div class="media-body">
+                                             <span class="d-block text-light-gray f-12 mb-1">Phone</span>
+                                             <span class="h5">
+                                             <a href = "{{getphoneuri(storeDetail?.contact_number_one,storeDetail?.country_id)}}">{{phoneMask(storeDetail?.contact_number_one,storeDetail?.country_id)}}</a>, 
+                                             <a href = "{{getphoneuri(storeDetail?.contact_number_two,storeDetail?.country_id)}}" >{{phoneMask(storeDetail?.contact_number_two,storeDetail?.country_id)}}</a>
+                                             </span>
+                                          </div>
+                                       </div>
+                                       <!-- /media body -->
+                                       <!-- Media -->
+                                       <div class="media">
+                                          <i class="icon icon-culture-calendar icon-xl mr-5"></i>
+                                          <!-- Media Body -->
+                                          <div class="media-body">
+                                             <span class="d-block text-light-gray f-12 mb-1">Social</span>
+                                             <span class="h5">
+                                             <a  *ngIf="storeDetail?.facebook" href = "{{storeDetail?.facebook}}"><img style="width:20px; margin-right: 10px;border-radius:50% " src="/assets/images/facebook.png"/></a>
+                                             <a  *ngIf="storeDetail?.twitter" href = "{{storeDetail?.twitter}}"><img style="width:20px; margin-right: 10px;border-radius:50% " src="/assets/images/twitter.png"/></a>
+                                             <a  *ngIf="storeDetail?.telegram" href = "{{storeDetail?.telegram}}"><img style="width:20px; margin-right: 10px;border-radius:50% " src="/assets/images/telegram.png"/></a>
+                                             <a  *ngIf="storeDetail?.instagram" href = "{{storeDetail?.instagram}}"><img style="width:20px; margin-right: 10px;border-radius:50% " src="/assets/images/instagram.png"/></a>
+                                             </span>
+                                          </div>
+                                          <!-- /media body -->
+                                       </div>
+                                       <!-- /media -->
+                                    </div>
+                                    <!-- /card body -->
+                                 </div>
+                                 <!-- /card -->
+                              </div>
+                              <!-- /grid item -->
+                              <!-- Grid Item -->
+                              <div class="col-12 order-xl-2">
+                                 <!-- Card -->
+                                 <div class="dt-card dt-card__full-height">
+                                    <!-- Card Header -->
+                                    <div class="dt-card__header">
+                                       <!-- Card Heading -->
+                                       <div class="dt-card__heading">
+                                          <h3 class="dt-card__title">Media</h3>
+                                       </div>
+                                       <!-- /card heading -->
+                                    </div>
+                                    <!-- /card header -->
+                                    <!-- Card Body -->
+                                    <div class="dt-card__body">
+                                       <!-- List -->
+                                       <ul class="dt-gallery-list">
+                                          <li  *ngFor="let img of storeDetail?.store_other_images;let i = index;"><img (click)="goToGallery(i)" src="http://alpademo.com/zomo/uploads/stores/{{img.image_name}}" class="img-fluid w-100" alt="Image Title"></li>
+                                       </ul>
+                                       <!-- /list -->
+                           <!--             <div class="mt-5" *ngIf="storeDetail?.store_status == '1'">
+                                          <a style="color: #038fde;cursor: pointer" (click)="addMoreImages()"><span>Add More Images </span> <i class="icon icon-plus-sign-alt icon-xl ml-1"></i> </a>
+                                          <input type="file" style="display:none;" (change)="getOtherImage($event.target.files)" id="add_other_images" accept="image/*" class="form-control">
+                                       </div> -->
+                                    </div>
+                                    <!-- /card Body -->
+                                 </div>
+                                 <!-- /card -->
+                              </div>
+                              <!-- /grid item -->
+                              <!--<div class="col-xl-12 col-md-6 col-12 order-xl-3">-->
+                              <!-- Card -->
+                              <!--          <div class="dt-card dt-card__full-height">-->
+                              <!-- Card Header -->
+                              <!--            <div class="dt-card__header">-->
+                              <!-- Card Heading -->
+                              <!--              <div class="dt-card__heading">-->
+                              <!--                <h3 class="dt-card__title">Categories-->
+                              <!--                </h3>-->
+                              <!--              </div>-->
+                              <!-- /card heading -->
+                              <!--            </div>-->
+                              <!-- /card header -->
+                              <!-- Card Body -->
+                              <!--            <div class="dt-card__body pb-5">-->
+                              <!--  <div class="categories_search_block">-->
+                              <!--    <div class="input-group mb-3">-->
+                              <!--      <span class="input-group-addon"><i class="icon icon-search icon-fw"></i></span>-->
+                              <!--      <input type="email" class="form-control" id="email" placeholder="Search here">-->
+                              <!--    </div>-->
+                              <!--    <div class="checkbox">-->
+                              <!--      <label>-->
+                              <!--      <input type="checkbox" value="">-->
+                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->
+                              <!--      Food-->
+                              <!--      </label>-->
+                              <!--    </div>-->
+                              <!--    <div class="checkbox">-->
+                              <!--      <label>-->
+                              <!--      <input type="checkbox" value="">-->
+                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->
+                              <!--      Dinner-->
+                              <!--      </label>-->
+                              <!--    </div>-->
+                              <!--    <div class="checkbox">-->
+                              <!--      <label>-->
+                              <!--      <input type="checkbox" value="">-->
+                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->
+                              <!--      Fast Food-->
+                              <!--      </label>-->
+                              <!--    </div>-->
+                              <!--    <div class="checkbox">-->
+                              <!--      <label>-->
+                              <!--      <input type="checkbox" value="">-->
+                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->
+                              <!--      Cafe, Bakeries and Desserts-->
+                              <!--      </label>-->
+                              <!--    </div>-->
+                              <!--    <div class="checkbox">-->
+                              <!--      <label>-->
+                              <!--      <input type="checkbox" value="">-->
+                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->
+                              <!--      Late Night-->
+                              <!--      </label>-->
+                              <!--    </div>-->
+                              <!--    <div class="checkbox">-->
+                              <!--      <label>-->
+                              <!--      <input type="checkbox" value="">-->
+                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->
+                              <!--      Restro Bar-->
+                              <!--      </label>-->
+                              <!--    </div>-->
+                              <!--    <div class="checkbox">-->
+                              <!--      <label>-->
+                              <!--      <input type="checkbox" value="">-->
+                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->
+                              <!--      Pub-->
+                              <!--      </label>-->
+                              <!--    </div>-->
+                              <!--    <div class="checkbox">-->
+                              <!--      <label>-->
+                              <!--      <input type="checkbox" value="">-->
+                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->
+                              <!--      Restro Bar-->
+                              <!--      </label>-->
+                              <!--    </div>-->
+                              <!--  </div>-->
+                              <!--            </div>-->
+                              <!-- /card body -->
+                              <!--  <div class="dt-card__header">-->
+                              <!-- Card Heading -->
+                              <!--              <div class="dt-card__heading">-->
+                              <!--                <h3 class="dt-card__title">Location-->
+                              <!--                </h3>-->
+                              <!--              </div>-->
+                              <!-- /card heading -->
+                              <!--            </div>  -->
+                              <!-- Card Body -->
+                              <!--            <div class="dt-card__body pb-5">-->
+                              <!--  <div class="categories_search_block">-->
+                              <!--    <div class="input-group mb-3">-->
+                              <!--      <span class="input-group-addon"><i class="icon icon-search icon-fw"></i></span>-->
+                              <!--      <input type="email" class="form-control" id="email" placeholder="Search here">-->
+                              <!--    </div>-->
+                              <!--    <div class="checkbox">-->
+                              <!--      <label>-->
+                              <!--      <input type="checkbox" value="">-->
+                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->
+                              <!--      Hubli-->
+                              <!--      </label>-->
+                              <!--    </div>-->
+                              <!--    <div class="checkbox">-->
+                              <!--      <label>-->
+                              <!--      <input type="checkbox" value="">-->
+                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->
+                              <!--      Shanti Nagar-->
+                              <!--      </label>-->
+                              <!--    </div>-->
+                              <!--    <div class="checkbox">-->
+                              <!--      <label>-->
+                              <!--      <input type="checkbox" value="">-->
+                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->
+                              <!--      Old Bustand-->
+                              <!--      </label>-->
+                              <!--    </div>-->
+                              <!--    <div class="checkbox">-->
+                              <!--      <label>-->
+                              <!--      <input type="checkbox" value="">-->
+                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->
+                              <!--      Manoj Park-->
+                              <!--      </label>-->
+                              <!--    </div>-->
+                              <!--    <div class="checkbox">-->
+                              <!--      <label>-->
+                              <!--      <input type="checkbox" value="">-->
+                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->
+                              <!--      Deshpande Nagar-->
+                              <!--      </label>-->
+                              <!--    </div>-->
+                              <!--    <div class="checkbox">-->
+                              <!--      <label>-->
+                              <!--      <input type="checkbox" value="">-->
+                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->
+                              <!--      Unkal Lake-->
+                              <!--      </label>-->
+                              <!--    </div>-->
+                              <!--  </div>-->
+                              <!--            </div>-->
+                              <!-- /card body -->
+                              <!--          </div>-->
+                              <!-- /card -->
+                              <!--        </div>-->
+                           </div>
+                           <!-- /grid -->
+                        </div>
+                        <!-- /grid item -->
+                        <!-- Grid Item -->
+                        <div class="col-xl-8 order-xl-1">
+                           <!-- Card -->
+                           <div class="card">
+                              <!-- Card Header -->
+                              <div class="card-header card-nav bg-transparent d-flex justify-content-between">
+                                 <div class="row" style="width: 100%;">
+                                    <div class="col-md-8">
+                                       <h2 *ngIf="storeDetail?.store_status == '1' || storeDetail?.store_status == '0'" class="mb--20">{{storeDetail?.store_tag_line |titlecase}}</h2>
+                                       <h2 *ngIf="storeDetail?.store_status == '2'" style="color:#F00" class="mb--20">Your Approval is Rejected <a  style="color:#038fde"  data-toggle="modal" data-target="#exampleModalLong">(Details)</a></h2>
+                                       <h2 *ngIf="storeDetail?.store_status == '3'" style="color:#F00" class="mb--20">Your store is Blocked <a  style="color:#038fde"  data-toggle="modal" data-target="#exampleModalLong1">(Details)</a></h2>
+                                       <p class="mb-1" *ngIf="storeDetail?.store_status == '0'" style="color: #faad14;margin-top: 20px;margin-bottom: 0px !important;"> Your Approval is Pending</p>
+                                    </div>
+                                    <!-- <div class="col-md-4 text-right">
+                     <button (click)="goToEdit()" class="btn btn-info">Edit</button>
+                                       <button class="btn btn-danger" *ngIf="storeDetail?.visible_status == '1' && storeDetail?.store_status == '1'" (click)="enable_disable(0)">Disable</button>
+                                       <button class="btn btn-success" *ngIf="storeDetail?.visible_status == '0' && storeDetail?.store_status == '1'" (click)="enable_disable(1)">Enable</button>
+                                    </div> -->
+                                 </div>
+                                 <ul class="card-header-links nav nav-underline" role="tablist">
+                                    <!--<li class="nav-item">
+                                       s  <a class="nav-link active" data-toggle="tab" href="#tab-pane1" role="tab"
+                                            aria-controls="tab-pane1"
+                                            aria-selected="true">About</a>
+                                       </li>
+                                       
+                                       <li class="nav-item">
+                                         <a class="nav-link" data-toggle="tab" href="#tab-pane3" role="tab" aria-controls="tab-pane3"
+                                            aria-selected="true">Review</a>
+                                       </li>-->
+                                 </ul>
+                              </div>
+                              <!-- /card header -->
+                              <!-- Card Body -->
+                              <div class="card-body pb-2">
+                                 <!-- Tab Content-->
+                                 <div class="tab-content mt-5">
+                                    <!-- Tab panel -->
+                                    <div id="tab-pane1" class="tab-pane active">
+                                       <!-- List -->
+                                       <ul class="dt-list dt-list-one-third">
+                                          <!-- List Item -->
+                                          <li class="dt-list__item">
+                                             <!-- Media -->
+                                             <div class="media">
+                                                <i class="icon icon-company icon-4x mr-5 align-self-center text-warning"></i>
+                                                <!-- Media Body -->
+                                                <div class="media-body">
+                                                   <span class="d-block text-light-gray f-12 mb-1">Category</span>
+                                                   <h5 class="mb-0">{{getCatName(storeDetail?.store_category_id)}}</h5>
+                                                </div>
+                                                <!-- /media body -->
+                                             </div>
+                                             <!-- /media -->
+                                          </li>
+                                          <!-- /list item -->
+                                          <!-- List Item -->
+                                          <li class="dt-list__item">
+                                             <!-- Media -->
+                                             <div class="media">
+                                                <i class="icon icon-card icon-4x mr-5 align-self-center text-warning"></i>
+                                                <!-- Media Body -->
+                                                <div class="media-body">
+                                                   <span class="d-block text-light-gray f-12 mb-1">Payment Method</span>
+                                                   <h5 class="mb-0">{{getPaymentMethod(storeDetail?.payment_receive_ids)}}</h5>
+                                                </div>
+                                                <!-- /media body -->
+                                             </div>
+                                             <!-- /media -->
+                                          </li>
+                                          <!-- /list item -->
+                                          <!-- List Item -->
+                                          <li class="dt-list__item">
+                                             <!-- Media -->
+                                             <div class="media">
+                                                <i class="icon icon-home icon-4x mr-5 align-self-center text-warning"></i>
+                                                <!-- Media Body -->
+                                                <div class="media-body">
+                                                   <span class="d-block text-light-gray f-12 mb-1">Lives in</span>
+                                                   <h5 class="mb-0">{{storeDetail?.city_name | titlecase}}, {{storeDetail?.state_name | titlecase}} </h5>
+                                                </div>
+                                                <!-- /media body -->
+                                             </div>
+                                             <!-- /media -->
+                                          </li>
+                                          <!-- /list item -->
+                                          <!-- List Item -->
+                                          <!-- /list item -->
+                                       </ul>
+                                       <!-- /list -->
+                                    </div>
+                                    <!-- /tab panel -->
+                                 </div>
+                                 <!-- /tab content-->
+                              </div>
+                              <!-- /card body -->
+                           </div>
+                           <!-- /card -->
+                           <!-- Card -->
+                           <div class="card">
+                              <!-- Card Body -->
+                              <div class="card-body">
+                                 <h2 class="card-title">Details About Us</h2>
+                                 <!-- Card Text -->
+                                 <h6 class="card-subtitle">A little flash back of {{storeDetail?.store_name | titlecase}}</h6>
+                                 <!-- /card text -->
+                                 <!-- Card Text -->
+                                 <!--                      <p class="card-text lead">
+                                    Donec dignissim gravida sem, ut cursus dolor hendrerit et. Morbi volutpat.
+                                    </p>-->
+                                 <!-- /card text -->
+                                 <!-- Card Text -->
+                                 <p class="card-text" innerHtml="{{storeDetail?.store_description}}">
+                                 </p>
+                                 <!-- /card text -->
+                              </div>
+                              <!-- /card body -->
+                           </div>
+                           <!-- /card -->
+                           <!-- Card -->
+                           <div class="card" *ngIf="storeDetail?.store_reviews?.length > 0">
+                              <!-- Card Body -->
+                              <div class="card-body">
+                                 <h2 class="card-title">Reviews</h2>
+                                 <!-- Card Body -->
+                                 <ul class="dt-list dt-list-one-third">
+                                    <li class="dt-list__item" *ngFor="let review of storeDetail?.store_reviews">
+                                       <!-- Media -->
+                                       <div class="media">
+                                          <!--<i class="icon icon-company icon-4x mr-5 align-self-center text-warning"></i>-->
+                                          <!-- Media Body -->
+                                          <div class="media-body">
+                                             <h4 style="margin-bottom: 0;">{{review.full_name | titlecase}}</h4>
+                                             <span class="d-block text-light-gray f-12 mb-1">{{review.date_n_time | date}}</span>
+                                             <h5 class="mb-0">{{review.store_review}}</h5>
+                                             <div class="d-flex align-items-center mb-1">
+                                                <i *ngFor="let rating of reviewRatings(review.store_rating);let i = index;" class="icon icon-star f-10 mr-1 text-warning"></i>
+                                             </div>
+                                          </div>
+                                          <!-- /media body -->
+                                       </div>
+                                       <!-- /media -->
+                                    </li>
+                                    <!-- /list item -->
+                                 </ul>
+                              </div>
+                              <!-- /card body -->
+                           </div>
+                           <!-- /card -->
+                           <div class="card" *ngIf="storeDetail?.offer_detail?.length > 0">
+                              <div class="card-body">
+                                 <h2 class="card-title">Offers</h2>
+                                 <div class="media" *ngFor="let offer of storeDetail?.offer_detail">
+                                    <div class="media-left" *ngIf="offer['offer_status'] == '1'">
+                                       <img class="mr-3" style="border-radius:10px;" src="https://ui-avatars.com/api/?background={{colors}}&color=fff&name={{offer.offer_percenage}}%&length=3" alt="Generic placeholder image">
+                                    </div>
+                                    <div class="media-body">
+                                       <h5 class="mt-0 mb-1">{{offer.offer_title | titlecase}}</h5>
+                                       <p><span class="d-block text-light-gray f-12 mb-1">From : {{offer.start_date | date}}, To : {{offer.end_date | date}} </span> {{offer.description}}</p>
+                                    </div>
+                                 </div>
+                                 <!-- /card body -->
+                              </div>
+                              <!-- /card -->
+                           </div>
+                           <div class="card products">
+                              <!-- Card Body -->
+                               <div class="card-body">
+                                 <h2 class="card-title" >Products</h2>
+                                    <ul col-12 >
+                                          <li *ngFor="let product of products" (click)='goToProductList(product.id)'>
+                                                <ion-row>
+                                                   <ion-col>
+                                                      <img src="http://alpademo.com/zomo/uploads/stores/products/{{product.pr_image}}" onError="this.src='./assets/images/not-available.jpg'" style="width:100px;height:100px" alt="">
+                                                   </ion-col>
+                                                </ion-row>
+                                                <ion-row>
+                                                   <ion-col>   
+                                                      <h2 style="margin-bottom: 0">{{product.pr_name | titlecase}}</h2>
+                                                   </ion-col>
+                                                </ion-row>
+                                                <!-- <ion-row>
+                                                   <ion-col>
+                                                         <p><span>Variants: </span><span *ngFor="let variant of toArray(product.pr_colors)">{{variant | titlecase}}&nbsp;&nbsp;</span></p>
+                                                         <button ion-button small outline *ngFor="let size of toArray(product.pr_sizes)">{{size | titlecase}}</button>                                            
+                                                   </ion-col>
+                                                </ion-row>
+                                                <ion-row>
+                                                      <ion-col>
+                                                         <span style="color:#faad14;text-decoration: line-through;">₹ {{product.pr_original_amount}}</span>                                             
+                                                         <span> ₹ {{product.pr_sale_amount}}</span>
+                                                      </ion-col>
+                                                </ion-row> -->
+                                          </li>
+                                    </ul>
+                                 
+                              <!-- Card Body -->
+                              
+                               </div>
+                              <!-- /card body -->
+                              </div>
+                           <!-- Card -->
+                           <!--<div class="card">-->
+                           <!-- Card Body -->
+                           <!--  <div class="card-body">-->
+                           <!--    <h2 class="card-title" >Contact Requests</h2>-->
+                           <!-- Card Body -->
+                           <!--    <ul class="dt-list dt-list-one-third">-->
+                           <!--      <li class="dt-list__item" *ngFor="let contact of storeDetail?.contact_request_list">-->
+                           <!-- Media -->
+                           <!--        <div class="media">-->
+                           <!--<i class="icon icon-company icon-4x mr-5 align-self-center text-warning"></i>-->
+                           <!-- Media Body -->
+                           <!--          <div class="media-body">-->
+                           <!--            <h4 style="margin-bottom: 0;">{{contact.contact_user_name | titlecase}}</h4>-->
+                           <!--            <span class="d-block text-light-gray f-12 mb-1">{{contact.contact_email_id}}</span>-->
+                           <!--            <h5 class="mb-0">ph:{{phoneMask(contact.contact_mobile_number,contact.country_id)}}</h5>-->
+                           <!--            <div class="d-flex align-items-center mb-1">-->
+                           <!--              {{contact.contact_message}}-->
+                           <!--            </div>-->
+                           <!--          </div>-->
+                           <!-- /media body -->
+                           <!--        </div>-->
+                           <!-- /media -->
+                           <!--      </li>-->
+                           <!-- /list item -->
+                           <!--    </ul>-->
+                           <!--  </div>-->
+                           <!-- /card body -->
+                           <!--</div>-->
+                           <!-- /card -->
+                        </div>
+                        <!-- /grid item -->
+                     </div>
+                     <!-- /grid -->
+                  </div>
+                  <!-- /profile content -->
+               </div>
+  </div>
+</ion-content>

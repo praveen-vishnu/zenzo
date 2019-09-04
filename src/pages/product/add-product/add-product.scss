@@ -1,0 +1,39 @@
+page-add-product {
+
+.scroll-content { padding-bottom: 0!important;}
+
+ion-segment{
+	.label-ios {
+    margin: 5px 8px 11px 0;
+}
+}
+
+.form-control {
+    height: calc(3.42rem + 20px);
+    font-size: 15px;
+}
+
+.item-input ion-input, .item-input ion-textarea{
+	position: static;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    background-color: #f5f5f5;
+    padding: 3px 5px;
+}
+ion-select{
+    border: 1px solid #eee;
+    border-radius: 3px;
+    background-color: #f5f5f5;
+    padding: 10px;
+}
+ .select-placeholder {
+    padding-left: 5px;
+}
+.datetime-text{
+	padding-left: 5px;
+}
+
+.swiper-slide{
+    overflow: scroll;
+}
+}

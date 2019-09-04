@@ -1,0 +1,264 @@
+<!--
+   Generated template for the ReferralsPage page.
+   
+   See http://ionicframework.com/docs/components/#navigation for more info on
+   Ionic pages and navigation.
+   -->
+<ion-header>
+   <ion-navbar color="primary">
+      <button ion-button menuToggle>
+         <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Pairs</ion-title>
+   </ion-navbar>
+</ion-header>
+<ion-content padding>
+   <div class="dt-root">
+      <ion-grid no-padding>
+         <ion-row>
+            <ion-col>
+               <!-- Grid Item -->
+               <div class="col-md-4">
+                  <!-- Card -->
+                  <div class="dt-card overflow-hidden">
+                     <!-- Card Body -->
+                     <div class="dt-card__body">
+                        <div class="d-flex mb-3">
+                           <p class="mb-1 text-light-gray">Total Downline</p>
+                           <div class="d-flex align-items-center ml-auto">
+                              <!--  <h5 class="mb-0 text-success font-weight-medium mr-1">0%</h5>
+                                 <i class="icon icon-menu-up f-12 text-success"></i> -->
+                           </div>
+                        </div>
+                        <!-- Grid -->
+                        <div class="row no-gutters">
+                           <!-- Grid Item -->
+                           <div class="col-xl-6 pr-2">
+                              <div class="row">
+                                 <div class="col-6" style="padding: 0 10px;">
+                                    <h6 class="mb-0 text-uppercase">Left</h6>
+                                    <h4 class="mb-0 font-weight-medium mr-1">{{overview.total_left_position_users}}</h4>
+                                 </div>
+                                 <div class="col-6" style="padding: 0 10px;">
+                                    <h6 class="mb-0 text-uppercase">Right</h6>
+                                    <h4 class="mb-0 font-weight-medium mr-1">{{overview.total_right_position_users}}</h4>
+                                 </div>
+                              </div>
+                           </div>
+                      
+                           <!-- /grid item -->
+                        </div>
+                        <!-- /grid -->
+                     </div>
+                     <!-- /card body -->
+                  </div>
+                  <!-- /card -->
+               </div>
+               <!-- /grid item -->
+            </ion-col>
+            <ion-col>
+               <!-- Grid Item -->
+               <div class="col-md-4">
+                  <!-- Card -->
+                  <div class="dt-card overflow-hidden">
+                     <!-- Card Body -->
+                     <div class="dt-card__body">
+                        <div class="d-flex mb-3">
+                           <p class="mb-1 text-light-gray">Today's Business</p>
+                           <div class="d-flex align-items-center ml-auto">
+                              <!--  <h5 class="mb-0 text-success font-weight-medium mr-1">0%</h5>
+                                 <i class="icon icon-menu-up f-12 text-success"></i> -->
+                           </div>
+                        </div>
+                        <!-- Grid -->
+                        <div class="row no-gutters">
+                           <!-- Grid Item -->
+                           <div class="col-xl-6 pr-2">
+                              <div class="row">
+                                 <div class="col-6" style="padding: 0 10px;">
+                                    <h6 class="mb-0 text-uppercase">Left</h6>
+                                    <h4 class="mb-0 font-weight-medium mr-1">{{overview.today_left_business}}</h4>
+                                 </div>
+                                 <div class="col-6" style="padding: 0 10px;">
+                                    <h6 class="mb-0 text-uppercase">Right</h6>
+                                    <h4 class="mb-0 font-weight-medium mr-1">{{overview.today_right_business}}</h4>
+                                 </div>
+                              </div>
+                           </div>
+                      
+                           <!-- /grid item -->
+                        </div>
+                        <!-- /grid -->
+                     </div>
+                     <!-- /card body -->
+                  </div>
+                  <!-- /card -->
+               </div>
+               <!-- /grid item -->
+            </ion-col>
+         </ion-row>
+         <ion-row>
+
+            <ion-col>
+               <!-- Grid Item -->
+               <div class="col-md-4">
+                  <!-- Card -->
+                  <div class="dt-card overflow-hidden">
+                     <!-- Card Body -->
+                     <div class="dt-card__body">
+                        <div class="d-flex mb-3">
+                           <h6 class="mb-0 text-uppercase">Total Paring Match</h6>
+                           <div class="d-flex align-items-center ml-auto">
+                              <h5 class="mb-0 text-success font-weight-medium mr-1">{{overview.total_pair_matching}} Paring Match</h5>
+                              <i class="icon icon-menu-up f-12 text-success"></i>
+                           </div>
+                        </div>
+                        <!-- Grid -->
+                        <div class="row no-gutters">
+                           <!-- Grid Item -->
+                           <div class="col-xl-5 pr-2">
+                              <h2 *ngIf="overview.total_pair_match_business" class="mb-0 display-3 font-weight-medium mr-1">${{overview.total_pair_match_business}}</h2>
+                              <p class="mb-0 text-light-gray">Total Value</p>
+                           </div>
+                           
+                           <!-- /grid item -->
+                        </div>
+                        <!-- /grid -->
+                     </div>
+                     <!-- /card body -->
+                  </div>
+                  <!-- /card -->
+               </div>
+               <!-- /grid item -->
+            </ion-col>
+        </ion-row>
+      </ion-grid>
+      <!-- Site Content -->
+      <div class="">
+         <!-- Grid -->
+         <div class="row">
+         </div>
+         <div class="dt-card">
+            <div class="dt-card__body">
+               <h4>Genealogy</h4>
+               <!-- 
+                  <input class="form-control table_search mt-0" (keyup.enter)="getGenealogy($event.target.value)" id="sel1" placeholder="Search" /> -->
+               <!--<input class="cust_btn" (click)="getGenealogy('')" id="sel1" type="submit" style="cursor: pointer" />-->
+                <ion-searchbar mode="md" [(ngModel)]="searchTerm"></ion-searchbar>
+
+               <div class="row">
+                  <div class="col-12">
+                     <div class="input-group" style="width: 25%;float: right;margin-left: 5px;">
+                        <input class="form-control table_search mt-0" [(ngModel)]="pairsSearch" (keyup.enter)="getGenealogy($event.target.value)" id="sel1" placeholder="Search">
+                        <span style="background: #eee;border-radius: 0 5px 5px 0;" class="input-group-addon" (click)="getGenealogy(pairsSearch)"><i style="margin: 10px;"
+                           class="icon icon-search-new"></i></span>
+                     </div>
+                     <input class="cust_btn" (click)="getGenealogy('')" id="sel1" type="reset" value="Go Back" style="cursor: pointer" />
+                  </div>
+               </div>
+               <div class="tree custom-tree text-center management-hierarchy" *ngIf="!showTree">
+                  <div class="hv-container">
+                     <div class="hv-wrapper">
+                        <div class="hv-item">
+                           <h3 class="mt-5">Sorry, This account is not in your downline</h3>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="tree custom-tree text-center management-hierarchy" *ngIf="showTree">
+                  <div class="hv-container">
+                     <div class="hv-wrapper">
+                        <div class="hv-item">
+                           <div class="hv-item-parent">
+                              <p>Left</p>
+                              <div class="person" placement="right" (click)="userDetail('main_user')">
+                                 <div class="tree_structure tree_voilet">
+                                    <h4>{{genealogy?.main_user.user_account_status[0] | titlecase }}</h4>
+                                    <p>{{genealogy?.main_user.user_name}}</p>
+                                 </div>
+                              </div>
+                              <p>Right</p>
+                           </div>
+                           <div *ngIf="genealogy?.main_user.total_right_position_invitee != '0' || genealogy?.main_user.total_left_position_invitee != '0'" class="hv-item-children">
+                              <div class="hv-item-child">
+                                 <div class="hv-item">
+                                    <div class="hv-item-parent">
+                                       <div (click)="getGenealogy(genealogy?.level_2_left.user_name)" class="person" placement="right" (click)="userDetail('level_2_left')">
+                                       <div class="tree_structure tree_pink">
+                                          <!--<h4>{{genealogy?.main_user.user_account_status[0] | titlecase }}</h4>-->
+                                          <h4 *ngIf="genealogy?.level_2_left.user_name"><i class="fa fa-user-circle-o" aria-hidden="true"></i></h4>
+                                          <h4 style="font-size:55px;margin-top:-5px;" *ngIf="!genealogy?.level_2_left.user_name"><i class="fa fa-question-circle-o" aria-hidden="true"></i></h4>
+                                          <p>{{genealogy?.level_2_left.user_name}}</p>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="hv-item-children">
+                                    <div class="hv-item-child">
+                                       <div (click)="getGenealogy(genealogy?.level_2_2_left.user_name)" class="person" placement="right" (click)="userDetail('level_2_2_left')">
+                                       <div class="tree_structure tree_orange">
+                                          <!--<h4>{{genealogy?.main_user.user_account_status[0] | titlecase }}</h4>-->
+                                          <h4 *ngIf="genealogy?.level_2_2_left.user_name"><i class="fa fa-user-circle-o" aria-hidden="true"></i></h4>
+                                          <h4 style="font-size:55px;margin-top:-5px;" *ngIf="!genealogy?.level_2_2_left.user_name"><i class="fa fa-question-circle-o" aria-hidden="true"></i></h4>
+                                          <p>{{genealogy?.level_2_2_left.user_name}}</p>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="hv-item-child">
+                                    <div (click)="getGenealogy(genealogy?.level_2_1_right.user_name)" class="person" placement="right" (click)="userDetail('level_2_1_right')">
+                                    <div class="tree_structure tree_voilet">
+                                       <!--<h4>{{genealogy?.main_user.user_account_status[0] | titlecase }}</h4>-->
+                                       <h4 style="font-size:55px;margin-top:-5px;" *ngIf="!genealogy?.level_2_1_right.user_name"><i class="fa fa-question-circle-o" aria-hidden="true"></i></h4>
+                                       <h4 *ngIf="genealogy?.level_2_1_right.user_name"><i class="fa fa-user-circle-o" aria-hidden="true"></i></h4>
+                                       <p>{{genealogy?.level_2_1_right.user_name}}</p>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="hv-item-child">
+                        <div class="hv-item">
+                           <div class="hv-item-parent">
+                              <div (click)="getGenealogy(genealogy?.level_1_right.user_name)" class="person" placement="right" (click)="userDetail('level_1_right')">
+                              <div class="tree_structure tree_green">
+                                 <!--<h4>{{genealogy?.main_user.user_account_status[0] | titlecase }}</h4>-->
+                                 <h4 style="font-size:55px;margin-top:-5px;" *ngIf="!genealogy?.level_1_right.user_name"><i class="fa fa-question-circle-o" aria-hidden="true"></i></h4>
+                                 <h4 *ngIf="genealogy?.level_1_right.user_name"><i class="fa fa-user-circle-o" aria-hidden="true"></i></h4>
+                                 <p>{{genealogy?.level_1_right.user_name}}</p>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="hv-item-children">
+                           <div class="hv-item-child">
+                              <div (click)="getGenealogy(genealogy?.level_1_2_left.user_name)" class="person" placement="right" (click)="userDetail('level_1_2_left')">
+                              <div class="tree_structure tree_voilet">
+                                 <!--<h4>{{genealogy?.main_user.user_account_status[0] | titlecase }}</h4>-->
+                                 <h4 style="font-size:55px;margin-top:-5px;" *ngIf="!genealogy?.level_1_2_left.user_name"><i class="fa fa-question-circle-o" aria-hidden="true"></i></h4>
+                                 <h4 *ngIf="genealogy?.level_1_2_left.user_name"><i class="fa fa-user-circle-o" aria-hidden="true"></i></h4>
+                                 <p>{{genealogy?.level_1_2_left.user_name}}</p>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="hv-item-child">
+                           <div (click)="getGenealogy(genealogy?.level_1_1_right.user_name)" class="person" placement="right" (click)="userDetail('level_1_1_right')">
+                           <div class="tree_structure tree_green">
+                              <!--<h4>{{genealogy?.main_user.user_account_status[0] | titlecase }}</h4>-->
+                              <h4 style="font-size:55px;margin-top:-5px;" *ngIf="!genealogy?.level_1_1_right.user_name"><i class="fa fa-question-circle-o" aria-hidden="true"></i></h4>
+                              <h4 *ngIf="genealogy?.level_1_1_right.user_name"><i class="fa fa-user-circle-o" aria-hidden="true"></i></h4>
+                              <p>{{genealogy?.level_1_1_right.user_name}}</p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   </div>
+   </div>
+   </div>
+   </div>
+   </div>
+   </div>
+</ion-content>

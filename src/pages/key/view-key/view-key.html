@@ -1,0 +1,173 @@
+<!--
+  Generated template for the ViewKeyPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+   <ion-navbar color="primary">
+      <button ion-button menuToggle>
+         <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>View Key</ion-title>
+   </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div class="dt-root">
+  	      <div class="row">
+      
+         
+        <!-- Grid Item -->
+        <div class="col-xl-12 order-sm-1">
+          
+          
+          <!-- Grid -->
+              <div class="row">
+            
+            <!-- Grid Item -->
+            <div class="col-12">
+            
+              <!-- Card -->
+              <div class="dt-card">
+                
+                <!-- Card Header -->
+                <div class="dt-card__header">
+        
+                <!-- Card Heading -->
+                
+                <!-- /card heading -->
+                
+                <!-- Card Tools -->
+                <div class="dt-card__tools">
+                  <a href="javascript:void(0)" class="dt-card__more"></a>
+                </div>
+                <!-- /card tools -->
+        
+                </div>
+                <!-- /card header -->
+                
+                <!-- Card Body -->
+                <div class="dt-card__body">
+                 <ul class="nav nav-underline flex-row border-bottom nav-card-tabs" role="tablist">
+                    <li class="nav-item">
+                    <a class="nav-link" [ngClass]="{'active':used}" data-toggle="tab" (click)="used = true;unused = false" role="tab" aria-controls="tab-pane1"
+                       aria-selected="true">Used</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" [ngClass]="{'active':unused}" data-toggle="tab" (click)="used = false;unused = true" role="tab" aria-controls="tab-pane2"
+                       aria-selected="true">Unused</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#tab-pane3" role="tab" aria-controls="tab-pane3"
+                       aria-selected="true">Transfer Code</a>
+                    </li> -->
+                  </ul>
+                  
+                  <!-- Tab Content-->
+                  <div class="tab-content">
+                 <div id="tab-pane1" class="tab-pane" [ngClass]="{'active':used}">
+                      <!-- Card -->
+                      <div class="dt-card">
+  
+                        <!-- Card Body -->
+                        <div class="dt-card__body p-0">
+  
+                        <!-- Tables -->
+                        <div class="table-responsive">
+                          <table class="table table-hover mb-0">
+                          <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <!-- <th class="text-uppercase" scope="col">Date</th> -->
+                            <th class="text-uppercase" scope="col">Package Name</th>
+                            <th class="text-uppercase" scope="col">Key</th>
+                            <th class="text-uppercase" scope="col">Package Amount</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr *ngIf="usedKeyList == 'Sorry, No related record found.'">Sorry, No related record found.</tr>
+                          <tr *ngFor="let unkey of usedKeyList;let i = index;">
+                            <th scope="row">{{i+1}}</th>
+                            <!-- <td>22/03/2019</td> -->
+                            <td>{{unkey.package_name | titlecase}}</td>
+                            <td>{{unkey.key_code}}</td>
+                            <td> $ {{unkey.package_amount}}</td>
+                          </tr>
+                          </tbody>
+                          </table>
+                        </div>
+                        <!-- /tables -->
+  
+                        </div>
+                        <!-- /card body -->
+  
+                      </div>
+                      
+                      </div>
+                     
+                      <div id="tab-pane2" class="tab-pane" [ngClass]="{'active':unused}">
+                      <!-- Card -->
+                      <div class="dt-card">
+  
+                        <!-- Card Body -->
+                        <div class="dt-card__body p-0">
+  
+                        <!-- Tables -->
+                        <div class="table-responsive">
+                          <table class="table table-hover mb-0">
+                          <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <!-- <th class="text-uppercase" scope="col">Date</th> -->
+                            <th class="text-uppercase" scope="col">Used ID</th>
+                            <th class="text-uppercase" scope="col">Full Name</th>
+                            <th class="text-uppercase" scope="col">Package Name</th>
+                            <th class="text-uppercase" scope="col">Key</th>
+                            <th class="text-uppercase" scope="col">Action</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr *ngIf="unUsedKeyList == 'Sorry, No related record found.'">Sorry, No related record found.</tr>  
+                          <tr *ngFor="let ukey of unUsedKeyList;let i = index;">
+                            <th>{{i+1}}</th>
+                            <!-- <td>22/03/2019</td> -->
+                            <td>{{ukey.used_user_user_id}}</td>
+                            <td>{{ukey.used_user_full_name | titlecase}}</td>
+                            <td>{{ukey.package_name | titlecase}}</td>
+                            <td>{{ukey.key_code}}</td>
+                            <td><a class="btn btn-success" (click)="upgradePackage(ukey.key_code)">Upgrade</a></td>
+                          </tr>
+                          </tbody>
+                          </table>
+                        </div>
+                        <!-- /tables -->
+  
+                        </div>
+                        <!-- /card body -->
+  
+                      </div>
+                      </div>
+                    
+                  
+                    
+                  </div>
+                  <!-- /tab Content-->
+                  
+                </div>
+                <!-- /card Body -->
+                
+              </div>
+              
+            </div>
+                
+          </div>
+          <!-- /grid -->
+        
+        </div>
+              <!-- /grid item -->
+      
+      </div>
+  </div>
+</ion-content>

@@ -1,0 +1,25 @@
+page-sub-option-one {
+.products {
+		ul {
+			width: 100%;
+			height: auto;
+			overflow: auto;
+			overflow-y: hidden;
+			white-space: nowrap;
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+		}
+		ul li {
+			width: auto;
+			height: auto;
+			padding: 10px;
+			display: inline-block;
+		}
+		ul li img {
+			width: 150px;
+			height: 100px;
+			border-radius: 7px;
+		}
+	}
+}

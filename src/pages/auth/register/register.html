@@ -1,0 +1,162 @@
+<ion-content>
+   <div class="dt-root">
+      <!-- Login Container -->
+      <div class="dt-login--container dt-app-login--container">
+         <!-- Login Content -->
+         <div class="dt-login__content-wrapper">
+            <!-- Login Background Section -->
+            <div class="dt-login__bg-section dt-login__bg-section_register">
+               <div class="dt-login__bg-content">
+                  <!-- Login Title -->
+                  <h1 class="dt-login__title">Create a free account</h1>
+                  <p class="f-16">Promote & earn, list your business and do more.</p>
+               </div>
+               <!-- Brand logo -->
+               <div class="dt-login__logo">
+                  <a class="dt-brand__logo-link" href="/">
+                  <img class="dt-brand__logo-img" src="assets/images/main-logo.png" alt="Zomato">
+                  </a>
+               </div>
+               <!-- /brand logo -->
+            </div>
+            <!-- /login background section -->
+            <!-- Login Content Section -->
+            <div class="dt-login__content">
+               <!-- Login Content Inner -->
+               <div class="dt-login__content-inner">
+                  <!-- Form -->
+                  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register">
+                  <ion-grid no-padding>
+                     <!-- Form Group -->
+                     <ion-row>
+                        <ion-col>
+                           <div class="form-group">
+                              <label class="sr-only" for="name">Name</label>
+                              <input autocomplete="off" id="name" placeholder="Name" type="text" formControlName="full_name" class="form-control" [ngClass]="{ 'is-invalid': r.get('full_name').touched && f.full_name.errors ,'is-valid': !f.full_name.errors }" />
+                              <div *ngIf="r.get('full_name').touched && f.full_name.errors" class="invalid-feedback">
+                                 <div *ngIf="f.full_name.errors.required">Name is required</div>
+                                 <div *ngIf="r.get('full_name').hasError('minlength')">Minimum 5 characters</div>
+                              </div>
+                           </div>
+                           <!-- /form group -->
+                        </ion-col>
+                        <ion-col>
+                           <!-- Form Group -->
+                           <div class="form-group">
+                              <label class="sr-only" for="username">Username</label>
+                              <input autocomplete="off" type="text" id="username" (keyup)="checkuser($event)" placeholder="Username" formControlName="user_name" class="form-control" [ngClass]="{ 'is-invalid': r.get('user_name').touched && f.user_name.errors,'is-invalid': userExist,'is-valid': r.get('user_name').touched && !userExist && f.user_name.dirty && !r.get('user_name').hasError('minlength')}" />
+                              <div *ngIf="r.get('user_name').touched && f.user_name.errors " class="invalid-feedback">
+                                 <div *ngIf="f.user_name.errors.required">Username is required</div>
+                                 <div *ngIf="r.get('user_name').hasError('minlength')">Minimum 5 characters</div>
+                              </div>
+                              <div *ngIf="userExist" class="invalid-feedback">
+                                 <div>Username is Already Exist.</div>
+                              </div>
+                              <div *ngIf="!userExist" class="valid-feedback">
+                              </div>
+                           </div>
+                           <!-- /form group -->
+                        </ion-col>
+                     </ion-row>
+                  </ion-grid>
+                  <!-- Form Group -->
+                  <div class="form-group">
+                     <label class="sr-only" for="email_id">Email address</label>
+                     <input autocomplete="off" type="email" class="form-control" formControlName="email_id" id="email_id" aria-describedby="email_id" placeholder="Enter email" [ngClass]="{ 'is-invalid': r.get('email_id').touched && f.email_id.errors ,'is-valid': !f.email_id.errors }" />
+                     <div *ngIf="r.get('email_id').touched && f.email_id.errors" class="invalid-feedback">
+                        <div *ngIf="f.email_id.errors.required">Email is required</div>
+                        <div class="error" *ngIf="r.get('email_id').hasError('pattern') && r.get('email_id').touched">Email address invalid</div>
+                     </div>
+                  </div>
+                  <!-- /form group -->
+                  <div class="form-group">
+                     <ion-grid no-padding>
+                        <ion-row>
+                           <ion-col>
+                              <div>
+                                 <ion-item no-lines class="ion-select">
+                                    <ion-select formControlName="country_id" (ionSelect)="selectCountry($event)" placeholder="Select Country" no-padding>
+                                       <ion-option value="{{country.country_id}}" *ngFor="let country of countryList;">{{country.country_name}}</ion-option>
+                                    </ion-select>
+                                 </ion-item>
+                                 <div *ngIf="submitted && !country_code">
+                                    <div style="color: #f5222d;margin-top: .25rem;font-size: 80%;width: 100%;">Country is required</div>
+                                 </div>
+                              </div>
+                           </ion-col>
+                           <ion-col>
+                              <div class="">
+                                 <input autocomplete="off" id="mobile_number" type="number" formControlName="mobile_number" class="form-control" name="mobile_number" placeholder="Mobile" [ngClass]="{ 'is-invalid': r.get('mobile_number').touched && f.mobile_number.errors ,'is-valid': !f.mobile_number.errors }" />
+                                 <div *ngIf="r.get('mobile_number').touched && f.mobile_number.errors" class="invalid-feedback">
+                                    <div *ngIf="f.mobile_number.errors.required">Mobile is required</div>
+                                 </div>
+                              </div>
+                           </ion-col>
+                        </ion-row>
+                     </ion-grid>
+                  </div>
+                  <!-- Form Group -->
+                  <div class="form-group">
+                     <label class="sr-only" for="password-1">Password</label>
+                     <input autocomplete="off" type="password" id="password-1" placeholder="Password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': r.get('password').touched && f.password.errors ,'is-valid': !f.password.errors }" />
+                     <div *ngIf="r.get('password').touched && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                        <div *ngIf="r.get('password').hasError('minlength')">Password must be at least 6 characters</div>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <ion-grid no-padding>
+                        <ion-row>
+                           <ion-col>
+                              <input autocomplete="off" id="password" type="text" formControlName="referral_id" class="form-control" name="referral_id" placeholder="Referral Id" [ngClass]="{ 'is-invalid': r.get('referral_id').touched && f.referral_id.errors,'is-valid': userExist1 ,'is-invalid': !userExist1 && f.referral_id.dirty }" (keyup)="checkReferral($event)" >
+                              <div *ngIf="r.get('referral_id').touched && f.referral_id.errors" class="invalid-feedback">
+                                 <div *ngIf="f.referral_id.errors.required">Referral Id is required</div>
+                                 <div *ngIf="r.get('referral_id').hasError('minlength')">Minimum 5 characters</div>
+                              </div>
+                              <div *ngIf="!userExist1" class="valid-feedback">
+                                 <div>Username is Doesn't Exist.</div>
+                              </div>
+                           </ion-col>
+                           <ion-col>
+                              <div>
+                                 <ion-item no-lines class="ion-select">
+                                    <ion-select (ionSelect)="selectPosition($event)" placeholder="Position" no-padding formControlName="user_position">
+                                       <ion-option> Right </ion-option>
+                                       <ion-option> Left </ion-option>
+                                    </ion-select>
+                                 </ion-item>
+                                 <div *ngIf="submitted && !country_code">
+                                    <div style="color: #f5222d;margin-top: .25rem;font-size: 80%;width: 100%;">Position is required</div>
+                                 </div>
+                              </div>
+                           </ion-col>
+                        </ion-row>
+                     </ion-grid>
+                  </div>
+                  <div col-12>
+                     <label>Choose your business category</label>
+                     <div class="row">
+                        <div col-3 class="nopad text-center" formArrayName="user_category_id" *ngFor="let category of cats; let i = index">
+                           <label class="image-checkbox" [ngClass]="{ 'image-checkbox-checked': registerForm.value.user_category_id[i] }">
+                           <img class="img-responsive" src="{{cats[i].category_image}}" title="{{cats[i].category_name}}"  />
+                           <input autocomplete="off" type="checkbox" name="image[]" [formControlName]="i"/>
+                           </label>
+                           <p style="font-size: 11px;" no-margin>{{cats[i].category_name}}</p>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- Form Group -->
+                  <div class="form-group">
+                     <button type="submit" ion-button>Sign Up</button>
+                     <span class="d-inline-block ml-4">
+                     <a class="d-inline-block font-weight-medium ml-3" (click)="gotoLogin()">Sign In</a>
+                     </span>
+                  </div>
+                  <!-- /form group -->
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</ion-content>

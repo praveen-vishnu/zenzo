@@ -1,0 +1,46 @@
+<!--
+  Generated template for the MyOrdersPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>My Orders</ion-title>
+    <ion-buttons end>
+      <button ion-button>
+        <!-- <ion-icon name="log-out"></ion-icon> -->
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list no-lines *ngIf="getArray(products)">
+    <ion-item detail *ngFor="let item of products;let i = index;" [navPush]="ORDER_DETAIL" [navParams] = "item">
+      <ion-thumbnail item-start>
+        <img class="" src="{{item.image_name}}">
+      </ion-thumbnail>
+      <h2>
+        {{item.pr_name | titlecase}}
+      </h2>
+      <!-- 0=Pending, 1=Accepted, 2=in process, 3=Shipped, 4=Completed, 5=Rejected	 -->
+      <p *ngIf="item.order_status == '0'">Pending</p>
+      <p *ngIf="item.order_status == '1'">Accepted</p>
+      <p *ngIf="item.order_status == '2'">Inprocess</p>
+      <p *ngIf="item.order_status == '3'">Shipped</p>
+      <p *ngIf="item.order_status == '4'">Delivered</p>
+      <p *ngIf="item.order_status == '5'">Rejected</p>
+    </ion-item>
+  </ion-list>
+  <ion-list no-lines *ngIf="!getArray(products)">
+    <ion-item>
+      <ion-label text-center>No records found.</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

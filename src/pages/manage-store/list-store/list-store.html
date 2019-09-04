@@ -1,0 +1,175 @@
+<!--
+  Generated template for the ListStorePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+      <button ion-button menuToggle>
+         <ion-icon name="menu"></ion-icon>
+      </button> 
+    <ion-title>List Your Store</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+<ion-segment (ionChange)="segmentChanged($event)" mode="md" [(ngModel)]="segment">
+  <ion-segment-button value="0">
+    <ion-label>Store</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="1">
+    <ion-label>Location</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="2">
+    <ion-label>Contact</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="3">
+    <ion-label>Social</ion-label>
+  </ion-segment-button>
+</ion-segment>
+
+
+<ion-slides (ionSlideDidChange)="slideChanged()">
+
+  <ion-slide class="store">
+  	<form [formGroup]="store" (ngSubmit)="onSubmit('1')" style="margin-top: 65px;">
+	      <ion-item no-lines>
+	        <ion-label stacked>Store Name <span style="color: red;">*</span></ion-label>
+	        <ion-input type="text" formControlName="store_name"></ion-input>
+	      </ion-item>
+	      <ion-item no-lines>
+	        <ion-label stacked>Tagline</ion-label>
+	        <ion-input type="text" formControlName="store_tag_line"></ion-input>
+	      </ion-item>
+	      <ion-item no-lines>
+	        <ion-label stacked>Business Category</ion-label>
+	        <ion-select formControlName="store_category_id" placeholder="Select Category" (ionChange)="selectCat($event)">
+		      <ion-option *ngFor="let cat of category" value="{{cat.id}}">{{cat.category_name}}</ion-option>
+		    </ion-select>
+	      </ion-item>
+	      <ion-item no-lines>
+	        <ion-label stacked>Services</ion-label>
+	        <ion-select  formControlName="store_services_ids" multiple="true" placeholder="Select Service">
+		      <ion-option *ngFor="let service of services" value="{{service.id}}">{{service.service_name}}</ion-option>
+		    </ion-select>
+	      </ion-item>
+	      <ion-item no-lines>
+	        <ion-label stacked>Description</ion-label>
+	        <ion-textarea rows="4" formControlName="store_description"></ion-textarea>
+	      </ion-item>
+	      <ion-item no-lines>
+			<ion-label stacked>Add Store Image <span style="font-size: 12px;">(Max 1mb, png or jpeg only)</span> <span style="color: red;">*</span></ion-label>
+			<!-- <button ion-button block (click)="imageUpload()">Upload Image</button> -->
+      		<ion-input type="file" accept="image/*"  id="imageUpload" (change)="changeListener($event)"></ion-input>
+		  </ion-item>
+	      <ion-item no-lines>
+	        <ion-label stacked>Payment Accepted in Your Store</ion-label>
+	        <ion-select placeholder="Select Payment Method" formControlName="payment_receive_ids"  multiple="true">
+		      <ion-option value="1">Cash</ion-option>
+		      <ion-option value="2">Credit Card</ion-option>
+		      <ion-option value="3">Debit Card</ion-option>
+		    </ion-select>
+	      </ion-item> 
+
+	      <ion-item no-lines> <button style="padding: 15px;font-size: 13px;" margin-top  ion-button block type="submit">Next</button></ion-item>
+	    </form>
+  </ion-slide>
+
+  <ion-slide class="location">
+      	<form [formGroup]="store" (ngSubmit)="onSubmit('2')">
+	      <ion-item no-lines>
+	        <ion-label stacked>Store Address Google Map Link </ion-label>
+	        <ion-input type="text" formControlName="google_map_link"></ion-input>
+	      </ion-item>
+	      <ion-item no-lines>
+	        <ion-label stacked>Store Address</ion-label>
+	        <ion-input type="text" formControlName="store_address"></ion-input>
+	      </ion-item>
+	      <ion-item no-lines>
+	        <ion-label stacked>State</ion-label>
+	        <ion-input type="text" formControlName="state_name"></ion-input>
+	      </ion-item>
+	      <ion-item no-lines>
+	        <ion-label stacked>City<span style="color: red;">*</span></ion-label>
+	        <ion-input type="text" formControlName="city_name"></ion-input>
+	      </ion-item>
+	      <ion-item no-lines>
+	        <ion-label stacked>Pincode</ion-label>
+	        <ion-input type="text" formControlName="pincode"></ion-input>
+	      </ion-item>
+	      <ion-item no-lines>
+	        <ion-label stacked>Country</ion-label>
+	        <ion-select placeholder="Select country" formControlName="country_id">
+		      <ion-option value="{{country.country_id}}" *ngFor="let country of countries;">{{country.country_name}}</ion-option>
+		    </ion-select>
+	      </ion-item> 
+
+	      <ion-item no-lines> <button style="padding: 15px;font-size: 13px;" margin-top  ion-button block type="submit">Next</button></ion-item>
+	    </form>
+  </ion-slide>
+
+  <ion-slide class="contact">
+    <form [formGroup]="store" (ngSubmit)="onSubmit('3')">
+	      <ion-item no-lines>
+	        <ion-label stacked>Landline No</ion-label>
+	        <ion-input type="text" formControlName="landline_number"></ion-input>
+	      </ion-item>
+	      <ion-item no-lines>
+	        <ion-label stacked>Store Contact numbers <span style="color: red;">*</span></ion-label>
+	        <ion-input type="text" formControlName="contact_number_one"></ion-input>
+	      </ion-item>
+	      <ion-item no-lines>
+	        <ion-label stacked>Store Contact numbers 2</ion-label>
+	        <ion-input type="text" formControlName="contact_number_two"></ion-input>
+	      </ion-item>
+	      <ion-item no-lines>
+	        <ion-label stacked>Contact email Id <span style="color: red;">*</span></ion-label>
+	        <ion-input type="text" formControlName="contact_email_id"></ion-input>
+	      </ion-item>
+	      <ion-item no-lines>
+	        <ion-label stacked>Website</ion-label>
+	        <ion-input type="text" formControlName="website_link"></ion-input>
+	        <p>Stil dont have store website <a href="#">Create</a> Now</p>
+	      </ion-item>
+	      <ion-item no-lines> <button style="padding: 15px;font-size: 13px;" margin-top  ion-button block type="submit">Next</button></ion-item>
+	    </form>
+  </ion-slide>
+
+  <ion-slide class="social">
+    
+    <form [formGroup]="store" (ngSubmit)="onSubmit('s')">
+	      <ion-item no-lines>
+	        <ion-label stacked>Facebook</ion-label>
+	        <ion-input type="text" formControlName="facebook"></ion-input>
+	      </ion-item>
+	      <ion-item no-lines>
+	        <ion-label stacked>Twitter</ion-label>
+	        <ion-input type="text" formControlName="twitter"></ion-input>
+	      </ion-item>
+	      <ion-item no-lines>
+	        <ion-label stacked>LinkedIn</ion-label>
+	        <ion-input type="text" formControlName="linkedin"></ion-input>
+	      </ion-item>
+	      <ion-item no-lines>
+	        <ion-label stacked>Telegram<span style="color: red;">*</span></ion-label>
+	        <ion-input type="text" formControlName="telegram"></ion-input>
+	      </ion-item>
+	      <ion-item no-lines>
+	        <ion-label stacked>Instagram</ion-label>
+	        <ion-input type="text" formControlName="instagram"></ion-input>
+	      </ion-item>
+	      <ion-item no-lines>
+	        <ion-label stacked>other</ion-label>
+	        <ion-input type="text" formControlName="other"></ion-input>
+	      </ion-item>
+		  <p style="font-size: 11px;margin-top: 5px;"><a href="#"> Terms and Conditions / Privacy</a></p>
+	      <ion-item no-lines> <button style="padding: 15px;font-size: 13px;" margin-top  ion-button block type="submit">Submit</button></ion-item>
+	    </form>
+  </ion-slide>
+
+</ion-slides>
+</ion-content>

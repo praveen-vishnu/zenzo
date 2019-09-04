@@ -1,0 +1,85 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+  <ion-navbar color="primary">
+     <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title >Profile</ion-title>
+    <ion-buttons end>
+      <button ion-button >
+        <!-- <ion-icon name="log-out"></ion-icon> -->
+      </button>
+     </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+	<ion-card style="margin: 0;width: 100%" (click)="goTo('EditProfilePage')">
+		 <ion-item no-lines no-padding>
+		  <div class="rating_module" style="padding: 5px;" item-start>
+	          <img src="https://ui-avatars.com/api/?background=a172e7&color=fff&name={{user?.full_name}}">
+	        </div>
+		    <h4><strong>{{user?.full_name |titlecase}}</strong></h4>
+            <p>{{user?.email_id}}</p>
+            <p>{{user?.mobile_number}}</p>
+             <div class="rating_module" item-end>
+	          <img src="assets/images/edit-profile.png">
+	        </div>
+		  </ion-item>
+	</ion-card>
+
+	<ion-card style="margin: 15px 0 0 0;width: 100%" margin-top (click)="goTo('ChangePasswordPage')">
+		<ion-item no-lines no-padding>
+		  <div class="rating_module" item-start>
+	         <ion-icon color="light" name="md-lock"></ion-icon>
+	        </div>
+		    <h4><strong>Change Password</strong></h4>
+		  </ion-item>
+	</ion-card>
+  
+ 
+
+	<ion-card style="margin: 15px 0 0 0;width: 100%" margin-top (click)="goTo('UpdateKycPage')">
+		<ion-item no-lines no-padding>
+		  <div class="rating_module" item-start>
+	          <ion-icon color="light" name="key"></ion-icon>
+	        </div>
+		    <h4><strong>Update KYC</strong></h4>
+		  </ion-item>
+	</ion-card>
+
+
+	<ion-card style="margin: 15px 0 0 0;width: 100%" margin-top (click)="goTo('UpdateSocialPage')">
+		<ion-item no-lines no-padding>
+		  <div class="rating_module" item-start>
+	          <ion-icon color="light" name="md-share"></ion-icon>
+	        </div>
+		    <h4><strong>Update Social</strong></h4>
+		  </ion-item>
+	</ion-card>
+
+	<ion-card style="margin: 15px 0 0 0;width: 100%" margin-top (click)="goTo('UpdatePaymentPage')">
+		<ion-item no-lines no-padding>
+		  <div class="rating_module" item-start>
+	          <ion-icon color="light" name="md-share"></ion-icon>
+	        </div>
+		    <h4><strong>Update Payment Details</strong></h4>
+		  </ion-item>
+	</ion-card>
+
+
+<!-- 	<div  *ngFor="let item of colors_sizes">
+		<label>{{item.type}}</label>
+		<input col-12  name="{{item.name}}" placeholder="{{item.placeholder}}" />
+	</div>
+ -->
+	
+</ion-content>

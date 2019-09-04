@@ -1,0 +1,178 @@
+<!--
+  Generated template for the TransferKeyPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+   <ion-navbar color="primary">
+      <button ion-button menuToggle>
+         <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Tranfer Key</ion-title>
+   </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div class="dt-root">
+      <div class="row">
+      
+         
+        <!-- Grid Item -->
+        <div class="col-xl-12 order-sm-1">
+          
+          <div class="row">
+            <div class="col-md-3">
+              
+            </div>
+            
+            
+            
+            <div class="col-md-6">
+              <div class="dt-card">
+              
+              <div class="dt-card__header">
+        
+                <h3 class="text-primary"><i class="icon icon-mail-open mr-1"></i> Transfer Key</h3>
+                
+                <div style="width: 100%">
+                    <div class="row">
+                     <div  class="col-md-6" col-6>
+                        <div>
+                         <ion-item no-lines class="ion-select">
+                          <ion-select placeholder="Select Package" id="sel1" [(ngModel)]="package_id">
+                            <ion-option value="">Select Packages</ion-option>
+                            <ion-option value="{{package.id}}" *ngFor="let package of packages;let i = index;">{{package.package_name | titlecase}} {{getParseInt(package.package_amount)}}$ ({{package.available_keys}} Keys)</ion-option>
+                          </ion-select>
+                      </ion-item>
+                        </div>
+                      </div>
+
+
+                      <div  class="col-md-6" col-6>
+                        <div class="form-group">
+                          <input [(ngModel)]="number_of_keys" type="number" class="form-control" id="number_of_keys" placeholder="No of Keys">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <input [(ngModel)]="to_user_id" type="text" class="form-control" id="to_user_id" placeholder="Send To User ID">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <input [(ngModel)]="account_password" type="password" class="form-control" id="account_password" placeholder="Account Password">
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="form-group">
+                      <button type="button" (click)="transferKey()" ion-button block>Transfer Key</button>
+                    </div>
+                    
+                  </div>
+                
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          <!-- Grid -->
+              <div class="row">
+            
+            <!-- Grid Item -->
+            <div class="col-12">
+            
+              <!-- Card -->
+              <div class="dt-card">
+                
+                <!-- Card Header -->
+                <div class="dt-card__header">
+        
+                <!-- Card Heading -->
+                
+                <!-- /card heading -->
+                
+                <!-- Card Tools -->
+                <div class="dt-card__tools">
+                  <a href="javascript:void(0)" class="dt-card__more"></a>
+                </div>
+                <!-- /card tools -->
+        
+                </div>
+                <!-- /card header -->
+                
+                <!-- Card Body -->
+                <div class="dt-card__body">
+                  
+                  <h4>Key Transfer Report</h4>
+                  
+                  <!-- Tab Content-->
+                  <div class="tab-content">
+                    <div id="tab-pane2" class="tab-pane active">
+                      <!-- Card -->
+                      <div class="dt-card">
+  
+                        <!-- Card Body -->
+                        <div class="dt-card__body p-0">
+  
+                        <!-- Tables -->
+                        <div class="table-responsive">
+                          <table class="table table-hover mb-0">
+                          <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th class="text-uppercase" scope="col">Date</th>
+                            <th class="text-uppercase" scope="col">Transfer Type</th>
+                            <th class="text-uppercase" scope="col">Package</th>
+                            <th class="text-uppercase" scope="col">Quantity</th>
+                            <th class="text-uppercase" scope="col">From User ID</th>
+                            <th class="text-uppercase" scope="col">To User ID</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr *ngFor="let key of transferReport;let i = index;">
+                            <th scope="row">{{i+1}}</th>
+                            <td>{{key.date_n_time | date:'medium' }}</td>
+                            <td>{{key.tranfer_type}}</td>
+                            <td>{{key.package_name | titlecase}}</td>
+                            <td>{{key.number_of_keys}}</td>
+                            <td>{{key.sent_from_user_name}}</td>
+                            <td>{{key.to_user_name}}</td>
+                          </tr>
+                          </tbody>
+                          </table>
+                        </div>
+                        <!-- /tables -->
+  
+                        </div>
+                        <!-- /card body -->
+  
+                      </div>
+                      
+                      </div>
+                     
+                    
+                  </div>
+                  <!-- /tab Content-->
+                  
+                </div>
+                <!-- /card Body -->
+                
+              </div>
+              
+            </div>
+                
+          </div>
+          <!-- /grid -->
+        
+        </div>
+              <!-- /grid item -->
+      
+      </div>
+  </div>
+</ion-content>

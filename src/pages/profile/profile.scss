@@ -1,0 +1,109 @@
+page-change-password {
+
+}
+
+page-profile {
+	.label-ios {
+    margin: 9px 8px 8px 0;
+}
+	
+.f-block{
+    div {
+	display: inline-block;
+	width: 80vw;
+	max-width: 20em;
+	height: 5em;
+	background: white;
+	line-height: 5em;
+	border-radius: .5em;
+}
+
+div + div {
+	margin-top: 4em;
+}
+
+.basic,
+.blended::before,
+.blended::after {
+	box-shadow: 0 .25em .25em -.125em rgba(0,0,0,.25), 0 .5em 1.25em rgba(0,0,0,.5);
+}
+
+.blended {
+	position: relative;
+}
+
+.blended::before,
+.blended::after {
+	pointer-events: none;
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height:100%;
+	border-radius: inherit;
+}
+
+.blended::before {
+	z-index: -2;
+	opacity:.5;
+	mix-blend-mode: multiply;
+}
+
+.blended::after {
+	z-index: -1;
+	opacity:1;
+	mix-blend-mode: overlay;
+}
+
+}
+
+.padding_eight_px {
+	padding: 0 8px;
+}
+
+.media_part_info h4 {
+	font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 0px;
+    line-height: 1;
+    margin-top: 3px !important;
+}
+
+.media_part_info p {
+	font-size: 12px;
+    margin-top: 1px;
+    margin-bottom: 0;
+    color: #999;
+}
+
+.rating_module {
+	padding: 8px;
+    padding-left: 11px;
+    																																																																																																																			
+    background: color($colors, primary);
+    border-radius: 50px;
+    width: 36px;
+    margin: 0 auto;
+    margin-top: 5px;
+}
+
+.profile_change_password p {
+	margin-top: 9px;
+    margin-bottom: 7px;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+}
+
+
+
+.profile_change_password .password_icon {
+	text-align: center;
+    background-color: color($colors, primary);
+    border-radius: 5px 0 0 5px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+}

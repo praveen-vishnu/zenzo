@@ -1,1 +1,25 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu persistent="true" [content]="content" (ionClose)="collapseMenuOptions()" id="authenticated">
+	<ion-header>
+		<ion-toolbar color="primary">
+			<ion-title>Menu</ion-title>
+		</ion-toolbar>
+	</ion-header>
+
+	<ion-content>
+
+		<!-- side menu content -->
+		<side-menu-content *ngIf="authenticatedMenu" [settings]="sideMenuSettings" [options]="options" (change)="onOptionSelected($event)"></side-menu-content>
+
+		<ion-list *ngIf="!authenticatedMenu" no-lines>
+			<ion-item menuClose no-lines (click)="goto('UserStoreSearchPage')">
+				Home
+			</ion-item>
+			<ion-item no-lines menuClose (click)="goto('LoginPage')">
+				Login
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

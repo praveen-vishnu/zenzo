@@ -1,0 +1,142 @@
+<!--
+   Generated template for the ParsEarningsPage page.
+   
+   See http://ionicframework.com/docs/components/#navigation for more info on
+   Ionic pages and navigation.
+   -->
+<ion-header>
+   <ion-navbar color="primary">
+      <button ion-button menuToggle>
+         <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Pairs Earnings</ion-title>
+   </ion-navbar>
+</ion-header>
+<ion-content padding>
+   <ion-row>
+      <!-- Grid Item -->
+      <div col-6>
+         <!-- Card -->
+         <div class="dt-card overflow-hidden">
+            <!-- Card Body -->
+            <div class="dt-card__body">
+               <div class="d-flex mb-3">
+                  <h6 class="mb-0 text-uppercase">Total Paring Match</h6>
+                  <div class="d-flex align-items-center ml-auto">
+                     <!-- 
+                        <h5 class="mb-0 text-success font-weight-medium mr-1">67%</h5>
+                        <i class="icon icon-menu-up f-12 text-success"></i> -->
+                  </div>
+               </div>
+               <!-- Grid -->
+               <div class="row no-gutters">
+                  <!-- Grid Item -->
+                     <div class="row">
+                        <div col-6>
+                           <h6 class="mb-0 text-uppercase">Paring Match</h6>
+                           <h4 class="mb-0 font-weight-medium mr-1">{{live_reports.pair_match_business}} </h4>
+                        </div>
+                        <div col-6>
+                           <h6 class="mb-0 text-uppercase">Total Value</h6>
+                           <h4 class="mb-0 font-weight-medium mr-1">{{live_reports.user_commission_amount}}</h4>
+                        </div>
+                     </div>
+                  <!-- /grid item -->
+               </div>
+               <!-- /grid -->
+            </div>
+            <!-- /card body -->
+         </div>
+         <!-- /card -->
+      </div>
+      <div col-6>
+         <!-- Card -->
+         <div class="dt-card overflow-hidden">
+            <!-- Card Body -->
+            <div class="dt-card__body">
+               <div class="d-flex mb-3">
+                  <h6 class="mb-0 text-uppercase">Business</h6>
+                  <div class="d-flex align-items-center ml-auto">
+                     <!-- 
+                        <h5 class="mb-0 text-success font-weight-medium mr-1">67%</h5>
+                        <i class="icon icon-menu-up f-12 text-success"></i> -->
+                  </div>
+               </div>
+               <!-- Grid -->
+               <div class="row no-gutters">
+                  <!-- Grid Item -->
+                  <div class="col-xl-7 pr-2">
+                     <div class="row">
+                        <div col-6>
+                           <h6 class="mb-0 text-uppercase">Left</h6>
+                           <h4 class="mb-0 font-weight-medium mr-1">{{live_reports.left_business}}</h4>
+                        </div>
+                        <div col-6>
+                           <h6 class="mb-0 text-uppercase">Right</h6>
+                           <h4 class="mb-0 font-weight-medium mr-1">{{live_reports.right_business}}</h4>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- /grid item -->
+               </div>
+               <!-- /grid -->
+            </div>
+            <!-- /card body -->
+         </div>
+         <!-- /card -->
+      </div>
+   </ion-row>
+   <div class="dt-root">
+      <div class="dt-card">
+         <div class="dt-card__body">
+            <ul class="nav nav-underline flex-row border-bottom nav-card-tabs mt-0" role="tablist">
+               <li class="nav-item">
+                  <a class="nav-link active" data-toggle="tab" href="#tab-pane1" role="tab" aria-controls="tab-pane1"
+                     aria-selected="true">Pair Earning Report</a>
+               </li>
+               <!--  <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#tab-pane2" role="tab" aria-controls="tab-pane2"
+                     aria-selected="true">Live Pair Report</a>
+                  </li> -->
+            </ul>
+            <div class="tab-content mt-5 services_page">
+               <div id="tab-pane1" class="tab-pane active show">
+                  <div class="table-responsive">
+                     <table id="data-table" class="table table-hover">
+                        <thead>
+                           <tr>
+                              <th>#</th>
+                              <th>Date</th>
+                              <th>Left Business</th>
+                              <th>Right  Business</th>
+                              <th>Pair Matching</th>
+                              <th>Left Carry Forward</th>
+                              <th>Right Carry Forward</th>
+                              <th>Earning(USD)</th>
+                           </tr>
+                        </thead>
+                        <tbody *ngIf="!getArray(pair_reports)">
+                           <tr class="text-center">
+                              <td colspan="8">No Records Found</td>
+                           </tr>
+                        </tbody>
+                        <tbody *ngIf="getArray(pair_reports)">
+                           <tr *ngFor="let report of pair_reports; let i = index">
+                              <td>{{i+1}}</td>
+                              <td>{{report?.date_n_time | date: 'MMM d, y, h:mm a'}}</td>
+                              <td>{{ getparseFloat( report?.left_business )}} $</td>
+                              <td>{{ getparseFloat( report?.right_business )}} $</td>
+                              <td>{{ getparseFloat( report?.pair_match_business )}} $</td>
+                              <td>{{ getparseFloat( report?.left_cf_business )}} $</td>
+                              <td>{{ getparseFloat( report?.right_cf_business )}} $</td>
+                              <td>{{ getparseFloat( report?.user_commission_amount )}} $</td>
+                           </tr>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</ion-content>

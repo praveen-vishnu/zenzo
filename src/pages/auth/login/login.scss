@@ -1,0 +1,26 @@
+page-login {
+
+.dt-root{
+	background: url(https://images.unsplash.com/photo-1557221631-83d1a0149189?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80);
+    background-repeat: no-repeat;
+    background-size: cover;
+}	
+.form-control {
+    height: calc(3.42rem + 20px);
+    font-size: 15px;
+	}
+.custom-control {
+    padding-left: 2px;
+	}
+
+.button-ios {
+	font-size: 15px;
+    }
+.signup-btn{
+	font-size: 12px;
+    text-decoration: underline;
+	}
+    .invalid-feedback {
+    font-size: 100% !important;
+}
+}

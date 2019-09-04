@@ -1,0 +1,60 @@
+<!--
+  Generated template for the ReferralsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Verified Task</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content>
+	<div class="dt-root">
+		    <div class="dt-card" margin>
+        <div class="dt-card__body">
+        <h4>Task</h4>
+        <!-- Tables -->
+        <div class="table-responsive">
+            
+          <table id="data-table" class="table table-hover">
+            
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Task Date</th>
+            <th>Task Code</th>
+            <th>Task type (Platform)</th>
+            <th>Rewards</th>
+          </tr>
+          </thead>
+          <tbody *ngIf="!getArray(task_details_available_list)">
+            <tr class="text-center"><td colspan="6">No Records Found</td></tr>
+          </tbody>
+          <tbody *ngIf="getArray(task_details_available_list)">
+           <tr class="gradeX" *ngFor="let item of task_details_available_list;let i = index;">
+            <td>{{i+1}}</td>
+            <td>{{item.date_only | date}}</td>
+            <td>{{item.task_code}}</td>
+            <td>{{item.task_type_name}} ({{item.platform_name}})</td>
+            <td>{{item.task_reward}}</td>
+          </tr>
+          </tbody>
+           
+          </table>
+  
+        </div>
+        <!-- /tables -->
+  
+        </div>
+        <!-- /card body -->
+  
+      </div>
+	</div>
+</ion-content>

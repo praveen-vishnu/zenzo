@@ -1,0 +1,340 @@
+<!--
+  Generated template for the EditProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title >Update KYC</ion-title>
+    <ion-buttons end>
+      <button ion-button >
+        <!-- <ion-icon name="log-out"></ion-icon> -->
+      </button>
+     </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<div class="dt-root">
+    <div class="dt-card">
+
+                          
+                              <!-- Tab Pane -->
+                              <div id="tab-pane-4" #kycPane class="tab-pane">
+                                 <div class="card-body">
+                                    <div class="col-md-12">
+                                       <h4 class="profile_tab_title">KYC Verification</h4>
+                                                <p *ngIf="dashboardme?.kyc_approval_status=='1'" style="color: orange">Your KYC Status is Pending</p>
+                                                <p *ngIf="dashboardme?.kyc_approval_status=='2'" style="color: green">Your KYC Status is Approved</p>
+                                                <p *ngIf="dashboardme?.kyc_approval_status=='3'" style="color: red">Your KYC has Been Rejected </p>
+                                       <div #kychideref style="overflow: hidden;" *ngIf="kyc_data">
+
+                                          <form #form1="ngForm" (ngSubmit)="updateKYCform(form1)">
+
+                                          <div class="alert alert-danger" *ngIf="dashboardme?.kyc_approval_status == '3'" >
+                                             <span style="color: red"><span *ngIf="dashboardme?.kyc_data.reason_for_reject">{{kyc_data.reason_for_reject}}</span></span>
+                                          </div>
+                                          <div class="row">
+                                             <div class="col-md-3 ">
+                                                <label for="email">First Name <span style="color: red;">*</span>:</label>
+                                             </div>
+                                             <div class="col-md-6">
+                                                <div class="form-group package_buy_input">
+                                                   <input [(ngModel)]="kyc_data.first_name" type="text" name="first_name" class="form-control" id="email">
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="row">
+                                             <div class="col-md-3 ">
+                                                <label for="email">Last Name <span style="color: red;">*</span>:</label>
+                                             </div>
+                                             <div class="col-md-6">
+                                                <div class="form-group package_buy_input">
+                                                   <input [(ngModel)]="kyc_data.last_name" type="text" name="last_name" class="form-control" id="email">
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="row">
+                                             <div class="col-md-3 ">
+                                                <label for="email">Address Line 1 <span style="color: red;">*</span>:</label>
+                                             </div>
+                                             <div class="col-md-6">
+                                                <div class="form-group">
+                                                   <input name="address_line_one" [(ngModel)]="kyc_data.address_line_one" type="text" class="form-control" id="email">
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="row">
+                                             <div class="col-md-3 ">
+                                                <label for="email">Address Line 2 <span style="color: red;">*</span>:</label>
+                                             </div>
+                                             <div class="col-md-6">
+                                                <div class="form-group">
+                                                   <input name="address_line_two" [(ngModel)]="kyc_data.address_line_two" type="text" class="form-control" id="email">
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="row">
+                                             <div class="col-md-3 ">
+                                                <label for="email">City <span style="color: red;">*</span>:</label>
+                                             </div>
+                                             <div class="col-md-6">
+                                                <div class="form-group">
+                                                   <input [(ngModel)]="kyc_data.city_name" name="city_name" type="text" class="form-control" id="email">
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="row">
+                                             <div class="col-md-3 ">
+                                                <label for="email">State <span style="color: red;">*</span>:</label>
+                                             </div>
+                                             <div class="col-md-6">
+                                                <div class="form-group">
+                                                   <input [(ngModel)]="kyc_data.state_name" name="state_name" type="text" class="form-control" id="email">
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="row">
+                                             <div class="col-md-3 ">
+                                                <label for="email">Pincode <span style="color: red;">*</span>:</label>
+                                             </div>
+                                             <div class="col-md-6">
+                                                <div class="form-group">
+                                                   <input [(ngModel)]="kyc_data.pincode" name="pincode" type="text" class="form-control" id="email">
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="row">
+                                             <div class="col-md-3 ">
+                                                <label for="email">Select ID Proof <span style="color: red;">*</span>:</label>
+                                             </div>
+                                             <div class="col-md-6">
+                                                <div class="form-group package_buy_input">
+                                                   <select [(ngModel)]="kyc_data.select_id_proof_type" name="select_id_proof_type" [value]= "kyc_data.select_id_proof_type" class="form-control" id="sel1">
+                                                   <option value="1" selected>Voter ID</option>
+                                                   <option value="2">Pancard</option>
+                                                   </select>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="row">
+                                             <div class="col-md-3 ">
+                                                <label for="email">ID No <span style="color: red;">*</span>:</label>
+                                             </div>
+                                             <div class="col-md-6">
+                                                <div class="form-group">
+                                                   <input [(ngModel)]="kyc_data.id_proof_number" name="id_proof_number" type="text" class="form-control" id="email">
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="row">
+                                             <div class="col-md-3 ">
+                                                <label for="email">Add ID Proof Image<span style="font-size: 12px;">(Max 1mb, png or jpeg only)</span><span style="color: red;">*</span>:</label>
+                                             </div>
+                                             <div class="col-md-6">
+                                                <div class="form-group">
+                                                   <input ngModel (change)="uploadImage($event.target.files)" name="id_proof_image" accept="image/*" type="file" class="form-control" id="id_proof_image">
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="row">
+                                             <div class="col-md-3 ">
+                                             </div>
+                                             <div class="col-md-6 text-right">
+                                                <button type="submit" ion-button block>Update</button>
+                                             </div>
+                                          </div>
+                                          </form>
+                                       </div>
+
+
+                                     <div #kychideref style="overflow: hidden;" *ngIf="!kyc_data">
+                                          <form #form1="ngForm" (ngSubmit)="updateKYCform(form1)">
+                                    
+                                          <div class="row">
+                                             <div class="col-md-3 ">
+                                                <label for="email">First Name <span style="color: red;">*</span>:</label>
+                                             </div>
+                                             <div class="col-md-6">
+                                                <div class="form-group package_buy_input">
+                                                   <input ngModel name="first_name" class="form-control" id="email">
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="row">
+                                             <div class="col-md-3 ">
+                                                <label for="email">Last Name <span style="color: red;">*</span>:</label>
+                                             </div>
+                                             <div class="col-md-6">
+                                                <div class="form-group package_buy_input">
+                                                   <input ngModel name="last_name" class="form-control" id="email">
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="row">
+                                             <div class="col-md-3 ">
+                                                <label for="email">Address Line 1 <span style="color: red;">*</span>:</label>
+                                             </div>
+                                             <div class="col-md-6">
+                                                <div class="form-group">
+                                                   <input name="address_line_one" ngModel type="text" class="form-control" id="email">
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="row">
+                                             <div class="col-md-3 ">
+                                                <label for="email">Address Line 2 <span style="color: red;">*</span>:</label>
+                                             </div>
+                                             <div class="col-md-6">
+                                                <div class="form-group">
+                                                   <input name="address_line_two" ngModel type="text" class="form-control" id="email">
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="row">
+                                             <div class="col-md-3 ">
+                                                <label for="email">City <span style="color: red;">*</span>:</label>
+                                             </div>
+                                             <div class="col-md-6">
+                                                <div class="form-group">
+                                                   <input ngModel name="city_name" type="text" class="form-control" id="email">
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="row">
+                                             <div class="col-md-3 ">
+                                                <label for="email">State <span style="color: red;">*</span>:</label>
+                                             </div>
+                                             <div class="col-md-6">
+                                                <div class="form-group">
+                                                   <input ngModel name="state_name" type="text" class="form-control" id="email">
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="row">
+                                             <div class="col-md-3 ">
+                                                <label for="email">Pincode <span style="color: red;">*</span>:</label>
+                                             </div>
+                                             <div class="col-md-6">
+                                                <div class="form-group">
+                                                   <input ngModel name="pincode" type="text" class="form-control" id="email">
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="row">
+                                             <div class="col-md-3 ">
+                                                <label for="email">Select ID Proof <span style="color: red;">*</span>:</label>
+                                             </div>
+                                             <div class="col-md-6">
+                                                <div class="form-group package_buy_input">
+                                                   <select ngModel name="select_id_proof_type"  class="form-control" id="sel1">
+                                                   <option value="1" selected>Voter ID</option>
+                                                   <option value="2">Pancard</option>
+                                                   </select>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="row">
+                                             <div class="col-md-3 ">
+                                                <label for="email">ID No <span style="color: red;">*</span>:</label>
+                                             </div>
+                                             <div class="col-md-6">
+                                                <div class="form-group">
+                                                   <input ngModel name="id_proof_number" type="text" class="form-control" id="email">
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="row">
+                                             <div class="col-md-3 ">
+                                                <label for="email">Add ID Proof Image<span style="font-size: 12px;">(Max 1mb, png or jpeg only)</span><span style="color: red;">*</span>:</label>
+                                             </div>
+                                             <div class="col-md-6">
+                                                <div class="form-group">
+                                                   <input ngModel (change)="uploadImage($event.target.files)" name="id_proof_image" accept="image/*" type="file" class="form-control" id="id_proof_image">
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="row">
+                                             <div class="col-md-3 ">
+                                             </div>
+                                             <div class="col-md-6 text-right">
+                                                <button type="submit" ion-button block>Update</button>
+                                             </div>
+                                          </div>
+                                          </form>
+                                       </div>
+
+                                       <!-- <div *ngIf="dashboardme?.kyc_data" class="wild_norm" #kychiderefnorm style="height: 0; overflow: hidden;">
+                                          <div class="alert alert-danger" *ngIf="dashboardme?.kyc_approval_status=='3'">
+                                             <span  style="color: red"><span *ngIf="dashboardme?.kyc_data.reason_for_reject">{{dashboardme?.kyc_data.reason_for_reject}}</span></span>
+                                          </div>
+                                          <div class="row">
+                                             <div class="col-md-3">
+                                                <label for="email">Full Name:</label>
+                                             </div>
+                                             <div class="col-md-6">
+                                                <p><i>{{dashboardme?.kyc_data.first_name}} {{dashboardme?.kyc_data.last_name}}</i></p>
+                                             </div>
+                                          </div>
+                                          <div class="row">
+                                             <div class="col-md-3">
+                                                <label for="email">Address:</label>
+                                             </div>
+                                             <div class="col-md-6">
+                                                <p><i>{{dashboardme?.kyc_data.address_line_one}} {{dashboardme?.kyc_data.address_line_two}}</i></p>
+                                                <p>{{dashboardme?.kyc_data.city_name}} {{dashboardme?.kyc_data.state_name}}</p>
+                                             </div>
+                                          </div>
+                                          <div class="row">
+                                             <div class="col-md-3">
+                                                <label for="email">Pincode:</label>
+                                             </div>
+                                             <div class="col-md-6">
+                                                <p><i>{{dashboardme?.kyc_data.pincode}}</i></p>
+                                             </div>
+                                          </div>
+                                          <div class="row">
+                                             <div class="col-md-3">
+                                                <label for="email">ID Proof:</label>
+                                             </div>
+                                             <div class="col-md-9">
+                                                <p *ngIf="dashboardme?.kyc_data.select_id_proof_type=='1'"><i> Voter Id</i></p>
+                                                <p *ngIf="dashboardme?.kyc_data.select_id_proof_type=='2'"><i> Pancard</i></p>
+                                             </div>
+                                          </div>
+                                          <div class="row">
+                                             <div class="col-md-3">
+                                                <label for="mobile">ID No:</label>
+                                             </div>
+                                             <div class="col-md-6">
+                                                <p><i>{{dashboardme?.kyc_data.id_proof_number}}</i></p>
+                                             </div>
+                                          </div>
+                                          <div class="row">
+                                             <div class="col-md-3">
+                                                <label for="email">ID Proof Image</label>
+                                             </div>
+                                             <div class="col-md-6">
+                                                <p *ngIf="dashboardme.kyc_data.id_proof_image"><a href="http://alpademo.com/zomo/uploads/kyc/{{dashboardme?.kyc_data.id_proof_image}}"  target = "_blank"><img style="width:70px" src="http://alpademo.com/zomo/uploads/kyc/{{dashboardme?.kyc_data.id_proof_image}}" class="kyc_img" /></a></p>
+                                             </div>
+                                          </div>
+                                          <div class="row">
+                                             <div class="col-md-3">
+                                                <label for="email">Status</label>
+                                             </div>
+                                             <div class="col-md-6">
+                                                <p *ngIf="dashboardme?.kyc_approval_status=='0'" style="color: red">Not Submitted</p>
+                                                <p *ngIf="dashboardme?.kyc_approval_status=='1'" style="color: orange">Pending</p>
+                                                <p *ngIf="dashboardme?.kyc_approval_status=='2'" style="color: green">Approved</p>
+                                                <p *ngIf="dashboardme?.kyc_approval_status=='3'" style="color: red">Rejected </p>
+                                             </div>
+                                          </div>
+                                       </div> -->
+                                    </div>
+                                 </div>
+                              </div>
+                              <!-- /tab pane-->
+    </div>
+</div>
+</ion-content>

@@ -1,0 +1,85 @@
+<!--
+  Generated template for the ChangePasswordPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title >Update Social </ion-title>
+    <ion-buttons end>
+      <button ion-button >
+        <!-- <ion-icon name="log-out"></ion-icon> -->
+      </button>
+     </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<div class="dt-root">
+    <div class="dt-card">
+
+                              <div id="tab-pane-3" #emailPane class="tab-pane active">
+                                 <div class="card-body">
+                                    <div class="row">
+                                       <div class="col-md-12">
+                                          <form #socialform style="overflow: hidden;">
+                                       <div class="row">
+                                          <div class="col-md-3 ">
+                                             <label for="email">Facebook:</label>
+                                          </div>
+                                          <div class="col-md-6">
+                                             <div class="input-group">
+                                                <span class="input-group-addon">facebook.com/</span>
+                                                <input id="email" type="text" class="form-control" name="facebook" [(ngModel)]="dashboardme.facebook">
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="row">
+                                          <div class="col-md-3 ">
+                                             <label for="email">Twitter:</label>
+                                          </div>
+                                          <div class="col-md-6">
+                                             <div class="input-group">
+                                                <span class="input-group-addon">twitter.com/</span>
+                                                <input id="email" type="text" class="form-control" name="twitter" [(ngModel)]="dashboardme.twitter">
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="row">
+                                          <div class="col-md-3 ">
+                                             <label for="email">Instagram:</label>
+                                          </div>
+                                          <div class="col-md-6">
+                                             <div class="input-group">
+                                                <span class="input-group-addon">instagram.com/</span>
+                                                <input id="email" type="text" class="form-control"  name="instagram" [(ngModel)]="dashboardme.instagram">
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="row">
+                                          <div class="col-md-3 ">
+                                             <label for="email">Telegram:</label>
+                                          </div>
+                                          <div class="col-md-6">
+                                             <div class="input-group">
+                                                <span class="input-group-addon">telegram.com/</span>
+                                                <input id="email" type="text" class="form-control" name="telegram" [(ngModel)]="dashboardme.telegram">
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="row">
+                                          <div class="col-md-3 ">
+                                          </div>
+                                          <div class="col-md-6 text-right">
+                                             <button type="submit" (click)="updatesocial()" ion-button block>Update</button>
+                                          </div>
+                                       </div>
+                                    </form>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+    </div>
+</div>
+</ion-content>

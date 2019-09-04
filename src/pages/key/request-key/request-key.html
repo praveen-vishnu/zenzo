@@ -1,0 +1,279 @@
+<!--
+  Generated template for the RequestKeyPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+   <ion-navbar color="primary">
+      <button ion-button menuToggle>
+         <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Request Key</ion-title>
+   </ion-navbar>
+</ion-header>
+
+
+
+<ion-content padding>
+ <div class="dt-root">
+   <div class="row">
+                  <!-- Grid Item -->
+                  <div class="col-xl-12 order-sm-1">
+                     <div class="row" *ngIf="step1">
+                        <div class="col-md-8">
+                           <div class="dt-card">
+                              <div class="dt-card__header">
+                                 <h3 class="text-primary"><i class="icon icon-mail-open mr-1"></i> Request Key</h3>
+                                 <div class="col-md-12">
+                                    <div class="row">
+                                       <div class="col-md-4">
+                                          <div class="form-group">
+                                             <ion-item class="ion-select" no-lines>
+                                              	<ion-select [(ngModel)]="selectedPackage" placeholder="Select Package">
+                                             		<ion-option [value]="pack" *ngFor="let pack of packageOptions;">{{pack.package_name}}</ion-option>
+    	                                         </ion-select>
+	                                         </ion-item>
+                                          </div>
+                                       </div>
+                                       <div class="col-md-4">
+                                          <div class="form-group">
+                                             <input type="text" class="form-control" id="usr" [(ngModel)]="noOfKeys" placeholder="Number of Keys">
+                                          </div>
+                                       </div>
+                                       <div class="col-md-4">
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <!-- {{selectedPackage|json}} -->
+                                 <table class="table table-hover mb-0" *ngIf="selectedPackage">
+                                    <thead>
+                                       <tr>
+                                          <th scope="col">#</th>
+                                          <th class="text-uppercase" scope="col">Package</th>
+                                          <th class="text-uppercase" scope="col">Qty</th>
+                                          <th *ngIf="noOfKeys" class="text-uppercase" scope="col">Total Value</th>
+                                          <th class="text-uppercase" scope="col"></th>
+                                       </tr>
+                                    </thead>
+                                    <tbody>
+                                       <tr class="gradeX">
+                                          <td>1</td>
+                                          <td>
+                                             <h3>{{selectedPackage.package_name}}</h3>
+                                             <p>( ${{selectedPackage.package_amount}} ) 
+                                                <span *ngIf="selectedPackage.validity_days != '0'">&nbsp; ({{selectedPackage.validity_days}}) Days validity</span>
+                                                <span *ngIf="selectedPackage.validity_days == '0'">Life Time validity</span> 
+                                             </p>
+                                          </td>
+                                          <td>{{noOfKeys}}</td>
+                                          <td *ngIf="noOfKeys">${{noOfKeys*selectedPackage.package_amount}}</td>
+                                          <td><button class="btn btn-success" (click)="addToCart(selectedPackage,noOfKeys)">Add to Cart</button></td>
+                                       </tr>
+                                    </tbody>
+                                 </table>
+                              </div>
+                           </div>
+                           <div class="dt-card" *ngIf="selectedPackagesList.length > 0">
+                              <div class="dt-card__header">
+                                 <table class="table table-hover mb-0">
+                                    <thead>
+                                       <tr>
+                                          <th scope="col">#</th>
+                                          <th class="text-uppercase" scope="col">Package</th>
+                                          <th class="text-uppercase" scope="col">Qty</th>
+                                          <th class="text-uppercase" scope="col">Total Value</th>
+                                          <th class="text-uppercase" scope="col"></th>
+                                       </tr>
+                                    </thead>
+                                    <tbody>
+                                       <tr class="gradeX" *ngFor="let item of selectedPackagesList;let i=index;">
+                                          <td>{{i+1}}</td>
+                                          <td>
+                                             <h3>{{item.package_name}}</h3>
+                                             <p>( ${{selectedPackage.package_amount}} ) 
+                                                <span *ngIf="selectedPackage.validity_days != '0'">&nbsp;  {{selectedPackage.validity_days}} Days validity</span>
+                                                <span *ngIf="selectedPackage.validity_days == '0'">Life Time validity</span>
+                                             </p>
+                                          </td>
+                                          <td>{{item.number_of_keys}}</td>
+                                          <td>${{item.totalvalue}}</td>
+                                          <td><button class="btn btn-danger" (click)="removeItem(item)">X</button></td>
+                                       </tr>
+                                    </tbody>
+                                 </table>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-4">
+                           <div class="dt-card">
+                              <div class="dt-card__header">
+                                 <h3 class="text-primary"> Your Sub Total</h3>
+                              </div>
+                              <div class="dt-card__body">
+                                 <h4 style="margin-top: 25px; font-weight: 500">Subtotal: ${{subTotal}}</h4>
+                                 <button *ngIf="selectedPackagesList.length > 0" class="btn btn-primary btn-block" (click)="step1=false;step2=true;step3=false;">Confirm Order</button>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="row" *ngIf="step2">
+                        <div class="col-md-8">
+                           <div class="dt-card">
+                              <div class="dt-card__header">
+                                 <h3 class="text-primary"> Select Payment Type</h3>
+                              </div>
+                              <div class="dt-card__body">
+                                 <div class="radio">
+                                    <label><input type="radio" name="optradio" checked> Bank Transfer <img src="assets/images/hdfc.png" style="width: 100px; margin-left: 10px;"> <img src="assets/images/icici.jpg"style="width: 100px; margin-left: 10px;"></label>
+                                 </div>
+                                 <!-- <div class="radio">
+                                    <label><input type="radio" name="optradio"> Paypal <img src="assets/images/visa.png" style="width: 30px; margin-left: 10px;"> <img src="assets/images/mastercard.png"style="width: 30px; margin-left: 10px;"></label>
+                                 </div>
+                                 <div class="radio">
+                                    <label><input type="radio" name="optradio"> Virtual Currency <img src="assets/images/btc.webp" style="width: 30px; margin-left: 10px;"> <img src="assets/images/lite.png"style="width: 30px; margin-left: 10px;"> <img src="assets/images/eth.png"style="width: 30px; margin-left: 10px;"></label>
+                                 </div> -->
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-4">
+                           <div class="dt-card">
+                              <div class="dt-card__header">
+                                 <h3 class="text-primary"> Your Cart</h3>
+                              </div>
+                              <div class="dt-card__body">
+                                 <div class="row" *ngFor="let item of selectedPackagesList;let i=index;">
+                                    <div class="col-md-8">
+                                       <h4 style="margin-top: 0px; margin-bottom: 0; font-weight: 500">{{item.package_name}}</h4>
+                                       <p>( ${{selectedPackage.package_amount}} ) 
+                                          <span *ngIf="selectedPackage.validity_days != '0'">&nbsp; ({{selectedPackage.validity_days}}) Days validity</span>
+                                          <span *ngIf="selectedPackage.validity_days == '0'">Life Time validity</span>
+                                       </p>
+                                    </div>
+                                    <div class="col-md-4">
+                                       <h4 class="text-right">${{item.totalvalue}}</h4>
+                                    </div>
+                                 </div>
+                                 <button class="btn btn-primary btn-block" (click)="step1=false;step2=false;step3=true;">Next Step</button>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="row" *ngIf="step3">
+                        <div class="col-md-8">
+                           <div class="dt-card">
+                              <div class="dt-card__header">
+                                 <h3 class="text-primary"> Select Payment Type</h3>
+                              </div>
+                              <div class="dt-card__body">
+                                 <div class="row">
+                                    <div class="col-md-4">
+                                       <div class="form-group">
+                                          <ion-item class="ion-select" no-lines>
+                                          	<ion-select placeholder="Select Country" id="sel1" (ionChange)="selectBank($event)">
+                                             <ion-option *ngFor="let country of countryOptions" value="{{country.country_name}}" >{{country.country_name}}</ion-option>
+                                          </ion-select>
+                                          </ion-item>
+                                       </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                       <div class="form-group">
+                                          <input type="text" name="transfer_ref_number" placeholder="Transfer Ref Number" class="form-control" [(ngModel)] = "transfer_ref_number" />
+                                       </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                       <div class="form-group">
+                                          <input (change)="selectImage($event.target.files)" placeholder="Attachment" name="transfer_ref_attachment" accept="image/*" type="file" class="form-control" id="transfer_ref_attachment"   />
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="radio" *ngFor="let bank of bankOptions;let i = index;" (click)="admin_bank_id = bank.id">
+                                 <label><input type="radio" name="optradio" checked> <span style="font-weight: 500;"> Bank Name</span>: {{bank.bank_name}}<br/>
+                                 <span style="font-weight: 500;">Bank Branch</span>: {{bank.bank_branch}}<br/>
+                                 <span style="font-weight: 500;">Account: NO</span>: {{bank.bank_account_number}}<br/>
+                                 <span style="font-weight: 500;">IFSC Code</span>: {{bank.bank_ifsc_code}} 
+                                 </label>
+                              </div>
+                              <div class="text-center">
+                                 <button class="btn btn-primary" (click)="submit()">I have made payment</button>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-md-4">
+                        <div class="dt-card">
+                           <div class="dt-card__header">
+                              <h3 class="text-primary"> Your Cart</h3>
+                           </div>
+                           <div class="dt-card__body">
+                              <div class="row" *ngFor="let item of selectedPackagesList;let i=index;">
+                                 <div class="col-md-8">
+                                    <h4 style="margin-top: 0px; margin-bottom: 0; font-weight: 500">{{item.package_name}}</h4>
+                                    <p>( ${{selectedPackage.package_amount}} )   
+                                       <span *ngIf="selectedPackage.validity_days != '0'">&nbsp; ({{selectedPackage.validity_days}}) Days validity</span>
+                                       <span *ngIf="selectedPackage.validity_days == '0'">Life Time validity</span>
+                                    </p>
+                                 </div>
+                                 <div class="col-md-4">
+                                    <h4 class="text-right">${{item.totalvalue}}</h4>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- Grid -->
+                  <div class="dt-card">
+                     <!-- Card Body -->
+                     <div class="dt-card__body p-0">
+                        <!-- Tables -->
+                        <div class="table-responsive">
+                           <table class="table table-hover mb-0">
+                              <thead>
+                                 <tr>
+                                    <th scope="col">#</th>
+                                    <th class="text-uppercase" scope="col">Date</th>
+                                    <th class="text-uppercase" scope="col">Cart Details </th>
+                                    <th class="text-uppercase" scope="col">Request Code</th>
+                                    <th class="text-uppercase" scope="col">Total Value</th>
+                                    <th class="text-uppercase" scope="col">Payment Type</th>
+                                    <th class="text-uppercase" scope="col">Status</th>
+                                 </tr>
+                              </thead>
+                              <tbody style="text-align: center;" *ngIf="requestKeyList == 'Sorry, No related record found.'">
+                                 <tr _ngcontent-clk-c7="">
+                                    <td colspan="7">Sorry, No related record found.</td>
+                                 </tr>
+                              </tbody>
+                              <tbody *ngIf="requestKeyList != 'Sorry, No related record found.'">
+                                 <tr *ngFor="let item of requestKeyList;let i = index;">
+                                    <td>{{i+1}}</td>
+                                    <td>{{item.date_n_time | date:'medium'}}</td>
+                                    <td>
+                                       <div *ngFor="let pack of item.package_detail" class="inner-package-details">
+                                          <p><span style="margin-top: 0px; margin-bottom: 0; font-weight: 500">{{pack.package_name | titlecase}}</span> 
+                                             <span *ngIf="pack.validity_days != '0'"> ({{pack.validity_days}}) Days validity</span>
+                                             <span *ngIf="pack.validity_days == '0'"> Life Time validity</span>
+                                          </p>
+                                          <p>Keys:{{pack.number_of_keys}},Value: ${{getParseFloat(pack.package_amount) * getParseFloat(pack.number_of_keys)}}</p>
+                                       </div>
+                                    </td>
+                                    <td>{{item.request_unqiue_id}}</td>
+                                    <td>{{item.total_request_amount}}</td>
+                                    <td>Bank</td>
+                                    <td *ngIf="item.request_status == '0'">Pending</td>
+                                    <td *ngIf="item.request_status == '1'">Approved</td>
+                                    <td *ngIf="item.request_status == '2'">Rejected</td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                        <!-- /tables -->
+                     </div>
+                     <!-- /card body -->
+                  </div>
+               </div>
+               <!-- /grid item -->
+            </div>
+ </div>
+</ion-content>

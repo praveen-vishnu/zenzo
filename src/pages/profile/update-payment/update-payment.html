@@ -1,0 +1,128 @@
+<!--
+  Generated template for the ChangePasswordPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title >Update Social </ion-title>
+    <ion-buttons end>
+      <button ion-button >
+        <!-- <ion-icon name="log-out"></ion-icon> -->
+      </button>
+     </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<div class="dt-root">
+    <div class="dt-card" padding>
+<h4 class="profile_tab_title">Payment Details</h4>
+                                    <div class="tab-content">
+                                       <div id="home" class="tab-pane fade in active show">
+                                          <div class="row">
+                                             <div class="col-md-12 mt-3" #bankhideref style="overflow: hidden;">
+                                                <h5><b>Bank</b></h5>
+                                                <form #form2="ngForm" (ngSubmit)="updateBANKform(form2)">
+                                                <div class="row">
+                                                   <div class="col-md-3 ">
+                                                      <label for="email">Bank Name:</label>
+                                                   </div>
+                                                   <div class="col-md-6">
+                                                      <div class="form-group package_buy_input">
+                                                         <input type="email" class="form-control" id="email" [(ngModel)]="dashboardme.bank_name" name="bank_name">
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                <div class="row">
+                                                   <div class="col-md-3 ">
+                                                      <label for="email">Branch:</label>
+                                                   </div>
+                                                   <div class="col-md-6">
+                                                      <div class="form-group package_buy_input">
+                                                         <input type="email" class="form-control" [(ngModel)]="dashboardme.bank_branch" name="bank_branch" id="email">
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                <div class="row">
+                                                   <div class="col-md-3 ">
+                                                      <label for="email">Account Holder Name:</label>
+                                                   </div>
+                                                   <div class="col-md-6">
+                                                      <div class="form-group package_buy_input">
+                                                         <input type="email" class="form-control" [(ngModel)]="dashboardme.bank_holder_name" name="bank_holder_name" id="email">
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                <div class="row">
+                                                   <div class="col-md-3 ">
+                                                      <label for="email">Account Number:</label>
+                                                   </div>
+                                                   <div class="col-md-6">
+                                                      <div class="form-group package_buy_input">
+                                                         <input type="tel" class="form-control" [(ngModel)]="dashboardme.bank_acc_number" name="bank_acc_number" id="email">
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                <div class="row">
+                                                   <div class="col-md-3 ">
+                                                      <label for="email">IFSC Code:</label>
+                                                   </div>
+                                                   <div class="col-md-6">
+                                                      <div class="form-group package_buy_input">
+                                                         <input type="email" class="form-control" [(ngModel)]="dashboardme.bank_ifsc_code" name="bank_ifsc_code" id="email">
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                <div class="row">
+                                                   <div class="col-md-3 ">
+                                                   </div>
+                                                   <div class="col-md-6 text-right">
+                                                      <button type="submit" ion-button block>Update</button>
+                                                   </div>
+                                                </div>
+                                                </form>
+                                               
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+
+
+    </div>
+
+    <div class="dt-card" padding>
+<h4 class="profile_tab_title">Crypto Details</h4>
+                                    <div class="tab-content">
+                                       <div id="home" class="tab-pane fade in active show">
+                                          <div class="row">
+                                             <div class="col-md-12 mt-3" #bankhideref style="overflow: hidden;">
+                                               <h5 class="mt-5"><b>BTC</b></h5>
+                                                <form #form3="ngForm" (ngSubmit)="updateBTCform(form3)">
+                                                <div class="row">
+                                                   <div class="col-md-3">
+                                                      <label for="email">BTC Address:</label>
+                                                   </div>
+                                                   <div class="col-md-6">
+                                                      <div class="form-group package_buy_input">
+                                                         <input type="email" name="btc_address" [(ngModel)]="dashboardme.btc_address" class="form-control" id="email">
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                                <div class="row">
+                                                   <div class="col-md-3 ">
+                                                   </div>
+                                                   <div class="col-md-6 text-right">
+                                                      <button type="submit" ion-button block>Update</button>
+                                                   </div>
+                                                </div>
+                                                </form>
+                                               
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                  </div>
+</div>
+</ion-content>

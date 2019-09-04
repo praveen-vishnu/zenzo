@@ -1,0 +1,114 @@
+<!--
+   Generated template for the ReferralsPage page.
+   
+   See http://ionicframework.com/docs/components/#navigation for more info on
+   Ionic pages and navigation.
+   -->
+<ion-header>
+   <ion-navbar color="primary">
+      <button ion-button menuToggle>
+         <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Choose Task</ion-title>
+   </ion-navbar>
+</ion-header>
+<ion-content padding>
+   <div class="dt-root">
+      <!-- Grid -->
+      <div class="row">
+         <!-- Grid Item -->
+         <div col-3>
+            <div class="card dt-chart">
+               <!-- Chart Header -->
+               <div class="dt-chart__header pt-4">
+                  <div class="d-flex align-items-center">
+                     <h4 class="mb-0 text-info mr-1">{{task_overview?.attended_tasks}}</h4>
+                     <p class="mb-0 f-12">Your Approved Tasks</p>
+                  </div>
+               </div>
+               <!-- /chart header -->
+            </div>
+         </div>
+         <!-- /grid item --> 
+         <!-- Grid Item -->
+         <div col-3>
+            <!-- Card -->
+            <div class="card dt-chart">
+               <!-- Chart Header -->
+               <div class="dt-chart__header pt-4">
+                  <div class="d-flex align-items-center">
+                     <h4 class="mb-0 text-success mr-1">{{task_overview?.approved_tasks}}</h4>
+                     <p class="mb-0 f-12">Your Approved Tasks</p>
+                  </div>
+               </div>
+               <!-- /chart header -->
+            </div>
+            <!-- /chart card -->
+         </div>
+         <!-- /grid item -->
+         <div col-3>
+            <!-- Card -->
+            <div class="card dt-chart">
+               <!-- Chart Header -->
+               <div class="dt-chart__header pt-4">
+                  <div class="d-flex align-items-center">
+                     <h4 class="mb-0 text-cyan mr-1">{{task_overview?.pending_approval_tasks}}</h4>
+                     <p class="mb-0 f-12">Total Pending Task</p>
+                  </div>
+               </div>
+               <!-- /chart header -->
+            </div>
+            <!-- /chart card -->
+         </div>
+         <div col-3>
+            <!-- Card -->
+            <div class="card dt-chart">
+               <!-- Chart Header -->
+               <div class="dt-chart__header pt-4">
+                  <div class="d-flex align-items-center">
+                     <h4 class="mb-0 text-purple mr-1">{{task_overview?.rejected_tasks}}</h4>
+                     <p class="mb-0 f-12">Total Decline Task</p>
+                  </div>
+               </div>
+               <!-- /chart header -->
+            </div>
+            <!-- /chart card -->
+         </div>
+      </div>
+      <div class="dt-card">
+         <div class="dt-card__body">
+            <h4>Task</h4>
+            <!-- Tables -->
+            <div class="table-responsive">
+               <table id="data-table" class="table table-hover">
+                  <thead>
+                     <tr>
+                        <th>#</th>
+                        <th>Task Date</th>
+                        <th>Task Code</th>
+                        <th>Task type (Platform)</th>
+                        <th>Rewards</th>
+                     </tr>
+                  </thead>
+                  <tbody *ngIf="!getArray(task_details_available_list)">
+                     <tr class="text-center">
+                        <td colspan="6">No Records Found</td>
+                     </tr>
+                  </tbody>
+                  <tbody *ngIf="getArray(task_details_available_list)">
+                     <tr (click)="openTask(item.task_code)" class="gradeX" *ngFor="let item of task_details_available_list;let i = index;">
+                     <td>{{i+1}}</td>
+                     <td>{{item.date_only | date}}</td>
+                     <td>{{item.task_code}}</td>
+                     <td>{{item.task_type_name}} ({{item.platform_name}})</td>
+                     <td>{{item.task_reward}}</td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+            <!-- /tables -->
+         </div>
+         <!-- /card body -->
+      </div>
+   </div>
+</ion-content>

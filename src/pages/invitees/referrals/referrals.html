@@ -1,0 +1,284 @@
+<!--
+  Generated template for the ReferralsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Referrals</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+<div class="dt-root">
+
+          <!-- Grid -->
+          <div class="row">
+
+            <!-- Grid Item -->
+            <div class="col-12">
+
+              <!-- Card -->
+              <div class="dt-card">
+
+                <!-- Card Body -->
+                <div class="dt-card__body">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <h1 class="mb-2 text-center">Welcome {{dashboardme?.full_name}}!</h1>
+                    </div>
+                  </div>
+                  <!-- Grid -->
+                  <div class="row">
+
+                    <!-- Grid Item -->
+                    <div class="col-xl-6 col-sm-6 pt-xl-2 border-right">
+
+                      <h3>Left</h3>
+                      <div class="form-group mb-5">
+                        <input type="text" class="form-control mb-2" id="Referral" value="{{dashboardme?.url}}register?ref={{dashboardme?.user_name}}&pos=Left" style="padding: 0px; height: 30px; padding-left: 10px;">
+                        <button ion-button block (click)="copyText1(dashboardme?.url+'register?ref='+dashboardme?.user_name+'&pos=Left')">{{copytextlabel1}}</button>
+                      </div>
+                      <p>Easy share referral link on social.</p>
+                      <p class="cust_social_share">
+                        <a target="_blank" href="https://www.facebook.com/sharer.php?u={{dashboardme?.url}}register?ref={{dashboardme?.user_name}}&pos=Left"><i class="fa fa-facebook-f"></i></a>
+                        <a target="_blank" href="https://twitter.com/intent/tweet?text='Hello People, Check out the amazing new Auto trading program. Invest and create your portfolio and make easy money.'&url={{dashboardme?.url}}register?ref={{dashboardme?.user_name}}&pos=Left"><i class="fa fa-twitter"></i></a>
+                        <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url={{dashboardme?.url}}register?ref={{dashboardme?.user_name}}&pos=Left&title='Hello People , Check out the amazing new Auto trading program. Invest and create your portfolio and make easy money.'"><i class="fa fa-linkedin"></i></a>
+
+                      </p>
+                    </div>
+                    <!-- /grid item -->
+
+                    <!-- Grid Item -->
+                    <div class="col-xl-6 col-sm-6 pt-xl-2 ">
+
+                      <h3>Right</h3>
+                      <div class="form-group mb-5">
+                        <input type="text" class="form-control mb-2" id="Referral" value="{{dashboardme?.url}}register?ref={{dashboardme?.user_name}}&pos=Right" style="padding: 0px; height: 30px; padding-left: 10px;">
+                        <button ion-button block (click)="copyText(dashboardme?.url+'register?ref='+dashboardme?.user_name+'&pos=Right')">{{copytextlabel2}}</button>
+                      </div>
+                      <p>Easy share referral link on social.</p>
+                      <p class="cust_social_share">
+                        <a target="_blank" href="https://www.facebook.com/sharer.php?u={{dashboardme?.url}}register?ref={{dashboardme?.user_name}}&pos=Right"><i class="fa fa-facebook-f"></i></a>
+                        <a target="_blank" href="https://twitter.com/intent/tweet?text='Hello People, Check out the amazing new Auto trading program. Invest and create your portfolio and make easy money.'&url={{dashboardme?.url}}register?ref={{dashboardme?.user_name}}&pos=Right"><i class="fa fa-twitter"></i></a>
+                        <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url={{dashboardme?.url}}register?ref={{dashboardme?.user_name}}&pos=Right&title='Hello People, Check out the amazing new Auto trading program. Invest and create your portfolio and make easy money.'"><i class="fa fa-linkedin"></i></a>
+
+                      </p>
+                    </div>
+                    <!-- /grid item -->
+
+                  </div>
+                  <!-- /grid -->
+
+                </div>
+                <!-- /card Body -->
+
+              </div>
+              <!-- /card -->
+
+            </div>
+            <!-- /grid item -->
+
+          </div>
+          <!-- /grid -->
+
+          <!-- Grid -->
+          <div class="row">
+
+            <!-- Grid Item -->
+            <div class="col-md-4">
+
+              <!-- Card -->
+              <div class="dt-card">
+
+                <!-- Card Body -->
+                <div class="dt-card__body">
+
+                  <h5 class="text-uppercase mb-3">My Referral Income</h5>
+
+                  <!-- Grid -->
+                  <div class="row no-gutters">
+
+                    <!-- Grid Item -->
+                    <div class="col-xl-5">
+                      <h2 class="mb-1 display-3 font-weight-medium">$0</h2>
+
+                    </div>
+                    <!-- /grid item -->
+
+                    <!-- Grid Item -->
+                    <!--<div class="col-xl-7">-->
+
+                    <!-- Chart Body -->
+                    <!--  <div class="dt-chart__body">-->
+                    <!--    <canvas id="chart-total-revenue" #chart_total_revenue width="160" height="53"></canvas>-->
+                    <!--  </div>-->
+                    <!-- /chart body -->
+
+                    <!--</div>-->
+                    <!-- /grid item -->
+
+                  </div>
+                  <!-- /grid -->
+
+                </div>
+                <!-- /card Body -->
+
+              </div>
+              <!-- /card -->
+
+            </div>
+            <!-- /grid item -->
+
+            <!-- Grid Item -->
+            <div class="col-md-4">
+
+              <!-- Card -->
+              <div class="dt-card">
+
+                <!-- Card Body -->
+                <div class="dt-card__body pb-3" style="min-height: 110px;">
+
+                  <h5 class="text-uppercase mb-3">Recent Referrals</h5>
+
+                  <ul class="dt-team-list">
+
+                    <li class="mb-1" *ngFor="let item of overviewreferral; let i =index;" (click)="userDetail(i)">
+                      <img class="dt-avatar size-40" src="https://ui-avatars.com/api/?name={{overviewreferral[i].full_name | titlecase}}&background=fd7e14&color=fff" title="{{overviewreferral[i].full_name}}" placement="right"><!--  [ngbTooltip]="main_user" tooltipClass="my-custom-class"> -->
+                      <!-- <ng-template #main_user>
+                        <p style="tex-align: left;">Name: {{overviewreferral[i].full_name}}</p>
+                        <p style="tex-align: left;">Username: {{overviewreferral[i].user_name}}</p>
+                        <p style="tex-align: left;">Position: {{overviewreferral[i].user_position}}</p>
+                        <p style="tex-align: left;">Key Status: <span *ngIf="overviewreferral[i].key_activated_status=='0'">Not Active</span>
+                          <span *ngIf="overviewreferral[i].key_activated_status=='1'">Active</span></p>
+
+                      </ng-template> -->
+                    </li>
+
+                  </ul>
+
+                </div>
+                <!-- /card Body -->
+
+              </div>
+              <!-- /card -->
+
+            </div>
+            <!-- /grid item -->
+
+            <!-- Grid Item -->
+            <div class="col-md-4">
+
+              <!-- Card -->
+              <div class="dt-card overflow-hidden">
+
+                <!-- Card Body -->
+                <div class="dt-card__body">
+
+                  <h5 class="text-uppercase mb-3">Total Direct Downline</h5>
+
+                  <!-- Grid -->
+                  <div class="row no-gutters">
+
+                    <!-- Grid Item -->
+                    <div class="col-xl-5">
+                      <h2 class="mb-0 display-3 font-weight-medium text-success">{{overview?.total_refferals}}</h2>
+                      <p class="mb-0 text-light-gray"></p>
+                    </div>
+                    <!-- /grid item -->
+
+                    <!-- Grid Item -->
+                    <div class="col-xl-7">
+
+                      <!-- Chart Body -->
+                      <div class="dt-chart__body mb-n6 mr-n6">
+
+                      </div>
+                      <!-- /chart body -->
+
+                    </div>
+                    <!-- /grid item -->
+
+                  </div>
+                  <!-- /grid -->
+
+                </div>
+                <!-- /card Body -->
+
+              </div>
+              <!-- /card -->
+
+            </div>
+            <!-- /grid item -->
+
+          </div>
+          <!-- /grid -->
+
+
+          <div class="dt-card">
+
+            <!-- Card Body -->
+            <div class="dt-card__body">
+              <h4>Your referral List</h4>
+              <!-- Tables -->
+              <select class="form-control table_search mt-0" (change)="referralfilter($event.target.value)">
+                    <option>All</option>
+                    <option>Left</option>
+                    <option>Right</option>
+                  </select>
+              <div class="table-responsive">
+                <table id="data-table" class="table table-striped table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>User Email</th>
+                      <th>User ID</th>
+                      <th>Position</th>
+                      <th>Joining Date</th>
+                      <th>Activated Date</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                    <tr *ngIf="referrallist == 'No Record Found' || referrallist.length == 0">
+                      <td class="text-center" colspan="9">No Record found</td>
+                    </tr>
+                    <tr class="gradeX" *ngFor="let item of referrallist | paginate: { id: 'foo',
+                                     itemsPerPage: 2,
+                                     currentPage: p1,
+                                     totalItems: referrallist?.length };let i=index;">
+                      <td>{{i+1}}</td>
+                      <td>{{item['email_id']}}</td>
+                      <td>{{item['user_name']}}</td>
+                      <td *ngIf="item['user_position'] == 'R'">Right</td>
+                      <td *ngIf="item['user_position'] == 'L'">Left</td>
+                      <td>{{item['date_only'] | date}}</td>
+                      <td *ngIf="item['key_activated_date'] != '0000-00-00' ">{{item['key_activated_date'] | date }}</td>
+                      <td *ngIf="item['key_activated_date'] == '0000-00-00' ">{{item['key_activated_date']}}</td>
+                      <td><span style="color: red" *ngIf="item['key_activated_status']=='0'">Not Active</span>
+                        <span style="color: green" *ngIf="item['key_activated_status']=='1'">Active</span></td>
+                    </tr>
+
+                  </tbody>
+
+                </table>
+      
+                        <pagination-controls id="foo" (pageChange)="p1 = $event" directionLinks="true" autoHide="true" responsive="true" previousLabel="Previous" nextLabel="Next">
+                        </pagination-controls>
+              </div>
+              <!-- /tables -->
+
+            </div>
+            <!-- /card body -->
+
+          </div>
+
+
+        </div>
+</ion-content>

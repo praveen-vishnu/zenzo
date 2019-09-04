@@ -1,0 +1,102 @@
+<!--
+  Generated template for the CompletedPackagePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Completed Packages</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <div class="dt-root">
+  	<ion-grid no-padding>
+  		<ion-row>
+  			<ion-col>
+  				<ion-card text-center>
+					  <ion-card-content>
+					    Total Packages
+					  </ion-card-content>
+  					  <ion-card-header>
+					    {{completed_packages+running_packages}}
+					  </ion-card-header>
+  				</ion-card>
+  			</ion-col>
+  			<ion-col>
+  				<ion-card text-center>
+					  <ion-card-content>
+					    Completed Packages
+					  </ion-card-content>
+  					  <ion-card-header>
+					    {{completed_packages}}
+					  </ion-card-header>
+  				</ion-card>
+  			</ion-col>
+  			<ion-col>
+  				<ion-card text-center>
+					  <ion-card-content>
+					    Running Packages
+					  </ion-card-content>
+  					  <ion-card-header>
+					    {{running_packages}}
+					  </ion-card-header>
+  				</ion-card>
+  			</ion-col>
+  		</ion-row>
+  	</ion-grid>
+
+  	<div class="">
+                  
+                  <div class="tab-content">
+                      <!-- Card -->
+
+                        <!-- Card Body -->
+                          
+                        <!-- Tables -->
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                              <thead>
+                              <tr>
+                                <th scope="col">#</th>
+                                <th class="text-uppercase" scope="col">Activated Date</th>
+                                <th class="text-uppercase" scope="col">Package Name(value)</th>
+                                <th class="text-uppercase" scope="col">Package Code</th>
+                                <th class="text-uppercase" scope="col">Completed Task(No)</th>
+                                <th class="text-uppercase" scope="col">Earned(USD)</th>
+                                <th class="text-uppercase" scope="col">Action</th>
+                              </tr>
+                              </thead>
+                              <tbody *ngIf="!getArray(pkgs)">
+                                <tr class="text-center"><td colspan="7">No Record Found</td></tr>
+
+                              </tbody>
+                                <!-- <tr><td><a data-toggle="modal" data-target=".bd-example-modal-lg"> View More </a></td> 
+                                </tr>-->
+                                <tbody *ngIf="getArray(pkgs)">
+                                <tr *ngFor="let package of pkgs;let i=index">
+                                  <td scope="col">{{i+1}}</td>
+                                  <td scope="col">{{package.activated_date | date}}</td>
+                                  <td scope="col">{{package.package_name | titlecase}} ({{package.package_amount}})</td>
+                                  <td scope="col">{{package.upgrade_package_code}}</td>
+                                  <td scope="col">{{package.completed_task}}</td>
+                                  <td scope="col">{{ getparseFloat( package.earned_amount )}} $ </td>
+                                  <td><a data-toggle="modal" data-target=".bd-example-modal-lg" (click)="packageDetail(package.upgrade_package_code)"> View More </a></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                        </div>
+                        <!-- /tables -->
+  
+                  </div>
+                  <!-- /tab Content-->
+                  
+                </div>
+  </div>
+</ion-content>

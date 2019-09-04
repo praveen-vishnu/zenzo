@@ -1,0 +1,99 @@
+<ion-content>
+<div class="dt-root">
+
+    <!-- Login Container -->
+    <div class="dt-login--container dt-app-login--container">
+
+        <!-- Login Content -->
+        <div class="dt-login__content-wrapper">
+
+            <!-- Login Background Section -->
+            <div class="dt-login__bg-section dt-login__bg-section_login">
+
+                <div class="dt-login__bg-content">
+                    <!-- Login Title -->
+                    <h1 class="dt-login__title">Forgot Password</h1>
+                    <!-- /login title -->
+
+                    <p class="f-16">Here you can recover your password</p>
+ 
+                </div>
+
+
+                <!-- Brand logo -->
+                <div class="dt-login__logo">
+                    <a class="dt-brand__logo-link" href="/">
+                    <img class="dt-brand__logo-img" src="assets/images/main-logo.png" alt="Zomato">
+                </a>
+                </div>
+                <!-- /brand logo -->
+
+            </div>
+            <!-- /login background section -->
+
+            <!-- Login Content Section -->
+            <div class="dt-login__content">
+
+                <!-- Login Content Inner -->
+                <div class="dt-login__content-inner">
+
+                    <!-- Form -->
+                    <form *ngIf="!setNewPass" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+                        <!-- Form Group -->
+                        <div class="form-group">
+                            <label class="sr-only" for="email-1">Email address or Username</label>
+                            <input type="email" formControlName="login_id" class="form-control" id="email-1" aria-describedby="email-1" placeholder="Enter Email/Username">
+                        </div>
+                        <!-- /form group -->
+
+                        <!-- Form Group -->
+                        <div class="form-group" *ngIf="forgot_unique_id">
+                            <label class="sr-only" for="email-1">Enter OTP</label>
+                            <input type="number" maxlength="6" formControlName="forgot_otp" class="form-control" id="email-1" aria-describedby="email-1" placeholder="Enter OTP">
+                        </div>
+                        <!-- /form group -->
+
+                        <!-- Form Group -->
+                        <div class="form-group">
+                            <button *ngIf="!forgot_unique_id" type="submit" ion-button>Send</button>
+                            <button *ngIf="forgot_unique_id" type="submit" ion-button>Submit</button>
+                            <span class="d-inline-block ml-4" (click)="gotoLogin()">
+                            <a class="d-inline-block font-weight-medium ml-3" >Sign In</a>
+                          </span>
+                        </div>
+                        <!-- /form group -->
+
+                    </form>
+                    <!-- Form -->
+                    <form *ngIf="setNewPass" [formGroup]="passForm" (ngSubmit)="onPassSubmit()">
+
+                        <!-- Form Group -->
+                        <div class="form-group">
+                            <label class="sr-only" for="email-1">New Password</label>
+                            <input type="password" formControlName="new_password" class="form-control" id="email-1" aria-describedby="email-1" placeholder="New Password">
+                        </div>
+                        <!-- /form group -->
+
+                        <!-- Form Group -->
+                        <div class="form-group">
+                            <label class="sr-only" for="email-1">Confirm New Password</label>
+                            <input type="password" formControlName="confirm_new_password" class="form-control" id="email-1" aria-describedby="email-1" placeholder="Confirm New Password">
+                        </div>
+                        <!-- /form group -->
+
+                        <!-- Form Group -->
+                        <div class="form-group">
+                            <button type="submit" ion-button>Submit</button>
+                            <span class="d-inline-block ml-4" (click)="gotoLogin()">
+                                <a class="d-inline-block font-weight-medium ml-3" >Sign In</a>
+                            </span>
+                        </div>
+                        <!-- /form group -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</ion-content>

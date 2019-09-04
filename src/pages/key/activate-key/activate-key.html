@@ -1,0 +1,126 @@
+<!--
+  Generated template for the ActivateKeyPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+   <ion-navbar color="primary">
+      <button ion-button menuToggle>
+         <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Activate Key</ion-title>
+   </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+   <!-- Grid -->
+          <div class="row">
+      
+         
+        <!-- Grid Item -->
+        <div class="col-xl-12 order-sm-1">
+           <div class="row">
+            <div class="col-xl-3 col-md-2"></div>
+            <div class="col-xl-6 col-md-8 col-sm-12">
+              <div class="dt-card">
+                <div class="card-body">
+                  <div class="col-md-12">
+                    <h3 *ngIf="!ksyStat" class="text-center mb-2">Enter Your Activation key</h3>
+                    <h3 *ngIf="ksyStat" class="text-center mb-2">Activate Your key</h3>
+                    <p *ngIf="!ksyStat" class="text-center">If you don’t have key then please contact the administrator to get your activation key</p>
+
+                    <p *ngIf="!ksyStat" class="text-center"><span style="color: red; font-size: 12px; ">Please provide a E-Pin Code to activate your account and start receiving the ROI and other referral benefits.</span></p>
+                    <form>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="input-group">
+                            <!--<span class="input-group-addon">Enter Activation Key</span>-->
+                            <input autocomplete="off" id="email" type="text" #box  class="form-control text-center" name="facebook" [(ngModel)]="key" placeholder="Enter Activation Key">
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+
+                        <div class="col-md-12 text-center" style="margin-top: 10px;">
+                          <button  (click)="updateKey()" ion-button>Update</button> 
+                        </div>
+                      </div>
+<!-- 
+                      <div class="row">
+                        <div class="col-md-12">
+                          <p class="text-center" style="margin-right: 15px; margin-top: 15px;">Dont have Activation? <a data-toggle="modal" data-target="#exampleModalLong" style="color: #038fde; cursor: pointer">Click Here</a></p>
+                        </div>
+                      </div> -->
+
+
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <!-- Grid Item -->
+            <div class="col-12">
+              <div class="dt-card">
+                  <div class="dt-card__header">
+                      <h3 class="text-primary"> Activate Key</h3>
+                    </div>
+                <!-- Card Body -->
+                <div class="dt-card__body">
+                        <!-- Tables -->
+                        <div class="row">
+                          <div class="col-md-12">
+                            
+                              <!-- <div class="row">
+                                
+                                <div class="col-md-4">
+                                  <div class="form-group">
+                                    <input type="text" class="form-control" id="usr" placeholder="Add Keys">
+                                  </div>
+                                </div>
+                                <div class="col-md-4">
+                                  
+                                </div>
+                              </div> -->
+                              </div>
+                              <div class="col-md-12 table-responsive">
+                              <table class="table table-hover mb-0">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col">#</th>
+                                      <th class="text-uppercase" style="width:17%" scope="col">Activated Date</th>
+                                      <th class="text-uppercase" scope="col">Package</th>
+                                      <th class="text-uppercase" scope="col">Amount</th>
+                                      <th class="text-uppercase" scope="col">Key</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr class="gradeX" *ngFor="let key of activatedKeyList;let i = index;">
+                                      <td>{{i+1}}</td>
+                                      <td style="width:17%">{{key.date_n_time | date:'MMM d, y, h:mm a'}}</td>
+                                      <td>
+                                        <h3 style="margin-bottom: 0;">{{key.package_name | titlecase }} </h3>
+                                        <p *ngIf="key.package_type == '2'">{{key.validity_days}} Days validity </p>
+                                        <p *ngIf="key.package_type == '1'">Life Time validity </p>
+                                      </td>
+                                      <td>$ {{getParseInt(key.key_amount)}}</td>
+                                      <td>{{key.key_code}}</td>
+                                      <!-- <td><button class="btn btn-success" (click)="updateKey(key)">Activate Key</button></td> -->
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+      
+</ion-content>

@@ -1,0 +1,134 @@
+<!--
+  Generated template for the EditProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+   <ion-navbar color="primary">
+      <ion-title>Edit Profile</ion-title>
+      <ion-buttons end>
+         <button ion-button>
+            <!-- <ion-icon name="log-out"></ion-icon> -->
+         </button>
+      </ion-buttons>
+   </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+   <div class="dt-root">
+      <div class="dt-card">
+
+         <div id="tab-pane-3" #emailPane class="tab-pane active">
+            <div class="card-body">
+               <div class="row">
+                  <div class="col-md-12">
+                     <h4 class="profile_tab_title">General Details</h4>
+                     <p class="text-center" *ngIf="dashboardme?.email_verify_status=='0'"><span
+                           style="color: red; font-size: 12px; ">Attention Please ! Please complete the email
+                           verification of this account to continue.</span></p>
+                     <div class="edit_form">
+                        <div class="row">
+                           <div class="col-md-3">
+                              <label for="email">Full Name <span style="color: red;">*</span>:</label>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group package_buy_input">
+                                 <input [(ngModel)]="dashboardme.full_name" type="text" class="form-control" id="email">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-3">
+                              <label for="email">Email <span style="color: red;">*</span>:</label>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group package_buy_input">
+                                 <input type="email" readonly [(ngModel)]="dashboardme.email_id" class="form-control"
+                                    id="email">
+                                 <a style="color: #127cc0; font-size: 12px; float: right;cursor: pointer;"
+                                    (click)=resendEmailVerification() *ngIf="dashboardme?.email_verify_status=='0'">
+                                    Resend Email Verify</a>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-3">
+                              <label for="email">Mobile <span style="color: red;">*</span>:</label>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group package_buy_input">
+                                 <input type="tel" [(ngModel)]="dashboardme.mobile_number" class="form-control"
+                                    id="email">
+                              </div>
+                           </div>
+                        </div>
+                        <h4>Communication Address</h4>
+                        <div class="row">
+                           <div class="col-md-3">
+                              <label for="email">Address Line <span style="color: red;">*</span>:</label>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group package_buy_input">
+                                 <input type="text" [(ngModel)]="dashboardme.address_line_one" class="form-control"
+                                    id="email">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-3">
+                              <label for="email">Address Line 2:</label>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group package_buy_input">
+                                 <input type="text" [(ngModel)]="dashboardme.address_line_two" class="form-control"
+                                    id="email">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-3">
+                              <label for="email">City <span style="color: red;">*</span>:</label>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group package_buy_input">
+                                 <input type="text" [(ngModel)]="dashboardme.city_name" class="form-control" id="email">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-3">
+                              <label for="email">State <span style="color: red;">*</span>:</label>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group package_buy_input">
+                                 <input type="text" [(ngModel)]="dashboardme.state_name" class="form-control"
+                                    id="email">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-3">
+                              <label for="email">Pincode <span style="color: red;">*</span>:</label>
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group package_buy_input">
+                                 <input type="text" [(ngModel)]="dashboardme.pincode" class="form-control" id="email">
+                              </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-3">
+                           </div>
+                           <div class="col-md-6 text-right">
+                              <button ion-button type="submit" block (click)="updateProfile()">Update</button>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</ion-content>

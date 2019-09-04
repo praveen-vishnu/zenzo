@@ -1,0 +1,82 @@
+<!--
+  Generated template for the TaskEarningsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+   <ion-navbar color="primary">
+      <button ion-button menuToggle>
+         <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Pairs Earnings</ion-title>
+   </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+<div class="dt-root">
+
+	<ion-row text-center>
+	<div col-3></div>	
+	 <div col-6>
+  
+              <!-- Card -->
+              <div class="card dt-chart">
+  
+                <!-- Chart Header -->
+                <div class="dt-chart__header pt-4">
+                  <div class="d-flex align-items-center">
+                    <h4 class="mb-0 text-success mr-1">$ {{wallet_income_overview.total_task_earned_income}}</h4>
+                    <p class="mb-0 f-12">Total Task Earning</p>
+                  </div>
+                </div>
+                <!-- /chart header -->  
+              </div>
+              <!-- /chart card -->  
+            </div>
+	</ion-row>
+	
+	  <div class="dt-card">
+        <div class="dt-card__body">
+        <h4>Task Earning Report</h4>
+        <!-- Tables -->
+        <div class="table-responsive">
+          <table id="data-table" class="table table-hover">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Date</th>
+            <th>Task Type</th>
+            <th>Code</th>
+            <th>Approved Date</th>
+            <th>Reward</th>                    
+          </tr>
+          </thead>
+          <tbody *ngIf="getArray(task_reports)">
+          <tr *ngFor="let item of task_reports;let i = index;">
+            
+            <th>{{i+1}}</th>
+            <th>{{item.completed_date_n_time | date}}</th>
+            <th>{{item.task_type_name}}</th>
+            <th>{{item.task_code}}</th>
+            <th>{{item.completed_date_n_time | date}}</th>
+            <th>{{item.task_reward }}</th>
+          </tr>
+          </tbody>
+          <tbody *ngIf="!getArray(task_reports)">
+            <tr class="text-center"><td colspan="6">No Records Found</td></tr>
+          </tbody>
+           
+          </table>
+  
+        </div>
+        <!-- /tables -->
+  
+        </div>
+        <!-- /card body -->
+  
+      </div>
+      
+</div>
+</ion-content>

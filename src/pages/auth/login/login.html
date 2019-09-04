@@ -1,0 +1,58 @@
+<ion-content>
+   <div class="dt-root">
+      <!-- Login Container -->
+      <div class="dt-login--container dt-app-login--container">
+         <!-- Login Content -->
+         <div class="dt-login__content-wrapper">
+            <!-- Login Background Section -->
+            <div class="dt-login__bg-section dt-login__bg-section_login">
+               <div class="dt-login__bg-content">
+                  <!-- Login Title -->
+                  <h1 class="dt-login__title">Sign In</h1>
+                  <!-- /login title -->
+                  <p class="f-16">By Signing Up, you can avail full features of our services.</p>
+                  <p class="f-16">Get an account !!!</p>
+               </div>
+               <div class="dt-login__logo">
+                  <a class="dt-brand__logo-link" >
+                  <img class="dt-brand__logo-img" src="assets/images/main-logo.png" alt="Zomato">
+                  </a>
+               </div>
+            </div>
+            <div class="dt-login__content">
+               <div class="dt-login__content-inner ">
+                  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                  <div class="form-group">
+                     <label class="sr-only" for="email-1">Email address or Username</label>
+                     <input type="email" id="email-1" aria-describedby="email-1" autocomplete="off" placeholder="Enter email or Username" formControlName="login_id" class="form-control" [ngClass]="{ 'is-invalid':  f.login_id.errors && loginForm.get('login_id').touched ,'is-valid':  !f.login_id.errors }" />
+                     <div *ngIf=" f.login_id.errors && loginForm.get('login_id').touched" class="invalid-feedback">
+                        <div *ngIf="f.login_id.errors.required">Email or Username is required</div>
+                        <div *ngIf="loginForm.get('login_id').hasError('minlength')">Minimum 5 characters</div>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <label class="sr-only" for="password-1">Password</label>
+                     <input type="password" formControlName="password" id="password-1" placeholder="Password" class="form-control" [ngClass]="{ 'is-invalid':  f.password.errors && loginForm.get('password').touched , 'is-valid':  !f.password.errors }" />
+                     <div *ngIf=" f.password.errors && loginForm.get('password').touched" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                        <div *ngIf="loginForm.get('password').hasError('minlength')">Minimum 6 characters</div>
+                     </div>
+                  </div>
+                  <div class="custom-control mb-6 mb-lg-8">
+                     <label><a (click)="gotoForgot()">Forgot Password?</a></label>
+                  </div>
+                  <!-- Form Group -->
+                  <div class="form-group">
+                     <button type="submit" [disabled]="loginForm.invalid"  ion-button>Sign In</button>
+                     <span class="d-inline-block ml-4">
+                     <a class="d-inline-block font-weight-medium ml-3" (click)="gotoRegister()">Sign UP</a>
+                     </span>
+                  </div>
+                  <!-- /form group -->
+                  </form>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</ion-content>

@@ -1,0 +1,119 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>My Cart</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+	<!-- <ion-list>
+	  <ion-item *ngFor="let item of selectedItems" inset>
+		
+		<ion-label end text-left>{{ item.count }} x {{ item.pr_name }} - {{ item.pr_sale_amount | currency:'INR':'symbol' }}</ion-label>
+		<ion-label end text-right>{{ (item.pr_sale_amount * item.count) | currency:'INR':'symbol' }}</ion-label>
+	  </ion-item>
+	  <ion-item>
+		Total: <span end>{{ total | currency:'INR':'symbol' }}</span>
+	  </ion-item>
+	</ion-list> -->
+
+	<ion-card>
+			<ion-grid>
+			  <ion-row>
+				<ion-col>Your Cart Description</ion-col>
+			  </ion-row>
+			  <ion-row [hidden]="!showEmptyCartMessage">
+				<ion-col>There are no products in your cart!</ion-col>
+			  </ion-row>
+			</ion-grid>
+		  </ion-card>
+
+	<ion-card *ngFor="let item of selectedItems; let i = index">
+		<ion-grid>
+			<ion-row>
+				<ion-col>
+					<ion-item>
+						<ion-thumbnail item-left>
+							<img [src]="item.pr_main_image" style="width: 60px !important; height: 60px !important;" />
+						</ion-thumbnail>
+						<h2>{{ item.pr_name | titlecase }}</h2>
+						<p>{{ item.count }} * <span>{{  (item.pr_sale_amount * item.count) | currency:'INR':'symbol' }}</span>
+					</ion-item>
+				</ion-col>
+				<ion-col>
+						<ion-row no-padding>
+								<ion-col >
+									<button ion-button icon-only clear 
+										(click)="item.count = item.count - 1;gettotal();">
+										<ion-icon name="remove-circle"></ion-icon>
+									</button>
+									<button ion-button clear > {{ item.count }} </button>
+									<button ion-button icon-only clear 
+										(click)="item.count = item.count + 1;gettotal();">
+										<ion-icon name="add-circle"></ion-icon>
+									</button>
+								</ion-col>
+								<ion-col style="text-align: right;">
+									<button ion-button small outline (click)="removeFromCart(item, i)" color="danger"
+										style="width: 64px;">Remove</button>
+								</ion-col>
+							</ion-row>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+					<ion-col>
+						<ion-item>
+							<ion-label>Size:</ion-label>
+							<ion-select [(ngModel)]="item.pr_size">
+							<ion-option *ngFor="let size of toArray(item.pr_sizes)" placeholder="Select Size *"
+								value="{{size}}">{{size | titlecase}}</ion-option>
+						</ion-select>
+						</ion-item>
+					</ion-col>
+					<ion-col>
+						<ion-item>
+							<ion-label>Color:</ion-label>
+							<ion-select [(ngModel)]="item.pr_color">
+								<ion-option *ngFor="let color of toArray(item.pr_colors)" placeholder="Select Color *"
+									value="{{color}}">{{color | titlecase}}</ion-option>
+							</ion-select>
+						</ion-item>
+					</ion-col>
+				</ion-row>
+		</ion-grid>
+	</ion-card>
+	<ion-grid>
+		<ion-card>
+			<ion-grid>
+				<ion-row>
+					<ion-col col-2>
+
+					</ion-col>
+					<ion-col col-4>
+						<b>TOTAL</b>
+					</ion-col>
+					<ion-col col-3>
+
+					</ion-col>
+					<ion-col col-3 style="text-align: right">
+						<b> {{ total | currency:'INR':'symbol' }} </b>
+					</ion-col>
+
+
+				</ion-row>
+			</ion-grid>
+		</ion-card>
+	</ion-grid>
+
+</ion-content>
+
+<ion-footer>
+	<ion-toolbar>
+		<ion-grid>
+			<ion-row>
+				<ion-col>
+					<button ion-button block (click)="goToCheckout()">Checkout</button>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+	</ion-toolbar>
+</ion-footer>
