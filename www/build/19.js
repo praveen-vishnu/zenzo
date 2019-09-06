@@ -1,14 +1,14 @@
 webpackJsonp([19],{
 
-/***/ 392:
+/***/ 397:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProfilePageModule", function() { return ProfilePageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UpdateKycPageModule", function() { return UpdateKycPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__profile__ = __webpack_require__(445);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__update_kyc__ = __webpack_require__(452);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,35 +18,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ProfilePageModule = /** @class */ (function () {
-    function ProfilePageModule() {
+var UpdateKycPageModule = /** @class */ (function () {
+    function UpdateKycPageModule() {
     }
-    ProfilePageModule = __decorate([
+    UpdateKycPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__profile__["a" /* ProfilePage */],
+                __WEBPACK_IMPORTED_MODULE_2__update_kyc__["a" /* UpdateKycPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__profile__["a" /* ProfilePage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__update_kyc__["a" /* UpdateKycPage */]),
             ],
         })
-    ], ProfilePageModule);
-    return ProfilePageModule;
+    ], UpdateKycPageModule);
+    return UpdateKycPageModule;
 }());
 
-//# sourceMappingURL=profile.module.js.map
+//# sourceMappingURL=update-kyc.module.js.map
 
 /***/ }),
 
-/***/ 445:
+/***/ 452:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProfilePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UpdateKycPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth__ = __webpack_require__(128);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth__ = __webpack_require__(129);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(22);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -61,74 +61,83 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 /**
- * Generated class for the ProfilePage page.
+ * Generated class for the UpdateKycPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var ProfilePage = /** @class */ (function () {
-    function ProfilePage(navCtrl, navParams, storage, auth) {
+var UpdateKycPage = /** @class */ (function () {
+    function UpdateKycPage(navCtrl, navParams, toastCtrl, storage, auth) {
         var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.toastCtrl = toastCtrl;
         this.storage = storage;
         this.auth = auth;
-        this.colors_sizes = [];
+        this.showHide = false;
+        this.dashboardme = [];
+        this.fileToUpload = null;
+        this.kyc_data = [];
         this.storage.get('me').then(function (val) {
             _this.get_dashboard(val.token);
         });
     }
-    ProfilePage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad ProfilePage');
-        // this.auth.test().subscribe((res:any)=>{
-        //   console.clear()
-        //   var colors_sizes = res.message.colors_sizes;
-        //   var arr =[]
-        //   colors_sizes.forEach(ele=>{
-        //     this.colors_sizes.push({
-        //       name: ele.id+'Original',
-        //       type:'Original',
-        //       placeholder: 'Enter Value of ' + ele.pr_color_name +' for size '+ele.pr_size_name
-        //       },
-        //       {
-        //       name: ele.id+'Quantity',
-        //       type:'Quantity',
-        //       placeholder: 'Enter Value of ' + ele.pr_color_name +' for size '+ele.pr_size_name
-        //       },
-        //       {
-        //       name: ele.id+'Discount',
-        //       type:'Discount',
-        //       placeholder: 'Enter Value of ' + ele.pr_color_name +' for size '+ele.pr_size_name
-        //       })
-        //   })
-        //   console.log(this.colors_sizes)
-        // })
+    UpdateKycPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad EditProfilePage');
     };
-    ProfilePage.prototype.get_dashboard = function (token) {
+    UpdateKycPage.prototype.uploadImage = function (files) {
+        this.fileToUpload = files.item(0);
+    };
+    UpdateKycPage.prototype.get_dashboard = function (token) {
         var _this = this;
+        console.clear();
         this.auth.getDash(token).subscribe(function (res) {
             if (res.status) {
                 _this.storage.set('me', res.message);
-                _this.user = res.message;
+                console.log(res.message);
+                _this.dashboardme = res.message;
+                if (res.message.kyc_data) {
+                    _this.kyc_data = res.message.kyc_data;
+                }
+                console.log(_this.kyc_data);
             }
         });
     };
-    ProfilePage.prototype.goTo = function (page) {
-        this.navCtrl.push(page);
+    UpdateKycPage.prototype.updateKYCform = function (form) {
+        var _this = this;
+        console.clear();
+        form.value.token = this.dashboardme.token;
+        form.value.id_proof_image = this.fileToUpload;
+        console.log(form.value);
+        this.auth.updateKYC(form.value).subscribe(function (res) {
+            console.log(res);
+            _this.presentToast(res.message);
+        });
     };
-    ProfilePage = __decorate([
+    UpdateKycPage.prototype.presentToast = function (msg) {
+        var toast = this.toastCtrl.create({
+            message: msg,
+            duration: 3000
+        });
+        toast.onDidDismiss(function () {
+            console.log('Dismissed toast');
+        });
+        toast.present();
+    };
+    UpdateKycPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-profile',template:/*ion-inline-start:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\profile\profile.html"*/'<!--\n  Generated template for the ProfilePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n\n<ion-header>\n  <ion-navbar color="primary">\n     <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title >Profile</ion-title>\n    <ion-buttons end>\n      <button ion-button >\n        <!-- <ion-icon name="log-out"></ion-icon> -->\n      </button>\n     </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n\n	<ion-card style="margin: 0;width: 100%" (click)="goTo(\'EditProfilePage\')">\n		 <ion-item no-lines no-padding>\n		  <div class="rating_module" style="padding: 5px;" item-start>\n	          <img src="https://ui-avatars.com/api/?background=a172e7&color=fff&name={{user?.full_name}}">\n	        </div>\n		    <h4><strong>{{user?.full_name |titlecase}}</strong></h4>\n            <p>{{user?.email_id}}</p>\n            <p>{{user?.mobile_number}}</p>\n             <div class="rating_module" item-end>\n	          <img src="assets/images/edit-profile.png">\n	        </div>\n		  </ion-item>\n	</ion-card>\n\n	<ion-card style="margin: 15px 0 0 0;width: 100%" margin-top (click)="goTo(\'ChangePasswordPage\')">\n		<ion-item no-lines no-padding>\n		  <div class="rating_module" item-start>\n	         <ion-icon color="light" name="md-lock"></ion-icon>\n	        </div>\n		    <h4><strong>Change Password</strong></h4>\n		  </ion-item>\n	</ion-card>\n  \n \n\n	<ion-card style="margin: 15px 0 0 0;width: 100%" margin-top (click)="goTo(\'UpdateKycPage\')">\n		<ion-item no-lines no-padding>\n		  <div class="rating_module" item-start>\n	          <ion-icon color="light" name="key"></ion-icon>\n	        </div>\n		    <h4><strong>Update KYC</strong></h4>\n		  </ion-item>\n	</ion-card>\n\n\n	<ion-card style="margin: 15px 0 0 0;width: 100%" margin-top (click)="goTo(\'UpdateSocialPage\')">\n		<ion-item no-lines no-padding>\n		  <div class="rating_module" item-start>\n	          <ion-icon color="light" name="md-share"></ion-icon>\n	        </div>\n		    <h4><strong>Update Social</strong></h4>\n		  </ion-item>\n	</ion-card>\n\n	<ion-card style="margin: 15px 0 0 0;width: 100%" margin-top (click)="goTo(\'UpdatePaymentPage\')">\n		<ion-item no-lines no-padding>\n		  <div class="rating_module" item-start>\n	          <ion-icon color="light" name="md-share"></ion-icon>\n	        </div>\n		    <h4><strong>Update Payment Details</strong></h4>\n		  </ion-item>\n	</ion-card>\n\n\n<!-- 	<div  *ngFor="let item of colors_sizes">\n		<label>{{item.type}}</label>\n		<input col-12  name="{{item.name}}" placeholder="{{item.placeholder}}" />\n	</div>\n -->\n	\n</ion-content>\n'/*ion-inline-end:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\profile\profile.html"*/,
+            selector: 'page-update-kyc',template:/*ion-inline-start:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\profile\update-kyc\update-kyc.html"*/'<!--\n  Generated template for the EditProfilePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar color="primary">\n    <ion-title >Update KYC</ion-title>\n    <ion-buttons end>\n      <button ion-button >\n        <!-- <ion-icon name="log-out"></ion-icon> -->\n      </button>\n     </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n<div class="dt-root">\n    <div class="dt-card">\n\n                          \n                              <!-- Tab Pane -->\n                              <div id="tab-pane-4" #kycPane class="tab-pane">\n                                 <div class="card-body">\n                                    <div class="col-md-12">\n                                       <h4 class="profile_tab_title">KYC Verification</h4>\n                                                <p *ngIf="dashboardme?.kyc_approval_status==\'1\'" style="color: orange">Your KYC Status is Pending</p>\n                                                <p *ngIf="dashboardme?.kyc_approval_status==\'2\'" style="color: green">Your KYC Status is Approved</p>\n                                                <p *ngIf="dashboardme?.kyc_approval_status==\'3\'" style="color: red">Your KYC has Been Rejected </p>\n                                       <div #kychideref style="overflow: hidden;" *ngIf="kyc_data">\n\n                                          <form #form1="ngForm" (ngSubmit)="updateKYCform(form1)">\n\n                                          <div class="alert alert-danger" *ngIf="dashboardme?.kyc_approval_status == \'3\'" >\n                                             <span style="color: red"><span *ngIf="dashboardme?.kyc_data.reason_for_reject">{{kyc_data.reason_for_reject}}</span></span>\n                                          </div>\n                                          <div class="row">\n                                             <div class="col-md-3 ">\n                                                <label for="email">First Name <span style="color: red;">*</span>:</label>\n                                             </div>\n                                             <div class="col-md-6">\n                                                <div class="form-group package_buy_input">\n                                                   <input [(ngModel)]="kyc_data.first_name" type="text" name="first_name" class="form-control" id="email">\n                                                </div>\n                                             </div>\n                                          </div>\n                                          <div class="row">\n                                             <div class="col-md-3 ">\n                                                <label for="email">Last Name <span style="color: red;">*</span>:</label>\n                                             </div>\n                                             <div class="col-md-6">\n                                                <div class="form-group package_buy_input">\n                                                   <input [(ngModel)]="kyc_data.last_name" type="text" name="last_name" class="form-control" id="email">\n                                                </div>\n                                             </div>\n                                          </div>\n                                          <div class="row">\n                                             <div class="col-md-3 ">\n                                                <label for="email">Address Line 1 <span style="color: red;">*</span>:</label>\n                                             </div>\n                                             <div class="col-md-6">\n                                                <div class="form-group">\n                                                   <input name="address_line_one" [(ngModel)]="kyc_data.address_line_one" type="text" class="form-control" id="email">\n                                                </div>\n                                             </div>\n                                          </div>\n                                          <div class="row">\n                                             <div class="col-md-3 ">\n                                                <label for="email">Address Line 2 <span style="color: red;">*</span>:</label>\n                                             </div>\n                                             <div class="col-md-6">\n                                                <div class="form-group">\n                                                   <input name="address_line_two" [(ngModel)]="kyc_data.address_line_two" type="text" class="form-control" id="email">\n                                                </div>\n                                             </div>\n                                          </div>\n                                          <div class="row">\n                                             <div class="col-md-3 ">\n                                                <label for="email">City <span style="color: red;">*</span>:</label>\n                                             </div>\n                                             <div class="col-md-6">\n                                                <div class="form-group">\n                                                   <input [(ngModel)]="kyc_data.city_name" name="city_name" type="text" class="form-control" id="email">\n                                                </div>\n                                             </div>\n                                          </div>\n                                          <div class="row">\n                                             <div class="col-md-3 ">\n                                                <label for="email">State <span style="color: red;">*</span>:</label>\n                                             </div>\n                                             <div class="col-md-6">\n                                                <div class="form-group">\n                                                   <input [(ngModel)]="kyc_data.state_name" name="state_name" type="text" class="form-control" id="email">\n                                                </div>\n                                             </div>\n                                          </div>\n                                          <div class="row">\n                                             <div class="col-md-3 ">\n                                                <label for="email">Pincode <span style="color: red;">*</span>:</label>\n                                             </div>\n                                             <div class="col-md-6">\n                                                <div class="form-group">\n                                                   <input [(ngModel)]="kyc_data.pincode" name="pincode" type="text" class="form-control" id="email">\n                                                </div>\n                                             </div>\n                                          </div>\n                                          <div class="row">\n                                             <div class="col-md-3 ">\n                                                <label for="email">Select ID Proof <span style="color: red;">*</span>:</label>\n                                             </div>\n                                             <div class="col-md-6">\n                                                <div class="form-group package_buy_input">\n                                                   <select [(ngModel)]="kyc_data.select_id_proof_type" name="select_id_proof_type" [value]= "kyc_data.select_id_proof_type" class="form-control" id="sel1">\n                                                   <option value="1" selected>Voter ID</option>\n                                                   <option value="2">Pancard</option>\n                                                   </select>\n                                                </div>\n                                             </div>\n                                          </div>\n                                          <div class="row">\n                                             <div class="col-md-3 ">\n                                                <label for="email">ID No <span style="color: red;">*</span>:</label>\n                                             </div>\n                                             <div class="col-md-6">\n                                                <div class="form-group">\n                                                   <input [(ngModel)]="kyc_data.id_proof_number" name="id_proof_number" type="text" class="form-control" id="email">\n                                                </div>\n                                             </div>\n                                          </div>\n                                          <div class="row">\n                                             <div class="col-md-3 ">\n                                                <label for="email">Add ID Proof Image<span style="font-size: 12px;">(Max 1mb, png or jpeg only)</span><span style="color: red;">*</span>:</label>\n                                             </div>\n                                             <div class="col-md-6">\n                                                <div class="form-group">\n                                                   <input ngModel (change)="uploadImage($event.target.files)" name="id_proof_image" accept="image/*" type="file" class="form-control" id="id_proof_image">\n                                                </div>\n                                             </div>\n                                          </div>\n                                          <div class="row">\n                                             <div class="col-md-3 ">\n                                             </div>\n                                             <div class="col-md-6 text-right">\n                                                <button type="submit" ion-button block>Update</button>\n                                             </div>\n                                          </div>\n                                          </form>\n                                       </div>\n\n\n                                     <div #kychideref style="overflow: hidden;" *ngIf="!kyc_data">\n                                          <form #form1="ngForm" (ngSubmit)="updateKYCform(form1)">\n                                    \n                                          <div class="row">\n                                             <div class="col-md-3 ">\n                                                <label for="email">First Name <span style="color: red;">*</span>:</label>\n                                             </div>\n                                             <div class="col-md-6">\n                                                <div class="form-group package_buy_input">\n                                                   <input ngModel name="first_name" class="form-control" id="email">\n                                                </div>\n                                             </div>\n                                          </div>\n                                          <div class="row">\n                                             <div class="col-md-3 ">\n                                                <label for="email">Last Name <span style="color: red;">*</span>:</label>\n                                             </div>\n                                             <div class="col-md-6">\n                                                <div class="form-group package_buy_input">\n                                                   <input ngModel name="last_name" class="form-control" id="email">\n                                                </div>\n                                             </div>\n                                          </div>\n                                          <div class="row">\n                                             <div class="col-md-3 ">\n                                                <label for="email">Address Line 1 <span style="color: red;">*</span>:</label>\n                                             </div>\n                                             <div class="col-md-6">\n                                                <div class="form-group">\n                                                   <input name="address_line_one" ngModel type="text" class="form-control" id="email">\n                                                </div>\n                                             </div>\n                                          </div>\n                                          <div class="row">\n                                             <div class="col-md-3 ">\n                                                <label for="email">Address Line 2 <span style="color: red;">*</span>:</label>\n                                             </div>\n                                             <div class="col-md-6">\n                                                <div class="form-group">\n                                                   <input name="address_line_two" ngModel type="text" class="form-control" id="email">\n                                                </div>\n                                             </div>\n                                          </div>\n                                          <div class="row">\n                                             <div class="col-md-3 ">\n                                                <label for="email">City <span style="color: red;">*</span>:</label>\n                                             </div>\n                                             <div class="col-md-6">\n                                                <div class="form-group">\n                                                   <input ngModel name="city_name" type="text" class="form-control" id="email">\n                                                </div>\n                                             </div>\n                                          </div>\n                                          <div class="row">\n                                             <div class="col-md-3 ">\n                                                <label for="email">State <span style="color: red;">*</span>:</label>\n                                             </div>\n                                             <div class="col-md-6">\n                                                <div class="form-group">\n                                                   <input ngModel name="state_name" type="text" class="form-control" id="email">\n                                                </div>\n                                             </div>\n                                          </div>\n                                          <div class="row">\n                                             <div class="col-md-3 ">\n                                                <label for="email">Pincode <span style="color: red;">*</span>:</label>\n                                             </div>\n                                             <div class="col-md-6">\n                                                <div class="form-group">\n                                                   <input ngModel name="pincode" type="text" class="form-control" id="email">\n                                                </div>\n                                             </div>\n                                          </div>\n                                          <div class="row">\n                                             <div class="col-md-3 ">\n                                                <label for="email">Select ID Proof <span style="color: red;">*</span>:</label>\n                                             </div>\n                                             <div class="col-md-6">\n                                                <div class="form-group package_buy_input">\n                                                   <select ngModel name="select_id_proof_type"  class="form-control" id="sel1">\n                                                   <option value="1" selected>Voter ID</option>\n                                                   <option value="2">Pancard</option>\n                                                   </select>\n                                                </div>\n                                             </div>\n                                          </div>\n                                          <div class="row">\n                                             <div class="col-md-3 ">\n                                                <label for="email">ID No <span style="color: red;">*</span>:</label>\n                                             </div>\n                                             <div class="col-md-6">\n                                                <div class="form-group">\n                                                   <input ngModel name="id_proof_number" type="text" class="form-control" id="email">\n                                                </div>\n                                             </div>\n                                          </div>\n                                          <div class="row">\n                                             <div class="col-md-3 ">\n                                                <label for="email">Add ID Proof Image<span style="font-size: 12px;">(Max 1mb, png or jpeg only)</span><span style="color: red;">*</span>:</label>\n                                             </div>\n                                             <div class="col-md-6">\n                                                <div class="form-group">\n                                                   <input ngModel (change)="uploadImage($event.target.files)" name="id_proof_image" accept="image/*" type="file" class="form-control" id="id_proof_image">\n                                                </div>\n                                             </div>\n                                          </div>\n                                          <div class="row">\n                                             <div class="col-md-3 ">\n                                             </div>\n                                             <div class="col-md-6 text-right">\n                                                <button type="submit" ion-button block>Update</button>\n                                             </div>\n                                          </div>\n                                          </form>\n                                       </div>\n\n                                       <!-- <div *ngIf="dashboardme?.kyc_data" class="wild_norm" #kychiderefnorm style="height: 0; overflow: hidden;">\n                                          <div class="alert alert-danger" *ngIf="dashboardme?.kyc_approval_status==\'3\'">\n                                             <span  style="color: red"><span *ngIf="dashboardme?.kyc_data.reason_for_reject">{{dashboardme?.kyc_data.reason_for_reject}}</span></span>\n                                          </div>\n                                          <div class="row">\n                                             <div class="col-md-3">\n                                                <label for="email">Full Name:</label>\n                                             </div>\n                                             <div class="col-md-6">\n                                                <p><i>{{dashboardme?.kyc_data.first_name}} {{dashboardme?.kyc_data.last_name}}</i></p>\n                                             </div>\n                                          </div>\n                                          <div class="row">\n                                             <div class="col-md-3">\n                                                <label for="email">Address:</label>\n                                             </div>\n                                             <div class="col-md-6">\n                                                <p><i>{{dashboardme?.kyc_data.address_line_one}} {{dashboardme?.kyc_data.address_line_two}}</i></p>\n                                                <p>{{dashboardme?.kyc_data.city_name}} {{dashboardme?.kyc_data.state_name}}</p>\n                                             </div>\n                                          </div>\n                                          <div class="row">\n                                             <div class="col-md-3">\n                                                <label for="email">Pincode:</label>\n                                             </div>\n                                             <div class="col-md-6">\n                                                <p><i>{{dashboardme?.kyc_data.pincode}}</i></p>\n                                             </div>\n                                          </div>\n                                          <div class="row">\n                                             <div class="col-md-3">\n                                                <label for="email">ID Proof:</label>\n                                             </div>\n                                             <div class="col-md-9">\n                                                <p *ngIf="dashboardme?.kyc_data.select_id_proof_type==\'1\'"><i> Voter Id</i></p>\n                                                <p *ngIf="dashboardme?.kyc_data.select_id_proof_type==\'2\'"><i> Pancard</i></p>\n                                             </div>\n                                          </div>\n                                          <div class="row">\n                                             <div class="col-md-3">\n                                                <label for="mobile">ID No:</label>\n                                             </div>\n                                             <div class="col-md-6">\n                                                <p><i>{{dashboardme?.kyc_data.id_proof_number}}</i></p>\n                                             </div>\n                                          </div>\n                                          <div class="row">\n                                             <div class="col-md-3">\n                                                <label for="email">ID Proof Image</label>\n                                             </div>\n                                             <div class="col-md-6">\n                                                <p *ngIf="dashboardme.kyc_data.id_proof_image"><a href="http://192.168.1.100:81/zomo/uploads/kyc/{{dashboardme?.kyc_data.id_proof_image}}"  target = "_blank"><img style="width:70px" src="http://192.168.1.100:81/zomo/uploads/kyc/{{dashboardme?.kyc_data.id_proof_image}}" class="kyc_img" /></a></p>\n                                             </div>\n                                          </div>\n                                          <div class="row">\n                                             <div class="col-md-3">\n                                                <label for="email">Status</label>\n                                             </div>\n                                             <div class="col-md-6">\n                                                <p *ngIf="dashboardme?.kyc_approval_status==\'0\'" style="color: red">Not Submitted</p>\n                                                <p *ngIf="dashboardme?.kyc_approval_status==\'1\'" style="color: orange">Pending</p>\n                                                <p *ngIf="dashboardme?.kyc_approval_status==\'2\'" style="color: green">Approved</p>\n                                                <p *ngIf="dashboardme?.kyc_approval_status==\'3\'" style="color: red">Rejected </p>\n                                             </div>\n                                          </div>\n                                       </div> -->\n                                    </div>\n                                 </div>\n                              </div>\n                              <!-- /tab pane-->\n    </div>\n</div>\n</ion-content>\n'/*ion-inline-end:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\profile\update-kyc\update-kyc.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */],
             __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */],
             __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth__["a" /* AuthProvider */]])
-    ], ProfilePage);
-    return ProfilePage;
+    ], UpdateKycPage);
+    return UpdateKycPage;
 }());
 
-//# sourceMappingURL=profile.js.map
+//# sourceMappingURL=update-kyc.js.map
 
 /***/ })
 

@@ -1,633 +1,14 @@
-webpackJsonp([54],{
+webpackJsonp([56],{
 
-/***/ 128:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_constants_service__ = __webpack_require__(13);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-/*
-  Generated class for the AuthProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
-var AuthProvider = /** @class */ (function () {
-    function AuthProvider(http, loadingCtrl) {
-        this.http = http;
-        this.loadingCtrl = loadingCtrl;
-        console.log('Hello AuthProvider Provider');
-    }
-    AuthProvider.prototype.login = function (user) {
-        var form_data = new FormData();
-        for (var key in user) {
-            form_data.append(key, user[key]);
-        }
-        var loader = this.loadingCtrl.create();
-        loader.present();
-        var result = this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/login', form_data);
-        if (result) {
-            loader.dismiss();
-            return result;
-        }
-    };
-    AuthProvider.prototype.register = function (user) {
-        var form_data = new FormData();
-        for (var key in user) {
-            form_data.append(key, user[key]);
-        }
-        var loader = this.loadingCtrl.create();
-        loader.present();
-        var result = this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/signup/signup/', form_data);
-        if (result) {
-            loader.dismiss();
-            return result;
-        }
-    };
-    AuthProvider.prototype.getDash = function (token) {
-        var form_data = new FormData();
-        form_data.append('token', token);
-        var loader = this.loadingCtrl.create();
-        loader.present();
-        var result = this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/dashboard/dash_fetch_user_detail', form_data);
-        if (result) {
-            loader.dismiss();
-            return result;
-        }
-    };
-    AuthProvider.prototype.checkUser = function (name) {
-        console.clear();
-        console.log(name);
-        var form_data = new FormData();
-        form_data.append('user_name', name);
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/signup/valid_user_name', form_data);
-    };
-    AuthProvider.prototype.forgot = function (user) {
-        console.clear();
-        console.log(user);
-        var form_data = new FormData();
-        for (var key in user) {
-            form_data.append(key, user[key]);
-        }
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/forgot_password/', form_data);
-    };
-    AuthProvider.prototype.verify = function (user) {
-        console.clear();
-        console.log(user);
-        var form_data = new FormData();
-        for (var key in user) {
-            form_data.append(key, user[key]);
-        }
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/forgot_password/verify_otp/', form_data);
-    };
-    AuthProvider.prototype.set_new_password = function (user) {
-        console.clear();
-        console.log(user);
-        var form_data = new FormData();
-        for (var key in user) {
-            form_data.append(key, user[key]);
-        }
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/forgot_password/set_new_password/', form_data);
-    };
-    AuthProvider.prototype.updateUser = function (user) {
-        console.clear();
-        console.log(user);
-        var form_data = new FormData();
-        for (var key in user) {
-            form_data.append(key, user[key]);
-        }
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/profile/update_personal/', form_data);
-    };
-    AuthProvider.prototype.updatePassword = function (user) {
-        console.clear();
-        console.log(user);
-        var form_data = new FormData();
-        for (var key in user) {
-            form_data.append(key, user[key]);
-        }
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/profile/update_password/', form_data);
-    };
-    AuthProvider.prototype.updateSocial = function (user) {
-        console.clear();
-        console.log(user);
-        var form_data = new FormData();
-        for (var key in user) {
-            form_data.append(key, user[key]);
-        }
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/profile/social_media/', form_data);
-    };
-    AuthProvider.prototype.updatePayments = function (user) {
-        console.clear();
-        console.log(user);
-        var form_data = new FormData();
-        for (var key in user) {
-            form_data.append(key, user[key]);
-        }
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/profile/imps_payment/', form_data);
-    };
-    AuthProvider.prototype.updateCrypto = function (user) {
-        console.clear();
-        console.log(user);
-        var form_data = new FormData();
-        for (var key in user) {
-            form_data.append(key, user[key]);
-        }
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/profile/payment_btc_address/', form_data);
-    };
-    AuthProvider.prototype.updateKYC = function (user) {
-        console.clear();
-        console.log(user);
-        var form_data = new FormData();
-        for (var key in user) {
-            form_data.append(key, user[key]);
-        }
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/profile/kyc_verification/', form_data);
-    };
-    AuthProvider.prototype.resendEmail = function (token) {
-        var form_data = new FormData();
-        form_data.append("token", token);
-        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/profile/verify_user_email/', form_data);
-    };
-    AuthProvider = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* LoadingController */]])
-    ], AuthProvider);
-    return AuthProvider;
-}());
-
-//# sourceMappingURL=auth.js.map
-
-/***/ }),
-
-/***/ 129:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return SubOptionOnePage; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ImageModal2; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return UserProductModal; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_store_store__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_libphonenumber_js__ = __webpack_require__(130);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_constants_service__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_store_product__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__shared_side_menu_content_custom_decorators_side_menu_display_text_decorator__ = __webpack_require__(247);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_carts_service_carts_service__ = __webpack_require__(131);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-
-// Side Menu Component
-
-
-var SubOptionOnePage = /** @class */ (function () {
-    function SubOptionOnePage(navCtrl, toastCtrl, alertCtrl, modalCtrl, storage, navParams, storeProvider, productProvider) {
-        var _this = this;
-        this.navCtrl = navCtrl;
-        this.toastCtrl = toastCtrl;
-        this.alertCtrl = alertCtrl;
-        this.modalCtrl = modalCtrl;
-        this.storage = storage;
-        this.navParams = navParams;
-        this.storeProvider = storeProvider;
-        this.productProvider = productProvider;
-        this.category = [];
-        this.countries = __WEBPACK_IMPORTED_MODULE_5__services_constants_service__["c" /* COUNTRY_LIST */];
-        this.tabswitch = "About";
-        this.storage.get("me").then(function (val) {
-            _this.getdata();
-        });
-        console.clear();
-        console.log(this.navParams.get("name"));
-    }
-    SubOptionOnePage.prototype.getdata = function () {
-        var _this = this;
-        this.storeProvider
-            .getStoreByName(this.navParams.get("name"))
-            .subscribe(function (resp) {
-            console.log(resp);
-            if (resp.status) {
-                _this.storeDetail = resp.message[0];
-            }
-        });
-        console.log(this.storeDetail);
-        this.productProvider.getUserProductList().subscribe(function (resp) {
-            console.log(resp);
-            if (resp.status) {
-                _this.products = resp.message;
-            }
-        });
-        this.storeProvider.getCategoryList().subscribe(function (data) {
-            if (data.status) {
-                _this.category = data.message;
-            }
-        });
-    };
-    SubOptionOnePage.prototype.goToGallery = function (i) {
-        var modal = this.modalCtrl.create(ImageModal2, { img: this.storeDetail.store_other_images, pos: i }, { cssClass: "image-modal2" });
-        modal.present();
-    };
-    SubOptionOnePage.prototype.phoneMask = function (phoneValue, country) {
-        var country_id = this.getCountry(country);
-        try {
-            var phoneNumber = Object(__WEBPACK_IMPORTED_MODULE_4_libphonenumber_js__["a" /* parsePhoneNumberFromString */])(country_id + phoneValue);
-            return phoneNumber.formatNational();
-        }
-        catch (error) {
-            return phoneValue;
-        }
-    };
-    SubOptionOnePage.prototype.getphoneuri = function (phoneValue, country) {
-        var country_id = this.getCountry(country);
-        // console.log(country_id)
-        try {
-            var phoneNumber = Object(__WEBPACK_IMPORTED_MODULE_4_libphonenumber_js__["a" /* parsePhoneNumberFromString */])(country_id + phoneValue);
-            return phoneNumber.getURI();
-        }
-        catch (error) {
-            return phoneValue;
-        }
-    };
-    SubOptionOnePage.prototype.goToEdit = function () {
-        this.navCtrl.push("EditStorePage", { store: this.storeDetail });
-    };
-    SubOptionOnePage.prototype.reviewRatings = function (val) {
-        var rating = [];
-        for (var i = 0; i < parseInt(val); i++) {
-            rating.push("star");
-        }
-        return rating;
-    };
-    SubOptionOnePage.prototype.getCountry = function (id) {
-        if (id) {
-            return this.countries.find(function (country) { return country.country_id == id; })
-                .country_code;
-        }
-    };
-    SubOptionOnePage.prototype.getCatName = function (val) {
-        if (val) {
-            return this.category.find(function (cat) { return cat.id == val; }).category_name;
-        }
-    };
-    SubOptionOnePage.prototype.getPaymentMethod = function (str) {
-        if (str) {
-            var res = str.split(",");
-            var payment = [];
-            if (this.findInArray(res, "1") >= 0) {
-                payment.push("Cash");
-            }
-            if (this.findInArray(res, "2") >= 0) {
-                payment.push("Credit Card");
-            }
-            if (this.findInArray(res, "3") >= 0) {
-                payment.push("Debit Card");
-            }
-            var method = payment.toString();
-            var regex = /,/gi;
-            return method.replace(regex, "/");
-        }
-    };
-    SubOptionOnePage.prototype.goToProductList = function (id) {
-        this.navCtrl.push(UserProductModal, { id: id });
-    };
-    SubOptionOnePage.prototype.findInArray = function (ar, val) {
-        for (var i = 0, len = ar.length; i < len; i++) {
-            if (ar[i] === val) {
-                // strict equality test
-                return i;
-            }
-        }
-        return -1;
-    };
-    SubOptionOnePage.prototype.addMoreImages = function () {
-        document.getElementById("add_other_images").click();
-    };
-    // getOtherImage(files: FileList) {
-    //   var form_data = new FormData();
-    //   this.storeProvider.UploadOtherImage(this.token,files.item(0),this.storeDetail.id).subscribe((res4:any) => {
-    //     if (res4.status){
-    //     this.presentToast(res4.message);
-    //     this.storage.get('me').then((val:any)=>{
-    //  		this.getdata(val.token)
-    //  	})
-    //     }
-    //     else{
-    //     this.presentToast(res4.message);
-    //     }
-    //   })
-    // }
-    // enable_disable(val){
-    //     var form_data = new FormData();
-    //     console.clear();
-    //     form_data.append('visible_status',val);
-    //     form_data.append("token", localStorage.getItem('token') );
-    //     this.storeProvider.storeEnableDisable(this.token,val).subscribe((res4:any) => {
-    //       if (res4.status){
-    //       this.presentToast(res4.message);
-    //       this.storage.get('me').then((val:any)=>{
-    //  		this.getdata(val.token)
-    //  	})
-    //       }
-    //       else{
-    //       this.presentToast(res4.message);
-    //       }
-    //   })
-    // }
-    SubOptionOnePage.prototype.ionViewDidLoad = function () {
-        console.log("ionViewDidLoad ViewStorePage");
-    };
-    SubOptionOnePage.prototype.presentToast = function (msg) {
-        var toast = this.toastCtrl.create({
-            message: msg,
-            duration: 3000
-        });
-        toast.onDidDismiss(function () {
-            console.log("Dismissed toast");
-        });
-        toast.present();
-    };
-    Object.defineProperty(SubOptionOnePage.prototype, "colors", {
-        get: function () {
-            var colors = ["8249b3", "8249b3", "b73f8f", "de7300"];
-            return colors[Math.floor(Math.random() * 3)];
-        },
-        enumerable: true,
-        configurable: true
-    });
-    SubOptionOnePage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: "page-sub-option-one",template:/*ion-inline-start:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\sub-options-with-icons\sub-option-one\sub-option-one.html"*/'<!--\n  Generated template for the ViewStorePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n--><!-- \n<ion-header>\n   <ion-navbar color="primary">\n      <button ion-button menuToggle>\n         <ion-icon name="menu"></ion-icon>\n      </button>\n      <ion-title>Create Offer</ion-title>\n   </ion-navbar>\n</ion-header> -->\n\n\n<ion-content padding>\n  <div class="dt-root">\n   <div class="profile">\n                  <!-- Profile Banner -->\n                  <div class="profile__banner">\n                     <!-- Profile Banner Top -->\n                     <button ion-button menuToggle icon-only clear color="light">\n              <ion-icon name="menu"></ion-icon>\n           </button>\n                     <div class="profile__banner-top">\n                        <!-- Avatar Wrapper -->\n                        <div class="dt-avatar-wrapper">\n                           <!-- Avatar -->\n                           <img class="dt-avatar dt-avatar__shadow size-90 mr-sm-4" src="http://alpademo.com/zomo/uploads/stores/{{storeDetail?.store_image}}" alt="{{storeDetail?.store_name | titlecase}}">\n                           <!-- /avatar -->\n                           <!-- Info -->\n                           <div class="dt-avatar-info">\n                              <span class="dt-avatar-name display-4 mb-2 font-weight-light">{{storeDetail?.store_name | titlecase}}</span>\n                              <span class="f-16">{{storeDetail?.store_address | titlecase}} {{storeDetail?.city_name | titlecase}} {{storeDetail?.state_name | titlecase}} </span>\n                           </div>\n                           <!-- /info -->\n                        </div>\n                     </div>\n                     <!-- /profile banner top -->\n                  </div>\n                  <!-- /profile banner -->\n                  <!-- Profile Content -->\n                  <div class="profile-content">\n                     <!-- Grid -->\n                     <div class="row">\n                        <!-- Grid Item -->\n                        <div class="col-xl-4 order-xl-2">\n                           <!-- Grid -->\n                           <div class="row">\n                              <!-- Grid Item -->\n                              <div class="col-xl-12 col-md-6 col-12 order-xl-1">\n                                 <!-- Card -->\n                                 <div class="dt-card dt-card__full-height">\n                                    <!-- Card Header -->\n                                    <div class="dt-card__header">\n                                       <!-- Card Heading -->\n                                       <div class="dt-card__heading">\n                                          <h3 class="dt-card__title">Contact</h3>\n                                       </div>\n                                       <!-- /card heading -->\n                                    </div>\n                                    <!-- /card header -->\n                                    <!-- Card Body -->\n                                    <div class="dt-card__body">\n                                       <!-- Media -->\n                                       <div class="media mb-5">\n                                          <i class="icon icon-email icon-xl mr-5"></i>\n                                          <!-- Media Body -->\n                                          <div class="media-body">\n                                             <span class="d-block text-light-gray f-12 mb-1">Mail</span>\n                                             <a href="mailto:{{storeDetail?.contact_email_id}}">{{storeDetail?.contact_email_id}}</a>\n                                          </div>\n                                          <!-- /media body -->\n                                       </div>\n                                       <!-- /media -->\n                                       <!-- Media -->\n                                       <div class="media mb-5">\n                                          <i class="icon icon-link icon-xl mr-5"></i>\n                                          <!-- Media Body -->\n                                          <div class="media-body">\n                                             <span class="d-block text-light-gray f-12 mb-1">Web Page</span>\n                                             <a href="{{storeDetail?.website_link}}" target="_blank">{{storeDetail?.website_link}}</a>\n                                          </div>\n                                          <!-- /media body -->\n                                       </div>\n                                       <!-- /media -->\n                                       <!-- Media -->\n                                       <div class="media mb-5">\n                                          <i class="icon icon-phone icon-xl mr-5"></i>\n                                          <!-- Media Body -->\n                                          <div class="media-body">\n                                             <span class="d-block text-light-gray f-12 mb-1">Phone</span>\n                                             <span class="h5">\n                                             <a href = "{{getphoneuri(storeDetail?.contact_number_one,storeDetail?.country_id)}}">{{phoneMask(storeDetail?.contact_number_one,storeDetail?.country_id)}}</a>, \n                                             <a href = "{{getphoneuri(storeDetail?.contact_number_two,storeDetail?.country_id)}}" >{{phoneMask(storeDetail?.contact_number_two,storeDetail?.country_id)}}</a>\n                                             </span>\n                                          </div>\n                                       </div>\n                                       <!-- /media body -->\n                                       <!-- Media -->\n                                       <div class="media">\n                                          <i class="icon icon-culture-calendar icon-xl mr-5"></i>\n                                          <!-- Media Body -->\n                                          <div class="media-body">\n                                             <span class="d-block text-light-gray f-12 mb-1">Social</span>\n                                             <span class="h5">\n                                             <a  *ngIf="storeDetail?.facebook" href = "{{storeDetail?.facebook}}"><img style="width:20px; margin-right: 10px;border-radius:50% " src="/assets/images/facebook.png"/></a>\n                                             <a  *ngIf="storeDetail?.twitter" href = "{{storeDetail?.twitter}}"><img style="width:20px; margin-right: 10px;border-radius:50% " src="/assets/images/twitter.png"/></a>\n                                             <a  *ngIf="storeDetail?.telegram" href = "{{storeDetail?.telegram}}"><img style="width:20px; margin-right: 10px;border-radius:50% " src="/assets/images/telegram.png"/></a>\n                                             <a  *ngIf="storeDetail?.instagram" href = "{{storeDetail?.instagram}}"><img style="width:20px; margin-right: 10px;border-radius:50% " src="/assets/images/instagram.png"/></a>\n                                             </span>\n                                          </div>\n                                          <!-- /media body -->\n                                       </div>\n                                       <!-- /media -->\n                                    </div>\n                                    <!-- /card body -->\n                                 </div>\n                                 <!-- /card -->\n                              </div>\n                              <!-- /grid item -->\n                              <!-- Grid Item -->\n                              <div class="col-12 order-xl-2">\n                                 <!-- Card -->\n                                 <div class="dt-card dt-card__full-height">\n                                    <!-- Card Header -->\n                                    <div class="dt-card__header">\n                                       <!-- Card Heading -->\n                                       <div class="dt-card__heading">\n                                          <h3 class="dt-card__title">Media</h3>\n                                       </div>\n                                       <!-- /card heading -->\n                                    </div>\n                                    <!-- /card header -->\n                                    <!-- Card Body -->\n                                    <div class="dt-card__body">\n                                       <!-- List -->\n                                       <ul class="dt-gallery-list">\n                                          <li  *ngFor="let img of storeDetail?.store_other_images;let i = index;"><img (click)="goToGallery(i)" src="http://alpademo.com/zomo/uploads/stores/{{img.image_name}}" class="img-fluid w-100" alt="Image Title"></li>\n                                       </ul>\n                                       <!-- /list -->\n                           <!--             <div class="mt-5" *ngIf="storeDetail?.store_status == \'1\'">\n                                          <a style="color: #038fde;cursor: pointer" (click)="addMoreImages()"><span>Add More Images </span> <i class="icon icon-plus-sign-alt icon-xl ml-1"></i> </a>\n                                          <input type="file" style="display:none;" (change)="getOtherImage($event.target.files)" id="add_other_images" accept="image/*" class="form-control">\n                                       </div> -->\n                                    </div>\n                                    <!-- /card Body -->\n                                 </div>\n                                 <!-- /card -->\n                              </div>\n                              <!-- /grid item -->\n                              <!--<div class="col-xl-12 col-md-6 col-12 order-xl-3">-->\n                              <!-- Card -->\n                              <!--          <div class="dt-card dt-card__full-height">-->\n                              <!-- Card Header -->\n                              <!--            <div class="dt-card__header">-->\n                              <!-- Card Heading -->\n                              <!--              <div class="dt-card__heading">-->\n                              <!--                <h3 class="dt-card__title">Categories-->\n                              <!--                </h3>-->\n                              <!--              </div>-->\n                              <!-- /card heading -->\n                              <!--            </div>-->\n                              <!-- /card header -->\n                              <!-- Card Body -->\n                              <!--            <div class="dt-card__body pb-5">-->\n                              <!--  <div class="categories_search_block">-->\n                              <!--    <div class="input-group mb-3">-->\n                              <!--      <span class="input-group-addon"><i class="icon icon-search icon-fw"></i></span>-->\n                              <!--      <input type="email" class="form-control" id="email" placeholder="Search here">-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Food-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Dinner-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Fast Food-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Cafe, Bakeries and Desserts-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Late Night-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Restro Bar-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Pub-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Restro Bar-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--  </div>-->\n                              <!--            </div>-->\n                              <!-- /card body -->\n                              <!--  <div class="dt-card__header">-->\n                              <!-- Card Heading -->\n                              <!--              <div class="dt-card__heading">-->\n                              <!--                <h3 class="dt-card__title">Location-->\n                              <!--                </h3>-->\n                              <!--              </div>-->\n                              <!-- /card heading -->\n                              <!--            </div>  -->\n                              <!-- Card Body -->\n                              <!--            <div class="dt-card__body pb-5">-->\n                              <!--  <div class="categories_search_block">-->\n                              <!--    <div class="input-group mb-3">-->\n                              <!--      <span class="input-group-addon"><i class="icon icon-search icon-fw"></i></span>-->\n                              <!--      <input type="email" class="form-control" id="email" placeholder="Search here">-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Hubli-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Shanti Nagar-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Old Bustand-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Manoj Park-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Deshpande Nagar-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Unkal Lake-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--  </div>-->\n                              <!--            </div>-->\n                              <!-- /card body -->\n                              <!--          </div>-->\n                              <!-- /card -->\n                              <!--        </div>-->\n                           </div>\n                           <!-- /grid -->\n                        </div>\n                        <!-- /grid item -->\n                        <!-- Grid Item -->\n                        <div class="col-xl-8 order-xl-1">\n                           <!-- Card -->\n                           <div class="card">\n                              <!-- Card Header -->\n                              <div class="card-header card-nav bg-transparent d-flex justify-content-between">\n                                 <div class="row" style="width: 100%;">\n                                    <div class="col-md-8">\n                                       <h2 *ngIf="storeDetail?.store_status == \'1\' || storeDetail?.store_status == \'0\'" class="mb--20">{{storeDetail?.store_tag_line |titlecase}}</h2>\n                                       <h2 *ngIf="storeDetail?.store_status == \'2\'" style="color:#F00" class="mb--20">Your Approval is Rejected <a  style="color:#038fde"  data-toggle="modal" data-target="#exampleModalLong">(Details)</a></h2>\n                                       <h2 *ngIf="storeDetail?.store_status == \'3\'" style="color:#F00" class="mb--20">Your store is Blocked <a  style="color:#038fde"  data-toggle="modal" data-target="#exampleModalLong1">(Details)</a></h2>\n                                       <p class="mb-1" *ngIf="storeDetail?.store_status == \'0\'" style="color: #faad14;margin-top: 20px;margin-bottom: 0px !important;"> Your Approval is Pending</p>\n                                    </div>\n                                    <!-- <div class="col-md-4 text-right">\n                     <button (click)="goToEdit()" class="btn btn-info">Edit</button>\n                                       <button class="btn btn-danger" *ngIf="storeDetail?.visible_status == \'1\' && storeDetail?.store_status == \'1\'" (click)="enable_disable(0)">Disable</button>\n                                       <button class="btn btn-success" *ngIf="storeDetail?.visible_status == \'0\' && storeDetail?.store_status == \'1\'" (click)="enable_disable(1)">Enable</button>\n                                    </div> -->\n                                 </div>\n                                 <ul class="card-header-links nav nav-underline" role="tablist">\n                                    <!--<li class="nav-item">\n                                       s  <a class="nav-link active" data-toggle="tab" href="#tab-pane1" role="tab"\n                                            aria-controls="tab-pane1"\n                                            aria-selected="true">About</a>\n                                       </li>\n                                       \n                                       <li class="nav-item">\n                                         <a class="nav-link" data-toggle="tab" href="#tab-pane3" role="tab" aria-controls="tab-pane3"\n                                            aria-selected="true">Review</a>\n                                       </li>-->\n                                 </ul>\n                              </div>\n                              <!-- /card header -->\n                              <!-- Card Body -->\n                              <div class="card-body pb-2">\n                                 <!-- Tab Content-->\n                                 <div class="tab-content mt-5">\n                                    <!-- Tab panel -->\n                                    <div id="tab-pane1" class="tab-pane active">\n                                       <!-- List -->\n                                       <ul class="dt-list dt-list-one-third">\n                                          <!-- List Item -->\n                                          <li class="dt-list__item">\n                                             <!-- Media -->\n                                             <div class="media">\n                                                <i class="icon icon-company icon-4x mr-5 align-self-center text-warning"></i>\n                                                <!-- Media Body -->\n                                                <div class="media-body">\n                                                   <span class="d-block text-light-gray f-12 mb-1">Category</span>\n                                                   <h5 class="mb-0">{{getCatName(storeDetail?.store_category_id)}}</h5>\n                                                </div>\n                                                <!-- /media body -->\n                                             </div>\n                                             <!-- /media -->\n                                          </li>\n                                          <!-- /list item -->\n                                          <!-- List Item -->\n                                          <li class="dt-list__item">\n                                             <!-- Media -->\n                                             <div class="media">\n                                                <i class="icon icon-card icon-4x mr-5 align-self-center text-warning"></i>\n                                                <!-- Media Body -->\n                                                <div class="media-body">\n                                                   <span class="d-block text-light-gray f-12 mb-1">Payment Method</span>\n                                                   <h5 class="mb-0">{{getPaymentMethod(storeDetail?.payment_receive_ids)}}</h5>\n                                                </div>\n                                                <!-- /media body -->\n                                             </div>\n                                             <!-- /media -->\n                                          </li>\n                                          <!-- /list item -->\n                                          <!-- List Item -->\n                                          <li class="dt-list__item">\n                                             <!-- Media -->\n                                             <div class="media">\n                                                <i class="icon icon-home icon-4x mr-5 align-self-center text-warning"></i>\n                                                <!-- Media Body -->\n                                                <div class="media-body">\n                                                   <span class="d-block text-light-gray f-12 mb-1">Lives in</span>\n                                                   <h5 class="mb-0">{{storeDetail?.city_name | titlecase}}, {{storeDetail?.state_name | titlecase}} </h5>\n                                                </div>\n                                                <!-- /media body -->\n                                             </div>\n                                             <!-- /media -->\n                                          </li>\n                                          <!-- /list item -->\n                                          <!-- List Item -->\n                                          <!-- /list item -->\n                                       </ul>\n                                       <!-- /list -->\n                                    </div>\n                                    <!-- /tab panel -->\n                                 </div>\n                                 <!-- /tab content-->\n                              </div>\n                              <!-- /card body -->\n                           </div>\n                           <!-- /card -->\n                           <!-- Card -->\n                           <div class="card">\n                              <!-- Card Body -->\n                              <div class="card-body">\n                                 <h2 class="card-title">Details About Us</h2>\n                                 <!-- Card Text -->\n                                 <h6 class="card-subtitle">A little flash back of {{storeDetail?.store_name | titlecase}}</h6>\n                                 <!-- /card text -->\n                                 <!-- Card Text -->\n                                 <!--                      <p class="card-text lead">\n                                    Donec dignissim gravida sem, ut cursus dolor hendrerit et. Morbi volutpat.\n                                    </p>-->\n                                 <!-- /card text -->\n                                 <!-- Card Text -->\n                                 <p class="card-text" innerHtml="{{storeDetail?.store_description}}">\n                                 </p>\n                                 <!-- /card text -->\n                              </div>\n                              <!-- /card body -->\n                           </div>\n                           <!-- /card -->\n                           <!-- Card -->\n                           <div class="card" *ngIf="storeDetail?.store_reviews?.length > 0">\n                              <!-- Card Body -->\n                              <div class="card-body">\n                                 <h2 class="card-title">Reviews</h2>\n                                 <!-- Card Body -->\n                                 <ul class="dt-list dt-list-one-third">\n                                    <li class="dt-list__item" *ngFor="let review of storeDetail?.store_reviews">\n                                       <!-- Media -->\n                                       <div class="media">\n                                          <!--<i class="icon icon-company icon-4x mr-5 align-self-center text-warning"></i>-->\n                                          <!-- Media Body -->\n                                          <div class="media-body">\n                                             <h4 style="margin-bottom: 0;">{{review.full_name | titlecase}}</h4>\n                                             <span class="d-block text-light-gray f-12 mb-1">{{review.date_n_time | date}}</span>\n                                             <h5 class="mb-0">{{review.store_review}}</h5>\n                                             <div class="d-flex align-items-center mb-1">\n                                                <i *ngFor="let rating of reviewRatings(review.store_rating);let i = index;" class="icon icon-star f-10 mr-1 text-warning"></i>\n                                             </div>\n                                          </div>\n                                          <!-- /media body -->\n                                       </div>\n                                       <!-- /media -->\n                                    </li>\n                                    <!-- /list item -->\n                                 </ul>\n                              </div>\n                              <!-- /card body -->\n                           </div>\n                           <!-- /card -->\n                           <div class="card" *ngIf="storeDetail?.offer_detail?.length > 0">\n                              <div class="card-body">\n                                 <h2 class="card-title">Offers</h2>\n                                 <div class="media" *ngFor="let offer of storeDetail?.offer_detail">\n                                    <div class="media-left" *ngIf="offer[\'offer_status\'] == \'1\'">\n                                       <img class="mr-3" style="border-radius:10px;" src="https://ui-avatars.com/api/?background={{colors}}&color=fff&name={{offer.offer_percenage}}%&length=3" alt="Generic placeholder image">\n                                    </div>\n                                    <div class="media-body">\n                                       <h5 class="mt-0 mb-1">{{offer.offer_title | titlecase}}</h5>\n                                       <p><span class="d-block text-light-gray f-12 mb-1">From : {{offer.start_date | date}}, To : {{offer.end_date | date}} </span> {{offer.description}}</p>\n                                    </div>\n                                 </div>\n                                 <!-- /card body -->\n                              </div>\n                              <!-- /card -->\n                           </div>\n                           <div class="card products">\n                              <!-- Card Body -->\n                               <div class="card-body">\n                                 <h2 class="card-title" >Products</h2>\n                                    <ul col-12 >\n                                          <li *ngFor="let product of products" (click)=\'goToProductList(product.id)\'>\n                                                <ion-row>\n                                                   <ion-col>\n                                                      <img src="http://alpademo.com/zomo/uploads/stores/products/{{product.pr_image}}" onError="this.src=\'./assets/images/not-available.jpg\'" style="width:100px;height:100px" alt="">\n                                                   </ion-col>\n                                                </ion-row>\n                                                <ion-row>\n                                                   <ion-col>   \n                                                      <h2 style="margin-bottom: 0">{{product.pr_name | titlecase}}</h2>\n                                                   </ion-col>\n                                                </ion-row>\n                                                <!-- <ion-row>\n                                                   <ion-col>\n                                                         <p><span>Variants: </span><span *ngFor="let variant of toArray(product.pr_colors)">{{variant | titlecase}}&nbsp;&nbsp;</span></p>\n                                                         <button ion-button small outline *ngFor="let size of toArray(product.pr_sizes)">{{size | titlecase}}</button>                                            \n                                                   </ion-col>\n                                                </ion-row>\n                                                <ion-row>\n                                                      <ion-col>\n                                                         <span style="color:#faad14;text-decoration: line-through;">₹ {{product.pr_original_amount}}</span>                                             \n                                                         <span> ₹ {{product.pr_sale_amount}}</span>\n                                                      </ion-col>\n                                                </ion-row> -->\n                                          </li>\n                                    </ul>\n                                 \n                              <!-- Card Body -->\n                              \n                               </div>\n                              <!-- /card body -->\n                              </div>\n                           <!-- Card -->\n                           <!--<div class="card">-->\n                           <!-- Card Body -->\n                           <!--  <div class="card-body">-->\n                           <!--    <h2 class="card-title" >Contact Requests</h2>-->\n                           <!-- Card Body -->\n                           <!--    <ul class="dt-list dt-list-one-third">-->\n                           <!--      <li class="dt-list__item" *ngFor="let contact of storeDetail?.contact_request_list">-->\n                           <!-- Media -->\n                           <!--        <div class="media">-->\n                           <!--<i class="icon icon-company icon-4x mr-5 align-self-center text-warning"></i>-->\n                           <!-- Media Body -->\n                           <!--          <div class="media-body">-->\n                           <!--            <h4 style="margin-bottom: 0;">{{contact.contact_user_name | titlecase}}</h4>-->\n                           <!--            <span class="d-block text-light-gray f-12 mb-1">{{contact.contact_email_id}}</span>-->\n                           <!--            <h5 class="mb-0">ph:{{phoneMask(contact.contact_mobile_number,contact.country_id)}}</h5>-->\n                           <!--            <div class="d-flex align-items-center mb-1">-->\n                           <!--              {{contact.contact_message}}-->\n                           <!--            </div>-->\n                           <!--          </div>-->\n                           <!-- /media body -->\n                           <!--        </div>-->\n                           <!-- /media -->\n                           <!--      </li>-->\n                           <!-- /list item -->\n                           <!--    </ul>-->\n                           <!--  </div>-->\n                           <!-- /card body -->\n                           <!--</div>-->\n                           <!-- /card -->\n                        </div>\n                        <!-- /grid item -->\n                     </div>\n                     <!-- /grid -->\n                  </div>\n                  <!-- /profile content -->\n               </div>\n  </div>\n</ion-content>\n'/*ion-inline-end:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\sub-options-with-icons\sub-option-one\sub-option-one.html"*/
-        }),
-        Object(__WEBPACK_IMPORTED_MODULE_7__shared_side_menu_content_custom_decorators_side_menu_display_text_decorator__["a" /* SideMenuDisplayText */])("Sub Option 1"),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */],
-            __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_store_store__["a" /* StoreProvider */],
-            __WEBPACK_IMPORTED_MODULE_6__providers_store_product__["a" /* ProductProvider */]])
-    ], SubOptionOnePage);
-    return SubOptionOnePage;
-}());
-
-var ImageModal2 = /** @class */ (function () {
-    function ImageModal2(navParams, toastCtrl, modalController, viewCtrl, alertCtrl, storeProvider, productProvider) {
-        this.navParams = navParams;
-        this.toastCtrl = toastCtrl;
-        this.modalController = modalController;
-        this.viewCtrl = viewCtrl;
-        this.alertCtrl = alertCtrl;
-        this.storeProvider = storeProvider;
-        this.productProvider = productProvider;
-        this.imgPos = 0;
-        console.clear();
-    }
-    ImageModal2.prototype.ngOnInit = function () {
-        this.imgs = this.navParams.get("img");
-        this.fromProductPage = this.navParams.get("prodtct");
-        this.imgPos = this.navParams.get("pos");
-        this.productId = this.navParams.get("id");
-        console.log(this.imgPos);
-        // if(this.imgPos){
-        //    this.slides.slideTo(this.imgPos,500)
-        // }
-    };
-    ImageModal2.prototype.deleteProductImage = function (image_id) {
-        var _this = this;
-        var alert = this.alertCtrl.create({
-            title: "Remove Image",
-            message: "Are You Sure ?",
-            buttons: [
-                {
-                    text: "No",
-                    role: "cancel",
-                    handler: function () {
-                        _this.productProvider
-                            .removeImage(_this.token, image_id, _this.productId)
-                            .subscribe(function (res4) {
-                            if (res4.status) {
-                                _this.presentToast(res4.message);
-                                _this.close();
-                            }
-                            else {
-                                _this.presentToast(res4.message);
-                            }
-                        });
-                    }
-                },
-                {
-                    text: "Yes",
-                    handler: function () { }
-                }
-            ]
-        });
-        alert.present();
-    };
-    ImageModal2.prototype.close = function () {
-        this.viewCtrl.dismiss();
-    };
-    ImageModal2.prototype.presentToast = function (msg) {
-        var toast = this.toastCtrl.create({
-            message: msg,
-            duration: 3000
-        });
-        toast.onDidDismiss(function () {
-            console.log("Dismissed toast");
-        });
-        toast.present();
-    };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* Slides */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* Slides */])
-    ], ImageModal2.prototype, "slides", void 0);
-    ImageModal2 = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            template: "\n    <ion-content fullscreen>\n      <ion-item class=\"close-fake\" no-lines text-center>\n        <button ion-button (click)=\"close()\" clear color=\"light\">\n          <ion-icon name=\"close\" item-start></ion-icon>\n          Back\n        </button>\n      </ion-item>\n\n      <ion-slides zoom #slider [initialSlide]=\"imgPos\">\n        <ion-slide *ngFor=\"let img of imgs\">\n          <div class=\"swiper-zoom-container\" padding>\n            <img\n              *ngIf=\"!fromProductPage\"\n              src=\"http://alpademo.com/zomo/uploads/stores/{{ img.image_name }}\"\n              class=\"img-fluid w-100\"\n              alt=\"Image Title\"\n            />\n            <img\n              *ngIf=\"fromProductPage\"\n              src=\"{{ img.image_name }}\"\n              class=\"img-fluid w-100\"\n              alt=\"Image Title\"\n            />\n          </div>\n        </ion-slide>\n      </ion-slides>\n    </ion-content>\n  ",
-            styles: [
-                "\n      .close-fake {\n        background: transparent;\n        ion-icon {\n          font-size: 2rem;\n        }\n        margin-top: 40px;\n      }\n\n      ion-content {\n        background: rgba(44, 39, 45, 0.84);\n      }\n\n      ion-slides {\n        height: 80%;\n      }\n    "
-            ]
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ViewController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_store_store__["a" /* StoreProvider */],
-            __WEBPACK_IMPORTED_MODULE_6__providers_store_product__["a" /* ProductProvider */]])
-    ], ImageModal2);
-    return ImageModal2;
-}());
-
-// Product Detail Page
-var UserProductModal = /** @class */ (function () {
-    function UserProductModal(navCtrl, navParams, toastCtrl, modalController, viewCtrl, storage, alertCtrl, cartService, productProvider) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.toastCtrl = toastCtrl;
-        this.modalController = modalController;
-        this.viewCtrl = viewCtrl;
-        this.storage = storage;
-        this.alertCtrl = alertCtrl;
-        this.cartService = cartService;
-        this.productProvider = productProvider;
-        this.product = [];
-        this.base_url = __WEBPACK_IMPORTED_MODULE_5__services_constants_service__["b" /* BASE_URL */];
-        this.cart = [];
-        this.items = [];
-    }
-    UserProductModal.prototype.goToGallery = function (i) {
-        var modal = this.modalController.create(ImageModal2, { img: this.product.images, prodtct: true }, { cssClass: "image-modal2" });
-        modal.present();
-    };
-    UserProductModal.prototype.ngOnInit = function () {
-        var _this = this;
-        this.items = this.cartService.getProducts();
-        this.cart = this.cartService.getCart();
-        this.id = this.navParams.get("id");
-        console.log(this.id);
-        this.productProvider.getUserProduct(this.id).subscribe(function (res4) {
-            if (res4.status) {
-                _this.product = res4.message;
-                _this.product.pr_main_image = _this.getImage(_this.product.pr_main_image);
-                _this.product.pr_image.forEach(function (element) {
-                    element.image_name = _this.getImage(element.image_name);
-                });
-                console.log(_this.product);
-            }
-            else {
-                _this.presentToast(res4.message);
-            }
-        });
-    };
-    UserProductModal.prototype.getImage = function (img) {
-        console.log(this.base_url + "/uploads/stores/products/" + img);
-        return this.base_url + "/uploads/stores/products/" + img;
-    };
-    UserProductModal.prototype.toArray = function (arr) {
-        if (arr) {
-            return arr
-                .replace(/,/gi, " ")
-                .trim()
-                .split(" ");
-        }
-        else {
-            return arr;
-        }
-    };
-    UserProductModal.prototype.close = function () {
-        this.viewCtrl.dismiss();
-    };
-    UserProductModal.prototype.goToCart = function () {
-        this.navCtrl.push("CartPage");
-    };
-    UserProductModal.prototype.addToCart = function () {
-        var _this = this;
-        this.storage.get("me").then(function (val) {
-            if (!val) {
-                var alert_1 = _this.alertCtrl.create({
-                    message: "Please login to Continue further",
-                    buttons: [
-                        // {
-                        //   text: "",
-                        //   role: "cancel",
-                        //   handler: () => {
-                        //   }
-                        // },
-                        {
-                            text: "Login",
-                            handler: function () {
-                                _this.navCtrl.setRoot("LoginPage", { fromProduct: 'UserProductModal', id: _this.navParams.get("id") });
-                            }
-                        }
-                    ]
-                });
-                alert_1.present();
-            }
-            else {
-                _this.cartService.addProduct(_this.product);
-                _this.navCtrl.push("CartPage");
-            }
-        });
-    };
-    UserProductModal.prototype.buyNow = function () {
-        this.navCtrl.push("CheckoutPage");
-    };
-    UserProductModal.prototype.presentToast = function (msg) {
-        var toast = this.toastCtrl.create({
-            message: msg,
-            duration: 3000
-        });
-        toast.onDidDismiss(function () {
-            console.log("Dismissed toast");
-        });
-        toast.present();
-    };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* Slides */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* Slides */])
-    ], UserProductModal.prototype, "slides", void 0);
-    UserProductModal = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            template: "\n    <ion-header>\n      <ion-navbar>\n        <ion-title>Product Detail</ion-title>\n        <!--ion-buttons end>\n          <button ion-button (click)=\"goToCart()\">\n            <ion-icon ios=\"ios-cart\" md=\"md-cart\"></ion-icon>\n          </button>\n        </ion-buttons-->\n      </ion-navbar>\n    </ion-header>\n    <ion-content\n      fullscreen\n      class=\"product-detail\"\n      style=\"background-color: #f4f4f4;\"\n    >\n      <ion-slides pager style=\"height: 250px\">\n        <ion-slide *ngFor=\"let img of product?.pr_image\">\n          <img [src]=\"img.image_name\" />\n        </ion-slide>\n      </ion-slides>\n      <ion-card>\n        <ion-card-content>\n          <h2>{{ product?.pr_name | titlecase }}</h2>\n          <small>Special Price</small>\n          <p class=\"price\">\n            {{ product?.pr_sale_amount | currency: \"INR\" }}\n            <span\n              style=\"font-size: 10px;color:#faad14;text-decoration: line-through;\"\n              >{{ product?.pr_original_amount | currency: \"INR\" }}</span\n            >\n          </p>\n          <ion-badge width=\"25\"\n            >{{ product?.pr_rating }} <ion-icon name=\"star\"></ion-icon\n          ></ion-badge>\n        </ion-card-content>\n      </ion-card>\n\n      <ion-card *ngIf=\"product\">\n        <ion-card-content>\n          <ion-row class=\"detail\">\n            Details\n          </ion-row>\n          <h2><b>Note</b></h2>\n          <ul>\n            {{\n              product?.pr_description | titlecase\n            }}\n          </ul>\n          <h2><b>More</b></h2>\n          <li>\n            <span>Variants: </span>\n            <span *ngFor=\"let variant of toArray(product?.pr_colors)\"\n              >{{ variant | titlecase }}&nbsp;&nbsp;</span\n            >\n          </li>\n          <li>\n            <span>Sizes : </span>\n            <button\n              ion-button\n              small\n              outline\n              *ngFor=\"let size of toArray(product?.pr_sizes)\"\n            >\n              {{ size | titlecase }}\n            </button>\n          </li>\n        </ion-card-content>\n      </ion-card>\n    </ion-content>\n\n    <ion-footer style=\"background-color: #fff;\">\n      <ion-grid>\n        <ion-row>\n          <ion-col>\n            <ion-buttons>\n              <button ion-button full clear (click)=\"addToCart()\">\n                <ion-icon ios=\"ios-funnel\" md=\"md-funnel\"></ion-icon> Add To\n                Cart\n              </button>\n            </ion-buttons>\n          </ion-col>\n          <ion-col>\n            <ion-buttons>\n              <button ion-button full (click)=\"buyNow()\">\n                Buy Now\n              </button>\n            </ion-buttons>\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n    </ion-footer>\n  ",
-            styles: [""]
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ViewController */],
-            __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_8__providers_carts_service_carts_service__["a" /* CartsService */],
-            __WEBPACK_IMPORTED_MODULE_6__providers_store_product__["a" /* ProductProvider */]])
-    ], UserProductModal);
-    return UserProductModal;
-}());
-
-//# sourceMappingURL=sub-option-one.js.map
-
-/***/ }),
-
-/***/ 13:
+/***/ 12:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return API_URL; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return BASE_URL; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return COUNTRY_LIST; });
-var API_URL = 'http://alpademo.com/zomo/authe963ntica3te_gu32lar_a32pi_3po3jec2t/';
-var BASE_URL = 'http://alpademo.com/zomo/';
+var API_URL = 'http://192.168.1.100:81/zomo/authe963ntica3te_gu32lar_a32pi_3po3jec2t/';
+var BASE_URL = 'http://192.168.1.100:81/zomo/';
 var COUNTRY_LIST = [
     {
         "country_id": "1",
@@ -2848,13 +2229,15 @@ var COUNTRY_LIST = [
 
 /***/ }),
 
-/***/ 131:
+/***/ 129:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CartsService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_constants_service__ = __webpack_require__(12);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2866,39 +2249,602 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
+
 /*
-  Generated class for the CartsServiceProvider provider.
+  Generated class for the AuthProvider provider.
 
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
-var CartsService = /** @class */ (function () {
-    function CartsService(http) {
+var AuthProvider = /** @class */ (function () {
+    function AuthProvider(http, loadingCtrl) {
         this.http = http;
-        this.data = [];
-        this.cart = [];
-        console.log('Hello CartsServiceProvider Provider');
+        this.loadingCtrl = loadingCtrl;
+        console.log('Hello AuthProvider Provider');
     }
-    CartsService.prototype.getProducts = function () {
-        return this.data;
+    AuthProvider.prototype.login = function (user) {
+        var form_data = new FormData();
+        for (var key in user) {
+            form_data.append(key, user[key]);
+        }
+        var loader = this.loadingCtrl.create();
+        loader.present();
+        var result = this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/login', form_data);
+        if (result) {
+            loader.dismiss();
+            return result;
+        }
     };
-    CartsService.prototype.getCart = function () {
-        return this.cart;
+    AuthProvider.prototype.register = function (user) {
+        var form_data = new FormData();
+        for (var key in user) {
+            form_data.append(key, user[key]);
+        }
+        var loader = this.loadingCtrl.create();
+        loader.present();
+        var result = this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/signup/signup/', form_data);
+        if (result) {
+            loader.dismiss();
+            return result;
+        }
     };
-    CartsService.prototype.addProduct = function (product) {
-        this.cart.push(product);
+    AuthProvider.prototype.getDash = function (token) {
+        var form_data = new FormData();
+        form_data.append('token', token);
+        var loader = this.loadingCtrl.create();
+        loader.present();
+        var result = this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/dashboard/dash_fetch_user_detail', form_data);
+        if (result) {
+            loader.dismiss();
+            return result;
+        }
     };
-    CartsService.prototype.setCart = function (cart) {
-        this.cart = cart;
+    AuthProvider.prototype.checkUser = function (name) {
+        console.clear();
+        console.log(name);
+        var form_data = new FormData();
+        form_data.append('user_name', name);
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/signup/valid_user_name', form_data);
     };
-    CartsService = __decorate([
+    AuthProvider.prototype.forgot = function (user) {
+        console.clear();
+        console.log(user);
+        var form_data = new FormData();
+        for (var key in user) {
+            form_data.append(key, user[key]);
+        }
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/forgot_password/', form_data);
+    };
+    AuthProvider.prototype.verify = function (user) {
+        console.clear();
+        console.log(user);
+        var form_data = new FormData();
+        for (var key in user) {
+            form_data.append(key, user[key]);
+        }
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/forgot_password/verify_otp/', form_data);
+    };
+    AuthProvider.prototype.set_new_password = function (user) {
+        console.clear();
+        console.log(user);
+        var form_data = new FormData();
+        for (var key in user) {
+            form_data.append(key, user[key]);
+        }
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/forgot_password/set_new_password/', form_data);
+    };
+    AuthProvider.prototype.updateUser = function (user) {
+        console.clear();
+        console.log(user);
+        var form_data = new FormData();
+        for (var key in user) {
+            form_data.append(key, user[key]);
+        }
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/profile/update_personal/', form_data);
+    };
+    AuthProvider.prototype.updatePassword = function (user) {
+        console.clear();
+        console.log(user);
+        var form_data = new FormData();
+        for (var key in user) {
+            form_data.append(key, user[key]);
+        }
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/profile/update_password/', form_data);
+    };
+    AuthProvider.prototype.updateSocial = function (user) {
+        console.clear();
+        console.log(user);
+        var form_data = new FormData();
+        for (var key in user) {
+            form_data.append(key, user[key]);
+        }
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/profile/social_media/', form_data);
+    };
+    AuthProvider.prototype.updatePayments = function (user) {
+        console.clear();
+        console.log(user);
+        var form_data = new FormData();
+        for (var key in user) {
+            form_data.append(key, user[key]);
+        }
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/profile/imps_payment/', form_data);
+    };
+    AuthProvider.prototype.updateCrypto = function (user) {
+        console.clear();
+        console.log(user);
+        var form_data = new FormData();
+        for (var key in user) {
+            form_data.append(key, user[key]);
+        }
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/profile/payment_btc_address/', form_data);
+    };
+    AuthProvider.prototype.updateKYC = function (user) {
+        console.clear();
+        console.log(user);
+        var form_data = new FormData();
+        for (var key in user) {
+            form_data.append(key, user[key]);
+        }
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/profile/kyc_verification/', form_data);
+    };
+    AuthProvider.prototype.resendEmail = function (token) {
+        var form_data = new FormData();
+        form_data.append("token", token);
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/profile/verify_user_email/', form_data);
+    };
+    AuthProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
-    ], CartsService);
-    return CartsService;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* LoadingController */]])
+    ], AuthProvider);
+    return AuthProvider;
 }());
 
-//# sourceMappingURL=carts-service.js.map
+//# sourceMappingURL=auth.js.map
+
+/***/ }),
+
+/***/ 130:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return SubOptionOnePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ImageModal2; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return UserProductModal; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_store_store__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_libphonenumber_js__ = __webpack_require__(131);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_constants_service__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_store_product__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__shared_side_menu_content_custom_decorators_side_menu_display_text_decorator__ = __webpack_require__(248);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_carts_service_carts_service__ = __webpack_require__(67);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+// Side Menu Component
+
+
+var SubOptionOnePage = /** @class */ (function () {
+    function SubOptionOnePage(navCtrl, toastCtrl, alertCtrl, modalCtrl, storage, navParams, storeProvider, productProvider) {
+        var _this = this;
+        this.navCtrl = navCtrl;
+        this.toastCtrl = toastCtrl;
+        this.alertCtrl = alertCtrl;
+        this.modalCtrl = modalCtrl;
+        this.storage = storage;
+        this.navParams = navParams;
+        this.storeProvider = storeProvider;
+        this.productProvider = productProvider;
+        this.category = [];
+        this.countries = __WEBPACK_IMPORTED_MODULE_5__services_constants_service__["c" /* COUNTRY_LIST */];
+        this.tabswitch = "About";
+        this.storage.get("me").then(function (val) {
+            _this.getdata();
+        });
+        console.clear();
+        console.log(this.navParams.get("name"));
+    }
+    SubOptionOnePage.prototype.getdata = function () {
+        var _this = this;
+        this.storeProvider
+            .getStoreByName(this.navParams.get("name"))
+            .subscribe(function (resp) {
+            console.log(resp);
+            if (resp.status) {
+                _this.storeDetail = resp.message[0];
+            }
+        });
+        console.log(this.storeDetail);
+        this.productProvider.getUserProductList().subscribe(function (resp) {
+            console.log(resp);
+            if (resp.status) {
+                _this.products = resp.message;
+            }
+        });
+        this.storeProvider.getCategoryList().subscribe(function (data) {
+            if (data.status) {
+                _this.category = data.message;
+            }
+        });
+    };
+    SubOptionOnePage.prototype.goToGallery = function (i) {
+        var modal = this.modalCtrl.create(ImageModal2, { img: this.storeDetail.store_other_images, pos: i }, { cssClass: "image-modal2" });
+        modal.present();
+    };
+    SubOptionOnePage.prototype.phoneMask = function (phoneValue, country) {
+        var country_id = this.getCountry(country);
+        try {
+            var phoneNumber = Object(__WEBPACK_IMPORTED_MODULE_4_libphonenumber_js__["a" /* parsePhoneNumberFromString */])(country_id + phoneValue);
+            return phoneNumber.formatNational();
+        }
+        catch (error) {
+            return phoneValue;
+        }
+    };
+    SubOptionOnePage.prototype.getphoneuri = function (phoneValue, country) {
+        var country_id = this.getCountry(country);
+        // console.log(country_id)
+        try {
+            var phoneNumber = Object(__WEBPACK_IMPORTED_MODULE_4_libphonenumber_js__["a" /* parsePhoneNumberFromString */])(country_id + phoneValue);
+            return phoneNumber.getURI();
+        }
+        catch (error) {
+            return phoneValue;
+        }
+    };
+    SubOptionOnePage.prototype.goToEdit = function () {
+        this.navCtrl.push("EditStorePage", { store: this.storeDetail });
+    };
+    SubOptionOnePage.prototype.reviewRatings = function (val) {
+        var rating = [];
+        for (var i = 0; i < parseInt(val); i++) {
+            rating.push("star");
+        }
+        return rating;
+    };
+    SubOptionOnePage.prototype.getCountry = function (id) {
+        if (id) {
+            return this.countries.find(function (country) { return country.country_id == id; })
+                .country_code;
+        }
+    };
+    SubOptionOnePage.prototype.getCatName = function (val) {
+        if (val) {
+            return this.category.find(function (cat) { return cat.id == val; }).category_name;
+        }
+    };
+    SubOptionOnePage.prototype.getPaymentMethod = function (str) {
+        if (str) {
+            var res = str.split(",");
+            var payment = [];
+            if (this.findInArray(res, "1") >= 0) {
+                payment.push("Cash");
+            }
+            if (this.findInArray(res, "2") >= 0) {
+                payment.push("Credit Card");
+            }
+            if (this.findInArray(res, "3") >= 0) {
+                payment.push("Debit Card");
+            }
+            var method = payment.toString();
+            var regex = /,/gi;
+            return method.replace(regex, "/");
+        }
+    };
+    SubOptionOnePage.prototype.goToProductList = function (id) {
+        this.navCtrl.push(UserProductModal, { id: id });
+    };
+    SubOptionOnePage.prototype.findInArray = function (ar, val) {
+        for (var i = 0, len = ar.length; i < len; i++) {
+            if (ar[i] === val) {
+                // strict equality test
+                return i;
+            }
+        }
+        return -1;
+    };
+    SubOptionOnePage.prototype.addMoreImages = function () {
+        document.getElementById("add_other_images").click();
+    };
+    // getOtherImage(files: FileList) {
+    //   var form_data = new FormData();
+    //   this.storeProvider.UploadOtherImage(this.token,files.item(0),this.storeDetail.id).subscribe((res4:any) => {
+    //     if (res4.status){
+    //     this.presentToast(res4.message);
+    //     this.storage.get('me').then((val:any)=>{
+    //  		this.getdata(val.token)
+    //  	})
+    //     }
+    //     else{
+    //     this.presentToast(res4.message);
+    //     }
+    //   })
+    // }
+    // enable_disable(val){
+    //     var form_data = new FormData();
+    //     console.clear();
+    //     form_data.append('visible_status',val);
+    //     form_data.append("token", localStorage.getItem('token') );
+    //     this.storeProvider.storeEnableDisable(this.token,val).subscribe((res4:any) => {
+    //       if (res4.status){
+    //       this.presentToast(res4.message);
+    //       this.storage.get('me').then((val:any)=>{
+    //  		this.getdata(val.token)
+    //  	})
+    //       }
+    //       else{
+    //       this.presentToast(res4.message);
+    //       }
+    //   })
+    // }
+    SubOptionOnePage.prototype.ionViewDidLoad = function () {
+        console.log("ionViewDidLoad ViewStorePage");
+    };
+    SubOptionOnePage.prototype.presentToast = function (msg) {
+        var toast = this.toastCtrl.create({
+            message: msg,
+            duration: 3000
+        });
+        toast.onDidDismiss(function () {
+            console.log("Dismissed toast");
+        });
+        toast.present();
+    };
+    Object.defineProperty(SubOptionOnePage.prototype, "colors", {
+        get: function () {
+            var colors = ["8249b3", "8249b3", "b73f8f", "de7300"];
+            return colors[Math.floor(Math.random() * 3)];
+        },
+        enumerable: true,
+        configurable: true
+    });
+    SubOptionOnePage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: "page-sub-option-one",template:/*ion-inline-start:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\sub-options-with-icons\sub-option-one\sub-option-one.html"*/'<!--\n  Generated template for the ViewStorePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n--><!-- \n<ion-header>\n   <ion-navbar color="primary">\n      <button ion-button menuToggle>\n         <ion-icon name="menu"></ion-icon>\n      </button>\n      <ion-title>Create Offer</ion-title>\n   </ion-navbar>\n</ion-header> -->\n\n\n<ion-content padding>\n  <div class="dt-root">\n   <div class="profile">\n                  <!-- Profile Banner -->\n                  <div class="profile__banner">\n                     <!-- Profile Banner Top -->\n                     <button ion-button menuToggle icon-only clear color="light">\n              <ion-icon name="menu"></ion-icon>\n           </button>\n                     <div class="profile__banner-top">\n                        <!-- Avatar Wrapper -->\n                        <div class="dt-avatar-wrapper">\n                           <!-- Avatar -->\n                           <img class="dt-avatar dt-avatar__shadow size-90 mr-sm-4" src="http://192.168.1.100:81/zomo/uploads/stores/{{storeDetail?.store_image}}" alt="{{storeDetail?.store_name | titlecase}}">\n                           <!-- /avatar -->\n                           <!-- Info -->\n                           <div class="dt-avatar-info">\n                              <span class="dt-avatar-name display-4 mb-2 font-weight-light">{{storeDetail?.store_name | titlecase}}</span>\n                              <span class="f-16">{{storeDetail?.store_address | titlecase}} {{storeDetail?.city_name | titlecase}} {{storeDetail?.state_name | titlecase}} </span>\n                           </div>\n                           <!-- /info -->\n                        </div>\n                     </div>\n                     <!-- /profile banner top -->\n                  </div>\n                  <!-- /profile banner -->\n                  <!-- Profile Content -->\n                  <div class="profile-content">\n                     <!-- Grid -->\n                     <div class="row">\n                        <!-- Grid Item -->\n                        <div class="col-xl-4 order-xl-2">\n                           <!-- Grid -->\n                           <div class="row">\n                              <!-- Grid Item -->\n                              <div class="col-xl-12 col-md-6 col-12 order-xl-1">\n                                 <!-- Card -->\n                                 <div class="dt-card dt-card__full-height">\n                                    <!-- Card Header -->\n                                    <div class="dt-card__header">\n                                       <!-- Card Heading -->\n                                       <div class="dt-card__heading">\n                                          <h3 class="dt-card__title">Contact</h3>\n                                       </div>\n                                       <!-- /card heading -->\n                                    </div>\n                                    <!-- /card header -->\n                                    <!-- Card Body -->\n                                    <div class="dt-card__body">\n                                       <!-- Media -->\n                                       <div class="media mb-5">\n                                          <i class="icon icon-email icon-xl mr-5"></i>\n                                          <!-- Media Body -->\n                                          <div class="media-body">\n                                             <span class="d-block text-light-gray f-12 mb-1">Mail</span>\n                                             <a href="mailto:{{storeDetail?.contact_email_id}}">{{storeDetail?.contact_email_id}}</a>\n                                          </div>\n                                          <!-- /media body -->\n                                       </div>\n                                       <!-- /media -->\n                                       <!-- Media -->\n                                       <div class="media mb-5">\n                                          <i class="icon icon-link icon-xl mr-5"></i>\n                                          <!-- Media Body -->\n                                          <div class="media-body">\n                                             <span class="d-block text-light-gray f-12 mb-1">Web Page</span>\n                                             <a href="{{storeDetail?.website_link}}" target="_blank">{{storeDetail?.website_link}}</a>\n                                          </div>\n                                          <!-- /media body -->\n                                       </div>\n                                       <!-- /media -->\n                                       <!-- Media -->\n                                       <div class="media mb-5">\n                                          <i class="icon icon-phone icon-xl mr-5"></i>\n                                          <!-- Media Body -->\n                                          <div class="media-body">\n                                             <span class="d-block text-light-gray f-12 mb-1">Phone</span>\n                                             <span class="h5">\n                                             <a href = "{{getphoneuri(storeDetail?.contact_number_one,storeDetail?.country_id)}}">{{phoneMask(storeDetail?.contact_number_one,storeDetail?.country_id)}}</a>, \n                                             <a href = "{{getphoneuri(storeDetail?.contact_number_two,storeDetail?.country_id)}}" >{{phoneMask(storeDetail?.contact_number_two,storeDetail?.country_id)}}</a>\n                                             </span>\n                                          </div>\n                                       </div>\n                                       <!-- /media body -->\n                                       <!-- Media -->\n                                       <div class="media">\n                                          <i class="icon icon-culture-calendar icon-xl mr-5"></i>\n                                          <!-- Media Body -->\n                                          <div class="media-body">\n                                             <span class="d-block text-light-gray f-12 mb-1">Social</span>\n                                             <span class="h5">\n                                             <a  *ngIf="storeDetail?.facebook" href = "{{storeDetail?.facebook}}"><img style="width:20px; margin-right: 10px;border-radius:50% " src="/assets/images/facebook.png"/></a>\n                                             <a  *ngIf="storeDetail?.twitter" href = "{{storeDetail?.twitter}}"><img style="width:20px; margin-right: 10px;border-radius:50% " src="/assets/images/twitter.png"/></a>\n                                             <a  *ngIf="storeDetail?.telegram" href = "{{storeDetail?.telegram}}"><img style="width:20px; margin-right: 10px;border-radius:50% " src="/assets/images/telegram.png"/></a>\n                                             <a  *ngIf="storeDetail?.instagram" href = "{{storeDetail?.instagram}}"><img style="width:20px; margin-right: 10px;border-radius:50% " src="/assets/images/instagram.png"/></a>\n                                             </span>\n                                          </div>\n                                          <!-- /media body -->\n                                       </div>\n                                       <!-- /media -->\n                                    </div>\n                                    <!-- /card body -->\n                                 </div>\n                                 <!-- /card -->\n                              </div>\n                              <!-- /grid item -->\n                              <!-- Grid Item -->\n                              <div class="col-12 order-xl-2">\n                                 <!-- Card -->\n                                 <div class="dt-card dt-card__full-height">\n                                    <!-- Card Header -->\n                                    <div class="dt-card__header">\n                                       <!-- Card Heading -->\n                                       <div class="dt-card__heading">\n                                          <h3 class="dt-card__title">Media</h3>\n                                       </div>\n                                       <!-- /card heading -->\n                                    </div>\n                                    <!-- /card header -->\n                                    <!-- Card Body -->\n                                    <div class="dt-card__body">\n                                       <!-- List -->\n                                       <ul class="dt-gallery-list">\n                                          <li  *ngFor="let img of storeDetail?.store_other_images;let i = index;"><img (click)="goToGallery(i)" src="http://192.168.1.100:81/zomo/uploads/stores/{{img.image_name}}" class="img-fluid w-100" alt="Image Title"></li>\n                                       </ul>\n                                       <!-- /list -->\n                           <!--             <div class="mt-5" *ngIf="storeDetail?.store_status == \'1\'">\n                                          <a style="color: #038fde;cursor: pointer" (click)="addMoreImages()"><span>Add More Images </span> <i class="icon icon-plus-sign-alt icon-xl ml-1"></i> </a>\n                                          <input type="file" style="display:none;" (change)="getOtherImage($event.target.files)" id="add_other_images" accept="image/*" class="form-control">\n                                       </div> -->\n                                    </div>\n                                    <!-- /card Body -->\n                                 </div>\n                                 <!-- /card -->\n                              </div>\n                              <!-- /grid item -->\n                              <!--<div class="col-xl-12 col-md-6 col-12 order-xl-3">-->\n                              <!-- Card -->\n                              <!--          <div class="dt-card dt-card__full-height">-->\n                              <!-- Card Header -->\n                              <!--            <div class="dt-card__header">-->\n                              <!-- Card Heading -->\n                              <!--              <div class="dt-card__heading">-->\n                              <!--                <h3 class="dt-card__title">Categories-->\n                              <!--                </h3>-->\n                              <!--              </div>-->\n                              <!-- /card heading -->\n                              <!--            </div>-->\n                              <!-- /card header -->\n                              <!-- Card Body -->\n                              <!--            <div class="dt-card__body pb-5">-->\n                              <!--  <div class="categories_search_block">-->\n                              <!--    <div class="input-group mb-3">-->\n                              <!--      <span class="input-group-addon"><i class="icon icon-search icon-fw"></i></span>-->\n                              <!--      <input type="email" class="form-control" id="email" placeholder="Search here">-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Food-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Dinner-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Fast Food-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Cafe, Bakeries and Desserts-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Late Night-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Restro Bar-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Pub-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Restro Bar-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--  </div>-->\n                              <!--            </div>-->\n                              <!-- /card body -->\n                              <!--  <div class="dt-card__header">-->\n                              <!-- Card Heading -->\n                              <!--              <div class="dt-card__heading">-->\n                              <!--                <h3 class="dt-card__title">Location-->\n                              <!--                </h3>-->\n                              <!--              </div>-->\n                              <!-- /card heading -->\n                              <!--            </div>  -->\n                              <!-- Card Body -->\n                              <!--            <div class="dt-card__body pb-5">-->\n                              <!--  <div class="categories_search_block">-->\n                              <!--    <div class="input-group mb-3">-->\n                              <!--      <span class="input-group-addon"><i class="icon icon-search icon-fw"></i></span>-->\n                              <!--      <input type="email" class="form-control" id="email" placeholder="Search here">-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Hubli-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Shanti Nagar-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Old Bustand-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Manoj Park-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Deshpande Nagar-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Unkal Lake-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--  </div>-->\n                              <!--            </div>-->\n                              <!-- /card body -->\n                              <!--          </div>-->\n                              <!-- /card -->\n                              <!--        </div>-->\n                           </div>\n                           <!-- /grid -->\n                        </div>\n                        <!-- /grid item -->\n                        <!-- Grid Item -->\n                        <div class="col-xl-8 order-xl-1">\n                           <!-- Card -->\n                           <div class="card">\n                              <!-- Card Header -->\n                              <div class="card-header card-nav bg-transparent d-flex justify-content-between">\n                                 <div class="row" style="width: 100%;">\n                                    <div class="col-md-8">\n                                       <h2 *ngIf="storeDetail?.store_status == \'1\' || storeDetail?.store_status == \'0\'" class="mb--20">{{storeDetail?.store_tag_line |titlecase}}</h2>\n                                       <h2 *ngIf="storeDetail?.store_status == \'2\'" style="color:#F00" class="mb--20">Your Approval is Rejected <a  style="color:#038fde"  data-toggle="modal" data-target="#exampleModalLong">(Details)</a></h2>\n                                       <h2 *ngIf="storeDetail?.store_status == \'3\'" style="color:#F00" class="mb--20">Your store is Blocked <a  style="color:#038fde"  data-toggle="modal" data-target="#exampleModalLong1">(Details)</a></h2>\n                                       <p class="mb-1" *ngIf="storeDetail?.store_status == \'0\'" style="color: #faad14;margin-top: 20px;margin-bottom: 0px !important;"> Your Approval is Pending</p>\n                                    </div>\n                                    <!-- <div class="col-md-4 text-right">\n                     <button (click)="goToEdit()" class="btn btn-info">Edit</button>\n                                       <button class="btn btn-danger" *ngIf="storeDetail?.visible_status == \'1\' && storeDetail?.store_status == \'1\'" (click)="enable_disable(0)">Disable</button>\n                                       <button class="btn btn-success" *ngIf="storeDetail?.visible_status == \'0\' && storeDetail?.store_status == \'1\'" (click)="enable_disable(1)">Enable</button>\n                                    </div> -->\n                                 </div>\n                                 <ul class="card-header-links nav nav-underline" role="tablist">\n                                    <!--<li class="nav-item">\n                                       s  <a class="nav-link active" data-toggle="tab" href="#tab-pane1" role="tab"\n                                            aria-controls="tab-pane1"\n                                            aria-selected="true">About</a>\n                                       </li>\n                                       \n                                       <li class="nav-item">\n                                         <a class="nav-link" data-toggle="tab" href="#tab-pane3" role="tab" aria-controls="tab-pane3"\n                                            aria-selected="true">Review</a>\n                                       </li>-->\n                                 </ul>\n                              </div>\n                              <!-- /card header -->\n                              <!-- Card Body -->\n                              <div class="card-body pb-2">\n                                 <!-- Tab Content-->\n                                 <div class="tab-content mt-5">\n                                    <!-- Tab panel -->\n                                    <div id="tab-pane1" class="tab-pane active">\n                                       <!-- List -->\n                                       <ul class="dt-list dt-list-one-third">\n                                          <!-- List Item -->\n                                          <li class="dt-list__item">\n                                             <!-- Media -->\n                                             <div class="media">\n                                                <i class="icon icon-company icon-4x mr-5 align-self-center text-warning"></i>\n                                                <!-- Media Body -->\n                                                <div class="media-body">\n                                                   <span class="d-block text-light-gray f-12 mb-1">Category</span>\n                                                   <h5 class="mb-0">{{getCatName(storeDetail?.store_category_id)}}</h5>\n                                                </div>\n                                                <!-- /media body -->\n                                             </div>\n                                             <!-- /media -->\n                                          </li>\n                                          <!-- /list item -->\n                                          <!-- List Item -->\n                                          <li class="dt-list__item">\n                                             <!-- Media -->\n                                             <div class="media">\n                                                <i class="icon icon-card icon-4x mr-5 align-self-center text-warning"></i>\n                                                <!-- Media Body -->\n                                                <div class="media-body">\n                                                   <span class="d-block text-light-gray f-12 mb-1">Payment Method</span>\n                                                   <h5 class="mb-0">{{getPaymentMethod(storeDetail?.payment_receive_ids)}}</h5>\n                                                </div>\n                                                <!-- /media body -->\n                                             </div>\n                                             <!-- /media -->\n                                          </li>\n                                          <!-- /list item -->\n                                          <!-- List Item -->\n                                          <li class="dt-list__item">\n                                             <!-- Media -->\n                                             <div class="media">\n                                                <i class="icon icon-home icon-4x mr-5 align-self-center text-warning"></i>\n                                                <!-- Media Body -->\n                                                <div class="media-body">\n                                                   <span class="d-block text-light-gray f-12 mb-1">Lives in</span>\n                                                   <h5 class="mb-0">{{storeDetail?.city_name | titlecase}}, {{storeDetail?.state_name | titlecase}} </h5>\n                                                </div>\n                                                <!-- /media body -->\n                                             </div>\n                                             <!-- /media -->\n                                          </li>\n                                          <!-- /list item -->\n                                          <!-- List Item -->\n                                          <!-- /list item -->\n                                       </ul>\n                                       <!-- /list -->\n                                    </div>\n                                    <!-- /tab panel -->\n                                 </div>\n                                 <!-- /tab content-->\n                              </div>\n                              <!-- /card body -->\n                           </div>\n                           <!-- /card -->\n                           <!-- Card -->\n                           <div class="card">\n                              <!-- Card Body -->\n                              <div class="card-body">\n                                 <h2 class="card-title">Details About Us</h2>\n                                 <!-- Card Text -->\n                                 <h6 class="card-subtitle">A little flash back of {{storeDetail?.store_name | titlecase}}</h6>\n                                 <!-- /card text -->\n                                 <!-- Card Text -->\n                                 <!--                      <p class="card-text lead">\n                                    Donec dignissim gravida sem, ut cursus dolor hendrerit et. Morbi volutpat.\n                                    </p>-->\n                                 <!-- /card text -->\n                                 <!-- Card Text -->\n                                 <p class="card-text" innerHtml="{{storeDetail?.store_description}}">\n                                 </p>\n                                 <!-- /card text -->\n                              </div>\n                              <!-- /card body -->\n                           </div>\n                           <!-- /card -->\n                           <!-- Card -->\n                           <div class="card" *ngIf="storeDetail?.store_reviews?.length > 0">\n                              <!-- Card Body -->\n                              <div class="card-body">\n                                 <h2 class="card-title">Reviews</h2>\n                                 <!-- Card Body -->\n                                 <ul class="dt-list dt-list-one-third">\n                                    <li class="dt-list__item" *ngFor="let review of storeDetail?.store_reviews">\n                                       <!-- Media -->\n                                       <div class="media">\n                                          <!--<i class="icon icon-company icon-4x mr-5 align-self-center text-warning"></i>-->\n                                          <!-- Media Body -->\n                                          <div class="media-body">\n                                             <h4 style="margin-bottom: 0;">{{review.full_name | titlecase}}</h4>\n                                             <span class="d-block text-light-gray f-12 mb-1">{{review.date_n_time | date}}</span>\n                                             <h5 class="mb-0">{{review.store_review}}</h5>\n                                             <div class="d-flex align-items-center mb-1">\n                                                <i *ngFor="let rating of reviewRatings(review.store_rating);let i = index;" class="icon icon-star f-10 mr-1 text-warning"></i>\n                                             </div>\n                                          </div>\n                                          <!-- /media body -->\n                                       </div>\n                                       <!-- /media -->\n                                    </li>\n                                    <!-- /list item -->\n                                 </ul>\n                              </div>\n                              <!-- /card body -->\n                           </div>\n                           <!-- /card -->\n                           <div class="card" *ngIf="storeDetail?.offer_detail?.length > 0">\n                              <div class="card-body">\n                                 <h2 class="card-title">Offers</h2>\n                                 <div class="media" *ngFor="let offer of storeDetail?.offer_detail">\n                                    <div class="media-left" *ngIf="offer[\'offer_status\'] == \'1\'">\n                                       <img class="mr-3" style="border-radius:10px;" src="https://ui-avatars.com/api/?background={{colors}}&color=fff&name={{offer.offer_percenage}}%&length=3" alt="Generic placeholder image">\n                                    </div>\n                                    <div class="media-body">\n                                       <h5 class="mt-0 mb-1">{{offer.offer_title | titlecase}}</h5>\n                                       <p><span class="d-block text-light-gray f-12 mb-1">From : {{offer.start_date | date}}, To : {{offer.end_date | date}} </span> {{offer.description}}</p>\n                                    </div>\n                                 </div>\n                                 <!-- /card body -->\n                              </div>\n                              <!-- /card -->\n                           </div>\n                           <!-- <div class="card products">\n                               <div class="card-body">\n                                 <h2 class="card-title" >Products</h2>\n                                    <ul col-12 >\n                                          <li *ngFor="let product of products" (click)=\'goToProductList(product.id)\'>\n                                                <ion-row>\n                                                   <ion-col>\n                                                      <img src="http://192.168.1.100:81/zomo/uploads/stores/products/{{product.pr_image}}" onError="this.src=\'./assets/images/not-available.jpg\'" style="width:100px;height:100px" alt="">\n                                                   </ion-col>\n                                                </ion-row>\n                                                <ion-row>\n                                                   <ion-col>   \n                                                      <h2 style="margin-bottom: 0">{{product.pr_name | titlecase}}</h2>\n                                                   </ion-col>\n                                                </ion-row>\n                                            \n                                          </li>\n                                    </ul>\n                                 \n                              \n                               </div>\n                              </div> -->\n\n                           <!-- Card -->\n                           <!--<div class="card">-->\n                           <!-- Card Body -->\n                           <!--  <div class="card-body">-->\n                           <!--    <h2 class="card-title" >Contact Requests</h2>-->\n                           <!-- Card Body -->\n                           <!--    <ul class="dt-list dt-list-one-third">-->\n                           <!--      <li class="dt-list__item" *ngFor="let contact of storeDetail?.contact_request_list">-->\n                           <!-- Media -->\n                           <!--        <div class="media">-->\n                           <!--<i class="icon icon-company icon-4x mr-5 align-self-center text-warning"></i>-->\n                           <!-- Media Body -->\n                           <!--          <div class="media-body">-->\n                           <!--            <h4 style="margin-bottom: 0;">{{contact.contact_user_name | titlecase}}</h4>-->\n                           <!--            <span class="d-block text-light-gray f-12 mb-1">{{contact.contact_email_id}}</span>-->\n                           <!--            <h5 class="mb-0">ph:{{phoneMask(contact.contact_mobile_number,contact.country_id)}}</h5>-->\n                           <!--            <div class="d-flex align-items-center mb-1">-->\n                           <!--              {{contact.contact_message}}-->\n                           <!--            </div>-->\n                           <!--          </div>-->\n                           <!-- /media body -->\n                           <!--        </div>-->\n                           <!-- /media -->\n                           <!--      </li>-->\n                           <!-- /list item -->\n                           <!--    </ul>-->\n                           <!--  </div>-->\n                           <!-- /card body -->\n                           <!--</div>-->\n                           <!-- /card -->\n                        </div>\n                        <!-- /grid item -->\n                     </div>\n                     <!-- /grid -->\n                  </div>\n                  <!-- /profile content -->\n               </div>\n  </div>\n</ion-content>\n'/*ion-inline-end:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\sub-options-with-icons\sub-option-one\sub-option-one.html"*/
+        }),
+        Object(__WEBPACK_IMPORTED_MODULE_7__shared_side_menu_content_custom_decorators_side_menu_display_text_decorator__["a" /* SideMenuDisplayText */])("Sub Option 1"),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_store_store__["a" /* StoreProvider */],
+            __WEBPACK_IMPORTED_MODULE_6__providers_store_product__["a" /* ProductProvider */]])
+    ], SubOptionOnePage);
+    return SubOptionOnePage;
+}());
+
+var ImageModal2 = /** @class */ (function () {
+    function ImageModal2(navParams, toastCtrl, modalController, viewCtrl, alertCtrl, storeProvider, productProvider) {
+        this.navParams = navParams;
+        this.toastCtrl = toastCtrl;
+        this.modalController = modalController;
+        this.viewCtrl = viewCtrl;
+        this.alertCtrl = alertCtrl;
+        this.storeProvider = storeProvider;
+        this.productProvider = productProvider;
+        this.imgPos = 0;
+        console.clear();
+    }
+    ImageModal2.prototype.ngOnInit = function () {
+        this.imgs = this.navParams.get("img");
+        this.fromProductPage = this.navParams.get("prodtct");
+        this.imgPos = this.navParams.get("pos");
+        this.productId = this.navParams.get("id");
+        console.log(this.imgPos);
+        // if(this.imgPos){
+        //    this.slides.slideTo(this.imgPos,500)
+        // }
+    };
+    ImageModal2.prototype.deleteProductImage = function (image_id) {
+        var _this = this;
+        var alert = this.alertCtrl.create({
+            title: "Remove Image",
+            message: "Are You Sure ?",
+            buttons: [
+                {
+                    text: "No",
+                    role: "cancel",
+                    handler: function () {
+                        _this.productProvider
+                            .removeImage(_this.token, image_id, _this.productId)
+                            .subscribe(function (res4) {
+                            if (res4.status) {
+                                _this.presentToast(res4.message);
+                                _this.close();
+                            }
+                            else {
+                                _this.presentToast(res4.message);
+                            }
+                        });
+                    }
+                },
+                {
+                    text: "Yes",
+                    handler: function () { }
+                }
+            ]
+        });
+        alert.present();
+    };
+    ImageModal2.prototype.close = function () {
+        this.viewCtrl.dismiss();
+    };
+    ImageModal2.prototype.presentToast = function (msg) {
+        var toast = this.toastCtrl.create({
+            message: msg,
+            duration: 3000
+        });
+        toast.onDidDismiss(function () {
+            console.log("Dismissed toast");
+        });
+        toast.present();
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* Slides */]),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* Slides */])
+    ], ImageModal2.prototype, "slides", void 0);
+    ImageModal2 = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            template: "\n    <ion-content fullscreen>\n      <ion-item class=\"close-fake\" no-lines text-center>\n        <button ion-button (click)=\"close()\" clear color=\"light\">\n          <ion-icon name=\"close\" item-start></ion-icon>\n          Back\n        </button>\n      </ion-item>\n\n      <ion-slides zoom #slider [initialSlide]=\"imgPos\">\n        <ion-slide *ngFor=\"let img of imgs\">\n          <div class=\"swiper-zoom-container\" padding>\n            <img\n              *ngIf=\"!fromProductPage\"\n              src=\"http://192.168.1.100:81/zomo/uploads/stores/{{ img.image_name }}\"\n              class=\"img-fluid w-100\"\n              alt=\"Image Title\"\n            />\n            <img\n              *ngIf=\"fromProductPage\"\n              src=\"{{ img.image_name }}\"\n              class=\"img-fluid w-100\"\n              alt=\"Image Title\"\n            />\n          </div>\n        </ion-slide>\n      </ion-slides>\n    </ion-content>\n  ",
+            styles: [
+                "\n      .close-fake {\n        background: transparent;\n        ion-icon {\n          font-size: 2rem;\n        }\n        margin-top: 40px;\n      }\n\n      ion-content {\n        background: rgba(44, 39, 45, 0.84);\n      }\n\n      ion-slides {\n        height: 80%;\n      }\n    "
+            ]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ViewController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_store_store__["a" /* StoreProvider */],
+            __WEBPACK_IMPORTED_MODULE_6__providers_store_product__["a" /* ProductProvider */]])
+    ], ImageModal2);
+    return ImageModal2;
+}());
+
+// Product Detail Page
+var UserProductModal = /** @class */ (function () {
+    function UserProductModal(navCtrl, navParams, toastCtrl, modalController, viewCtrl, storage, alertCtrl, cartService, productProvider) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.toastCtrl = toastCtrl;
+        this.modalController = modalController;
+        this.viewCtrl = viewCtrl;
+        this.storage = storage;
+        this.alertCtrl = alertCtrl;
+        this.cartService = cartService;
+        this.productProvider = productProvider;
+        this.product = [];
+        this.base_url = __WEBPACK_IMPORTED_MODULE_5__services_constants_service__["b" /* BASE_URL */];
+        this.cart = [];
+        this.items = [];
+    }
+    UserProductModal.prototype.goToGallery = function (i) {
+        var modal = this.modalController.create(ImageModal2, { img: this.product.images, prodtct: true }, { cssClass: "image-modal2" });
+        modal.present();
+    };
+    UserProductModal.prototype.ngOnInit = function () {
+        var _this = this;
+        this.items = this.cartService.getProducts();
+        this.cart = this.cartService.getCart();
+        this.id = this.navParams.get("id");
+        console.log(this.id);
+        this.productProvider.getUserProduct(this.id).subscribe(function (res4) {
+            if (res4.status) {
+                _this.product = res4.message;
+                _this.product.pr_main_image = _this.getImage(_this.product.pr_main_image);
+                _this.product.pr_image.forEach(function (element) {
+                    element.image_name = _this.getImage(element.image_name);
+                });
+                console.log(_this.product);
+            }
+            else {
+                _this.presentToast(res4.message);
+            }
+        });
+    };
+    UserProductModal.prototype.getImage = function (img) {
+        console.log(this.base_url + "/uploads/stores/products/" + img);
+        return this.base_url + "/uploads/stores/products/" + img;
+    };
+    UserProductModal.prototype.toArray = function (arr) {
+        if (arr) {
+            return arr
+                .replace(/,/gi, " ")
+                .trim()
+                .split(" ");
+        }
+        else {
+            return arr;
+        }
+    };
+    UserProductModal.prototype.close = function () {
+        this.viewCtrl.dismiss();
+    };
+    UserProductModal.prototype.goToCart = function () {
+        this.navCtrl.push("CartPage");
+    };
+    UserProductModal.prototype.addToCart = function () {
+        var _this = this;
+        this.storage.get("me").then(function (val) {
+            if (!val) {
+                var alert_1 = _this.alertCtrl.create({
+                    message: "Please login to Continue further",
+                    buttons: [
+                        // {
+                        //   text: "",
+                        //   role: "cancel",
+                        //   handler: () => {
+                        //   }
+                        // },
+                        {
+                            text: "Login",
+                            handler: function () {
+                                _this.navCtrl.setRoot("LoginPage", { fromProduct: 'UserProductModal', id: _this.navParams.get("id") });
+                            }
+                        }
+                    ]
+                });
+                alert_1.present();
+            }
+            else {
+                _this.cartService.addProduct(_this.product);
+                _this.navCtrl.push("CartPage");
+            }
+        });
+    };
+    UserProductModal.prototype.buyNow = function () {
+        this.navCtrl.push("CheckoutPage");
+    };
+    UserProductModal.prototype.presentToast = function (msg) {
+        var toast = this.toastCtrl.create({
+            message: msg,
+            duration: 3000
+        });
+        toast.onDidDismiss(function () {
+            console.log("Dismissed toast");
+        });
+        toast.present();
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* Slides */]),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* Slides */])
+    ], UserProductModal.prototype, "slides", void 0);
+    UserProductModal = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            template: "\n    <ion-header>\n      <ion-navbar>\n        <ion-title>Product Detail</ion-title>\n        <!--ion-buttons end>\n          <button ion-button (click)=\"goToCart()\">\n            <ion-icon ios=\"ios-cart\" md=\"md-cart\"></ion-icon>\n          </button>\n        </ion-buttons-->\n      </ion-navbar>\n    </ion-header>\n    <ion-content\n      fullscreen\n      class=\"product-detail\"\n      style=\"background-color: #f4f4f4;\"\n    >\n      <ion-slides pager style=\"height: 250px\">\n        <ion-slide *ngFor=\"let img of product?.pr_image\">\n          <img [src]=\"img.image_name\" />\n        </ion-slide>\n      </ion-slides>\n      <ion-card>\n        <ion-card-content>\n          <h2>{{ product?.pr_name | titlecase }}</h2>\n          <small>Special Price</small>\n          <p class=\"price\">\n            {{ product?.pr_sale_amount | currency: \"INR\" }}\n            <span\n              style=\"font-size: 10px;color:#faad14;text-decoration: line-through;\"\n              >{{ product?.pr_original_amount | currency: \"INR\" }}</span\n            >\n          </p>\n          <ion-badge width=\"25\"\n            >{{ product?.pr_rating }} <ion-icon name=\"star\"></ion-icon\n          ></ion-badge>\n        </ion-card-content>\n      </ion-card>\n\n      <ion-card *ngIf=\"product\">\n        <ion-card-content>\n          <ion-row class=\"detail\">\n            Details\n          </ion-row>\n          <h2><b>Note</b></h2>\n          <ul>\n            {{\n              product?.pr_description | titlecase\n            }}\n          </ul>\n          <h2><b>More</b></h2>\n          <li>\n            <span>Variants: </span>\n            <span *ngFor=\"let variant of toArray(product?.pr_colors)\"\n              >{{ variant | titlecase }}&nbsp;&nbsp;</span\n            >\n          </li>\n          <li>\n            <span>Sizes : </span>\n            <button\n              ion-button\n              small\n              outline\n              *ngFor=\"let size of toArray(product?.pr_sizes)\"\n            >\n              {{ size | titlecase }}\n            </button>\n          </li>\n        </ion-card-content>\n      </ion-card>\n    </ion-content>\n\n    <ion-footer style=\"background-color: #fff;\">\n      <ion-grid>\n        <ion-row>\n          <ion-col>\n            <ion-buttons>\n              <button ion-button full clear (click)=\"addToCart()\">\n                <ion-icon ios=\"ios-funnel\" md=\"md-funnel\"></ion-icon> Add To\n                Cart\n              </button>\n            </ion-buttons>\n          </ion-col>\n          <ion-col>\n            <ion-buttons>\n              <button ion-button full (click)=\"buyNow()\">\n                Buy Now\n              </button>\n            </ion-buttons>\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n    </ion-footer>\n  ",
+            styles: [""]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ViewController */],
+            __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_8__providers_carts_service_carts_service__["a" /* CartsService */],
+            __WEBPACK_IMPORTED_MODULE_6__providers_store_product__["a" /* ProductProvider */]])
+    ], UserProductModal);
+    return UserProductModal;
+}());
+
+//# sourceMappingURL=sub-option-one.js.map
 
 /***/ }),
 
@@ -2909,8 +2855,8 @@ var CartsService = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OfferProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_constants_service__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_constants_service__ = __webpack_require__(12);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3005,38 +2951,40 @@ var OfferProvider = /** @class */ (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ngx_pagination__ = __webpack_require__(253);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ng2_search_filter__ = __webpack_require__(289);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__yellowspot_ng_truncate__ = __webpack_require__(257);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_status_bar__ = __webpack_require__(193);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_native_splash_screen__ = __webpack_require__(196);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ionic_storage__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_ionic_swipe_all__ = __webpack_require__(358);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_component__ = __webpack_require__(254);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_packages_running_package_running_package__ = __webpack_require__(255);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_manage_store_manage_offer_manage_offer__ = __webpack_require__(258);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_user_store_search_user_store_search__ = __webpack_require__(259);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_manage_store_view_store_view_store__ = __webpack_require__(136);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_sub_options_with_icons_sub_option_one_sub_option_one__ = __webpack_require__(129);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__shared_side_menu_content_side_menu_content_component__ = __webpack_require__(197);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__directives_click_outside_click_outside__ = __webpack_require__(362);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__providers_auth_auth__ = __webpack_require__(128);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__providers_invitees_invitees__ = __webpack_require__(250);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__providers_task_task__ = __webpack_require__(249);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__providers_profit_report_profit_report__ = __webpack_require__(251);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__providers_wallet_wallet__ = __webpack_require__(252);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__providers_store_store__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__providers_store_offer__ = __webpack_require__(132);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__providers_store_product__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__providers_key_key__ = __webpack_require__(248);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__providers_package_package__ = __webpack_require__(135);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__providers_carts_service_carts_service__ = __webpack_require__(131);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__pages_product_store_orders_store_orders__ = __webpack_require__(256);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_components_module__ = __webpack_require__(258);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_forms__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ngx_pagination__ = __webpack_require__(255);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ng2_search_filter__ = __webpack_require__(360);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__yellowspot_ng_truncate__ = __webpack_require__(261);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_native_status_bar__ = __webpack_require__(194);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ionic_native_splash_screen__ = __webpack_require__(197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_storage__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_ionic_swipe_all__ = __webpack_require__(361);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__app_component__ = __webpack_require__(254);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_packages_running_package_running_package__ = __webpack_require__(256);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_manage_store_manage_offer_manage_offer__ = __webpack_require__(259);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_user_store_search_user_store_search__ = __webpack_require__(260);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_manage_store_view_store_view_store__ = __webpack_require__(136);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_sub_options_with_icons_sub_option_one_sub_option_one__ = __webpack_require__(130);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__shared_side_menu_content_side_menu_content_component__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__directives_click_outside_click_outside__ = __webpack_require__(365);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__providers_auth_auth__ = __webpack_require__(129);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__providers_invitees_invitees__ = __webpack_require__(251);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__providers_task_task__ = __webpack_require__(250);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__providers_profit_report_profit_report__ = __webpack_require__(252);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__providers_wallet_wallet__ = __webpack_require__(253);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__providers_store_store__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__providers_store_offer__ = __webpack_require__(132);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__providers_store_product__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__providers_key_key__ = __webpack_require__(249);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__providers_package_package__ = __webpack_require__(135);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__providers_carts_service_carts_service__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__pages_product_store_orders_store_orders__ = __webpack_require__(257);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__pages_product_products_list_products_list__ = __webpack_require__(137);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3046,6 +2994,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 // Angular
  // tslint:disable-line
 
@@ -3071,8 +3020,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 // Custom components
+
 
 
 
@@ -3093,121 +3042,124 @@ var AppModule = /** @class */ (function () {
     }
     AppModule_1 = AppModule;
     AppModule = AppModule_1 = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_12__app_component__["a" /* MyApp */],
-                __WEBPACK_IMPORTED_MODULE_18__shared_side_menu_content_side_menu_content_component__["a" /* SideMenuContentComponent */],
-                __WEBPACK_IMPORTED_MODULE_13__pages_packages_running_package_running_package__["a" /* ModalContentPage */],
-                __WEBPACK_IMPORTED_MODULE_14__pages_manage_store_manage_offer_manage_offer__["b" /* OfferModal */],
-                __WEBPACK_IMPORTED_MODULE_16__pages_manage_store_view_store_view_store__["a" /* ImageModal */],
-                __WEBPACK_IMPORTED_MODULE_17__pages_sub_options_with_icons_sub_option_one_sub_option_one__["a" /* ImageModal2 */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_user_store_search_user_store_search__["a" /* PopoverPage */],
-                __WEBPACK_IMPORTED_MODULE_19__directives_click_outside_click_outside__["a" /* ClickOutsideDirective */],
-                __WEBPACK_IMPORTED_MODULE_16__pages_manage_store_view_store_view_store__["b" /* ProductModal */],
-                __WEBPACK_IMPORTED_MODULE_17__pages_sub_options_with_icons_sub_option_one_sub_option_one__["c" /* UserProductModal */],
-                __WEBPACK_IMPORTED_MODULE_31__pages_product_store_orders_store_orders__["a" /* OrderDetail */]
+                __WEBPACK_IMPORTED_MODULE_13__app_component__["a" /* MyApp */],
+                __WEBPACK_IMPORTED_MODULE_19__shared_side_menu_content_side_menu_content_component__["a" /* SideMenuContentComponent */],
+                __WEBPACK_IMPORTED_MODULE_14__pages_packages_running_package_running_package__["a" /* ModalContentPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_manage_store_manage_offer_manage_offer__["b" /* OfferModal */],
+                __WEBPACK_IMPORTED_MODULE_17__pages_manage_store_view_store_view_store__["a" /* ImageModal */],
+                __WEBPACK_IMPORTED_MODULE_18__pages_sub_options_with_icons_sub_option_one_sub_option_one__["a" /* ImageModal2 */],
+                __WEBPACK_IMPORTED_MODULE_16__pages_user_store_search_user_store_search__["a" /* PopoverPage */],
+                __WEBPACK_IMPORTED_MODULE_20__directives_click_outside_click_outside__["a" /* ClickOutsideDirective */],
+                __WEBPACK_IMPORTED_MODULE_33__pages_product_products_list_products_list__["a" /* ProductModal */],
+                __WEBPACK_IMPORTED_MODULE_18__pages_sub_options_with_icons_sub_option_one_sub_option_one__["c" /* UserProductModal */],
+                __WEBPACK_IMPORTED_MODULE_32__pages_product_store_orders_store_orders__["a" /* OrderDetail */]
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
+                __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["a" /* BrowserModule */],
                 // BrowserAnimationsModule,
-                __WEBPACK_IMPORTED_MODULE_3__angular_forms__["h" /* ReactiveFormsModule */],
-                __WEBPACK_IMPORTED_MODULE_3__angular_forms__["e" /* FormsModule */],
-                __WEBPACK_IMPORTED_MODULE_6__yellowspot_ng_truncate__["a" /* TruncateModule */],
-                __WEBPACK_IMPORTED_MODULE_7_ionic_angular__["e" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_12__app_component__["a" /* MyApp */], { mode: "ios" }, {
+                __WEBPACK_IMPORTED_MODULE_4__angular_forms__["h" /* ReactiveFormsModule */],
+                __WEBPACK_IMPORTED_MODULE_4__angular_forms__["e" /* FormsModule */],
+                __WEBPACK_IMPORTED_MODULE_0__components_components_module__["a" /* ComponentsModule */],
+                __WEBPACK_IMPORTED_MODULE_7__yellowspot_ng_truncate__["a" /* TruncateModule */],
+                __WEBPACK_IMPORTED_MODULE_8_ionic_angular__["e" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_13__app_component__["a" /* MyApp */], { mode: "ios" }, {
                     links: [
-                        { loadChildren: '../pages/auth/landing/landing.module#LandingPageModule', name: 'LandingPage', segment: 'landing', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/auth/forgot/forgot.module#ForgotPageModule', name: 'ForgotPage', segment: 'forgot', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/auth/landing/landing.module#LandingPageModule', name: 'LandingPage', segment: 'landing', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/auth/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/key/activate-key/activate-key.module#ActivateKeyPageModule', name: 'ActivateKeyPage', segment: 'activate-key', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/auth/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/invitees/referrals/referrals.module#ReferralsPageModule', name: 'ReferralsPage', segment: 'referrals', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/invitees/pairs/pairs.module#PairsPageModule', name: 'PairsPage', segment: 'pairs', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/invitees/referrals/referrals.module#ReferralsPageModule', name: 'ReferralsPage', segment: 'referrals', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/key/activate-key/activate-key.module#ActivateKeyPageModule', name: 'ActivateKeyPage', segment: 'activate-key', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/key/request-key/request-key.module#RequestKeyPageModule', name: 'RequestKeyPage', segment: 'request-key', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/key/transfer-key/transfer-key.module#TransferKeyPageModule', name: 'TransferKeyPage', segment: 'transfer-key', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/manage-store/create-store/create-store.module#CreateStorePageModule', name: 'CreateStorePage', segment: 'create-store', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/key/view-key/view-key.module#ViewKeyPageModule', name: 'ViewKeyPage', segment: 'view-key', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/manage-store/contact-requests/contact-requests.module#ContactRequestsPageModule', name: 'ContactRequestsPage', segment: 'contact-requests', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/manage-store/create-offer/create-offer.module#CreateOfferPageModule', name: 'CreateOfferPage', segment: 'create-offer', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/manage-store/create-store/create-store.module#CreateStorePageModule', name: 'CreateStorePage', segment: 'create-store', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/manage-store/edit-offer/edit-offer.module#EditOfferPageModule', name: 'EditOfferPage', segment: 'edit-offer', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/manage-store/edit-store/edit-store.module#EditStorePageModule', name: 'EditStorePage', segment: 'edit-store', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/manage-store/list-store/list-store.module#ListStorePageModule', name: 'ListStorePage', segment: 'list-store', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/manage-store/manage-offer/manage-offer.module#ManageOfferPageModule', name: 'ManageOfferPage', segment: 'manage-offer', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/options/option-one/option-one.module#OptionOnePageModule', name: 'OptionOnePage', segment: 'option-one', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/options/option-two/option-two.module#OptionTwoPageModule', name: 'OptionTwoPage', segment: 'option-two', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/options/static-badge/static-badge.module#StaticBadgePageModule', name: 'StaticBadgePage', segment: 'static-badge', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/manage-store/list-store/list-store.module#ListStorePageModule', name: 'ListStorePage', segment: 'list-store', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/manage-store/manage-offer/manage-offer.module#ManageOfferPageModule', name: 'ManageOfferPage', segment: 'manage-offer', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/packages/completed-package/completed-package.module#CompletedPackagePageModule', name: 'CompletedPackagePage', segment: 'completed-package', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/packages/running-package/running-package.module#RunningPackagePageModule', name: 'RunningPackagePage', segment: 'running-package', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/product/add-product/add-product.module#AddProductPageModule', name: 'AddProductPage', segment: 'add-product', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/product/cart/cart.module#CartPageModule', name: 'CartPage', segment: 'cart', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/product/my-orders/my-orders.module#MyOrdersPageModule', name: 'MyOrdersPage', segment: 'my-orders', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/product/checkout/checkout.module#CheckoutPageModule', name: 'CheckoutPage', segment: 'checkout', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/product/edit-product/edit-product.module#EditProductPageModule', name: 'EditProductPage', segment: 'edit-product', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/product/my-orders/my-orders.module#MyOrdersPageModule', name: 'MyOrdersPage', segment: 'my-orders', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/profile/change-password/change-password.module#ChangePasswordPageModule', name: 'ChangePasswordPage', segment: 'change-password', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile/edit-profile/edit-profile.module#EditProfilePageModule', name: 'EditProfilePage', segment: 'edit-profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/profile/change-password/change-password.module#ChangePasswordPageModule', name: 'ChangePasswordPage', segment: 'change-password', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile/update-kyc/update-kyc.module#UpdateKycPageModule', name: 'UpdateKycPage', segment: 'update-kyc', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile/update-payment/update-payment.module#UpdatePaymentPageModule', name: 'UpdatePaymentPage', segment: 'update-payment', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile/update-social/update-social.module#UpdateSocialPageModule', name: 'UpdateSocialPage', segment: 'update-social', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profit-report/pars-earnings/pars-earnings.module#ParsEarningsPageModule', name: 'ParsEarningsPage', segment: 'pars-earnings', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profit-report/referral-earnings/referral-earnings.module#ReferralEarningsPageModule', name: 'ReferralEarningsPage', segment: 'referral-earnings', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/sub-options-with-icons/dynamic-badge/dynamic-badge.module#DynamicBadgePageModule', name: 'DynamicBadgePage', segment: 'dynamic-badge', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profit-report/task-earnings/task-earnings.module#TaskEarningsPageModule', name: 'TaskEarningsPage', segment: 'task-earnings', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/retail-brands/brands-search/brands-search.module#BrandsSearchPageModule', name: 'BrandsSearchPage', segment: 'brands-search', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/same-component/emails/emails.module#EmailsPageModule', name: 'EmailsPage', segment: 'emails/:showDeleted', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/sub-options-with-icons/dynamic-badge/dynamic-badge.module#DynamicBadgePageModule', name: 'DynamicBadgePage', segment: 'dynamic-badge', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/sub-options-with-icons/sub-option-two/sub-option-two.module#SubOptionTwoPageModule', name: 'SubOptionTwoPage', segment: 'sub-option-two', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/sub-options-without-icons/sub-option-five/sub-option-five.module#SubOptionFivePageModule', name: 'SubOptionFivePage', segment: 'sub-option-five', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/sub-options-without-icons/sub-option-four/sub-option-four.module#SubOptionFourPageModule', name: 'SubOptionFourPage', segment: 'sub-option-four', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/sub-options-without-icons/sub-option-three/sub-option-three.module#SubOptionThreePageModule', name: 'SubOptionThreePage', segment: 'sub-option-three', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/same-component/emails/emails.module#EmailsPageModule', name: 'EmailsPage', segment: 'emails/:showDeleted', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/retail-brands/brands-search/brands-search.module#BrandsSearchPageModule', name: 'BrandsSearchPage', segment: 'brands-search', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/task/choose-task/choose-task.module#ChooseTaskPageModule', name: 'ChooseTaskPage', segment: 'choose-task', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/task/rejected-task/rejected-task.module#RejectedTaskPageModule', name: 'RejectedTaskPage', segment: 'rejected-task', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/task/running-task/running-task.module#RunningTaskPageModule', name: 'RunningTaskPage', segment: 'running-task', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/view-store-images/view-store-images.module#ViewStoreImagesPageModule', name: 'ViewStoreImagesPage', segment: 'view-store-images', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/task/verified-task/verified-task.module#VerifiedTaskPageModule', name: 'VerifiedTaskPage', segment: 'verified-task', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/wallet/wallet.module#WalletPageModule', name: 'WalletPage', segment: 'wallet', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/user-products-list/user-products-list.module#UserProductsListPageModule', name: 'UserProductsListPage', segment: 'user-products-list', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/user-store-search/user-store-search.module#UserStoreSearchPageModule', name: 'UserStoreSearchPage', segment: 'user-store-search', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/view-store-images/view-store-images.module#ViewStoreImagesPageModule', name: 'ViewStoreImagesPage', segment: 'view-store-images', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/wallet/wallet.module#WalletPageModule', name: 'WalletPage', segment: 'wallet', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/manage-store/view-store/view-store.module#ViewStorePageModule', name: 'ViewStorePage', segment: 'view-store', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/product/products-list/products-list.module#ProductsListPageModule', name: 'ProductsListPage', segment: 'products-list', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/product/store-orders/store-orders.module#StoreOrdersPageModule', name: 'StoreOrdersPage', segment: 'store-orders', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/sub-options-with-icons/sub-option-one/sub-option-one.module#SubOptionOnePageModule', name: 'SubOptionOnePage', segment: 'sub-option-one', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/manage-store/view-store/view-store.module#ViewStorePageModule', name: 'ViewStorePage', segment: 'view-store', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/sub-options-with-icons/sub-option-one/sub-option-one.module#SubOptionOnePageModule', name: 'SubOptionOnePage', segment: 'sub-option-one', priority: 'low', defaultHistory: [] }
                     ]
                 }),
-                __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["b" /* HttpClientModule */],
-                __WEBPACK_IMPORTED_MODULE_11_ionic_swipe_all__["a" /* IonicSwipeAllModule */],
-                __WEBPACK_IMPORTED_MODULE_4_ngx_pagination__["a" /* NgxPaginationModule */],
-                __WEBPACK_IMPORTED_MODULE_10__ionic_storage__["a" /* IonicStorageModule */].forRoot(),
-                __WEBPACK_IMPORTED_MODULE_5_ng2_search_filter__["a" /* Ng2SearchPipeModule */]
+                __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["b" /* HttpClientModule */],
+                __WEBPACK_IMPORTED_MODULE_12_ionic_swipe_all__["a" /* IonicSwipeAllModule */],
+                __WEBPACK_IMPORTED_MODULE_5_ngx_pagination__["a" /* NgxPaginationModule */],
+                __WEBPACK_IMPORTED_MODULE_11__ionic_storage__["a" /* IonicStorageModule */].forRoot(),
+                __WEBPACK_IMPORTED_MODULE_6_ng2_search_filter__["a" /* Ng2SearchPipeModule */]
             ],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_7_ionic_angular__["c" /* IonicApp */]],
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_8_ionic_angular__["c" /* IonicApp */]],
             entryComponents: [
-                __WEBPACK_IMPORTED_MODULE_12__app_component__["a" /* MyApp */],
-                __WEBPACK_IMPORTED_MODULE_13__pages_packages_running_package_running_package__["a" /* ModalContentPage */],
-                __WEBPACK_IMPORTED_MODULE_14__pages_manage_store_manage_offer_manage_offer__["b" /* OfferModal */],
-                __WEBPACK_IMPORTED_MODULE_16__pages_manage_store_view_store_view_store__["a" /* ImageModal */],
-                __WEBPACK_IMPORTED_MODULE_17__pages_sub_options_with_icons_sub_option_one_sub_option_one__["a" /* ImageModal2 */],
-                __WEBPACK_IMPORTED_MODULE_15__pages_user_store_search_user_store_search__["a" /* PopoverPage */],
-                __WEBPACK_IMPORTED_MODULE_16__pages_manage_store_view_store_view_store__["b" /* ProductModal */],
-                __WEBPACK_IMPORTED_MODULE_17__pages_sub_options_with_icons_sub_option_one_sub_option_one__["c" /* UserProductModal */],
-                __WEBPACK_IMPORTED_MODULE_31__pages_product_store_orders_store_orders__["a" /* OrderDetail */]
+                __WEBPACK_IMPORTED_MODULE_13__app_component__["a" /* MyApp */],
+                __WEBPACK_IMPORTED_MODULE_14__pages_packages_running_package_running_package__["a" /* ModalContentPage */],
+                __WEBPACK_IMPORTED_MODULE_15__pages_manage_store_manage_offer_manage_offer__["b" /* OfferModal */],
+                __WEBPACK_IMPORTED_MODULE_17__pages_manage_store_view_store_view_store__["a" /* ImageModal */],
+                __WEBPACK_IMPORTED_MODULE_18__pages_sub_options_with_icons_sub_option_one_sub_option_one__["a" /* ImageModal2 */],
+                __WEBPACK_IMPORTED_MODULE_16__pages_user_store_search_user_store_search__["a" /* PopoverPage */],
+                __WEBPACK_IMPORTED_MODULE_33__pages_product_products_list_products_list__["a" /* ProductModal */],
+                __WEBPACK_IMPORTED_MODULE_18__pages_sub_options_with_icons_sub_option_one_sub_option_one__["c" /* UserProductModal */],
+                __WEBPACK_IMPORTED_MODULE_32__pages_product_store_orders_store_orders__["a" /* OrderDetail */]
             ],
             providers: [
-                __WEBPACK_IMPORTED_MODULE_8__ionic_native_status_bar__["a" /* StatusBar */],
-                __WEBPACK_IMPORTED_MODULE_9__ionic_native_splash_screen__["a" /* SplashScreen */],
-                { provide: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_7_ionic_angular__["d" /* IonicErrorHandler */] },
-                __WEBPACK_IMPORTED_MODULE_20__providers_auth_auth__["a" /* AuthProvider */],
-                __WEBPACK_IMPORTED_MODULE_21__providers_invitees_invitees__["a" /* InviteesProvider */],
-                __WEBPACK_IMPORTED_MODULE_22__providers_task_task__["a" /* TaskProvider */],
-                __WEBPACK_IMPORTED_MODULE_23__providers_profit_report_profit_report__["a" /* ProfitReportProvider */],
-                __WEBPACK_IMPORTED_MODULE_24__providers_wallet_wallet__["a" /* WalletProvider */],
-                __WEBPACK_IMPORTED_MODULE_25__providers_store_store__["a" /* StoreProvider */],
-                __WEBPACK_IMPORTED_MODULE_26__providers_store_offer__["a" /* OfferProvider */],
-                __WEBPACK_IMPORTED_MODULE_28__providers_key_key__["a" /* KeyProvider */],
-                __WEBPACK_IMPORTED_MODULE_27__providers_store_product__["a" /* ProductProvider */],
-                __WEBPACK_IMPORTED_MODULE_29__providers_package_package__["a" /* PackageProvider */],
-                __WEBPACK_IMPORTED_MODULE_30__providers_carts_service_carts_service__["a" /* CartsService */]
+                __WEBPACK_IMPORTED_MODULE_9__ionic_native_status_bar__["a" /* StatusBar */],
+                __WEBPACK_IMPORTED_MODULE_10__ionic_native_splash_screen__["a" /* SplashScreen */],
+                { provide: __WEBPACK_IMPORTED_MODULE_1__angular_core__["u" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_8_ionic_angular__["d" /* IonicErrorHandler */] },
+                __WEBPACK_IMPORTED_MODULE_21__providers_auth_auth__["a" /* AuthProvider */],
+                __WEBPACK_IMPORTED_MODULE_22__providers_invitees_invitees__["a" /* InviteesProvider */],
+                __WEBPACK_IMPORTED_MODULE_23__providers_task_task__["a" /* TaskProvider */],
+                __WEBPACK_IMPORTED_MODULE_24__providers_profit_report_profit_report__["a" /* ProfitReportProvider */],
+                __WEBPACK_IMPORTED_MODULE_25__providers_wallet_wallet__["a" /* WalletProvider */],
+                __WEBPACK_IMPORTED_MODULE_26__providers_store_store__["a" /* StoreProvider */],
+                __WEBPACK_IMPORTED_MODULE_27__providers_store_offer__["a" /* OfferProvider */],
+                __WEBPACK_IMPORTED_MODULE_29__providers_key_key__["a" /* KeyProvider */],
+                __WEBPACK_IMPORTED_MODULE_28__providers_store_product__["a" /* ProductProvider */],
+                __WEBPACK_IMPORTED_MODULE_30__providers_package_package__["a" /* PackageProvider */],
+                __WEBPACK_IMPORTED_MODULE_31__providers_carts_service_carts_service__["a" /* CartsService */]
             ],
-            exports: [__WEBPACK_IMPORTED_MODULE_19__directives_click_outside_click_outside__["a" /* ClickOutsideDirective */]]
+            exports: [__WEBPACK_IMPORTED_MODULE_20__directives_click_outside_click_outside__["a" /* ClickOutsideDirective */]]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injector */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_core__["C" /* Injector */]])
     ], AppModule);
     return AppModule;
     var AppModule_1;
@@ -3235,8 +3187,8 @@ var SideMenuOptionSelect = 'sideMenu:optionSelect';
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PackageProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_constants_service__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_constants_service__ = __webpack_require__(12);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3314,16 +3266,16 @@ var PackageProvider = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return ViewStorePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ViewStorePage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ImageModal; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ProductModal; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_store_store__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_libphonenumber_js__ = __webpack_require__(130);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_constants_service__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_store_product__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_store_store__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_libphonenumber_js__ = __webpack_require__(131);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_constants_service__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_store_product__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__product_products_list_products_list__ = __webpack_require__(137);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3333,6 +3285,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -3430,7 +3383,7 @@ var ViewStorePage = /** @class */ (function () {
         this.navCtrl.push("EditStorePage", { store: this.storeDetail });
     };
     ViewStorePage.prototype.goToProductList = function (id) {
-        this.navCtrl.push(ProductModal, { id: id, token: this.token });
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_7__product_products_list_products_list__["a" /* ProductModal */], { id: id, token: this.token });
     };
     ViewStorePage.prototype.reviewRatings = function (val) {
         var rating = [];
@@ -3447,7 +3400,7 @@ var ViewStorePage = /** @class */ (function () {
     };
     ViewStorePage.prototype.getCatName = function (val) {
         if (val) {
-            return this.category.filter(function (cat) { return cat.id == val; })[0].category_name;
+            return this.category.find(function (cat) { return cat.id == val; }).category_name;
         }
     };
     ViewStorePage.prototype.getPaymentMethod = function (str) {
@@ -3548,7 +3501,7 @@ var ViewStorePage = /** @class */ (function () {
     ], ViewStorePage.prototype, "limit", void 0);
     ViewStorePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: "page-view-store",template:/*ion-inline-start:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\manage-store\view-store\view-store.html"*/'<!--\n  Generated template for the ViewStorePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n--><!-- \n<ion-header>\n   <ion-navbar color="primary">\n      <button ion-button menuToggle>\n         <ion-icon name="menu"></ion-icon>\n      </button>\n      <ion-title>Create Offer</ion-title>\n   </ion-navbar>\n</ion-header> -->\n\n\n<ion-content padding>\n  <div class="dt-root">\n   <div class="profile">\n                  <!-- Profile Banner -->\n                  <div class="profile__banner">\n                     <!-- Profile Banner Top -->\n                     <button ion-button menuToggle icon-only clear color="light">\n					    <ion-icon name="menu"></ion-icon>\n					 </button>\n                     <div class="profile__banner-top">\n                        <!-- Avatar Wrapper -->\n                        <div class="dt-avatar-wrapper">\n                           <!-- Avatar -->\n                           <img class="dt-avatar dt-avatar__shadow size-90 mr-sm-4" src="http://alpademo.com/zomo/uploads/stores/{{storeDetail?.store_image}}" alt="{{storeDetail?.store_name | titlecase}}">\n                           <!-- /avatar -->\n                           <!-- Info -->\n                           <div class="dt-avatar-info">\n                              <span class="dt-avatar-name display-4 mb-2 font-weight-light">{{storeDetail?.store_name | titlecase}}</span>\n                              <span class="f-16">{{storeDetail?.store_address | titlecase}} {{storeDetail?.city_name | titlecase}} {{storeDetail?.state_name | titlecase}} </span>\n                           </div>\n                           <!-- /info -->\n                        </div>\n                     </div>\n                     <!-- /profile banner top -->\n                  </div>\n                  <!-- /profile banner -->\n                  <!-- Profile Content -->\n                  <div class="profile-content">\n                     <!-- Grid -->\n                     <div class="row">\n                        <!-- Grid Item -->\n                        <div class="col-xl-4 order-xl-2">\n                           <!-- Grid -->\n                           <div class="row">\n                              <!-- Grid Item -->\n                              <div class="col-xl-12 col-md-6 col-12 order-xl-1">\n                                 <!-- Card -->\n                                 <div class="dt-card dt-card__full-height">\n                                    <!-- Card Header -->\n                                    <div class="dt-card__header">\n                                       <!-- Card Heading -->\n                                       <div class="dt-card__heading">\n                                          <h3 class="dt-card__title">Contact</h3>\n                                       </div>\n                                       <!-- /card heading -->\n                                    </div>\n                                    <!-- /card header -->\n                                    <!-- Card Body -->\n                                    <div class="dt-card__body">\n                                       <!-- Media -->\n                                       <div class="media mb-5">\n                                          <i class="icon icon-email icon-xl mr-5"></i>\n                                          <!-- Media Body -->\n                                          <div class="media-body">\n                                             <span class="d-block text-light-gray f-12 mb-1">Mail</span>\n                                             <a href="mailto:{{storeDetail?.contact_email_id}}">{{storeDetail?.contact_email_id}}</a>\n                                          </div>\n                                          <!-- /media body -->\n                                       </div>\n                                       <!-- /media -->\n                                       <!-- Media -->\n                                       <div class="media mb-5">\n                                          <i class="icon icon-link icon-xl mr-5"></i>\n                                          <!-- Media Body -->\n                                          <div class="media-body">\n                                             <span class="d-block text-light-gray f-12 mb-1">Web Page</span>\n                                             <a href="{{storeDetail?.website_link}}" target="_blank">{{storeDetail?.website_link}}</a>\n                                          </div>\n                                          <!-- /media body -->\n                                       </div>\n                                       <!-- /media -->\n                                       <!-- Media -->\n                                       <div class="media mb-5">\n                                          <i class="icon icon-phone icon-xl mr-5"></i>\n                                          <!-- Media Body -->\n                                          <div class="media-body">\n                                             <span class="d-block text-light-gray f-12 mb-1">Phone</span>\n                                             <span class="h5">\n                                             <a href = "{{getphoneuri(storeDetail?.contact_number_one,storeDetail?.country_id)}}">{{phoneMask(storeDetail?.contact_number_one,storeDetail?.country_id)}}</a>, \n                                             <a href = "{{getphoneuri(storeDetail?.contact_number_two,storeDetail?.country_id)}}" >{{phoneMask(storeDetail?.contact_number_two,storeDetail?.country_id)}}</a>\n                                             </span>\n                                          </div>\n                                       </div>\n                                       <!-- /media body -->\n                                       <!-- Media -->\n                                       <div class="media">\n                                          <i class="icon icon-culture-calendar icon-xl mr-5"></i>\n                                          <!-- Media Body -->\n                                          <div class="media-body">\n                                             <span class="d-block text-light-gray f-12 mb-1">Social</span>\n                                             <span class="h5">\n                                             <a  *ngIf="storeDetail?.facebook" href = "{{storeDetail?.facebook}}"><img style="width:20px; margin-right: 10px;border-radius:50% " src="/assets/images/facebook.png"/></a>\n                                             <a  *ngIf="storeDetail?.twitter" href = "{{storeDetail?.twitter}}"><img style="width:20px; margin-right: 10px;border-radius:50% " src="/assets/images/twitter.png"/></a>\n                                             <a  *ngIf="storeDetail?.telegram" href = "{{storeDetail?.telegram}}"><img style="width:20px; margin-right: 10px;border-radius:50% " src="/assets/images/telegram.png"/></a>\n                                             <a  *ngIf="storeDetail?.instagram" href = "{{storeDetail?.instagram}}"><img style="width:20px; margin-right: 10px;border-radius:50% " src="/assets/images/instagram.png"/></a>\n                                             </span>\n                                          </div>\n                                          <!-- /media body -->\n                                       </div>\n                                       <!-- /media -->\n                                    </div>\n                                    <!-- /card body -->\n                                 </div>\n                                 <!-- /card -->\n                              </div>\n                              <!-- /grid item -->\n                              <!-- Grid Item -->\n                              <div class="col-12 order-xl-2">\n                                 <!-- Card -->\n                                 <div class="dt-card dt-card__full-height">\n                                    <!-- Card Header -->\n                                    <div class="dt-card__header">\n                                       <!-- Card Heading -->\n                                       <div class="dt-card__heading">\n                                          <h3 class="dt-card__title">Media</h3>\n                                       </div>\n                                       <!-- /card heading -->\n                                    </div>\n                                    <!-- /card header -->\n                                    <!-- Card Body -->\n                                    <div class="dt-card__body">\n                                       <!-- List -->\n                                       <ul class="dt-gallery-list">\n                                          <li  *ngFor="let img of storeDetail?.other_images;let i = index;"><img (click)="goToGallery(i)" src="http://alpademo.com/zomo/uploads/stores/{{img.image_name}}" class="img-fluid w-100" alt="Image Title"></li>\n                                       </ul>\n                                       <!-- /list -->\n                                       <div class="mt-5" *ngIf="storeDetail?.store_status == \'1\'">\n                                          <!---->\n                                          <a style="color: #038fde;cursor: pointer" (click)="addMoreImages()"><span>Add More Images </span> <i class="icon icon-plus-sign-alt icon-xl ml-1"></i> </a>\n                                          <input type="file" style="display:none;" (change)="getOtherImage($event.target.files)" id="add_other_images" accept="image/*" class="form-control">\n                                         <!-- routerLink="/other-image/{{storeDetail?.store_url}}" --> <a (click)="goToGallery()"><span>Go to gallery </span> <i class="icon icon-right-arrow icon-xl ml-1"></i> </a>\n                                       </div>\n                                    </div>\n                                    <!-- /card Body -->\n                                 </div>\n                                 <!-- /card -->\n                              </div>\n                              <!-- /grid item -->\n                              <!--<div class="col-xl-12 col-md-6 col-12 order-xl-3">-->\n                              <!-- Card -->\n                              <!--          <div class="dt-card dt-card__full-height">-->\n                              <!-- Card Header -->\n                              <!--            <div class="dt-card__header">-->\n                              <!-- Card Heading -->\n                              <!--              <div class="dt-card__heading">-->\n                              <!--                <h3 class="dt-card__title">Categories-->\n                              <!--                </h3>-->\n                              <!--              </div>-->\n                              <!-- /card heading -->\n                              <!--            </div>-->\n                              <!-- /card header -->\n                              <!-- Card Body -->\n                              <!--            <div class="dt-card__body pb-5">-->\n                              <!--  <div class="categories_search_block">-->\n                              <!--    <div class="input-group mb-3">-->\n                              <!--      <span class="input-group-addon"><i class="icon icon-search icon-fw"></i></span>-->\n                              <!--      <input type="email" class="form-control" id="email" placeholder="Search here">-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Food-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Dinner-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Fast Food-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Cafe, Bakeries and Desserts-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Late Night-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Restro Bar-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Pub-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Restro Bar-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--  </div>-->\n                              <!--            </div>-->\n                              <!-- /card body -->\n                              <!--  <div class="dt-card__header">-->\n                              <!-- Card Heading -->\n                              <!--              <div class="dt-card__heading">-->\n                              <!--                <h3 class="dt-card__title">Location-->\n                              <!--                </h3>-->\n                              <!--              </div>-->\n                              <!-- /card heading -->\n                              <!--            </div>  -->\n                              <!-- Card Body -->\n                              <!--            <div class="dt-card__body pb-5">-->\n                              <!--  <div class="categories_search_block">-->\n                              <!--    <div class="input-group mb-3">-->\n                              <!--      <span class="input-group-addon"><i class="icon icon-search icon-fw"></i></span>-->\n                              <!--      <input type="email" class="form-control" id="email" placeholder="Search here">-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Hubli-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Shanti Nagar-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Old Bustand-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Manoj Park-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Deshpande Nagar-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Unkal Lake-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--  </div>-->\n                              <!--            </div>-->\n                              <!-- /card body -->\n                              <!--          </div>-->\n                              <!-- /card -->\n                              <!--        </div>-->\n                           </div>\n                           <!-- /grid -->\n                        </div>\n                        <!-- /grid item -->\n                        <!-- Grid Item -->\n                        <div class="col-xl-8 order-xl-1">\n                           <!-- Card -->\n                           <div class="card">\n                              <!-- Card Header -->\n                              <div class="card-header card-nav bg-transparent d-flex justify-content-between">\n                                 <div class="row" style="width: 100%;">\n                                    <div class="col-md-8">\n                                       <h2 margin-bottom *ngIf="storeDetail?.store_status == \'1\' || storeDetail?.store_status == \'0\'" class="mb-20">{{storeDetail?.store_tag_line |titlecase}}</h2>\n                                       <h2 margin-bottom *ngIf="storeDetail?.store_status == \'2\'" style="color:#F00" class="mb-20">Your Approval is Rejected <a  style="color:#038fde"  data-toggle="modal" data-target="#exampleModalLong">(Details)</a></h2>\n                                       <h2 margin-bottom *ngIf="storeDetail?.store_status == \'3\'" style="color:#F00" class="mb-20">Your store is Blocked <a  style="color:#038fde"  data-toggle="modal" data-target="#exampleModalLong1">(Details)</a></h2>\n                                       <p class="mb-1" *ngIf="storeDetail?.store_status == \'0\'" style="color: #faad14;margin-top: 20px;margin-bottom: 0px !important;"> Your Approval is Pending</p>\n                                    </div>\n                                    <div class="col-md-4 text-right">\n<!-- routerLink="/edit-store-detail/{{storeDetail?.id}}" -->           \n									   <button (click)="goToEdit()" class="btn btn-info">Edit</button>\n                                       <button class="btn btn-danger" *ngIf="storeDetail?.visible_status == \'1\' && storeDetail?.store_status == \'1\'" (click)="enable_disable(0)">Disable</button>\n                                       <button class="btn btn-success" *ngIf="storeDetail?.visible_status == \'0\' && storeDetail?.store_status == \'1\'" (click)="enable_disable(1)">Enable</button>\n                                    </div>\n                                 </div>\n                                 <ul class="card-header-links nav nav-underline" role="tablist">\n                                    <!--<li class="nav-item">\n                                       s  <a class="nav-link active" data-toggle="tab" href="#tab-pane1" role="tab"\n                                            aria-controls="tab-pane1"\n                                            aria-selected="true">About</a>\n                                       </li>\n                                       \n                                       <li class="nav-item">\n                                         <a class="nav-link" data-toggle="tab" href="#tab-pane3" role="tab" aria-controls="tab-pane3"\n                                            aria-selected="true">Review</a>\n                                       </li>-->\n                                 </ul>\n                              </div>\n                              <!-- /card header -->\n                              <!-- Card Body -->\n                              <div class="card-body pb-2">\n                                 <!-- Tab Content-->\n                                 <div class="tab-content mt-5">\n                                    <!-- Tab panel -->\n                                    <div id="tab-pane1" class="tab-pane active">\n                                       <!-- List -->\n                                       <ul class="dt-list dt-list-one-third">\n                                          <!-- List Item -->\n                                          <li class="dt-list__item">\n                                             <!-- Media -->\n                                             <div class="media">\n                                                <i class="icon icon-company icon-4x mr-5 align-self-center text-warning"></i>\n                                                <!-- Media Body -->\n                                                <div class="media-body">\n                                                   <span class="d-block text-light-gray f-12 mb-1">Category</span>\n                                                   <h5 class="mb-0">{{getCatName(storeDetail?.store_category_id)}}</h5>\n                                                </div>\n                                                <!-- /media body -->\n                                             </div>\n                                             <!-- /media -->\n                                          </li>\n                                          <!-- /list item -->\n                                          <!-- List Item -->\n                                          <li class="dt-list__item">\n                                             <!-- Media -->\n                                             <div class="media">\n                                                <i class="icon icon-card icon-4x mr-5 align-self-center text-warning"></i>\n                                                <!-- Media Body -->\n                                                <div class="media-body">\n                                                   <span class="d-block text-light-gray f-12 mb-1">Payment Method</span>\n                                                   <h5 class="mb-0">{{getPaymentMethod(storeDetail?.payment_receive_ids)}}</h5>\n                                                </div>\n                                                <!-- /media body -->\n                                             </div>\n                                             <!-- /media -->\n                                          </li>\n                                          <!-- /list item -->\n                                          <!-- List Item -->\n                                          <li class="dt-list__item">\n                                             <!-- Media -->\n                                             <div class="media">\n                                                <i class="icon icon-home icon-4x mr-5 align-self-center text-warning"></i>\n                                                <!-- Media Body -->\n                                                <div class="media-body">\n                                                   <span class="d-block text-light-gray f-12 mb-1">Lives in</span>\n                                                   <h5 class="mb-0">{{storeDetail?.city_name | titlecase}}, {{storeDetail?.state_name | titlecase}} </h5>\n                                                </div>\n                                                <!-- /media body -->\n                                             </div>\n                                             <!-- /media -->\n                                          </li>\n                                          <!-- /list item -->\n                                          <!-- List Item -->\n                                          <!-- /list item -->\n                                       </ul>\n                                       <!-- /list -->\n                                    </div>\n                                    <!-- /tab panel -->\n                                 </div>\n                                 <!-- /tab content-->\n                              </div>\n                              <!-- /card body -->\n                           </div>\n                           <!-- /card -->\n                           <!-- Card -->\n                           <div class="card">\n                              <!-- Card Body -->\n                              <div class="card-body">\n                                 <h2 class="card-title">Details About Us</h2>\n                                 <!-- Card Text -->\n                                 <h6 class="card-subtitle">A little flash back of {{storeDetail?.store_name | titlecase}}</h6>\n                                 <!-- /card text -->\n                                 <!-- Card Text -->\n                                 <!--                      <p class="card-text lead">\n                                    Donec dignissim gravida sem, ut cursus dolor hendrerit et. Morbi volutpat.\n                                    </p>-->\n                                 <!-- /card text -->\n                                 <!-- Card Text -->\n                                 \n                        <div *ngIf="storeDetail?.store_description">\n                              <div *ngIf="storeDetail?.store_description.length <= limit"\n                                 innerHtml="{{storeDetail?.store_description}}"></div>\n                              <div *ngIf="truncating && storeDetail?.store_description.length > limit"\n                                 innerHtml="{{storeDetail?.store_description  | truncate : limit }}">\n   \n                              </div>\n                              <div text-right>\n                                 <button *ngIf="truncating && storeDetail?.store_description.length > limit" ion-button clear\n                                    (click)="truncating = false">show more</button>\n                              </div>\n                              <div *ngIf="!truncating && storeDetail?.store_description.length > limit"\n                                 innerHtml="{{storeDetail?.store_description}}">\n                              </div>\n                              <div text-right>\n                                 <button *ngIf="!truncating && storeDetail?.store_description.length > limit" ion-button clear\n                                    (click)="truncating = true">show less</button>\n                              </div>\n                           </div>\n                                 <!-- /card text -->\n                              </div>\n                              <!-- /card body -->\n                           </div>\n                           <!-- /card -->\n                           <!-- Card -->\n                           <div class="card" *ngIf="storeDetail?.store_reviews?.length > 0">\n                              <!-- Card Body -->\n                              <div class="card-body">\n                                 <h2 class="card-title">Reviews</h2>\n                                 <!-- Card Body -->\n                                 <ul class="dt-list dt-list-one-third">\n                                    <li class="dt-list__item" *ngFor="let review of storeDetail?.store_reviews">\n                                       <!-- Media -->\n                                       <div class="media">\n                                          <!--<i class="icon icon-company icon-4x mr-5 align-self-center text-warning"></i>-->\n                                          <!-- Media Body -->\n                                          <div class="media-body">\n                                             <h4 style="margin-bottom: 0;">{{review.full_name | titlecase}}</h4>\n                                             <span class="d-block text-light-gray f-12 mb-1">{{review.date_n_time | date}}</span>\n                                             <h5 class="mb-0">{{review.store_review}}</h5>\n                                             <div class="d-flex align-items-center mb-1">\n                                                <i *ngFor="let rating of reviewRatings(review.store_rating);let i = index;" class="icon icon-star f-10 mr-1 text-warning"></i>\n                                             </div>\n                                          </div>\n                                          <!-- /media body -->\n                                       </div>\n                                       <!-- /media -->\n                                    </li>\n                                    <!-- /list item -->\n                                 </ul>\n                              </div>\n                              <!-- /card body -->\n                           </div>\n                           <!-- /card -->\n                           <div class="card" *ngIf="storeDetail?.offer_detail?.length > 0">\n                              <div class="card-body">\n                                 <h2 class="card-title">Offers</h2>\n                                 <div class="media" *ngFor="let offer of storeDetail?.offer_detail">\n                                    <div class="media-left" *ngIf="offer[\'offer_status\'] == \'1\'">\n                                       <img class="mr-3" style="border-radius:10px;" src="https://ui-avatars.com/api/?background={{colors}}&color=fff&name={{offer.offer_percenage}}%&length=3" alt="Generic placeholder image">\n                                    </div>\n                                    <div class="media-body">\n                                       <h5 class="mt-0 mb-1">{{offer.offer_title | titlecase}}</h5>\n                                       <p><span class="d-block text-light-gray f-12 mb-1">From : {{offer.start_date | date}}, To : {{offer.end_date | date}} </span> {{offer.description}}</p>\n                                    </div>\n                                 </div>\n                                 <!-- /card body -->\n                              </div>\n                              <!-- /card -->\n                           </div>\n                           <!-- Card -->\n                           <div class="card products">\n                           <!-- Card Body -->\n                            <div class="card-body">\n                              <h2 class="card-title" >Products</h2>\n                                 <ul col-12 >\n                                       <li *ngFor="let product of products" (click)=\'goToProductList(product.id)\'>\n                                             <ion-row>\n                                                <ion-col>\n                                                   <img onError="this.src=\'./assets/images/not-available.jpg\'"  src="http://alpademo.com/zomo/uploads/stores/products/{{product.pr_image}}" style="width:100px;height:100px" alt="">\n                                                </ion-col>\n                                             </ion-row>\n                                             <ion-row>\n                                                <ion-col>   \n                                                   <h2 style="margin-bottom: 0">{{product.pr_name | titlecase}}</h2>\n                                                </ion-col>\n                                             </ion-row>\n                                             <!-- <ion-row>\n                                                <ion-col>\n                                                      <p><span>Variants: </span><span *ngFor="let variant of toArray(product.pr_colors)">{{variant | titlecase}}&nbsp;&nbsp;</span></p>\n                                                      <button ion-button small outline *ngFor="let size of toArray(product.pr_sizes)">{{size | titlecase}}</button>                                            \n                                                </ion-col>\n                                             </ion-row> -->\n                                             <ion-row>\n                                                   <ion-col>\n                                                      <span style="color:#faad14;text-decoration: line-through;">₹ {{product.pr_original_amount}}</span>                                             \n                                                      <span> ₹ {{product.pr_sale_amount}}</span>\n                                                   </ion-col>\n                                             </ion-row>\n                                       </li>\n                                 </ul>\n                              \n                           <!-- Card Body -->\n                           \n                            </div>\n                           <!-- /card body -->\n                           </div>\n                           <!-- /card -->\n                        </div>\n                        <!-- /grid item -->\n                     </div>\n                     <!-- /grid -->\n                  </div>\n                  <!-- /profile content -->\n               </div>\n  </div>\n</ion-content>\n'/*ion-inline-end:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\manage-store\view-store\view-store.html"*/
+            selector: "page-view-store",template:/*ion-inline-start:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\manage-store\view-store\view-store.html"*/'<!--\n  Generated template for the ViewStorePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n--><!-- \n<ion-header>\n   <ion-navbar color="primary">\n      <button ion-button menuToggle>\n         <ion-icon name="menu"></ion-icon>\n      </button>\n      <ion-title>Create Offer</ion-title>\n   </ion-navbar>\n</ion-header> -->\n\n\n<ion-content padding>\n  <div class="dt-root">\n   <div class="profile">\n                  <!-- Profile Banner -->\n                  <div class="profile__banner">\n                     <!-- Profile Banner Top -->\n                     <button ion-button menuToggle icon-only clear color="light">\n					    <ion-icon name="menu"></ion-icon>\n					 </button>\n                     <div class="profile__banner-top">\n                        <!-- Avatar Wrapper -->\n                        <div class="dt-avatar-wrapper">\n                           <!-- Avatar -->\n                           <img class="dt-avatar dt-avatar__shadow size-90 mr-sm-4" src="http://192.168.1.100:81/zomo/uploads/stores/{{storeDetail?.store_image}}" alt="{{storeDetail?.store_name | titlecase}}">\n                           <!-- /avatar -->\n                           <!-- Info -->\n                           <div class="dt-avatar-info">\n                              <span class="dt-avatar-name display-4 mb-2 font-weight-light">{{storeDetail?.store_name | titlecase}}</span>\n                              <span class="f-16">{{storeDetail?.store_address | titlecase}} {{storeDetail?.city_name | titlecase}} {{storeDetail?.state_name | titlecase}} </span>\n                           </div>\n                           <!-- /info -->\n                        </div>\n                     </div>\n                     <!-- /profile banner top -->\n                  </div>\n                  <!-- /profile banner -->\n                  <!-- Profile Content -->\n                  <div class="profile-content">\n                     <!-- Grid -->\n                     <div class="row">\n                        <!-- Grid Item -->\n                        <div class="col-xl-4 order-xl-2">\n                           <!-- Grid -->\n                           <div class="row">\n                              <!-- Grid Item -->\n                              <div class="col-xl-12 col-md-6 col-12 order-xl-1">\n                                 <!-- Card -->\n                                 <div class="dt-card dt-card__full-height">\n                                    <!-- Card Header -->\n                                    <div class="dt-card__header">\n                                       <!-- Card Heading -->\n                                       <div class="dt-card__heading">\n                                          <h3 class="dt-card__title">Contact</h3>\n                                       </div>\n                                       <!-- /card heading -->\n                                    </div>\n                                    <!-- /card header -->\n                                    <!-- Card Body -->\n                                    <div class="dt-card__body">\n                                       <!-- Media -->\n                                       <div class="media mb-5">\n                                          <i class="icon icon-email icon-xl mr-5"></i>\n                                          <!-- Media Body -->\n                                          <div class="media-body">\n                                             <span class="d-block text-light-gray f-12 mb-1">Mail</span>\n                                             <a href="mailto:{{storeDetail?.contact_email_id}}">{{storeDetail?.contact_email_id}}</a>\n                                          </div>\n                                          <!-- /media body -->\n                                       </div>\n                                       <!-- /media -->\n                                       <!-- Media -->\n                                       <div class="media mb-5">\n                                          <i class="icon icon-link icon-xl mr-5"></i>\n                                          <!-- Media Body -->\n                                          <div class="media-body">\n                                             <span class="d-block text-light-gray f-12 mb-1">Web Page</span>\n                                             <a href="{{storeDetail?.website_link}}" target="_blank">{{storeDetail?.website_link}}</a>\n                                          </div>\n                                          <!-- /media body -->\n                                       </div>\n                                       <!-- /media -->\n                                       <!-- Media -->\n                                       <div class="media mb-5">\n                                          <i class="icon icon-phone icon-xl mr-5"></i>\n                                          <!-- Media Body -->\n                                          <div class="media-body">\n                                             <span class="d-block text-light-gray f-12 mb-1">Phone</span>\n                                             <span class="h5">\n                                             <a href = "{{getphoneuri(storeDetail?.contact_number_one,storeDetail?.country_id)}}">{{phoneMask(storeDetail?.contact_number_one,storeDetail?.country_id)}}</a>, \n                                             <a href = "{{getphoneuri(storeDetail?.contact_number_two,storeDetail?.country_id)}}" >{{phoneMask(storeDetail?.contact_number_two,storeDetail?.country_id)}}</a>\n                                             </span>\n                                          </div>\n                                       </div>\n                                       <!-- /media body -->\n                                       <!-- Media -->\n                                       <div class="media">\n                                          <i class="icon icon-culture-calendar icon-xl mr-5"></i>\n                                          <!-- Media Body -->\n                                          <div class="media-body">\n                                             <span class="d-block text-light-gray f-12 mb-1">Social</span>\n                                             <span class="h5">\n                                             <a  *ngIf="storeDetail?.facebook" href = "{{storeDetail?.facebook}}"><img style="width:20px; margin-right: 10px;border-radius:50% " src="/assets/images/facebook.png"/></a>\n                                             <a  *ngIf="storeDetail?.twitter" href = "{{storeDetail?.twitter}}"><img style="width:20px; margin-right: 10px;border-radius:50% " src="/assets/images/twitter.png"/></a>\n                                             <a  *ngIf="storeDetail?.telegram" href = "{{storeDetail?.telegram}}"><img style="width:20px; margin-right: 10px;border-radius:50% " src="/assets/images/telegram.png"/></a>\n                                             <a  *ngIf="storeDetail?.instagram" href = "{{storeDetail?.instagram}}"><img style="width:20px; margin-right: 10px;border-radius:50% " src="/assets/images/instagram.png"/></a>\n                                             </span>\n                                          </div>\n                                          <!-- /media body -->\n                                       </div>\n                                       <!-- /media -->\n                                    </div>\n                                    <!-- /card body -->\n                                 </div>\n                                 <!-- /card -->\n                              </div>\n                              <!-- /grid item -->\n                              <!-- Grid Item -->\n                              <div class="col-12 order-xl-2">\n                                 <!-- Card -->\n                                 <div class="dt-card dt-card__full-height">\n                                    <!-- Card Header -->\n                                    <div class="dt-card__header">\n                                       <!-- Card Heading -->\n                                       <div class="dt-card__heading">\n                                          <h3 class="dt-card__title">Media</h3>\n                                       </div>\n                                       <!-- /card heading -->\n                                    </div>\n                                    <!-- /card header -->\n                                    <!-- Card Body -->\n                                    <div class="dt-card__body">\n                                       <!-- List -->\n                                       <ul class="dt-gallery-list">\n                                          <li  *ngFor="let img of storeDetail?.other_images;let i = index;"><img (click)="goToGallery(i)" src="http://192.168.1.100:81/zomo/uploads/stores/{{img.image_name}}" class="img-fluid w-100" alt="Image Title"></li>\n                                       </ul>\n                                       <!-- /list -->\n                                       <div class="mt-5" *ngIf="storeDetail?.store_status == \'1\'">\n                                          <!---->\n                                          <a style="color: #038fde;cursor: pointer" (click)="addMoreImages()"><span>Add More Images </span> <i class="icon icon-plus-sign-alt icon-xl ml-1"></i> </a>\n                                          <input type="file" style="display:none;" (change)="getOtherImage($event.target.files)" id="add_other_images" accept="image/*" class="form-control">\n                                         <!-- routerLink="/other-image/{{storeDetail?.store_url}}" --> <a (click)="goToGallery()"><span>Go to gallery </span> <i class="icon icon-right-arrow icon-xl ml-1"></i> </a>\n                                       </div>\n                                    </div>\n                                    <!-- /card Body -->\n                                 </div>\n                                 <!-- /card -->\n                              </div>\n                              <!-- /grid item -->\n                              <!--<div class="col-xl-12 col-md-6 col-12 order-xl-3">-->\n                              <!-- Card -->\n                              <!--          <div class="dt-card dt-card__full-height">-->\n                              <!-- Card Header -->\n                              <!--            <div class="dt-card__header">-->\n                              <!-- Card Heading -->\n                              <!--              <div class="dt-card__heading">-->\n                              <!--                <h3 class="dt-card__title">Categories-->\n                              <!--                </h3>-->\n                              <!--              </div>-->\n                              <!-- /card heading -->\n                              <!--            </div>-->\n                              <!-- /card header -->\n                              <!-- Card Body -->\n                              <!--            <div class="dt-card__body pb-5">-->\n                              <!--  <div class="categories_search_block">-->\n                              <!--    <div class="input-group mb-3">-->\n                              <!--      <span class="input-group-addon"><i class="icon icon-search icon-fw"></i></span>-->\n                              <!--      <input type="email" class="form-control" id="email" placeholder="Search here">-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Food-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Dinner-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Fast Food-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Cafe, Bakeries and Desserts-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Late Night-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Restro Bar-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Pub-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Restro Bar-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--  </div>-->\n                              <!--            </div>-->\n                              <!-- /card body -->\n                              <!--  <div class="dt-card__header">-->\n                              <!-- Card Heading -->\n                              <!--              <div class="dt-card__heading">-->\n                              <!--                <h3 class="dt-card__title">Location-->\n                              <!--                </h3>-->\n                              <!--              </div>-->\n                              <!-- /card heading -->\n                              <!--            </div>  -->\n                              <!-- Card Body -->\n                              <!--            <div class="dt-card__body pb-5">-->\n                              <!--  <div class="categories_search_block">-->\n                              <!--    <div class="input-group mb-3">-->\n                              <!--      <span class="input-group-addon"><i class="icon icon-search icon-fw"></i></span>-->\n                              <!--      <input type="email" class="form-control" id="email" placeholder="Search here">-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Hubli-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Shanti Nagar-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Old Bustand-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Manoj Park-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Deshpande Nagar-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--    <div class="checkbox">-->\n                              <!--      <label>-->\n                              <!--      <input type="checkbox" value="">-->\n                              <!--      <span class="cr"><i class="cr-icon icon icon-check icon-xl ml-1"></i></span>-->\n                              <!--      Unkal Lake-->\n                              <!--      </label>-->\n                              <!--    </div>-->\n                              <!--  </div>-->\n                              <!--            </div>-->\n                              <!-- /card body -->\n                              <!--          </div>-->\n                              <!-- /card -->\n                              <!--        </div>-->\n                           </div>\n                           <!-- /grid -->\n                        </div>\n                        <!-- /grid item -->\n                        <!-- Grid Item -->\n                        <div class="col-xl-8 order-xl-1">\n                           <!-- Card -->\n                           <div class="card">\n                              <!-- Card Header -->\n                              <div class="card-header card-nav bg-transparent d-flex justify-content-between">\n                                 <div class="row" style="width: 100%;">\n                                    <div class="col-md-8">\n                                       <h2 margin-bottom *ngIf="storeDetail?.store_status == \'1\' || storeDetail?.store_status == \'0\'" class="mb-20">{{storeDetail?.store_tag_line |titlecase}}</h2>\n                                       <h2 margin-bottom *ngIf="storeDetail?.store_status == \'2\'" style="color:#F00" class="mb-20">Your Approval is Rejected <a  style="color:#038fde"  data-toggle="modal" data-target="#exampleModalLong">(Details)</a></h2>\n                                       <h2 margin-bottom *ngIf="storeDetail?.store_status == \'3\'" style="color:#F00" class="mb-20">Your store is Blocked <a  style="color:#038fde"  data-toggle="modal" data-target="#exampleModalLong1">(Details)</a></h2>\n                                       <p class="mb-1" *ngIf="storeDetail?.store_status == \'0\'" style="color: #faad14;margin-top: 20px;margin-bottom: 0px !important;"> Your Approval is Pending</p>\n                                    </div>\n                                    <div class="col-md-4 text-right">\n<!-- routerLink="/edit-store-detail/{{storeDetail?.id}}" -->           \n									   <button (click)="goToEdit()" class="btn btn-info">Edit</button>\n                                       <button class="btn btn-danger" *ngIf="storeDetail?.visible_status == \'1\' && storeDetail?.store_status == \'1\'" (click)="enable_disable(0)">Disable</button>\n                                       <button class="btn btn-success" *ngIf="storeDetail?.visible_status == \'0\' && storeDetail?.store_status == \'1\'" (click)="enable_disable(1)">Enable</button>\n                                    </div>\n                                 </div>\n                                 <ul class="card-header-links nav nav-underline" role="tablist">\n                                    <!--<li class="nav-item">\n                                       s  <a class="nav-link active" data-toggle="tab" href="#tab-pane1" role="tab"\n                                            aria-controls="tab-pane1"\n                                            aria-selected="true">About</a>\n                                       </li>\n                                       \n                                       <li class="nav-item">\n                                         <a class="nav-link" data-toggle="tab" href="#tab-pane3" role="tab" aria-controls="tab-pane3"\n                                            aria-selected="true">Review</a>\n                                       </li>-->\n                                 </ul>\n                              </div>\n                              <!-- /card header -->\n                              <!-- Card Body -->\n                              <div class="card-body pb-2">\n                                 <!-- Tab Content-->\n                                 <div class="tab-content mt-5">\n                                    <!-- Tab panel -->\n                                    <div id="tab-pane1" class="tab-pane active">\n                                       <!-- List -->\n                                       <ul class="dt-list dt-list-one-third">\n                                          <!-- List Item -->\n                                          <li class="dt-list__item">\n                                             <!-- Media -->\n                                             <div class="media">\n                                                <i class="icon icon-company icon-4x mr-5 align-self-center text-warning"></i>\n                                                <!-- Media Body -->\n                                                <div class="media-body">\n                                                   <span class="d-block text-light-gray f-12 mb-1">Category</span>\n                                                   <h5 class="mb-0">{{getCatName(storeDetail?.store_category_id)}}</h5>\n                                                </div>\n                                                <!-- /media body -->\n                                             </div>\n                                             <!-- /media -->\n                                          </li>\n                                          <!-- /list item -->\n                                          <!-- List Item -->\n                                          <li class="dt-list__item">\n                                             <!-- Media -->\n                                             <div class="media">\n                                                <i class="icon icon-card icon-4x mr-5 align-self-center text-warning"></i>\n                                                <!-- Media Body -->\n                                                <div class="media-body">\n                                                   <span class="d-block text-light-gray f-12 mb-1">Payment Method</span>\n                                                   <h5 class="mb-0">{{getPaymentMethod(storeDetail?.payment_receive_ids)}}</h5>\n                                                </div>\n                                                <!-- /media body -->\n                                             </div>\n                                             <!-- /media -->\n                                          </li>\n                                          <!-- /list item -->\n                                          <!-- List Item -->\n                                          <li class="dt-list__item">\n                                             <!-- Media -->\n                                             <div class="media">\n                                                <i class="icon icon-home icon-4x mr-5 align-self-center text-warning"></i>\n                                                <!-- Media Body -->\n                                                <div class="media-body">\n                                                   <span class="d-block text-light-gray f-12 mb-1">Lives in</span>\n                                                   <h5 class="mb-0">{{storeDetail?.city_name | titlecase}}, {{storeDetail?.state_name | titlecase}} </h5>\n                                                </div>\n                                                <!-- /media body -->\n                                             </div>\n                                             <!-- /media -->\n                                          </li>\n                                          <!-- /list item -->\n                                          <!-- List Item -->\n                                          <!-- /list item -->\n                                       </ul>\n                                       <!-- /list -->\n                                    </div>\n                                    <!-- /tab panel -->\n                                 </div>\n                                 <!-- /tab content-->\n                              </div>\n                              <!-- /card body -->\n                           </div>\n                           <!-- /card -->\n                           <!-- Card -->\n                           <div class="card">\n                              <!-- Card Body -->\n                              <div class="card-body">\n                                 <h2 class="card-title">Details About Us</h2>\n                                 <!-- Card Text -->\n                                 <h6 class="card-subtitle">A little flash back of {{storeDetail?.store_name | titlecase}}</h6>\n                                 <!-- /card text -->\n                                 <!-- Card Text -->\n                                 <!--                      <p class="card-text lead">\n                                    Donec dignissim gravida sem, ut cursus dolor hendrerit et. Morbi volutpat.\n                                    </p>-->\n                                 <!-- /card text -->\n                                 <!-- Card Text -->\n                                 \n                        <div *ngIf="storeDetail?.store_description">\n                              <div *ngIf="storeDetail?.store_description.length <= limit"\n                                 innerHtml="{{storeDetail?.store_description}}"></div>\n                              <div *ngIf="truncating && storeDetail?.store_description.length > limit"\n                                 innerHtml="{{storeDetail?.store_description  | truncate : limit }}">\n   \n                              </div>\n                              <div text-right>\n                                 <button *ngIf="truncating && storeDetail?.store_description.length > limit" ion-button clear\n                                    (click)="truncating = false">show more</button>\n                              </div>\n                              <div *ngIf="!truncating && storeDetail?.store_description.length > limit"\n                                 innerHtml="{{storeDetail?.store_description}}">\n                              </div>\n                              <div text-right>\n                                 <button *ngIf="!truncating && storeDetail?.store_description.length > limit" ion-button clear\n                                    (click)="truncating = true">show less</button>\n                              </div>\n                           </div>\n                                 <!-- /card text -->\n                              </div>\n                              <!-- /card body -->\n                           </div>\n                           <!-- /card -->\n                           <!-- Card -->\n                           <div class="card" *ngIf="storeDetail?.store_reviews?.length > 0">\n                              <!-- Card Body -->\n                              <div class="card-body">\n                                 <h2 class="card-title">Reviews</h2>\n                                 <!-- Card Body -->\n                                 <ul class="dt-list dt-list-one-third">\n                                    <li class="dt-list__item" *ngFor="let review of storeDetail?.store_reviews">\n                                       <!-- Media -->\n                                       <div class="media">\n                                          <!--<i class="icon icon-company icon-4x mr-5 align-self-center text-warning"></i>-->\n                                          <!-- Media Body -->\n                                          <div class="media-body">\n                                             <h4 style="margin-bottom: 0;">{{review.full_name | titlecase}}</h4>\n                                             <span class="d-block text-light-gray f-12 mb-1">{{review.date_n_time | date}}</span>\n                                             <h5 class="mb-0">{{review.store_review}}</h5>\n                                             <div class="d-flex align-items-center mb-1">\n                                                <i *ngFor="let rating of reviewRatings(review.store_rating);let i = index;" class="icon icon-star f-10 mr-1 text-warning"></i>\n                                             </div>\n                                          </div>\n                                          <!-- /media body -->\n                                       </div>\n                                       <!-- /media -->\n                                    </li>\n                                    <!-- /list item -->\n                                 </ul>\n                              </div>\n                              <!-- /card body -->\n                           </div>\n                           <!-- /card -->\n                           <div class="card" *ngIf="storeDetail?.offer_detail?.length > 0">\n                              <div class="card-body">\n                                 <h2 class="card-title">Offers</h2>\n                                 <div class="media" *ngFor="let offer of storeDetail?.offer_detail">\n                                    <div class="media-left" *ngIf="offer[\'offer_status\'] == \'1\'">\n                                       <img class="mr-3" style="border-radius:10px;" src="https://ui-avatars.com/api/?background={{colors}}&color=fff&name={{offer.offer_percenage}}%&length=3" alt="Generic placeholder image">\n                                    </div>\n                                    <div class="media-body">\n                                       <h5 class="mt-0 mb-1">{{offer.offer_title | titlecase}}</h5>\n                                       <p><span class="d-block text-light-gray f-12 mb-1">From : {{offer.start_date | date}}, To : {{offer.end_date | date}} </span> {{offer.description}}</p>\n                                    </div>\n                                 </div>\n                                 <!-- /card body -->\n                              </div>\n                              <!-- /card -->\n                           </div>\n                           <!-- Card -->\n                           <!-- <div class="card products">\n                            <div class="card-body">\n                              <h2 class="card-title" >Products</h2>\n                                 <ul col-12 >\n                                       <li *ngFor="let product of products" (click)=\'goToProductList(product.id)\'>\n                                             <ion-row>\n                                                <ion-col>\n                                                   <img onError="this.src=\'./assets/images/not-available.jpg\'"  src="http://192.168.1.100:81/zomo/uploads/stores/products/{{product.pr_image}}" style="width:100px;height:100px" alt="">\n                                                </ion-col>\n                                             </ion-row>\n                                             <ion-row>\n                                                <ion-col>   \n                                                   <h2 style="margin-bottom: 0">{{product.pr_name | titlecase}}</h2>\n                                                </ion-col>\n                                             </ion-row>\n                                             <ion-row>\n                                                   <ion-col>\n                                                      <span style="color:#faad14;text-decoration: line-through;">₹ {{product.pr_original_amount}}</span>                                             \n                                                      <span> ₹ {{product.pr_sale_amount}}</span>\n                                                   </ion-col>\n                                             </ion-row>\n                                       </li>\n                                 </ul>\n                              \n                           \n                            </div>\n                           </div> -->\n                           <!-- /card -->\n                        </div>\n                        <!-- /grid item -->\n                     </div>\n                     <!-- /grid -->\n                  </div>\n                  <!-- /profile content -->\n               </div>\n  </div>\n</ion-content>\n'/*ion-inline-end:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\manage-store\view-store\view-store.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */],
@@ -3705,7 +3658,7 @@ var ImageModal = /** @class */ (function () {
     ], ImageModal.prototype, "slides", void 0);
     ImageModal = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            template: "\n    <ion-content fullscreen>\n      <ion-item class=\"close-fake\" no-lines text-center>\n        <button ion-button (click)=\"close()\" clear color=\"light\">\n          <ion-icon name=\"close\" item-start></ion-icon>\n          Back\n        </button>\n\n        <button\n          *ngIf=\"!fromProductPage\"\n          ion-button\n          clear\n          (click)=\"presentConfirm()\"\n          color=\"light\">\n          <ion-icon name=\"md-trash\" item-end></ion-icon>\n          Remove\n        </button>\n\n        <button\n          *ngIf=\"fromProductPage\"\n          ion-button\n          (click)=\"deleteProductImage()\"\n          clear\n          color=\"light\">\n          <ion-icon name=\"md-trash\" item-end></ion-icon>\n          Delete\n        </button>\n\n        <button\n          *ngIf=\"fromProductPage\"\n          ion-button\n          (click)=\"setMainImage()\"\n          clear\n          color=\"light\">\n          <ion-icon name=\"checkbox-outline\" item-end></ion-icon>\n          Set as Main Image\n        </button>\n\n      </ion-item>\n\n      <ion-slides zoom #slider [initialSlide]=\"imgPos\">\n        <ion-slide *ngFor=\"let img of imgs;let i = index\">\n          <div class=\"swiper-zoom-container\" padding>\n            <img\n              *ngIf=\"!fromProductPage\"\n              src=\"http://alpademo.com/zomo/uploads/stores/{{ img.image_name }}\"\n              class=\"img-fluid w-100\"\n              alt=\"Image Title\"\n            />\n            <img\n              *ngIf=\"fromProductPage\"\n              src=\"{{ img.image_name }}\"\n              class=\"img-fluid w-100\"\n              alt=\"Image Title\"\n            />\n          </div>\n        </ion-slide>\n      </ion-slides>\n    </ion-content>\n  ",
+            template: "\n    <ion-content fullscreen>\n      <ion-item class=\"close-fake\" no-lines text-center>\n        <button ion-button (click)=\"close()\" clear color=\"light\">\n          <ion-icon name=\"close\" item-start></ion-icon>\n          Back\n        </button>\n\n        <button\n          *ngIf=\"!fromProductPage\"\n          ion-button\n          clear\n          (click)=\"presentConfirm()\"\n          color=\"light\">\n          <ion-icon name=\"md-trash\" item-end></ion-icon>\n          Remove\n        </button>\n\n        <button\n          *ngIf=\"fromProductPage\"\n          ion-button\n          (click)=\"deleteProductImage()\"\n          clear\n          color=\"light\">\n          <ion-icon name=\"md-trash\" item-end></ion-icon>\n          Delete\n        </button>\n\n        <button\n          *ngIf=\"fromProductPage\"\n          ion-button\n          (click)=\"setMainImage()\"\n          clear\n          color=\"light\">\n          <ion-icon name=\"checkbox-outline\" item-end></ion-icon>\n          Set as Main Image\n        </button>\n\n      </ion-item>\n\n      <ion-slides zoom #slider [initialSlide]=\"imgPos\">\n        <ion-slide *ngFor=\"let img of imgs;let i = index\">\n          <div class=\"swiper-zoom-container\" padding>\n            <img\n              *ngIf=\"!fromProductPage\"\n              src=\"http://192.168.1.100:81/zomo/uploads/stores/{{ img.image_name }}\"\n              class=\"img-fluid w-100\"\n              alt=\"Image Title\"\n            />\n            <img\n              *ngIf=\"fromProductPage\"\n              src=\"{{ img.image_name }}\"\n              class=\"img-fluid w-100\"\n              alt=\"Image Title\"\n            />\n          </div>\n        </ion-slide>\n      </ion-slides>\n    </ion-content>\n  ",
             styles: [
                 "\n      .close-fake {\n        background: transparent;\n        ion-icon {\n          font-size: 2rem;\n        }\n        margin-top: 40px;\n      }\n\n      ion-content {\n        background: rgba(44, 39, 45, 0.84);\n      }\n\n      ion-slides {\n        height: 80%;\n      }\n    "
             ]
@@ -3721,6 +3674,197 @@ var ImageModal = /** @class */ (function () {
     return ImageModal;
 }());
 
+//# sourceMappingURL=view-store.js.map
+
+/***/ }),
+
+/***/ 137:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ProductsListPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProductModal; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_store_product__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_constants_service__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__manage_store_view_store_view_store__ = __webpack_require__(136);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+/**
+ * Generated class for the ProductsListPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var ProductsListPage = /** @class */ (function () {
+    function ProductsListPage(modalCtrl, storage, navCtrl, navParams, toastCtrl, alertCtrl, productProvider) {
+        var _this = this;
+        this.modalCtrl = modalCtrl;
+        this.storage = storage;
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.toastCtrl = toastCtrl;
+        this.alertCtrl = alertCtrl;
+        this.productProvider = productProvider;
+        this.products = [];
+        this.productsbackup = [];
+        this.storage.get("me").then(function (val) {
+            _this.getdata(val.token);
+        });
+    }
+    ProductsListPage.prototype.filterStore = function (searchTerm) {
+        this.products = this.productsbackup;
+        return this.products.filter(function (item) {
+            return item.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
+        });
+    };
+    ProductsListPage.prototype.setFilteredItems = function () {
+        this.products = this.filterStore(this.searchTerm);
+    };
+    ProductsListPage.prototype.getdata = function (token) {
+        var _this = this;
+        console.clear();
+        this.token = token;
+        this.productProvider.getProductList(token).subscribe(function (resp) {
+            if (resp.status) {
+                _this.products = resp.message;
+                var temp = [];
+                _this.products.forEach(function (element) {
+                    var item = {
+                        id: element.id,
+                        name: element.pr_name,
+                        image: _this.getImage(element.pr_image),
+                        rating: parseFloat(element.pr_rating),
+                        price: parseFloat(element.pr_sale_amount),
+                        status: parseInt(element.pr_status)
+                    };
+                    temp.push(item);
+                });
+                console.clear();
+                console.log(temp);
+                _this.productsbackup = _this.products = temp;
+            }
+            else {
+                console.log(resp);
+            }
+        });
+    };
+    ProductsListPage.prototype.getImage = function (img) {
+        return __WEBPACK_IMPORTED_MODULE_4__services_constants_service__["b" /* BASE_URL */] + "/uploads/stores/products/" + img;
+    };
+    ProductsListPage.prototype.toArray = function (arr) {
+        return arr
+            .replace(/,/gi, " ")
+            .trim()
+            .split(" ");
+    };
+    ProductsListPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ProductsListPage');
+    };
+    ProductsListPage.prototype.goToCart = function () {
+        this.navCtrl.push('CartPage');
+    };
+    ProductsListPage.prototype.presentPopover = function (myEvent) {
+        // let popover = this.popoverCtrl.create(PopoverPage);
+        // popover.present({
+        //   ev: myEvent
+        // });
+    };
+    ProductsListPage.prototype.search = function () {
+    };
+    ProductsListPage.prototype.goToProductDetail = function (data) {
+        console.log(data.id);
+        console.log(this.token);
+        this.navCtrl.push(ProductModal, { id: data.id, token: this.token });
+    };
+    ProductsListPage.prototype.presentFilter = function () {
+        var modal = this.modalCtrl.create("ProductsFilterPage");
+        modal.present();
+        modal.onDidDismiss(function (data) {
+            if (data) {
+                // play with data here
+            }
+        });
+    };
+    ProductsListPage.prototype.sortBy = function () {
+        var _this = this;
+        var alert = this.alertCtrl.create();
+        alert.setTitle('Sort Options');
+        alert.addInput({
+            type: 'radio',
+            label: 'Relevance',
+            value: 'relevance',
+            checked: true
+        });
+        alert.addInput({
+            type: 'radio',
+            label: 'Popularity',
+            value: 'popular'
+        });
+        alert.addInput({
+            type: 'radio',
+            label: 'Low to High',
+            value: 'lth'
+        });
+        alert.addInput({
+            type: 'radio',
+            label: 'High to Low',
+            value: 'htl'
+        });
+        alert.addInput({
+            type: 'radio',
+            label: 'Newest First',
+            value: 'newest'
+        });
+        alert.addButton('Cancel');
+        alert.addButton({
+            text: 'OK',
+            handler: function (data) {
+                console.log(data);
+                var navTransition = alert.dismiss();
+                // start some async method
+                setTimeout(function () {
+                    navTransition.then(function () {
+                        _this.navCtrl.push('CartPage');
+                    });
+                }, 3000);
+                // return false;
+            }
+        });
+        alert.present().then(function () {
+            console.log("=====alert---present");
+        });
+    };
+    ProductsListPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-products-list',template:/*ion-inline-start:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\product\products-list\products-list.html"*/'<ion-header>\n  <ion-navbar no-border-bottom color="primary">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title *ngIf="!showSearch">Products</ion-title>\n    <ion-searchbar  *ngIf="showSearch" [(ngModel)]="searchTerm"(ionChange)="setFilteredItems()"></ion-searchbar>\n     <ion-buttons end>\n      <button ion-button end (click)="showSearch = !showSearch">\n       <ion-icon name="md-search"></ion-icon>\n    </button>\n  </ion-buttons>\n    <ion-buttons end>\n      <button ion-button (click)="goToCart()">\n        <ion-icon name="md-cart"></ion-icon>\n      </button>\n    </ion-buttons>\n    <!-- <ion-buttons end>\n      <button ion-button icon-only (click)="presentPopover($event)">\n        <ion-icon name="more"></ion-icon>\n      </button>\n    </ion-buttons> -->\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content class="products">\n\n  <div class="row result">\n    <div col-6 class="storelistItems {{item[\'id\']}}" *ngFor="let item of products;">\n      <a (click)="goToProductDetail(item)">\n        <div class=" dt-card__full-height dt-card__product-vertical">\n          <img alt="Alarm Clock" class="card-img-top" [src]="item?.image"\n            onError="this.src=\'./assets/images/not-available.jpg\'">\n          <div class="card-contents">\n            <h2 class="card-title">{{item[\'name\'] | titlecase}}</h2>\n            <div class="d-flex">\n              <h4 class="mb-2 mr-3">{{item[\'price\'] | currency:\'INR\':\'symbol\' }}</h4>\n              <div class="d-flex align-items-center mb-1">\n              </div>\n            </div>\n            <p class="mb-1" style="color: rgb(82, 212, 121);" *ngIf="item?.status">Enabled</p>\n            <p class="mb-1" style="color: rgb(156, 21, 21);" *ngIf="!item?.status">Disabled</p>\n          </div>\n        </div>\n      </a>\n    </div>\n  </div>\n</ion-content>\n\n<!-- <ion-footer no-border>\n  <ion-grid>\n    <ion-row>\n      <ion-col>\n        <ion-buttons>\n          <button ion-button full icon-end (click)="presentFilter()">\n            <ion-icon name="md-funnel"></ion-icon>&nbsp;Filter\n          </button>\n        </ion-buttons>\n      </ion-col>\n      <ion-col>\n        <ion-buttons>\n          <button ion-button icon-end full (click)="sortBy()">\n            <ion-icon name="menu"></ion-icon>&nbsp;Sort\n          </button>\n        </ion-buttons>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-footer> -->'/*ion-inline-end:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\product\products-list\products-list.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_store_product__["a" /* ProductProvider */]])
+    ], ProductsListPage);
+    return ProductsListPage;
+}());
+
 // Product Detail Page
 var ProductModal = /** @class */ (function () {
     function ProductModal(navCtrl, navParams, toastCtrl, modalController, viewCtrl, alertCtrl, productProvider) {
@@ -3731,7 +3875,7 @@ var ProductModal = /** @class */ (function () {
         this.viewCtrl = viewCtrl;
         this.alertCtrl = alertCtrl;
         this.productProvider = productProvider;
-        this.base_url = __WEBPACK_IMPORTED_MODULE_5__services_constants_service__["b" /* BASE_URL */];
+        this.base_url = __WEBPACK_IMPORTED_MODULE_4__services_constants_service__["b" /* BASE_URL */];
         console.clear();
     }
     ProductModal.prototype.ngOnInit = function () {
@@ -3751,6 +3895,17 @@ var ProductModal = /** @class */ (function () {
             }
             else {
                 _this.presentToast(res4.message);
+            }
+        });
+    };
+    ProductModal.prototype.enable = function (status) {
+        var _this = this;
+        this.productProvider
+            .productEnableDisable(this.token, status, this.id)
+            .subscribe(function (res4) {
+            _this.presentToast(res4.message);
+            if (res4.status) {
+                _this.ngOnInit();
             }
         });
     };
@@ -3822,7 +3977,7 @@ var ProductModal = /** @class */ (function () {
     };
     ProductModal.prototype.goToGallery = function (i) {
         var _this = this;
-        var modal = this.modalController.create(ImageModal, { img: this.product.images, prodtct: true, id: this.navParams.get("id"), token: this.token, pos: i }, { cssClass: "image-modal" });
+        var modal = this.modalController.create(__WEBPACK_IMPORTED_MODULE_5__manage_store_view_store_view_store__["a" /* ImageModal */], { img: this.product.images, prodtct: true, id: this.navParams.get("id"), token: this.token, pos: i }, { cssClass: "image-modal" });
         modal.present();
         modal.onDidDismiss(function (data) {
             console.log(data);
@@ -3873,7 +4028,7 @@ var ProductModal = /** @class */ (function () {
     ], ProductModal.prototype, "slides", void 0);
     ProductModal = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            template: "\n    <ion-header>\n      <ion-navbar>\n        <ion-title>Product Detail</ion-title>\n        <ion-buttons end>\n        <button        end\n        ion-button\n        clear\n        (click)=\"openImage()\">\n        Add Image\n      </button>\n        </ion-buttons>\n      </ion-navbar>\n    </ion-header>\n    <ion-content\n      fullscreen\n      class=\"product-detail\"\n      style=\"background-color: #f4f4f4;\"\n    >\n    <input type=\"file\" (change)=\"changeListener($event)\" name=\"pr-image\" id=\"pr-image\" style=\"visibility: hidden\">\n      <ion-slides pager style=\"height: 250px\">\n        <ion-slide *ngFor=\"let img of product?.images;let i = index;\" (click) = \"goToGallery(i)\">\n          <img [src]=\"img.image_name\" />\n        </ion-slide>\n      </ion-slides>\n      <ion-card>\n        <ion-card-content>\n          <h2>{{ product?.pr_name | titlecase }}</h2>\n          <small>Special Price</small>\n          <p class=\"price\">\n            {{ product?.pr_sale_amount | currency: \"INR\" }}\n            <span\n              style=\"font-size: 10px;color:#faad14;text-decoration: line-through;\"\n              >{{ product?.pr_original_amount | currency: \"INR\" }}</span\n            >\n          </p>\n          <ion-badge width=\"25\"\n            >{{ product?.pr_rating }} <ion-icon name=\"star\"></ion-icon\n          ></ion-badge>\n        </ion-card-content>\n      </ion-card>\n\n      <ion-card *ngIf=\"product\">\n        <ion-card-content>\n          <ion-row class=\"detail\">\n            Details\n          </ion-row>\n          <h2><b>Note</b></h2>\n          <ul>\n            {{\n              product?.pr_description | titlecase\n            }}\n          </ul>\n          <h2><b>More</b></h2>\n          <li>\n            <span>Variants: </span\n            ><span *ngFor=\"let variant of toArray(product?.pr_colors)\"\n              >{{ variant | titlecase }}&nbsp;&nbsp;</span\n            >\n          </li>\n          <li>\n            <button\n              ion-button\n              small\n              outline\n              *ngFor=\"let size of toArray(product?.pr_sizes)\"\n            >\n              {{ size | titlecase }}\n            </button>\n          </li>\n        </ion-card-content>\n      </ion-card>\n    </ion-content>\n\n    <ion-footer style=\"background-color: #fff;\">\n      <ion-grid>\n        <ion-row style=\"border-top:0;\">\n          <ion-col>\n            <ion-buttons>\n              <button ion-button full (click)=\"edit()\">\n                <ion-icon name=\"md-create\"></ion-icon>&nbsp;&nbsp;Edit\n              </button>\n            </ion-buttons>\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n    </ion-footer>\n  ",
+            template: "\n  <ion-header>\n  <ion-navbar color=\"primary\" *ngIf=\"product?.pr_status != '0'\">\n    <ion-title>Product Detail</ion-title>\n    <ion-buttons end>\n      <button end ion-button clear (click)=\"openImage()\">\n        Add Image\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n  <ion-navbar color=\"danger\" *ngIf=\"product?.pr_status == '0'\">\n    <ion-title>Product Detail</ion-title>\n    <ion-buttons end>\n      <button end ion-button clear (click)=\"enable(1)\">\n        Enable Product\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n<ion-content fullscreen class=\"product-detail\" style=\"background-color: #f4f4f4;\">\n  <input type=\"file\" (change)=\"changeListener($event)\" name=\"pr-image\" id=\"pr-image\" style=\"visibility: hidden\">\n  <ion-slides pager style=\"height: 250px\">\n    <ion-slide *ngFor=\"let img of product?.images;let i = index;\" (click)=\"goToGallery(i)\">\n      <img onError=\"this.src='./assets/images/not-available.jpg'\" [src]=\"img.image_name\" />\n    </ion-slide>\n  </ion-slides>\n  <ion-card>\n    <ion-card-content>\n      <h2>{{ product?.pr_name | titlecase }}</h2>\n      <small>Special Price</small>\n      <p class=\"price\">\n        {{ product?.pr_sale_amount | currency: \"INR\" }}\n        <span\n          style=\"font-size: 10px;color:#faad14;text-decoration: line-through;\">{{ product?.pr_original_amount | currency: \"INR\" }}</span>\n      </p>\n      <ion-badge width=\"25\">{{ product?.pr_rating }} <ion-icon name=\"star\"></ion-icon>\n      </ion-badge>\n    </ion-card-content>\n  </ion-card>\n\n  <ion-card *ngIf=\"product\">\n    <ion-card-content>\n      <ion-row class=\"detail\">\n        Details\n      </ion-row>\n      <h2><b>Note</b></h2>\n      <ul>\n        {{\n            product?.pr_description | titlecase\n          }}\n      </ul>\n      <h2><b>More</b></h2>\n      <li>\n        <span>Variants: </span><span\n          *ngFor=\"let variant of toArray(product?.pr_colors)\">{{ variant | titlecase }}&nbsp;&nbsp;</span>\n      </li>\n      <li>\n        <button ion-button small outline *ngFor=\"let size of toArray(product?.pr_sizes)\">\n          {{ size | titlecase }}\n        </button>\n      </li>\n    </ion-card-content>\n  </ion-card>\n</ion-content>\n\n<ion-footer style=\"background-color: #fff;\">\n  <ion-grid>\n    <ion-row style=\"border-top:0;\">\n      <ion-col>\n        <ion-buttons>\n          <button ion-button full (click)=\"edit()\">\n            <ion-icon name=\"md-create\"></ion-icon>&nbsp;&nbsp;Edit\n          </button>\n        </ion-buttons>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-footer>\n  ",
             styles: [
                 "\n      .content-md {\n        background-color: #f4f4f4;\n      }\n      ion-header::after {\n        background: transparent;\n        background-image: none;\n      }\n      .toolbar {\n        .toolbar-background {\n          background: transparent;\n        }\n      }\n\n      scroll-content {\n        margin-top: 5px !important;\n      }\n\n      .card-ios {\n        margin-right: 0px;\n        margin-left: 0px;\n        width: 100% !important;\n      }\n\n      .card-md {\n        margin-right: 0px;\n        margin-left: 0px;\n        width: 100% !important;\n      }\n\n      ion-col[width-50] {\n        padding-top: 10px;\n        text-align: center;\n        max-width: 50%;\n        color: #616161;\n        font-size: large;\n        border-right: 2px solid #f1f3f6;\n      }\n\n      ion-row {\n        border-top: 1px solid #f1f3f6;\n      }\n\n      .detail {\n        font-size: large;\n        border-top: 0;\n        border-bottom: 1px solid #f1f3f6;\n      }\n\n      small {\n        color: #41b283;\n        font-size: 80%;\n      }\n\n      /* rating-start-css*/\n\n      ul {\n        padding: 0px;\n        text-align: center;\n        &.rating li {\n          padding: 5px 10px;\n          background: none;\n          color: #ffb400;\n\n          ion-icon {\n            font-size: 35px;\n          }\n        }\n      }\n      /*Ends*/\n    "
             ]
@@ -3884,16 +4039,16 @@ var ProductModal = /** @class */ (function () {
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ViewController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_6__providers_store_product__["a" /* ProductProvider */]])
+            __WEBPACK_IMPORTED_MODULE_2__providers_store_product__["a" /* ProductProvider */]])
     ], ProductModal);
     return ProductModal;
 }());
 
-//# sourceMappingURL=view-store.js.map
+//# sourceMappingURL=products-list.js.map
 
 /***/ }),
 
-/***/ 149:
+/***/ 150:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -3906,228 +4061,236 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 149;
+webpackEmptyAsyncContext.id = 150;
 
 /***/ }),
 
-/***/ 191:
+/***/ 192:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
 	"../pages/auth/forgot/forgot.module": [
-		364,
-		47
+		366,
+		48
 	],
 	"../pages/auth/landing/landing.module": [
-		363,
-		46
+		367,
+		47
 	],
 	"../pages/auth/login/login.module": [
-		365,
-		45
+		368,
+		46
 	],
 	"../pages/auth/register/register.module": [
-		368,
-		44
+		369,
+		45
 	],
 	"../pages/home/home.module": [
-		366,
-		43
+		370,
+		44
 	],
 	"../pages/invitees/pairs/pairs.module": [
-		370,
-		42
+		371,
+		43
 	],
 	"../pages/invitees/referrals/referrals.module": [
-		369,
-		41
+		372,
+		42
 	],
 	"../pages/key/activate-key/activate-key.module": [
-		367,
-		40
+		373,
+		41
 	],
 	"../pages/key/request-key/request-key.module": [
-		371,
-		39
+		374,
+		40
 	],
 	"../pages/key/transfer-key/transfer-key.module": [
-		372,
-		38
+		375,
+		39
 	],
 	"../pages/key/view-key/view-key.module": [
-		374,
-		37
+		376,
+		38
 	],
 	"../pages/manage-store/contact-requests/contact-requests.module": [
-		375,
-		36
+		377,
+		37
 	],
 	"../pages/manage-store/create-offer/create-offer.module": [
-		376,
-		35
+		378,
+		36
 	],
 	"../pages/manage-store/create-store/create-store.module": [
-		373,
-		34
+		379,
+		35
 	],
 	"../pages/manage-store/edit-offer/edit-offer.module": [
-		377,
-		33
+		380,
+		34
 	],
 	"../pages/manage-store/edit-store/edit-store.module": [
-		378,
-		32
+		381,
+		33
 	],
 	"../pages/manage-store/list-store/list-store.module": [
 		382,
-		31
+		32
 	],
 	"../pages/manage-store/manage-offer/manage-offer.module": [
 		383,
-		53
+		55
 	],
 	"../pages/manage-store/view-store/view-store.module": [
-		416,
-		52
+		418,
+		54
 	],
 	"../pages/options/option-one/option-one.module": [
-		379,
-		30
+		384,
+		31
 	],
 	"../pages/options/option-two/option-two.module": [
-		380,
-		29
+		385,
+		30
 	],
 	"../pages/options/static-badge/static-badge.module": [
-		381,
-		28
+		386,
+		29
 	],
 	"../pages/packages/completed-package/completed-package.module": [
-		384,
-		27
+		387,
+		28
 	],
 	"../pages/packages/running-package/running-package.module": [
-		385,
-		51
+		388,
+		53
 	],
 	"../pages/product/add-product/add-product.module": [
-		386,
-		26
+		389,
+		27
 	],
 	"../pages/product/cart/cart.module": [
-		387,
-		25
+		390,
+		26
 	],
 	"../pages/product/checkout/checkout.module": [
-		389,
-		24
+		391,
+		25
 	],
 	"../pages/product/edit-product/edit-product.module": [
-		390,
-		23
+		392,
+		24
 	],
 	"../pages/product/my-orders/my-orders.module": [
-		388,
-		22
+		393,
+		23
+	],
+	"../pages/product/products-list/products-list.module": [
+		419,
+		52
 	],
 	"../pages/product/store-orders/store-orders.module": [
-		414,
-		50
+		420,
+		51
 	],
 	"../pages/profile/change-password/change-password.module": [
-		393,
-		21
+		394,
+		22
 	],
 	"../pages/profile/edit-profile/edit-profile.module": [
-		391,
-		20
+		395,
+		21
 	],
 	"../pages/profile/profile.module": [
-		392,
-		19
+		396,
+		20
 	],
 	"../pages/profile/update-kyc/update-kyc.module": [
-		394,
-		18
+		397,
+		19
 	],
 	"../pages/profile/update-payment/update-payment.module": [
-		395,
-		17
+		398,
+		18
 	],
 	"../pages/profile/update-social/update-social.module": [
-		396,
-		16
+		399,
+		17
 	],
 	"../pages/profit-report/pars-earnings/pars-earnings.module": [
-		397,
-		15
+		400,
+		16
 	],
 	"../pages/profit-report/referral-earnings/referral-earnings.module": [
-		398,
-		14
+		401,
+		15
 	],
 	"../pages/profit-report/task-earnings/task-earnings.module": [
-		400,
-		13
+		402,
+		14
 	],
 	"../pages/retail-brands/brands-search/brands-search.module": [
-		406,
-		12
+		403,
+		13
 	],
 	"../pages/same-component/emails/emails.module": [
-		405,
+		404,
 		0
 	],
 	"../pages/sub-options-with-icons/dynamic-badge/dynamic-badge.module": [
-		399,
-		11
+		405,
+		12
 	],
 	"../pages/sub-options-with-icons/sub-option-one/sub-option-one.module": [
-		415,
-		49
+		421,
+		50
 	],
 	"../pages/sub-options-with-icons/sub-option-two/sub-option-two.module": [
-		401,
-		10
+		406,
+		11
 	],
 	"../pages/sub-options-without-icons/sub-option-five/sub-option-five.module": [
-		402,
-		9
+		407,
+		10
 	],
 	"../pages/sub-options-without-icons/sub-option-four/sub-option-four.module": [
-		403,
-		8
+		408,
+		9
 	],
 	"../pages/sub-options-without-icons/sub-option-three/sub-option-three.module": [
-		404,
-		7
+		409,
+		8
 	],
 	"../pages/task/choose-task/choose-task.module": [
-		407,
-		6
+		410,
+		7
 	],
 	"../pages/task/rejected-task/rejected-task.module": [
-		408,
-		5
+		411,
+		6
 	],
 	"../pages/task/running-task/running-task.module": [
-		409,
-		4
+		412,
+		5
 	],
 	"../pages/task/verified-task/verified-task.module": [
-		411,
+		413,
+		4
+	],
+	"../pages/user-products-list/user-products-list.module": [
+		414,
 		3
 	],
 	"../pages/user-store-search/user-store-search.module": [
-		413,
-		48
+		415,
+		49
 	],
 	"../pages/view-store-images/view-store-images.module": [
-		410,
+		416,
 		2
 	],
 	"../pages/wallet/wallet.module": [
-		412,
+		417,
 		1
 	]
 };
@@ -4142,18 +4305,18 @@ function webpackAsyncContext(req) {
 webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
-webpackAsyncContext.id = 191;
+webpackAsyncContext.id = 192;
 module.exports = webpackAsyncContext;
 
 /***/ }),
 
-/***/ 197:
+/***/ 198:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SideMenuContentComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_side_menu_option_select_event__ = __webpack_require__(134);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -4463,13 +4626,13 @@ var SideMenuContentComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 247:
+/***/ 248:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = SideMenuDisplayText;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_app_module__ = __webpack_require__(133);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_side_menu_option_select_event__ = __webpack_require__(134);
 // Angular
 
@@ -4506,15 +4669,15 @@ function SideMenuDisplayText(displayText) {
 
 /***/ }),
 
-/***/ 248:
+/***/ 249:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return KeyProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_constants_service__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_constants_service__ = __webpack_require__(12);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4661,15 +4824,15 @@ var KeyProvider = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 249:
+/***/ 250:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TaskProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_constants_service__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_constants_service__ = __webpack_require__(12);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4744,15 +4907,15 @@ var TaskProvider = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 250:
+/***/ 251:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InviteesProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_constants_service__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_constants_service__ = __webpack_require__(12);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4837,15 +5000,15 @@ var InviteesProvider = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 251:
+/***/ 252:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProfitReportProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_constants_service__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_constants_service__ = __webpack_require__(12);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4930,15 +5093,15 @@ var ProfitReportProvider = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 252:
+/***/ 253:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return WalletProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_constants_service__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_constants_service__ = __webpack_require__(12);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5005,14 +5168,14 @@ var WalletProvider = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_ReplaySubject__ = __webpack_require__(310);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_ReplaySubject__ = __webpack_require__(312);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_ReplaySubject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_ReplaySubject__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(193);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_splash_screen__ = __webpack_require__(196);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__shared_side_menu_content_side_menu_content_component__ = __webpack_require__(197);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_auth_auth__ = __webpack_require__(128);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(194);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_splash_screen__ = __webpack_require__(197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__shared_side_menu_content_side_menu_content_component__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_auth_auth__ = __webpack_require__(129);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5103,11 +5266,6 @@ var MyApp = /** @class */ (function () {
                     // iconName: 'cube',
                     component: "ReferralsPage"
                 },
-                {
-                    displayText: "Pairs",
-                    // iconName: 'contacts',
-                    component: "PairsPage"
-                }
             ]
         });
         this.options.push({
@@ -5182,6 +5340,11 @@ var MyApp = /** @class */ (function () {
                 {
                     displayText: "Add Product",
                     component: "AddProductPage"
+                },
+                {
+                    displayText: "Product List",
+                    iconName: "",
+                    component: "ProductsListPage"
                 },
                 {
                     displayText: "Store Orders",
@@ -5358,7 +5521,7 @@ var MyApp = /** @class */ (function () {
         __metadata("design:type", __WEBPACK_IMPORTED_MODULE_6__shared_side_menu_content_side_menu_content_component__["a" /* SideMenuContentComponent */])
     ], MyApp.prototype, "sideMenu", void 0);
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\app\app.html"*/'<ion-menu persistent="true" [content]="content" (ionClose)="collapseMenuOptions()" id="authenticated">\n	<ion-header>\n		<ion-toolbar color="primary">\n			<ion-title>Menu</ion-title>\n		</ion-toolbar>\n	</ion-header>\n\n	<ion-content>\n\n		<!-- side menu content -->\n		<side-menu-content *ngIf="authenticatedMenu" [settings]="sideMenuSettings" [options]="options" (change)="onOptionSelected($event)"></side-menu-content>\n\n		<ion-list *ngIf="!authenticatedMenu" no-lines>\n			<ion-item menuClose no-lines (click)="goto(\'UserStoreSearchPage\')">\n				Home\n			</ion-item>\n			<ion-item no-lines menuClose (click)="goto(\'LoginPage\')">\n				Login\n			</ion-item>\n		</ion-list>\n	</ion-content>\n</ion-menu>\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>'/*ion-inline-end:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\app\app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\app\app.html"*/'<ion-menu persistent="true" [content]="content" (ionClose)="collapseMenuOptions()" id="authenticated">\n	<ion-header>\n		<ion-toolbar color="primary">\n			<ion-title>Menu</ion-title>\n		</ion-toolbar>\n	</ion-header>\n\n	<ion-content>\n\n		<!-- side menu content -->\n		<side-menu-content *ngIf="authenticatedMenu" [settings]="sideMenuSettings" [options]="options" (change)="onOptionSelected($event)"></side-menu-content>\n\n		<ion-list *ngIf="!authenticatedMenu" no-lines>\n			<ion-item menuClose no-lines (click)="goto(\'UserStoreSearchPage\')">\n				Home\n			</ion-item>\n			<ion-item no-lines menuClose (click)="goto(\'UserProductsListPage\')">\n				Product List\n			</ion-item>\n			<ion-item no-lines menuClose (click)="goto(\'LoginPage\')">\n				Login\n			</ion-item>\n		</ion-list>\n	</ion-content>\n</ion-menu>\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>'/*ion-inline-end:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\app\app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["m" /* Platform */],
             __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__["a" /* StatusBar */],
@@ -5376,16 +5539,16 @@ var MyApp = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 255:
+/***/ 256:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return RunningPackagePage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ModalContentPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_package_package__ = __webpack_require__(135);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(22);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5529,17 +5692,17 @@ var ModalContentPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 256:
+/***/ 257:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return StoreOrdersPage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OrderDetail; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_store_product__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_constants_service__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_store_product__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_constants_service__ = __webpack_require__(12);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5771,12 +5934,46 @@ var OrderDetail = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComponentsModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__header_header__ = __webpack_require__(281);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(6);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var ComponentsModule = /** @class */ (function () {
+    function ComponentsModule() {
+    }
+    ComponentsModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+            declarations: [__WEBPACK_IMPORTED_MODULE_1__header_header__["a" /* HeaderComponent */]],
+            imports: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_1__header_header__["a" /* HeaderComponent */])],
+            exports: [__WEBPACK_IMPORTED_MODULE_1__header_header__["a" /* HeaderComponent */]]
+        })
+    ], ComponentsModule);
+    return ComponentsModule;
+}());
+
+//# sourceMappingURL=components.module.js.map
+
+/***/ }),
+
+/***/ 259:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ManageOfferPage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return OfferModal; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_store_offer__ = __webpack_require__(132);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(22);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5896,16 +6093,16 @@ var OfferModal = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 259:
+/***/ 260:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return UserStoreSearchPage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PopoverPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_store_store__ = __webpack_require__(50);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_store_store__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(22);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6108,7 +6305,7 @@ var UserStoreSearchPage = /** @class */ (function () {
     ], UserStoreSearchPage.prototype, "andClickEvent", null);
     UserStoreSearchPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-user-store-search	',template:/*ion-inline-start:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\user-store-search\user-store-search.html"*/'<!--\n   Generated template for the BrandsSearchPage page.\n   \n   See http://ionicframework.com/docs/components/#navigation for more info on\n   Ionic pages and navigation.\n   -->\n<ion-header>\n   <ion-navbar color="primary">\n      <button ion-button menuToggle>\n         <ion-icon name="menu"></ion-icon>\n      </button>\n      <ion-title *ngIf="!showSearch">Brands Search</ion-title>\n      <ion-searchbar  *ngIf="showSearch" [(ngModel)]="searchTerm"(ionChange)="setFilteredItems()"></ion-searchbar>\n       <ion-buttons end>\n        <button ion-button end (click)="showSearch = !showSearch">\n         <ion-icon name="search"></ion-icon>\n      </button>\n      \n      <button #filterButton ion-button end  mrgin-left (click)="presentPopover($event)">\n         <ion-icon name="options"></ion-icon>\n      </button>\n      </ion-buttons>\n   </ion-navbar>\n</ion-header>\n<ion-content padding>\n\n  <!--  <ion-grid no-padding>\n      <ion-row>\n         <ion-col col-10>\n         </ion-col>\n         <ion-col col-2 text-right>\n             <button ion-button clear icon-end >\n                Filter\n         <ion-icon name="options" ></ion-icon>\n      </button>\n         </ion-col>\n      </ion-row>\n   </ion-grid> -->\n\n   <div col-12>\n      <div class="row result" *ngIf="storelist != \'No related data found for store list.\'">\n         <div col-6 class="storelistItems {{item[\'store_category_id\']}} {{item[\'city_name\']}}" *ngFor="let item of storelist;">\n            <a  (click)="goToStore(item[\'store_url\'])">\n               <div class="card dt-card__full-height dt-card__product-vertical">\n                  <img alt="Alarm Clock" class="card-img-top" src="http://alpademo.com/zomo/uploads/stores/{{item[\'store_image\']}}">\n                  <div class="card-body">\n                     <h2 class="card-title">{{item[\'store_name\'] | titlecase}}</h2>\n                     <div class="d-flex">\n                        <h4 class="mb-2 mr-3">{{item[\'store_address\'] | titlecase}}</h4>\n                        <div class="d-flex align-items-center mb-1">\n                           <i *ngFor="let rating of reviewRatings(item.store_rating);let i = index;" class="icon icon-star f-10 mr-1 text-warning"></i>\n                        </div>\n                     </div>\n                     <p class="mb-1" style="color: #666;">{{item[\'store_services\'] | titlecase}}</p>\n                     <p class="mb-1" style="color: #666;">{{item[\'city_name\'] | titlecase}}</p>\n                  </div>\n               </div>\n            </a>\n         </div>\n      </div>\n      <div class="row result text-center" *ngIf="storelist == \'No related data found for store list.\'">\n         <div class="col-xl-4 col-md-4 col-sm-6 col-12 storelistItems text-center">\n            {{storelist}}\n         </div>\n      </div>\n   </div>\n</ion-content>\n\n\n\n<ion-content class="filter-content hide-filter" #filterpart (clickOutside)="hideFilter($event)" (swiperight)="swipeRight($event)">\n  <div class="">\n                    <!-- Sidebar Navigation -->\n                    <ul class="dt-module-side-nav">\n                      <div class="dt-card__header mb-2">\n                       <!--,,. Card Heading --> \n                        <div class="dt-card__heading">\n                          <h3 class="dt-card__title">Categories</h3>\n                        </div>\n                        <!-- /card heading -->\n                      </div>\n                      <!-- /card header -->\n                      <!-- Card Body -->\n                      <div class="dt-card__body pb-0">\n                        <div class="categories_search_block">\n                          <div class="checkbox" *ngFor="let cat of category; let i = index">\n                            <label>\n                            <input (change)="change();"  type="checkbox" name="{{cat.id}}">\n                             <span  class="cr"><i  class="cr-icon icon icon-check icon-xl ml-1"></i></span> \n                               {{cat.category_name}} \n                          </label>\n                          </div>\n                        </div>\n                      </div>\n                    </ul>\n                    <!-- /sidebar navigation -->\n                  </div>\n</ion-content>'/*ion-inline-end:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\user-store-search\user-store-search.html"*/,
+            selector: 'page-user-store-search	',template:/*ion-inline-start:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\user-store-search\user-store-search.html"*/'<!--\n   Generated template for the BrandsSearchPage page.\n   \n   See http://ionicframework.com/docs/components/#navigation for more info on\n   Ionic pages and navigation.\n   -->\n<ion-header>\n   <ion-navbar color="primary">\n      <button ion-button menuToggle>\n         <ion-icon name="menu"></ion-icon>\n      </button>\n      <ion-title *ngIf="!showSearch">Brands Search</ion-title>\n      <ion-searchbar  *ngIf="showSearch" [(ngModel)]="searchTerm"(ionChange)="setFilteredItems()"></ion-searchbar>\n       <ion-buttons end>\n        <button ion-button end (click)="showSearch = !showSearch">\n         <ion-icon name="search"></ion-icon>\n      </button>\n      \n      <button #filterButton ion-button end  mrgin-left (click)="presentPopover($event)">\n         <ion-icon name="options"></ion-icon>\n      </button>\n      </ion-buttons>\n   </ion-navbar>\n</ion-header>\n<ion-content padding>\n\n  <!--  <ion-grid no-padding>\n      <ion-row>\n         <ion-col col-10>\n         </ion-col>\n         <ion-col col-2 text-right>\n             <button ion-button clear icon-end >\n                Filter\n         <ion-icon name="options" ></ion-icon>\n      </button>\n         </ion-col>\n      </ion-row>\n   </ion-grid> -->\n\n   <div col-12>\n      <div class="row result" *ngIf="storelist != \'No related data found for store list.\'">\n         <div col-6 class="storelistItems {{item[\'store_category_id\']}} {{item[\'city_name\']}}" *ngFor="let item of storelist;">\n            <a  (click)="goToStore(item[\'store_url\'])">\n               <div class="card dt-card__full-height dt-card__product-vertical">\n                  <img alt="Alarm Clock" class="card-img-top" src="http://192.168.1.100:81/zomo/uploads/stores/{{item[\'store_image\']}}">\n                  <div class="card-body">\n                     <h2 class="card-title">{{item[\'store_name\'] | titlecase}}</h2>\n                     <div class="d-flex">\n                        <h4 class="mb-2 mr-3">{{item[\'store_address\'] | titlecase}}</h4>\n                        <div class="d-flex align-items-center mb-1">\n                           <i *ngFor="let rating of reviewRatings(item.store_rating);let i = index;" class="icon icon-star f-10 mr-1 text-warning"></i>\n                        </div>\n                     </div>\n                     <p class="mb-1" style="color: #666;">{{item[\'store_services\'] | titlecase}}</p>\n                     <p class="mb-1" style="color: #666;">{{item[\'city_name\'] | titlecase}}</p>\n                  </div>\n               </div>\n            </a>\n         </div>\n      </div>\n      <div class="row result text-center" *ngIf="storelist == \'No related data found for store list.\'">\n         <div class="col-xl-4 col-md-4 col-sm-6 col-12 storelistItems text-center">\n            {{storelist}}\n         </div>\n      </div>\n   </div>\n</ion-content>\n\n\n\n<ion-content class="filter-content hide-filter" #filterpart (clickOutside)="hideFilter($event)" (swiperight)="swipeRight($event)">\n  <div class="">\n                    <!-- Sidebar Navigation -->\n                    <ul class="dt-module-side-nav">\n                      <div class="dt-card__header mb-2">\n                       <!--,,. Card Heading --> \n                        <div class="dt-card__heading">\n                          <h3 class="dt-card__title">Categories</h3>\n                        </div>\n                        <!-- /card heading -->\n                      </div>\n                      <!-- /card header -->\n                      <!-- Card Body -->\n                      <div class="dt-card__body pb-0">\n                        <div class="categories_search_block">\n                          <div class="checkbox" *ngFor="let cat of category; let i = index">\n                            <label>\n                            <input (change)="change();"  type="checkbox" name="{{cat.id}}">\n                             <span  class="cr"><i  class="cr-icon icon icon-check icon-xl ml-1"></i></span> \n                               {{cat.category_name}} \n                          </label>\n                          </div>\n                        </div>\n                      </div>\n                    </ul>\n                    <!-- /sidebar navigation -->\n                  </div>\n</ion-content>'/*ion-inline-end:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\user-store-search\user-store-search.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_core__["V" /* Renderer */],
             __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */],
@@ -6139,12 +6336,12 @@ var PopoverPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 260:
+/***/ 262:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(261);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(263);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(133);
 
 
@@ -6154,7 +6351,78 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 362:
+/***/ 281:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HeaderComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_carts_service_carts_service__ = __webpack_require__(67);
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+/**
+ * Generated class for the HeaderComponent component.
+ *
+ * See https://angular.io/api/core/Component for more info on Angular
+ * Components.
+ */
+var HeaderComponent = /** @class */ (function () {
+    function HeaderComponent(navCtrl, navParams, cartService) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.cartService = cartService;
+        this.selectedItems = [];
+    }
+    HeaderComponent.prototype.ngOnInit = function () {
+        var items = this.cartService.getCart();
+        var selected = {};
+        for (var _i = 0, items_1 = items; _i < items_1.length; _i++) {
+            var obj = items_1[_i];
+            if (selected[obj.id]) {
+                selected[obj.id].count++;
+            }
+            else {
+                selected[obj.id] = __assign({}, obj, { count: 1 });
+            }
+        }
+        this.selectedItems = Object.keys(selected).map(function (key) { return selected[key]; });
+    };
+    HeaderComponent.prototype.goToCart = function () {
+        this.navCtrl.push("CartPage");
+    };
+    HeaderComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'header',template:/*ion-inline-start:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\components\header\header.html"*/'<!-- Generated template for the HeaderComponent component -->\n<ion-header>\n    <ion-navbar color="primary">\n      <button ion-button menuToggle>\n        <ion-icon name="menu"></ion-icon>\n      </button>\n      <ion-title>Home</ion-title>\n      <ion-buttons end (click)="goToCart()">\n        <button ion-button >\n          <ion-badge item-end>{{selectedItems.length}}</ion-badge>\n          <ion-icon name="md-cart"></ion-icon>\n        </button>\n       </ion-buttons>\n    </ion-navbar>\n  </ion-header>'/*ion-inline-end:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\components\header\header.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_carts_service_carts_service__["a" /* CartsService */]])
+    ], HeaderComponent);
+    return HeaderComponent;
+}());
+
+//# sourceMappingURL=header.js.map
+
+/***/ }),
+
+/***/ 365:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6204,192 +6472,15 @@ var ClickOutsideDirective = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 50:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StoreProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_constants_service__ = __webpack_require__(13);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-/*
-  Generated class for the StoreProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
-var StoreProvider = /** @class */ (function () {
-    function StoreProvider(http, loadingCtrl) {
-        this.http = http;
-        this.loadingCtrl = loadingCtrl;
-        this.selectedCaategories = [];
-        console.log('Hello StoreProvider Provider');
-    }
-    StoreProvider.prototype.createStore = function (user, token) {
-        var form_data = new FormData();
-        for (var key in user) {
-            form_data.append(key, user[key]);
-        }
-        form_data.append('token', token);
-        var loader = this.loadingCtrl.create();
-        loader.present();
-        var result = this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/retail_store/add_new_store/', form_data);
-        if (result) {
-            loader.dismiss();
-            return result;
-        }
-    };
-    StoreProvider.prototype.editStore = function (user, token) {
-        var form_data = new FormData();
-        for (var key in user) {
-            form_data.append(key, user[key]);
-        }
-        form_data.append('token', token);
-        var loader = this.loadingCtrl.create();
-        loader.present();
-        var result = this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/retail_store/update_store/', form_data);
-        if (result) {
-            loader.dismiss();
-            return result;
-        }
-    };
-    StoreProvider.prototype.UploadOtherImage = function (token, files, srore_id) {
-        var form_data = new FormData();
-        form_data.append('token', token);
-        form_data.append('other_image', files);
-        form_data.append('store_id', srore_id);
-        var loader = this.loadingCtrl.create();
-        loader.present();
-        var result = this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/retail_store/add_other_image/', form_data);
-        if (result) {
-            loader.dismiss();
-            return result;
-        }
-    };
-    StoreProvider.prototype.getCategoryList = function () {
-        var loader = this.loadingCtrl.create();
-        // loader.present()
-        var result = this.http.get(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/retail_store/store_business_category/');
-        if (result) {
-            // loader.dismiss()
-            return result;
-        }
-    };
-    StoreProvider.prototype.storeEnableDisable = function (token, status) {
-        var me = new FormData();
-        me.append('token', token);
-        me.append('visible_status', status);
-        var loader = this.loadingCtrl.create();
-        loader.present();
-        var result = this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/retail_store/enable_disable_store/', me);
-        if (result) {
-            loader.dismiss();
-            return result;
-        }
-    };
-    StoreProvider.prototype.getServicesList = function (id) {
-        var loader = this.loadingCtrl.create();
-        loader.present();
-        var result = this.http.get(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/retail_store/store_business_services?category_id=' + id);
-        if (result) {
-            loader.dismiss();
-            return result;
-        }
-    };
-    StoreProvider.prototype.getStoreDetail = function (token) {
-        console.log(localStorage.getItem('token'));
-        var f = new FormData();
-        f.append('token', token);
-        var loader = this.loadingCtrl.create();
-        loader.present();
-        var result = this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/retail_store/store_detail/', f);
-        if (result) {
-            loader.dismiss();
-            return result;
-        }
-    };
-    StoreProvider.prototype.removeStoreImage = function (token, other_image_id) {
-        var f = new FormData();
-        f.append('token', token);
-        f.append("other_image_id", other_image_id);
-        var loader = this.loadingCtrl.create();
-        loader.present();
-        var result = this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/retail_store/other_image_remove/', f);
-        if (result) {
-            loader.dismiss();
-            return result;
-        }
-    };
-    StoreProvider.prototype.getStoreList = function () {
-        var loader = this.loadingCtrl.create();
-        loader.present();
-        var result = this.http.get(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/retail_store/store_list/');
-        if (result) {
-            loader.dismiss();
-            return result;
-        }
-    };
-    StoreProvider.prototype.searchStore = function (keyword) {
-        var loader = this.loadingCtrl.create();
-        loader.present();
-        var result = this.http.get(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/retail_store/store_list/?search=' + keyword);
-        if (result) {
-            loader.dismiss();
-            return result;
-        }
-    };
-    StoreProvider.prototype.getLocation = function () {
-        var loader = this.loadingCtrl.create();
-        loader.present();
-        var result = this.http.get(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/retail_store/ip_location');
-        if (result) {
-            loader.dismiss();
-            return result;
-        }
-    };
-    StoreProvider.prototype.getStoreByName = function (keyword) {
-        var loader = this.loadingCtrl.create();
-        loader.present();
-        var result = this.http.get(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/retail_store/user_view_store_detail/' + keyword);
-        if (result) {
-            loader.dismiss();
-            return result;
-        }
-    };
-    StoreProvider = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* LoadingController */]])
-    ], StoreProvider);
-    return StoreProvider;
-}());
-
-//# sourceMappingURL=store.js.map
-
-/***/ }),
-
-/***/ 51:
+/***/ 43:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProductProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_constants_service__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_constants_service__ = __webpack_require__(12);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6601,7 +6692,7 @@ var ProductProvider = /** @class */ (function () {
     };
     ProductProvider.prototype.getMainCategory = function () {
         var loader = this.loadingCtrl.create();
-        loader.present();
+        // loader.present();
         var result = this.http.get(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + "/products/products_main_category/");
         if (result) {
             loader.dismiss();
@@ -6610,7 +6701,7 @@ var ProductProvider = /** @class */ (function () {
     };
     ProductProvider.prototype.getCategory = function (main_category_id) {
         var loader = this.loadingCtrl.create();
-        loader.present();
+        // loader.present();
         var result = this.http.get(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + "/products/products_category?main_category_id=" + main_category_id + "/");
         if (result) {
             loader.dismiss();
@@ -6619,7 +6710,7 @@ var ProductProvider = /** @class */ (function () {
     };
     ProductProvider.prototype.getSubCategory = function (main_category_id, category_id) {
         var loader = this.loadingCtrl.create();
-        loader.present();
+        // loader.present();
         var result = this.http.get(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + "/products/products_sub_category?main_category_id=" + main_category_id + "&category_id=" + category_id + "/");
         if (result) {
             loader.dismiss();
@@ -6644,7 +6735,238 @@ var ProductProvider = /** @class */ (function () {
 
 //# sourceMappingURL=product.js.map
 
+/***/ }),
+
+/***/ 51:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StoreProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_constants_service__ = __webpack_require__(12);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+/*
+  Generated class for the StoreProvider provider.
+
+  See https://angular.io/guide/dependency-injection for more info on providers
+  and Angular DI.
+*/
+var StoreProvider = /** @class */ (function () {
+    function StoreProvider(http, loadingCtrl) {
+        this.http = http;
+        this.loadingCtrl = loadingCtrl;
+        this.selectedCaategories = [];
+        console.log('Hello StoreProvider Provider');
+    }
+    StoreProvider.prototype.createStore = function (user, token) {
+        var form_data = new FormData();
+        for (var key in user) {
+            form_data.append(key, user[key]);
+        }
+        form_data.append('token', token);
+        var loader = this.loadingCtrl.create();
+        loader.present();
+        var result = this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/retail_store/add_new_store/', form_data);
+        if (result) {
+            loader.dismiss();
+            return result;
+        }
+    };
+    StoreProvider.prototype.editStore = function (user, token) {
+        var form_data = new FormData();
+        for (var key in user) {
+            form_data.append(key, user[key]);
+        }
+        form_data.append('token', token);
+        var loader = this.loadingCtrl.create();
+        loader.present();
+        var result = this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/retail_store/update_store/', form_data);
+        if (result) {
+            loader.dismiss();
+            return result;
+        }
+    };
+    StoreProvider.prototype.UploadOtherImage = function (token, files, srore_id) {
+        var form_data = new FormData();
+        form_data.append('token', token);
+        form_data.append('other_image', files);
+        form_data.append('store_id', srore_id);
+        var loader = this.loadingCtrl.create();
+        loader.present();
+        var result = this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/retail_store/add_other_image/', form_data);
+        if (result) {
+            loader.dismiss();
+            return result;
+        }
+    };
+    StoreProvider.prototype.getCategoryList = function () {
+        var loader = this.loadingCtrl.create();
+        // loader.present()
+        var result = this.http.get(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/retail_store/store_business_category/');
+        if (result) {
+            // loader.dismiss()
+            return result;
+        }
+    };
+    StoreProvider.prototype.storeEnableDisable = function (token, status) {
+        var me = new FormData();
+        me.append('token', token);
+        me.append('visible_status', status);
+        var loader = this.loadingCtrl.create();
+        loader.present();
+        var result = this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/retail_store/enable_disable_store/', me);
+        if (result) {
+            loader.dismiss();
+            return result;
+        }
+    };
+    StoreProvider.prototype.getServicesList = function (id) {
+        var loader = this.loadingCtrl.create();
+        loader.present();
+        var result = this.http.get(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/retail_store/store_business_services?category_id=' + id);
+        if (result) {
+            loader.dismiss();
+            return result;
+        }
+    };
+    StoreProvider.prototype.getStoreDetail = function (token) {
+        console.log(localStorage.getItem('token'));
+        var f = new FormData();
+        f.append('token', token);
+        var loader = this.loadingCtrl.create();
+        loader.present();
+        var result = this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/retail_store/store_detail/', f);
+        if (result) {
+            loader.dismiss();
+            return result;
+        }
+    };
+    StoreProvider.prototype.removeStoreImage = function (token, other_image_id) {
+        var f = new FormData();
+        f.append('token', token);
+        f.append("other_image_id", other_image_id);
+        var loader = this.loadingCtrl.create();
+        loader.present();
+        var result = this.http.post(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/retail_store/other_image_remove/', f);
+        if (result) {
+            loader.dismiss();
+            return result;
+        }
+    };
+    StoreProvider.prototype.getStoreList = function () {
+        var loader = this.loadingCtrl.create();
+        loader.present();
+        var result = this.http.get(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/retail_store/store_list/');
+        if (result) {
+            loader.dismiss();
+            return result;
+        }
+    };
+    StoreProvider.prototype.searchStore = function (keyword) {
+        var loader = this.loadingCtrl.create();
+        loader.present();
+        var result = this.http.get(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/retail_store/store_list/?search=' + keyword);
+        if (result) {
+            loader.dismiss();
+            return result;
+        }
+    };
+    StoreProvider.prototype.getLocation = function () {
+        var loader = this.loadingCtrl.create();
+        loader.present();
+        var result = this.http.get(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/retail_store/ip_location');
+        if (result) {
+            loader.dismiss();
+            return result;
+        }
+    };
+    StoreProvider.prototype.getStoreByName = function (keyword) {
+        var loader = this.loadingCtrl.create();
+        loader.present();
+        var result = this.http.get(__WEBPACK_IMPORTED_MODULE_3__services_constants_service__["a" /* API_URL */] + '/retail_store/user_view_store_detail/' + keyword);
+        if (result) {
+            loader.dismiss();
+            return result;
+        }
+    };
+    StoreProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* LoadingController */]])
+    ], StoreProvider);
+    return StoreProvider;
+}());
+
+//# sourceMappingURL=store.js.map
+
+/***/ }),
+
+/***/ 67:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CartsService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+/*
+  Generated class for the CartsServiceProvider provider.
+
+  See https://angular.io/guide/dependency-injection for more info on providers
+  and Angular DI.
+*/
+var CartsService = /** @class */ (function () {
+    function CartsService(http) {
+        this.http = http;
+        this.data = [];
+        this.cart = [];
+        console.log('Hello CartsServiceProvider Provider');
+    }
+    CartsService.prototype.getProducts = function () {
+        return this.data;
+    };
+    CartsService.prototype.getCart = function () {
+        return this.cart;
+    };
+    CartsService.prototype.addProduct = function (product) {
+        this.cart.push(product);
+    };
+    CartsService.prototype.setCart = function (cart) {
+        this.cart = cart;
+    };
+    CartsService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
+    ], CartsService);
+    return CartsService;
+}());
+
+//# sourceMappingURL=carts-service.js.map
+
 /***/ })
 
-},[260]);
+},[262]);
 //# sourceMappingURL=main.js.map

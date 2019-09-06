@@ -1,6 +1,6 @@
 
-export let API_URL = 'http://alpademo.com/zomo/authe963ntica3te_gu32lar_a32pi_3po3jec2t/';
-export let BASE_URL = 'http://alpademo.com/zomo/';
+export let API_URL = 'http://192.168.1.100:81/zomo/authe963ntica3te_gu32lar_a32pi_3po3jec2t/';
+export let BASE_URL = 'http://192.168.1.100:81/zomo/';
 export let COUNTRY_LIST = [
     {
       "country_id": "1",

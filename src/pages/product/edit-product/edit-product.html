@@ -6,10 +6,19 @@
 -->
 <ion-header>
 
+
   <ion-navbar color="primary">
     <ion-title>Edit Product</ion-title>
+    
+    <ion-buttons end>
+           <button *ngIf="product.pr_status == '1'" end ion-button outline color="danger-dark" (click)="enable(0)">
+        Disable Product
+      </button>
+      <button *ngIf="product.pr_status == '0'" end ion-button outline color="light" (click)="enable(1)">
+        Enable Product
+      </button>
+    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
 
@@ -35,13 +44,15 @@
         <ion-list>
           <ion-item no-lines *ngIf="maincategory">
             <ion-label stacked>Main Category</ion-label>
-            <ion-select [(ngModel)]="product.pr_main_category_id" placeholder="Select Main Category" (ionChange)="selectCat($event)">
+            <ion-select [(ngModel)]="product.pr_main_category_id" placeholder="Select Main Category"
+              (ionChange)="selectCat($event)">
               <ion-option *ngFor="let cat of maincategory" value="{{cat.id}}">{{cat.main_category_name}}</ion-option>
             </ion-select>
           </ion-item>
           <ion-item no-lines *ngIf="category">
             <ion-label stacked>Category</ion-label>
-            <ion-select [(ngModel)]="product.pr_category_id" placeholder="Select Category" (ionChange)="selectSubCat($event)">
+            <ion-select [(ngModel)]="product.pr_category_id" placeholder="Select Category"
+              (ionChange)="selectSubCat($event)">
               <ion-option *ngFor="let cat of category" value="{{cat.id}}">{{cat.category_name}}</ion-option>
             </ion-select>
           </ion-item>
@@ -54,9 +65,9 @@
           </ion-item>
 
           <ion-item no-lines>
-             <button (click)="onSubmit('1')" style="padding: 15px;font-size: 13px;" margin-top
-              ion-button block type="submit">Next</button>
-            </ion-item>
+            <button (click)="onSubmit('1')" style="padding: 15px;font-size: 13px;" margin-top ion-button block
+              type="submit">Next</button>
+          </ion-item>
         </ion-list>
       </ion-slide>
 
@@ -86,10 +97,10 @@
             <ion-label stacked>Sizes</ion-label>
             <ion-input type="text" [(ngModel)]="product.pr_sizes"></ion-input>
           </ion-item>
-          <ion-item no-lines> 
-            <button (click)="onSubmit('2')" style="padding: 15px;font-size: 13px;" margin-top
-              ion-button block type="submit">Next</button>
-            </ion-item>
+          <ion-item no-lines>
+            <button (click)="onSubmit('2')" style="padding: 15px;font-size: 13px;" margin-top ion-button block
+              type="submit">Next</button>
+          </ion-item>
         </ion-list>
       </ion-slide>
 
@@ -107,10 +118,10 @@
             <ion-label stacked>Search Keyword</ion-label>
             <ion-input type="text" [(ngModel)]="product.search_keywords"></ion-input>
           </ion-item>
-          <ion-item no-lines> 
-            <button style="padding: 15px;font-size: 13px;" (click)="onSubmit('3')" margin-top
-              ion-button block type="submit">Next</button>
-            </ion-item>
+          <ion-item no-lines>
+            <button style="padding: 15px;font-size: 13px;" (click)="onSubmit('3')" margin-top ion-button block
+              type="submit">Next</button>
+          </ion-item>
         </ion-list>
       </ion-slide>
 
@@ -137,10 +148,10 @@
             <ion-label stacked>Max Days of Delivery</ion-label>
             <ion-input placeholder="0" type="tel" [(ngModel)]="product.delivery_max_num_of_day"></ion-input>
           </ion-item>
-          <ion-item no-lines> 
-            <button (click)="onSubmit('s')" style="padding: 15px;font-size: 13px;" margin-top
-              ion-button block type="submit">Submit</button>
-            </ion-item>
+          <ion-item no-lines>
+            <button (click)="onSubmit('s')" style="padding: 15px;font-size: 13px;" margin-top ion-button block
+              type="submit">Submit</button>
+          </ion-item>
         </ion-list>
       </ion-slide>
 

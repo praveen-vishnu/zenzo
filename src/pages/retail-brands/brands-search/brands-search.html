@@ -42,7 +42,7 @@
          <div col-6 class="storelistItems {{item['store_category_id']}} {{item['city_name']}}" *ngFor="let item of storelist;">
             <a  (click)="goToStore(item['store_url'])">
                <div class="card dt-card__full-height dt-card__product-vertical">
-                  <img alt="Alarm Clock" class="card-img-top" src="http://alpademo.com/zomo/uploads/stores/{{item['store_image']}}">
+                  <img alt="Alarm Clock" class="card-img-top" src="http://192.168.1.100:81/zomo/uploads/stores/{{item['store_image']}}">
                   <div class="card-body">
                      <h2 class="card-title">{{item['store_name'] | titlecase}}</h2>
                      <div class="d-flex">

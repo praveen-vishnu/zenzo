@@ -1,15 +1,14 @@
 webpackJsonp([52],{
 
-/***/ 416:
+/***/ 419:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ViewStorePageModule", function() { return ViewStorePageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProductsListPageModule", function() { return ProductsListPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__view_store__ = __webpack_require__(136);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__yellowspot_ng_truncate__ = __webpack_require__(257);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__products_list__ = __webpack_require__(137);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -19,24 +18,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
-var ViewStorePageModule = /** @class */ (function () {
-    function ViewStorePageModule() {
+var ProductsListPageModule = /** @class */ (function () {
+    function ProductsListPageModule() {
     }
-    ViewStorePageModule = __decorate([
+    ProductsListPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__view_store__["c" /* ViewStorePage */],
+                __WEBPACK_IMPORTED_MODULE_2__products_list__["b" /* ProductsListPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__view_store__["c" /* ViewStorePage */]), __WEBPACK_IMPORTED_MODULE_3__yellowspot_ng_truncate__["a" /* TruncateModule */],
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__products_list__["b" /* ProductsListPage */]),
             ],
         })
-    ], ViewStorePageModule);
-    return ViewStorePageModule;
+    ], ProductsListPageModule);
+    return ProductsListPageModule;
 }());
 
-//# sourceMappingURL=view-store.module.js.map
+//# sourceMappingURL=products-list.module.js.map
 
 /***/ })
 

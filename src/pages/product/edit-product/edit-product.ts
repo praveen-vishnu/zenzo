@@ -80,20 +80,36 @@ export class EditProductPage {
           this.product = res4.message;
           this.product.pr_row_id = this.product.id;
           console.log(this.product);
+          this.productProvider.getMainCategory().subscribe((data: any) => {
+            console.log(data);
+            if (data.status) {
+              this.maincategory = data.message;
+              console.log(this.product.pr_main_category_id);
+              console.log(this.product.pr_category_id);
+              this.selectCat(this.product.pr_main_category_id);
+              this.selectSubCat(this.product.pr_category_id);
+            }
+          });
         } else {
           this.presentToast(res4.message);
         }
       });
-    this.productProvider.getMainCategory().subscribe((data: any) => {
-      console.log(data);
-      if (data.status) {
-        this.maincategory = data.message;
-        this.selectCat(this.product.pr_main_category_id);
-        this.selectSubCat(this.product.pr_category_id);
+  
+  }
+
+  
+  enable(status){
+    this.productProvider
+    .productEnableDisable(this.token, status ,this.id)
+    .subscribe((res4: any) => {
+      this.presentToast(res4.message);
+      if(res4.status){
+        this.storage.get("me").then((val: any) => {
+          this.getdata(val.token);
+        });
       }
     });
   }
-
   presentToast(msg) {
     let toast = this.toastCtrl.create({
       message: msg,

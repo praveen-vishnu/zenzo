@@ -1,14 +1,14 @@
 webpackJsonp([33],{
 
-/***/ 377:
+/***/ 381:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditOfferPageModule", function() { return EditOfferPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditStorePageModule", function() { return EditStorePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit_offer__ = __webpack_require__(432);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit_store__ = __webpack_require__(438);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,35 +18,37 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var EditOfferPageModule = /** @class */ (function () {
-    function EditOfferPageModule() {
+var EditStorePageModule = /** @class */ (function () {
+    function EditStorePageModule() {
     }
-    EditOfferPageModule = __decorate([
+    EditStorePageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__edit_offer__["a" /* EditOfferPage */],
+                __WEBPACK_IMPORTED_MODULE_2__edit_store__["a" /* EditStorePage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__edit_offer__["a" /* EditOfferPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__edit_store__["a" /* EditStorePage */]),
             ],
         })
-    ], EditOfferPageModule);
-    return EditOfferPageModule;
+    ], EditStorePageModule);
+    return EditStorePageModule;
 }());
 
-//# sourceMappingURL=edit-offer.module.js.map
+//# sourceMappingURL=edit-store.module.js.map
 
 /***/ }),
 
-/***/ 432:
+/***/ 438:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EditOfferPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EditStorePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_store_offer__ = __webpack_require__(132);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_store_store__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_constants_service__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_forms__ = __webpack_require__(15);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -60,71 +62,145 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 /**
- * Generated class for the EditOfferPage page.
+ * Generated class for the EditStorePage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var EditOfferPage = /** @class */ (function () {
-    function EditOfferPage(toastCtrl, offerProvider, formBuilder, navCtrl, navParams) {
-        this.toastCtrl = toastCtrl;
-        this.offerProvider = offerProvider;
-        this.formBuilder = formBuilder;
+var EditStorePage = /** @class */ (function () {
+    function EditStorePage(navCtrl, toastCtrl, storage, navParams, storeProvider, formBuilder) {
+        var _this = this;
         this.navCtrl = navCtrl;
+        this.toastCtrl = toastCtrl;
+        this.storage = storage;
         this.navParams = navParams;
-        this.offer = navParams.get('offer');
-        this.token = navParams.get('token');
-        this.edit = this.formBuilder.group({
-            date_n_time: [this.offer.date_n_time, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["i" /* Validators */].required],
-            date_only: [this.offer.date_only],
-            description: [this.offer.description, __WEBPACK_IMPORTED_MODULE_2__angular_forms__["i" /* Validators */].required],
-            end_date: [this.offer.end_date],
-            offer_id: [this.offer.id],
-            offer_percenage: [this.offer.offer_percenage],
-            offer_status: [this.offer.offer_status],
-            offer_title: [this.offer.offer_title],
-            offer_unique_id: [this.offer.offer_unique_id],
-            start_date: [this.offer.start_date],
-            store_id: [this.offer.store_id],
-            user_id: [this.offer.user_id],
-            visible_status: [(this.offer.visible_status)],
-            visiblity: [!!parseInt(this.offer.visible_status)],
+        this.storeProvider = storeProvider;
+        this.formBuilder = formBuilder;
+        this.segment = '0';
+        this.countries = __WEBPACK_IMPORTED_MODULE_4__services_constants_service__["c" /* COUNTRY_LIST */];
+        this.editStore = navParams.get('store');
+        this.store = this.formBuilder.group({
+            store_name: [this.editStore.store_name],
+            store_tag_line: [this.editStore.store_tag_line],
+            store_category_id: [this.editStore.store_category_id],
+            store_image: [this.editStore.store_image],
+            store_services_ids: [this.editStore.store_services_ids],
+            store_description: [this.editStore.store_description],
+            payment_receive_ids: [this.editStore.payment_receive_ids],
+            google_map_link: [this.editStore.google_map_link],
+            store_address: [this.editStore.store_address],
+            state_name: [this.editStore.state_name],
+            city_name: [this.editStore.city_name],
+            pincode: [this.editStore.pincode],
+            country_id: [this.editStore.country_id],
+            landline_number: [this.editStore.landline_number],
+            contact_number_one: [this.editStore.contact_number_one],
+            contact_number_two: [this.editStore.contact_number_two],
+            contact_email_id: [this.editStore.contact_email_id],
+            website_link: [this.editStore.website_link],
+            facebook: [this.editStore.facebook],
+            twitter: [this.editStore.twitter],
+            linkedin: [this.editStore.linkedin],
+            telegram: [this.editStore.telegram],
+            instagram: [this.editStore.instagram],
+            other: [this.editStore.other],
+        });
+        this.storage.get('me').then(function (val) {
+            _this.getdata(val.token);
         });
     }
-    EditOfferPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad EditOfferPage');
-    };
-    EditOfferPage.prototype.onSubmit = function () {
+    EditStorePage.prototype.getdata = function (token) {
         var _this = this;
-        this.offerProvider.editOffer(this.edit.value, this.token).subscribe(function (res) {
-            if (res.status) {
-                _this.navCtrl.pop();
+        this.token = token;
+        this.storeProvider.getCategoryList().subscribe(function (data) {
+            console.log(data);
+            if (data.status) {
+                _this.category = data.message;
             }
-            var toast = _this.toastCtrl.create({
-                message: res.message,
-                duration: 3000
-            });
-            toast.onDidDismiss(function () {
-                console.log('Dismissed toast');
-            });
-            toast.present();
         });
     };
-    EditOfferPage.prototype.disable_enable = function (event) {
-        this.edit.value.visible_status = event._value ? '1' : '0';
-        console.log(this.edit.value.visible_status);
+    EditStorePage.prototype.selectCat = function (id) {
+        var _this = this;
+        console.log(id);
+        this.services = [];
+        this.storeProvider.getServicesList(id).subscribe(function (data) {
+            console.log(data);
+            if (data.status) {
+                _this.services = data.message;
+            }
+        });
     };
-    EditOfferPage = __decorate([
+    EditStorePage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad EditStorePage');
+        this.slides.lockSwipes(true);
+    };
+    EditStorePage.prototype.segmentChanged = function (eve) {
+        this.slides.lockSwipes(false);
+        this.slides.slideTo(parseInt(eve._value), 500);
+        this.slides.lockSwipes(true);
+    };
+    EditStorePage.prototype.slideChanged = function () {
+        var currentIndex = this.slides.getActiveIndex();
+        this.segment = currentIndex + '';
+    };
+    EditStorePage.prototype.changeListener = function ($event) {
+        this.file = this.store.value.store_image = $event.target.files[0];
+        console.log(this.store.value);
+    };
+    EditStorePage.prototype.imageUpload = function () {
+        document.getElementById('imageUpload').click();
+    };
+    EditStorePage.prototype.onSubmit = function (nextSlide) {
+        var _this = this;
+        console.log(nextSlide);
+        this.store.value.payment_receive_ids = this.store.value.payment_receive_ids.toString();
+        this.store.value.store_services_ids = this.store.value.store_services_ids.toString();
+        console.log(this.store.value);
+        if (nextSlide == 's') {
+            this.storeProvider.editStore(this.token, this.store.value).subscribe(function (res) {
+                console.log(res);
+                if (res.satus) {
+                    _this.store.reset();
+                }
+                var toast = _this.toastCtrl.create({
+                    message: res.message,
+                    duration: 3000
+                });
+                toast.onDidDismiss(function () {
+                    console.log('Dismissed toast');
+                });
+                toast.present();
+            });
+        }
+        else {
+            this.slides.lockSwipes(false);
+            this.slides.slideTo(parseInt(nextSlide), 500);
+            this.segment = nextSlide;
+            this.slides.lockSwipes(true);
+        }
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* Slides */]),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* Slides */])
+    ], EditStorePage.prototype, "slides", void 0);
+    EditStorePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-edit-offer',template:/*ion-inline-start:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\manage-store\edit-offer\edit-offer.html"*/'<!--\n  Generated template for the EditOfferPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n   <ion-navbar color="primary"><!-- \n      <button ion-button menuToggle>\n         <ion-icon name="menu"></ion-icon>\n      </button> -->\n      <ion-title>Edit Offer</ion-title>\n   </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n	<form [formGroup]="edit" (ngSubmit)="onSubmit()">\n	      <ion-item no-lines>\n	        <ion-label floating>Title <span style="color: red;">*</span></ion-label>\n	        <ion-input type="text" formControlName="offer_title"></ion-input>\n	      </ion-item>\n	      <ion-item no-lines>\n	        <ion-label floating>Percentage <span style="color: red;">*</span></ion-label>\n	        <ion-input type="tel" formControlName="offer_percenage"></ion-input>\n	      </ion-item>\n	      <ion-item no-lines>\n	        <ion-label floating>Description <span style="color: red;">*</span></ion-label>\n	        <ion-textarea rows="5" formControlName="description"></ion-textarea>\n	      </ion-item>\n	      <ion-item no-lines>\n			<ion-label floating>Offer From <span style="color: red;">*</span></ion-label>\n			<ion-datetime disabled displayFormat="MMMM DD YYYY" pickerFormat="YYYY-MM-DD" formControlName="start_date"></ion-datetime>\n		  </ion-item>\n	      <ion-item no-lines>\n			<ion-label floating>Offer Till <span style="color: red;">*</span></ion-label>\n			<ion-datetime disabled displayFormat="MMMM DD YYYY" pickerFormat="YYYY-MM-DD" formControlName="end_date"></ion-datetime>\n		  </ion-item>\n		  <ion-item no-lines>\n              <ion-label>Show / hide</ion-label>\n              <ion-toggle (ionChange)="disable_enable($event)" formControlName="visiblity"></ion-toggle>\n            </ion-item> \n\n	      <button margin-top  ion-button block type="submit" [disabled]="!edit.valid">Submit</button>\n	    </form>\n</ion-content>\n'/*ion-inline-end:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\manage-store\edit-offer\edit-offer.html"*/,
+            selector: 'page-edit-store',template:/*ion-inline-start:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\manage-store\edit-store\edit-store.html"*/'<!--\n  Generated template for the EditStorePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>Edit Your Store</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content >\n<ion-segment (ionChange)="segmentChanged($event)" mode="md" [(ngModel)]="segment">\n  <ion-segment-button value="0">\n    <ion-label>Store</ion-label>\n  </ion-segment-button>\n  <ion-segment-button value="1">\n    <ion-label>Location</ion-label>\n  </ion-segment-button>\n  <ion-segment-button value="2">\n    <ion-label>Contact</ion-label>\n  </ion-segment-button>\n  <ion-segment-button value="3">\n    <ion-label>Social</ion-label>\n  </ion-segment-button>\n</ion-segment>\n\n\n<ion-slides (ionSlideDidChange)="slideChanged()">\n\n  <ion-slide class="store">\n  	<form [formGroup]="store" (ngSubmit)="onSubmit(\'1\')" style="margin-top: 65px;">\n	      <ion-item no-lines>\n	        <ion-label stacked>Store Name <span style="color: red;">*</span></ion-label>\n	        <ion-input type="text" formControlName="store_name"></ion-input>\n	      </ion-item>\n	      <ion-item no-lines>\n	        <ion-label stacked>Tagline</ion-label>\n	        <ion-input type="text" formControlName="store_tag_line"></ion-input>\n	      </ion-item>\n	      <ion-item no-lines>\n	        <ion-label stacked>Business Category</ion-label>\n	        <ion-select formControlName="store_category_id" placeholder="Select Category" (ionChange)="selectCat($event)">\n		      <ion-option *ngFor="let cat of category" value="{{cat.id}}">{{cat.category_name}}</ion-option>\n		    </ion-select>\n	      </ion-item>\n	      <ion-item no-lines>\n	        <ion-label stacked>Services</ion-label>\n	        <ion-select  formControlName="store_services_ids" multiple="true" placeholder="Select Service">\n		      <ion-option *ngFor="let service of services" value="{{service.id}}">{{service.service_name}}</ion-option>\n		    </ion-select>\n	      </ion-item>\n	      <ion-item no-lines>\n	        <ion-label stacked>Description</ion-label>\n	        <ion-textarea rows="4" formControlName="store_description"></ion-textarea>\n	      </ion-item>\n	      <ion-item no-lines>\n			<ion-label stacked>Add Store Image <span style="font-size: 12px;">(Max 1mb, png or jpeg only)</span> <span style="color: red;">*</span></ion-label>\n			<!-- <button ion-button block (click)="imageUpload()">Upload Image</button> -->\n      		<ion-input type="file" accept="image/*"  id="imageUpload" (change)="changeListener($event)"></ion-input>\n		  </ion-item>\n	      <ion-item no-lines>\n	        <ion-label stacked>Payment Accepted in Your Store</ion-label>\n	        <ion-select placeholder="Select Payment Method" formControlName="payment_receive_ids"  multiple="true">\n		      <ion-option value="1">Cash</ion-option>\n		      <ion-option value="2">Credit Card</ion-option>\n		      <ion-option value="3">Debit Card</ion-option>\n		    </ion-select>\n	      </ion-item> \n\n	      <ion-item no-lines> <button style="padding: 15px;font-size: 13px;" margin-top  ion-button block type="submit">Next</button></ion-item>\n	    </form>\n  </ion-slide>\n\n  <ion-slide class="location">\n      	<form [formGroup]="store" (ngSubmit)="onSubmit(\'2\')">\n	      <ion-item no-lines>\n	        <ion-label stacked>Store Address Google Map Link </ion-label>\n	        <ion-input type="text" formControlName="google_map_link"></ion-input>\n	      </ion-item>\n	      <ion-item no-lines>\n	        <ion-label stacked>Store Address</ion-label>\n	        <ion-input type="text" formControlName="store_address"></ion-input>\n	      </ion-item>\n	      <ion-item no-lines>\n	        <ion-label stacked>State</ion-label>\n	        <ion-input type="text" formControlName="state_name"></ion-input>\n	      </ion-item>\n	      <ion-item no-lines>\n	        <ion-label stacked>City<span style="color: red;">*</span></ion-label>\n	        <ion-input type="text" formControlName="city_name"></ion-input>\n	      </ion-item>\n	      <ion-item no-lines>\n	        <ion-label stacked>Pincode</ion-label>\n	        <ion-input type="text" formControlName="pincode"></ion-input>\n	      </ion-item>\n	      <ion-item no-lines>\n	        <ion-label stacked>Country</ion-label>\n	        <ion-select placeholder="Select country" formControlName="country_id">\n		      <ion-option value="{{country.country_id}}" *ngFor="let country of countries;">{{country.country_name}}</ion-option>\n		    </ion-select>\n	      </ion-item> \n\n	      <ion-item no-lines> <button style="padding: 15px;font-size: 13px;" margin-top  ion-button block type="submit">Next</button></ion-item>\n	    </form>\n  </ion-slide>\n\n  <ion-slide class="contact">\n    <form [formGroup]="store" (ngSubmit)="onSubmit(\'3\')">\n	      <ion-item no-lines>\n	        <ion-label stacked>Landline No</ion-label>\n	        <ion-input type="text" formControlName="landline_number"></ion-input>\n	      </ion-item>\n	      <ion-item no-lines>\n	        <ion-label stacked>Store Contact numbers <span style="color: red;">*</span></ion-label>\n	        <ion-input type="text" formControlName="contact_number_one"></ion-input>\n	      </ion-item>\n	      <ion-item no-lines>\n	        <ion-label stacked>Store Contact numbers 2</ion-label>\n	        <ion-input type="text" formControlName="contact_number_two"></ion-input>\n	      </ion-item>\n	      <ion-item no-lines>\n	        <ion-label stacked>Contact email Id <span style="color: red;">*</span></ion-label>\n	        <ion-input type="text" formControlName="contact_email_id"></ion-input>\n	      </ion-item>\n	      <ion-item no-lines>\n	        <ion-label stacked>Website</ion-label>\n	        <ion-input type="text" formControlName="website_link"></ion-input>\n	        <p>Stil dont have store website <a href="#">Create</a> Now</p>\n	      </ion-item>\n	      <ion-item no-lines> <button style="padding: 15px;font-size: 13px;" margin-top  ion-button block type="submit">Next</button></ion-item>\n	    </form>\n  </ion-slide>\n\n  <ion-slide class="social">\n    \n    <form [formGroup]="store" (ngSubmit)="onSubmit(\'s\')">\n	      <ion-item no-lines>\n	        <ion-label stacked>Facebook</ion-label>\n	        <ion-input type="text" formControlName="facebook"></ion-input>\n	      </ion-item>\n	      <ion-item no-lines>\n	        <ion-label stacked>Twitter</ion-label>\n	        <ion-input type="text" formControlName="twitter"></ion-input>\n	      </ion-item>\n	      <ion-item no-lines>\n	        <ion-label stacked>LinkedIn</ion-label>\n	        <ion-input type="text" formControlName="linkedin"></ion-input>\n	      </ion-item>\n	      <ion-item no-lines>\n	        <ion-label stacked>Telegram<span style="color: red;">*</span></ion-label>\n	        <ion-input type="text" formControlName="telegram"></ion-input>\n	      </ion-item>\n	      <ion-item no-lines>\n	        <ion-label stacked>Instagram</ion-label>\n	        <ion-input type="text" formControlName="instagram"></ion-input>\n	      </ion-item>\n	      <ion-item no-lines>\n	        <ion-label stacked>other</ion-label>\n	        <ion-input type="text" formControlName="other"></ion-input>\n	      </ion-item>\n		  <p style="font-size: 11px;margin-top: 5px;"><a href="#"> Terms and Conditions / Privacy</a></p>\n	      <ion-item no-lines> <button style="padding: 15px;font-size: 13px;" margin-top  ion-button block type="submit">Submit</button></ion-item>\n	    </form>\n  </ion-slide>\n\n</ion-slides>\n</ion-content>\n'/*ion-inline-end:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\manage-store\edit-store\edit-store.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */], __WEBPACK_IMPORTED_MODULE_3__providers_store_offer__["a" /* OfferProvider */], __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormBuilder */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]])
-    ], EditOfferPage);
-    return EditOfferPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_store_store__["a" /* StoreProvider */],
+            __WEBPACK_IMPORTED_MODULE_5__angular_forms__["b" /* FormBuilder */]])
+    ], EditStorePage);
+    return EditStorePage;
 }());
 
-//# sourceMappingURL=edit-offer.js.map
+//# sourceMappingURL=edit-store.js.map
 
 /***/ })
 

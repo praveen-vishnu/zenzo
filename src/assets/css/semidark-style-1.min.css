@@ -20852,7 +20852,7 @@ a:focus {
 	position: relative;
 	margin: -3.2rem -3.2rem -5.5rem;
 	padding: 3.2rem 3.2rem 8rem;
-	background: url('http://alpademo.com/zo/assets/images/banner.jpg');
+	background: url('http://192.168.1.100:81/zo/assets/images/banner.jpg');
     color: #fff;
 }
 

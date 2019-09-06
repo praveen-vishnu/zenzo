@@ -237,7 +237,7 @@ export class ProductProvider {
   }
   getMainCategory(): Observable<any[]> {
     let loader = this.loadingCtrl.create();
-    loader.present();
+    // loader.present();
     let result = this.http.get<any[]>(
       API_URL + "/products/products_main_category/"
     );
@@ -248,7 +248,7 @@ export class ProductProvider {
   }
   getCategory(main_category_id): Observable<any[]> {
     let loader = this.loadingCtrl.create();
-    loader.present();
+    // loader.present();
     let result = this.http.get<any[]>(
       API_URL + "/products/products_category?main_category_id="+main_category_id+"/"
     );
@@ -259,7 +259,7 @@ export class ProductProvider {
   }
   getSubCategory(main_category_id,category_id): Observable<any[]> {
     let loader = this.loadingCtrl.create();
-    loader.present();
+    // loader.present();
     let result = this.http.get<any[]>(
       API_URL + "/products/products_sub_category?main_category_id="+main_category_id+"&category_id="+category_id+"/"
     );

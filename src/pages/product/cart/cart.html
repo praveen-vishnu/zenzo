@@ -1,5 +1,5 @@
 <ion-header>
-	<ion-navbar>
+	<ion-navbar color="primary">
 		<ion-title>My Cart</ion-title>
 	</ion-navbar>
 </ion-header>
@@ -17,17 +17,19 @@
 	</ion-list> -->
 
 	<ion-card>
-			<ion-grid>
-			  <ion-row>
+		<ion-grid>
+			<ion-row>
 				<ion-col>Your Cart Description</ion-col>
-			  </ion-row>
-			  <ion-row [hidden]="!showEmptyCartMessage">
-				<ion-col>There are no products in your cart!</ion-col>
-			  </ion-row>
-			</ion-grid>
-		  </ion-card>
+			</ion-row>
+			<ion-row [hidden]="!showEmptyCartMessage" text-center>
+				<ion-col>
+					<h2>There are no products in your cart!</h2>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+	</ion-card>
 
-	<ion-card *ngFor="let item of selectedItems; let i = index">
+	<ion-card class="products" *ngFor="let item of selectedItems; let i = index">
 		<ion-grid>
 			<ion-row>
 				<ion-col>
@@ -36,58 +38,61 @@
 							<img [src]="item.pr_main_image" style="width: 60px !important; height: 60px !important;" />
 						</ion-thumbnail>
 						<h2>{{ item.pr_name | titlecase }}</h2>
-						<p>{{ item.count }} * <span>{{  (item.pr_sale_amount * item.count) | currency:'INR':'symbol' }}</span>
+						<p>{{ item.count }} *
+							<span>{{  (item.pr_sale_amount * item.count) | currency:'INR':'symbol' }}</span>
 					</ion-item>
 				</ion-col>
 				<ion-col>
-						<ion-row no-padding>
-								<ion-col >
-									<button ion-button icon-only clear 
-										(click)="item.count = item.count - 1;gettotal();">
+					<ion-row no-padding>
+						<ion-col>
+							<ion-row>
+								<ion-col style="text-align: center">
+									<button ion-button icon-only clear (click)="item.count = item.count - 1;gettotal();">
 										<ion-icon name="remove-circle"></ion-icon>
 									</button>
-									<button ion-button clear > {{ item.count }} </button>
-									<button ion-button icon-only clear 
-										(click)="item.count = item.count + 1;gettotal();">
+									<button ion-button clear> {{ item.count }} </button>
+									<button ion-button icon-only clear (click)="item.count = item.count + 1;gettotal();">
 										<ion-icon name="add-circle"></ion-icon>
 									</button>
 								</ion-col>
-								<ion-col style="text-align: right;">
+							</ion-row>
+							<ion-row style="text-align: right;">
+								<ion-col col-3 style="text-align: center">
 									<button ion-button small outline (click)="removeFromCart(item, i)" color="danger"
 										style="width: 64px;">Remove</button>
 								</ion-col>
 							</ion-row>
+						</ion-col>
+					</ion-row>
 				</ion-col>
 			</ion-row>
 			<ion-row>
-					<ion-col>
-						<ion-item>
-							<ion-label>Size:</ion-label>
-							<ion-select [(ngModel)]="item.pr_size">
+				<ion-col>
+					<ion-item>
+						<ion-label>Size:</ion-label>
+						<ion-select [(ngModel)]="item.pr_size">
 							<ion-option *ngFor="let size of toArray(item.pr_sizes)" placeholder="Select Size *"
 								value="{{size}}">{{size | titlecase}}</ion-option>
 						</ion-select>
-						</ion-item>
-					</ion-col>
-					<ion-col>
-						<ion-item>
-							<ion-label>Color:</ion-label>
-							<ion-select [(ngModel)]="item.pr_color">
-								<ion-option *ngFor="let color of toArray(item.pr_colors)" placeholder="Select Color *"
-									value="{{color}}">{{color | titlecase}}</ion-option>
-							</ion-select>
-						</ion-item>
-					</ion-col>
-				</ion-row>
+					</ion-item>
+				</ion-col>
+				<ion-col>
+					<ion-item>
+						<ion-label>Color:</ion-label>
+						<ion-select [(ngModel)]="item.pr_color">
+							<ion-option *ngFor="let color of toArray(item.pr_colors)" placeholder="Select Color *"
+								value="{{color}}">{{color | titlecase}}</ion-option>
+						</ion-select>
+					</ion-item>
+				</ion-col>
+			</ion-row>
 		</ion-grid>
 	</ion-card>
-	<ion-grid>
+	<ion-grid [hidden]="showEmptyCartMessage">
 		<ion-card>
 			<ion-grid>
 				<ion-row>
-					<ion-col col-2>
 
-					</ion-col>
 					<ion-col col-4>
 						<b>TOTAL</b>
 					</ion-col>
@@ -106,7 +111,7 @@
 
 </ion-content>
 
-<ion-footer>
+<ion-footer [hidden]="showEmptyCartMessage">
 	<ion-toolbar>
 		<ion-grid>
 			<ion-row>

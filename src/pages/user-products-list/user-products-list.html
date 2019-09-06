@@ -1,0 +1,70 @@
+<ion-header>
+    <ion-navbar no-border-bottom color="primary">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title *ngIf="!showSearch">Products</ion-title>
+      <ion-searchbar  *ngIf="showSearch" [(ngModel)]="searchTerm"(ionChange)="setFilteredItems()"></ion-searchbar>
+       <ion-buttons end>
+        <button ion-button end (click)="showSearch = !showSearch">
+         <ion-icon name="md-search"></ion-icon>
+      </button>
+    </ion-buttons>
+      <ion-buttons end>
+        <button ion-button (click)="goToCart()">
+          <ion-icon name="md-cart"></ion-icon>
+        </button>
+      </ion-buttons>
+      <!-- <ion-buttons end>
+        <button ion-button icon-only (click)="presentPopover($event)">
+          <ion-icon name="more"></ion-icon>
+        </button>
+      </ion-buttons> -->
+    </ion-navbar>
+  </ion-header>
+  
+  
+  <ion-content class="products">
+  
+    <div class="row result">
+      <div col-6 class="storelistItems {{item['id']}}" *ngFor="let item of products;">
+        <a (click)="goToProductDetail(item)">
+          <div class=" dt-card__full-height dt-card__product-vertical">
+            <img alt="Alarm Clock" class="card-img-top" [src]="item?.image"
+              onError="this.src='./assets/images/not-available.jpg'">
+            <div class="card-contents">
+              <h2 class="card-title">{{item['name'] | titlecase}}</h2>
+              <div class="d-flex">
+                <h4 class="mb-2 mr-3">{{item['price'] | currency:'INR':'symbol' }}</h4>
+                <div class="d-flex align-items-center mb-1">
+                </div>
+              </div>
+              <!-- <p class="mb-1" style="color: rgb(82, 212, 121);" *ngIf="item?.status">Enabled</p>
+              <p class="mb-1" style="color: rgb(156, 21, 21);" *ngIf="!item?.status">Disabled</p> -->
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </ion-content>
+  
+  <!-- <ion-footer no-border>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-buttons>
+            <button ion-button full icon-end (click)="presentFilter()">
+              <ion-icon name="md-funnel"></ion-icon>&nbsp;Filter
+            </button>
+          </ion-buttons>
+        </ion-col>
+        <ion-col>
+          <ion-buttons>
+            <button ion-button icon-end full (click)="sortBy()">
+              <ion-icon name="menu"></ion-icon>&nbsp;Sort
+            </button>
+          </ion-buttons>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-footer> -->

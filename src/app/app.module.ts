@@ -1,3 +1,4 @@
+import { ComponentsModule } from './../components/components.module';
 // Angular
 import { NgModule, ErrorHandler, Injector } from "@angular/core"; // tslint:disable-line
 import { BrowserModule } from "@angular/platform-browser";
@@ -23,9 +24,7 @@ import { ModalContentPage } from "../pages/packages/running-package/running-pack
 import { OfferModal } from "../pages/manage-store/manage-offer/manage-offer";
 import { PopoverPage } from "../pages/user-store-search/user-store-search";
 import { ImageModal } from "../pages/manage-store/view-store/view-store";
-import { ProductModal } from "../pages/manage-store/view-store/view-store";
 import { ImageModal2 } from "../pages/sub-options-with-icons/sub-option-one/sub-option-one";
-import { UserProductModal } from "../pages/sub-options-with-icons/sub-option-one/sub-option-one";
 // Custom components
 import { SideMenuContentComponent } from "../shared/side-menu-content/side-menu-content.component";
 import { ClickOutsideDirective } from "../directives/click-outside/click-outside";
@@ -41,6 +40,8 @@ import { KeyProvider } from "../providers/key/key";
 import { PackageProvider } from "../providers/package/package";
 import { CartsService } from '../providers/carts-service/carts-service';
 import { OrderDetail } from "../pages/product/store-orders/store-orders";
+import { ProductModal } from '../pages/product/products-list/products-list';
+import { UserProductModal } from '../pages/user-products-list/user-products-list';
 @NgModule({
   declarations: [
     MyApp,
@@ -60,6 +61,7 @@ import { OrderDetail } from "../pages/product/store-orders/store-orders";
     // BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
+    ComponentsModule,
     TruncateModule,
     IonicModule.forRoot(MyApp, { mode: "ios" }),
     HttpClientModule,

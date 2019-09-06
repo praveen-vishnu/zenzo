@@ -1,14 +1,14 @@
 webpackJsonp([20],{
 
-/***/ 391:
+/***/ 396:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditProfilePageModule", function() { return EditProfilePageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProfilePageModule", function() { return ProfilePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit_profile__ = __webpack_require__(444);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__profile__ = __webpack_require__(451);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,35 +18,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var EditProfilePageModule = /** @class */ (function () {
-    function EditProfilePageModule() {
+var ProfilePageModule = /** @class */ (function () {
+    function ProfilePageModule() {
     }
-    EditProfilePageModule = __decorate([
+    ProfilePageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__edit_profile__["a" /* EditProfilePage */],
+                __WEBPACK_IMPORTED_MODULE_2__profile__["a" /* ProfilePage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__edit_profile__["a" /* EditProfilePage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__profile__["a" /* ProfilePage */]),
             ],
         })
-    ], EditProfilePageModule);
-    return EditProfilePageModule;
+    ], ProfilePageModule);
+    return ProfilePageModule;
 }());
 
-//# sourceMappingURL=edit-profile.module.js.map
+//# sourceMappingURL=profile.module.js.map
 
 /***/ }),
 
-/***/ 444:
+/***/ 451:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EditProfilePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProfilePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth__ = __webpack_require__(128);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth__ = __webpack_require__(129);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(22);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -61,77 +61,74 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 /**
- * Generated class for the EditProfilePage page.
+ * Generated class for the ProfilePage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var EditProfilePage = /** @class */ (function () {
-    function EditProfilePage(navCtrl, navParams, toastCtrl, storage, auth) {
+var ProfilePage = /** @class */ (function () {
+    function ProfilePage(navCtrl, navParams, storage, auth) {
         var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.toastCtrl = toastCtrl;
         this.storage = storage;
         this.auth = auth;
-        this.dashboardme = [];
+        this.colors_sizes = [];
         this.storage.get('me').then(function (val) {
             _this.get_dashboard(val.token);
         });
     }
-    EditProfilePage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad EditProfilePage');
+    ProfilePage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ProfilePage');
+        // this.auth.test().subscribe((res:any)=>{
+        //   console.clear()
+        //   var colors_sizes = res.message.colors_sizes;
+        //   var arr =[]
+        //   colors_sizes.forEach(ele=>{
+        //     this.colors_sizes.push({
+        //       name: ele.id+'Original',
+        //       type:'Original',
+        //       placeholder: 'Enter Value of ' + ele.pr_color_name +' for size '+ele.pr_size_name
+        //       },
+        //       {
+        //       name: ele.id+'Quantity',
+        //       type:'Quantity',
+        //       placeholder: 'Enter Value of ' + ele.pr_color_name +' for size '+ele.pr_size_name
+        //       },
+        //       {
+        //       name: ele.id+'Discount',
+        //       type:'Discount',
+        //       placeholder: 'Enter Value of ' + ele.pr_color_name +' for size '+ele.pr_size_name
+        //       })
+        //   })
+        //   console.log(this.colors_sizes)
+        // })
     };
-    EditProfilePage.prototype.get_dashboard = function (token) {
+    ProfilePage.prototype.get_dashboard = function (token) {
         var _this = this;
-        console.clear();
         this.auth.getDash(token).subscribe(function (res) {
             if (res.status) {
                 _this.storage.set('me', res.message);
-                console.log(res.message);
-                _this.dashboardme = res.message;
+                _this.user = res.message;
             }
         });
     };
-    EditProfilePage.prototype.updateProfile = function () {
-        var _this = this;
-        console.log(this.dashboardme);
-        this.auth.updateUser(this.dashboardme).subscribe(function (res) {
-            console.log(res);
-            _this.presentToast(res.message);
-        });
+    ProfilePage.prototype.goTo = function (page) {
+        this.navCtrl.push(page);
     };
-    EditProfilePage.prototype.presentToast = function (msg) {
-        var toast = this.toastCtrl.create({
-            message: msg,
-            duration: 3000
-        });
-        toast.onDidDismiss(function () {
-            console.log('Dismissed toast');
-        });
-        toast.present();
-    };
-    EditProfilePage.prototype.resendEmailVerification = function () {
-        var _this = this;
-        this.auth.resendEmail(this.dashboardme.token).subscribe(function (res) {
-            console.log(res);
-            _this.presentToast(res.message);
-        });
-    };
-    EditProfilePage = __decorate([
+    ProfilePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-edit-profile',template:/*ion-inline-start:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\profile\edit-profile\edit-profile.html"*/'<!--\n  Generated template for the EditProfilePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n   <ion-navbar color="primary">\n      <ion-title>Edit Profile</ion-title>\n      <ion-buttons end>\n         <button ion-button>\n            <!-- <ion-icon name="log-out"></ion-icon> -->\n         </button>\n      </ion-buttons>\n   </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n   <div class="dt-root">\n      <div class="dt-card">\n\n         <div id="tab-pane-3" #emailPane class="tab-pane active">\n            <div class="card-body">\n               <div class="row">\n                  <div class="col-md-12">\n                     <h4 class="profile_tab_title">General Details</h4>\n                     <p class="text-center" *ngIf="dashboardme?.email_verify_status==\'0\'"><span\n                           style="color: red; font-size: 12px; ">Attention Please ! Please complete the email\n                           verification of this account to continue.</span></p>\n                     <div class="edit_form">\n                        <div class="row">\n                           <div class="col-md-3">\n                              <label for="email">Full Name <span style="color: red;">*</span>:</label>\n                           </div>\n                           <div class="col-md-6">\n                              <div class="form-group package_buy_input">\n                                 <input [(ngModel)]="dashboardme.full_name" type="text" class="form-control" id="email">\n                              </div>\n                           </div>\n                        </div>\n                        <div class="row">\n                           <div class="col-md-3">\n                              <label for="email">Email <span style="color: red;">*</span>:</label>\n                           </div>\n                           <div class="col-md-6">\n                              <div class="form-group package_buy_input">\n                                 <input type="email" readonly [(ngModel)]="dashboardme.email_id" class="form-control"\n                                    id="email">\n                                 <a style="color: #127cc0; font-size: 12px; float: right;cursor: pointer;"\n                                    (click)=resendEmailVerification() *ngIf="dashboardme?.email_verify_status==\'0\'">\n                                    Resend Email Verify</a>\n                              </div>\n                           </div>\n                        </div>\n                        <div class="row">\n                           <div class="col-md-3">\n                              <label for="email">Mobile <span style="color: red;">*</span>:</label>\n                           </div>\n                           <div class="col-md-6">\n                              <div class="form-group package_buy_input">\n                                 <input type="tel" [(ngModel)]="dashboardme.mobile_number" class="form-control"\n                                    id="email">\n                              </div>\n                           </div>\n                        </div>\n                        <h4>Communication Address</h4>\n                        <div class="row">\n                           <div class="col-md-3">\n                              <label for="email">Address Line <span style="color: red;">*</span>:</label>\n                           </div>\n                           <div class="col-md-6">\n                              <div class="form-group package_buy_input">\n                                 <input type="text" [(ngModel)]="dashboardme.address_line_one" class="form-control"\n                                    id="email">\n                              </div>\n                           </div>\n                        </div>\n                        <div class="row">\n                           <div class="col-md-3">\n                              <label for="email">Address Line 2:</label>\n                           </div>\n                           <div class="col-md-6">\n                              <div class="form-group package_buy_input">\n                                 <input type="text" [(ngModel)]="dashboardme.address_line_two" class="form-control"\n                                    id="email">\n                              </div>\n                           </div>\n                        </div>\n                        <div class="row">\n                           <div class="col-md-3">\n                              <label for="email">City <span style="color: red;">*</span>:</label>\n                           </div>\n                           <div class="col-md-6">\n                              <div class="form-group package_buy_input">\n                                 <input type="text" [(ngModel)]="dashboardme.city_name" class="form-control" id="email">\n                              </div>\n                           </div>\n                        </div>\n                        <div class="row">\n                           <div class="col-md-3">\n                              <label for="email">State <span style="color: red;">*</span>:</label>\n                           </div>\n                           <div class="col-md-6">\n                              <div class="form-group package_buy_input">\n                                 <input type="text" [(ngModel)]="dashboardme.state_name" class="form-control"\n                                    id="email">\n                              </div>\n                           </div>\n                        </div>\n                        <div class="row">\n                           <div class="col-md-3">\n                              <label for="email">Pincode <span style="color: red;">*</span>:</label>\n                           </div>\n                           <div class="col-md-6">\n                              <div class="form-group package_buy_input">\n                                 <input type="text" [(ngModel)]="dashboardme.pincode" class="form-control" id="email">\n                              </div>\n                           </div>\n                        </div>\n                        <div class="row">\n                           <div class="col-md-3">\n                           </div>\n                           <div class="col-md-6 text-right">\n                              <button ion-button type="submit" block (click)="updateProfile()">Update</button>\n                           </div>\n                        </div>\n                     </div>\n                  </div>\n               </div>\n            </div>\n         </div>\n      </div>\n   </div>\n</ion-content>'/*ion-inline-end:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\profile\edit-profile\edit-profile.html"*/,
+            selector: 'page-profile',template:/*ion-inline-start:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\profile\profile.html"*/'<!--\n  Generated template for the ProfilePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n\n<ion-header>\n  <ion-navbar color="primary">\n     <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title >Profile</ion-title>\n    <ion-buttons end>\n      <button ion-button >\n        <!-- <ion-icon name="log-out"></ion-icon> -->\n      </button>\n     </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n\n	<ion-card style="margin: 0;width: 100%" (click)="goTo(\'EditProfilePage\')">\n		 <ion-item no-lines no-padding>\n		  <div class="rating_module" style="padding: 5px;" item-start>\n	          <img src="https://ui-avatars.com/api/?background=a172e7&color=fff&name={{user?.full_name}}">\n	        </div>\n		    <h4><strong>{{user?.full_name |titlecase}}</strong></h4>\n            <p>{{user?.email_id}}</p>\n            <p>{{user?.mobile_number}}</p>\n             <div class="rating_module" item-end>\n	          <img src="assets/images/edit-profile.png">\n	        </div>\n		  </ion-item>\n	</ion-card>\n\n	<ion-card style="margin: 15px 0 0 0;width: 100%" margin-top (click)="goTo(\'ChangePasswordPage\')">\n		<ion-item no-lines no-padding>\n		  <div class="rating_module" item-start>\n	         <ion-icon color="light" name="md-lock"></ion-icon>\n	        </div>\n		    <h4><strong>Change Password</strong></h4>\n		  </ion-item>\n	</ion-card>\n  \n \n\n	<ion-card style="margin: 15px 0 0 0;width: 100%" margin-top (click)="goTo(\'UpdateKycPage\')">\n		<ion-item no-lines no-padding>\n		  <div class="rating_module" item-start>\n	          <ion-icon color="light" name="key"></ion-icon>\n	        </div>\n		    <h4><strong>Update KYC</strong></h4>\n		  </ion-item>\n	</ion-card>\n\n\n	<ion-card style="margin: 15px 0 0 0;width: 100%" margin-top (click)="goTo(\'UpdateSocialPage\')">\n		<ion-item no-lines no-padding>\n		  <div class="rating_module" item-start>\n	          <ion-icon color="light" name="md-share"></ion-icon>\n	        </div>\n		    <h4><strong>Update Social</strong></h4>\n		  </ion-item>\n	</ion-card>\n\n	<ion-card style="margin: 15px 0 0 0;width: 100%" margin-top (click)="goTo(\'UpdatePaymentPage\')">\n		<ion-item no-lines no-padding>\n		  <div class="rating_module" item-start>\n	          <ion-icon color="light" name="md-share"></ion-icon>\n	        </div>\n		    <h4><strong>Update Payment Details</strong></h4>\n		  </ion-item>\n	</ion-card>\n\n\n<!-- 	<div  *ngFor="let item of colors_sizes">\n		<label>{{item.type}}</label>\n		<input col-12  name="{{item.name}}" placeholder="{{item.placeholder}}" />\n	</div>\n -->\n	\n</ion-content>\n'/*ion-inline-end:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\profile\profile.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */],
             __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */],
             __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth__["a" /* AuthProvider */]])
-    ], EditProfilePage);
-    return EditProfilePage;
+    ], ProfilePage);
+    return ProfilePage;
 }());
 
-//# sourceMappingURL=edit-profile.js.map
+//# sourceMappingURL=profile.js.map
 
 /***/ })
 

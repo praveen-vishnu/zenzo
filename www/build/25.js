@@ -1,14 +1,14 @@
 webpackJsonp([25],{
 
-/***/ 387:
+/***/ 391:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CartPageModule", function() { return CartPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CheckoutPageModule", function() { return CheckoutPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cart__ = __webpack_require__(440);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__checkout__ = __webpack_require__(446);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,42 +18,36 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var CartPageModule = /** @class */ (function () {
-    function CartPageModule() {
+var CheckoutPageModule = /** @class */ (function () {
+    function CheckoutPageModule() {
     }
-    CartPageModule = __decorate([
+    CheckoutPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__cart__["a" /* CartPage */],
+                __WEBPACK_IMPORTED_MODULE_2__checkout__["a" /* CheckoutPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__cart__["a" /* CartPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__checkout__["a" /* CheckoutPage */]),
             ],
         })
-    ], CartPageModule);
-    return CartPageModule;
+    ], CheckoutPageModule);
+    return CheckoutPageModule;
 }());
 
-//# sourceMappingURL=cart.module.js.map
+//# sourceMappingURL=checkout.module.js.map
 
 /***/ }),
 
-/***/ 440:
+/***/ 446:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CartPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CheckoutPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_carts_service_carts_service__ = __webpack_require__(131);
-var __assign = (this && this.__assign) || Object.assign || function(t) {
-    for (var s, i = 1, n = arguments.length; i < n; i++) {
-        s = arguments[i];
-        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-            t[p] = s[p];
-    }
-    return t;
-};
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_storage__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_carts_service_carts_service__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_store_product__ = __webpack_require__(43);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -66,73 +60,114 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-/**
- * Generated class for the CartPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var CartPage = /** @class */ (function () {
-    function CartPage(navCtrl, navParams, cartService) {
+
+
+var CheckoutPage = /** @class */ (function () {
+    function CheckoutPage(navCtrl, productProvider, navParams, alertCtrl, storage, cartService, toastCtrl) {
+        var _this = this;
         this.navCtrl = navCtrl;
+        this.productProvider = productProvider;
         this.navParams = navParams;
+        this.alertCtrl = alertCtrl;
+        this.storage = storage;
         this.cartService = cartService;
+        this.toastCtrl = toastCtrl;
         this.selectedItems = [];
-        this.total = 0;
-        this.showEmptyCartMessage = false;
-    }
-    CartPage.prototype.ngOnInit = function () {
+        this.newOrder = {};
+        this.newOrder.billing_detail = {};
+        this.newOrder.shipping = {};
+        this.billing_shipping_same = false;
+        this.newOrder.billing_detail.country_id = '101';
+        this.newOrder.billing_detail.state_name = 'Uttar Pradesh';
+        this.paymentMethods = [
+            { method_id: "1", method_title: "Online Transfer" },
+            { method_id: "0", method_title: "Cash on Delivery" }
+        ];
+        this.newOrder.payment_type = this.paymentMethods[0];
+        this.storage.get('me').then(function (val) {
+            _this.newOrder.billing_detail.email_id = val.email_id;
+            _this.newOrder.token = val.token;
+            _this.userInfo = val;
+        });
         var items = this.cartService.getCart();
-        var selected = {};
         for (var _i = 0, items_1 = items; _i < items_1.length; _i++) {
             var obj = items_1[_i];
-            obj.pr_size = this.toArray(obj.pr_sizes)[0];
-            obj.pr_color = this.toArray(obj.pr_colors)[0];
-            if (selected[obj.id]) {
-                selected[obj.id].count++;
+            this.selectedItems.push({
+                'pr_id': obj.id,
+                "pr_color": obj.pr_color,
+                "pr_size": obj.pr_size,
+                "pr_quantity": obj.count
+            });
+        }
+    }
+    CheckoutPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad CheckoutPage');
+    };
+    CheckoutPage.prototype.setBillingToShipping = function () {
+        this.billing_shipping_same = !this.billing_shipping_same;
+        if (this.billing_shipping_same) {
+            this.newOrder.shipping = this.newOrder.billing_detail;
+        }
+    };
+    CheckoutPage.prototype.placeOrder = function () {
+        var _this = this;
+        console.clear();
+        this.newOrder.cart_data = this.selectedItems;
+        console.log(this.newOrder);
+        this.productProvider.save_offline_cart(this.newOrder).subscribe(function (res) {
+            console.clear();
+            console.log(res);
+            if (res.status) {
+                var alert_1 = _this.alertCtrl.create({
+                    message: "Please login to Continue further",
+                    buttons: [
+                        // {
+                        //   text: "",
+                        //   role: "cancel",
+                        //   handler: () => {
+                        //   }
+                        // },
+                        {
+                            text: "Okay",
+                            handler: function () {
+                                _this.navCtrl.setRoot("MyOrdersPage");
+                            }
+                        }
+                    ]
+                });
+                alert_1.present();
             }
             else {
-                selected[obj.id] = __assign({}, obj, { count: 1 });
+                _this.presentToast(res.message);
             }
-        }
-        this.selectedItems = Object.keys(selected).map(function (key) { return selected[key]; });
-        this.total = this.selectedItems.reduce(function (a, b) { return a + (b.count * b.pr_sale_amount); }, 0);
+        });
     };
-    CartPage.prototype.gettotal = function () {
-        this.total = this.selectedItems.reduce(function (a, b) { return a + (b.count * b.pr_sale_amount); }, 0);
+    CheckoutPage.prototype.presentToast = function (msg) {
+        var toast = this.toastCtrl.create({
+            message: msg,
+            duration: 3000
+        });
+        toast.onDidDismiss(function () {
+            console.log("Dismissed toast");
+        });
+        toast.present();
     };
-    CartPage.prototype.ionViewDidLoad = function () {
-        console.clear();
-        console.log(this.cartService.getCart());
-    };
-    CartPage.prototype.goToCheckout = function () {
-        console.log(this.selectedItems);
-        this.cartService.setCart(this.selectedItems);
-        this.navCtrl.push("CheckoutPage");
-    };
-    CartPage.prototype.removeFromCart = function (item, i) {
-    };
-    CartPage.prototype.toArray = function (arr) {
-        if (arr) {
-            return arr
-                .replace(/,/gi, " ")
-                .trim()
-                .split(" ");
-        }
-        else {
-            return arr;
-        }
-    };
-    CartPage = __decorate([
+    CheckoutPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-cart',template:/*ion-inline-start:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\product\cart\cart.html"*/'<ion-header>\n	<ion-navbar>\n		<ion-title>My Cart</ion-title>\n	</ion-navbar>\n</ion-header>\n\n<ion-content>\n	<!-- <ion-list>\n	  <ion-item *ngFor="let item of selectedItems" inset>\n		\n		<ion-label end text-left>{{ item.count }} x {{ item.pr_name }} - {{ item.pr_sale_amount | currency:\'INR\':\'symbol\' }}</ion-label>\n		<ion-label end text-right>{{ (item.pr_sale_amount * item.count) | currency:\'INR\':\'symbol\' }}</ion-label>\n	  </ion-item>\n	  <ion-item>\n		Total: <span end>{{ total | currency:\'INR\':\'symbol\' }}</span>\n	  </ion-item>\n	</ion-list> -->\n\n	<ion-card>\n			<ion-grid>\n			  <ion-row>\n				<ion-col>Your Cart Description</ion-col>\n			  </ion-row>\n			  <ion-row [hidden]="!showEmptyCartMessage">\n				<ion-col>There are no products in your cart!</ion-col>\n			  </ion-row>\n			</ion-grid>\n		  </ion-card>\n\n	<ion-card *ngFor="let item of selectedItems; let i = index">\n		<ion-grid>\n			<ion-row>\n				<ion-col>\n					<ion-item>\n						<ion-thumbnail item-left>\n							<img [src]="item.pr_main_image" style="width: 60px !important; height: 60px !important;" />\n						</ion-thumbnail>\n						<h2>{{ item.pr_name | titlecase }}</h2>\n						<p>{{ item.count }} * <span>{{  (item.pr_sale_amount * item.count) | currency:\'INR\':\'symbol\' }}</span>\n					</ion-item>\n				</ion-col>\n				<ion-col>\n						<ion-row no-padding>\n								<ion-col >\n									<button ion-button icon-only clear \n										(click)="item.count = item.count - 1;gettotal();">\n										<ion-icon name="remove-circle"></ion-icon>\n									</button>\n									<button ion-button clear > {{ item.count }} </button>\n									<button ion-button icon-only clear \n										(click)="item.count = item.count + 1;gettotal();">\n										<ion-icon name="add-circle"></ion-icon>\n									</button>\n								</ion-col>\n								<ion-col style="text-align: right;">\n									<button ion-button small outline (click)="removeFromCart(item, i)" color="danger"\n										style="width: 64px;">Remove</button>\n								</ion-col>\n							</ion-row>\n				</ion-col>\n			</ion-row>\n			<ion-row>\n					<ion-col>\n						<ion-item>\n							<ion-label>Size:</ion-label>\n							<ion-select [(ngModel)]="item.pr_size">\n							<ion-option *ngFor="let size of toArray(item.pr_sizes)" placeholder="Select Size *"\n								value="{{size}}">{{size | titlecase}}</ion-option>\n						</ion-select>\n						</ion-item>\n					</ion-col>\n					<ion-col>\n						<ion-item>\n							<ion-label>Color:</ion-label>\n							<ion-select [(ngModel)]="item.pr_color">\n								<ion-option *ngFor="let color of toArray(item.pr_colors)" placeholder="Select Color *"\n									value="{{color}}">{{color | titlecase}}</ion-option>\n							</ion-select>\n						</ion-item>\n					</ion-col>\n				</ion-row>\n		</ion-grid>\n	</ion-card>\n	<ion-grid>\n		<ion-card>\n			<ion-grid>\n				<ion-row>\n					<ion-col col-2>\n\n					</ion-col>\n					<ion-col col-4>\n						<b>TOTAL</b>\n					</ion-col>\n					<ion-col col-3>\n\n					</ion-col>\n					<ion-col col-3 style="text-align: right">\n						<b> {{ total | currency:\'INR\':\'symbol\' }} </b>\n					</ion-col>\n\n\n				</ion-row>\n			</ion-grid>\n		</ion-card>\n	</ion-grid>\n\n</ion-content>\n\n<ion-footer>\n	<ion-toolbar>\n		<ion-grid>\n			<ion-row>\n				<ion-col>\n					<button ion-button block (click)="goToCheckout()">Checkout</button>\n				</ion-col>\n			</ion-row>\n		</ion-grid>\n	</ion-toolbar>\n</ion-footer>'/*ion-inline-end:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\product\cart\cart.html"*/,
+            selector: 'page-checkout',template:/*ion-inline-start:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\product\checkout\checkout.html"*/'<ion-header>\n\n    <ion-navbar>\n      <ion-title>Checkout</ion-title>\n    </ion-navbar>\n  \n  </ion-header>\n  \n  \n  <ion-content>\n      <ion-list>\n        <ion-item-divider >Personal Details</ion-item-divider>\n        <ion-item>\n          <ion-label>Name</ion-label>\n          <ion-input type="text" [(ngModel)]="newOrder.billing_detail.customer_name"></ion-input>\n        </ion-item>\n  \n        <ion-item>\n          <ion-label>Email</ion-label>\n          <ion-input readonly type="email" [(ngModel)]="newOrder.billing_detail.email_id"></ion-input>\n        </ion-item>\n  \n        <ion-item-divider >Billing Details</ion-item-divider>\n  \n        <ion-item>\n          <ion-label>Address</ion-label>\n          <ion-textarea   [(ngModel)]="newOrder.billing_detail.address"></ion-textarea>\n        </ion-item>\n\n        <ion-item>\n          <ion-label>Country</ion-label>\n          <ion-select [(ngModel)]="newOrder.billing_detail.country_id">\n            <ion-option value="101" >India</ion-option>\n          </ion-select>\n        </ion-item>\n  \n        <ion-item>\n          <ion-label>State</ion-label>\n          <ion-select [(ngModel)]="newOrder.billing_detail.state_name">\n            <ion-option value="New Delhi">New Delhi</ion-option>\n            <ion-option value="Uttar Pradesh">Uttar Pradesh</ion-option>\n            <ion-option value="Maharashtra">Maharashtra</ion-option>\n            <ion-option value="Tamil Nadu">Tamil Nadu</ion-option>\n            <ion-option value="Madhya Pradesh">Madhya Pradesh</ion-option>\n          </ion-select>\n        </ion-item>\n  \n        <ion-item>\n          <ion-label>City</ion-label>\n          <ion-input type="text"  [(ngModel)]="newOrder.billing_detail.city_name"></ion-input>        \n        </ion-item>\n  \n        <ion-item>\n          <ion-label>Postal Code</ion-label>\n          <ion-input type="number" clearInput [(ngModel)]="newOrder.billing_detail.pin_code"></ion-input>        \n        </ion-item>\n  \n        <ion-item>\n          <ion-label>Phone</ion-label>\n          <ion-input type="tel" clearInput [(ngModel)]="newOrder.billing_detail.phone_number"></ion-input>        \n        </ion-item>\n<!--   \n        <ion-item>\n          <ion-label>Same Shipping Details</ion-label>\n          <ion-checkbox (ionChange)="setBillingToShipping()"></ion-checkbox>\n        </ion-item> \n        \n        \n        <ion-item-divider  *ngIf="!billing_shipping_same">Shipping Details</ion-item-divider>\n        \n        <ion-item *ngIf="!billing_shipping_same">\n          <ion-label>First Name</ion-label>\n          <ion-input type="text" [(ngModel)]="newOrder.shipping.first_name"></ion-input>\n        </ion-item>\n  \n        <ion-item *ngIf="!billing_shipping_same">\n          <ion-label>Last Name</ion-label>\n          <ion-input type="text" [(ngModel)]="newOrder.shipping.last_name"></ion-input>\n        </ion-item>\n        \n        <ion-item *ngIf="!billing_shipping_same">\n          <ion-label>Address Line 1</ion-label>\n          <ion-textarea type="text" maxlength="80" [(ngModel)]="newOrder.shipping.address_1"></ion-textarea>\n        </ion-item>\n  \n        <ion-item *ngIf="!billing_shipping_same">\n          <ion-label>Address Line 2</ion-label>\n          <ion-textarea type="text" maxlength="80" [(ngModel)]="newOrder.shipping.address_2"></ion-textarea>\n        </ion-item>\n  \n        <ion-item *ngIf="!billing_shipping_same">\n          <ion-label>Country</ion-label>\n          <ion-select [(ngModel)]="newOrder.shipping.country">\n            <ion-option value="India" selected="true">India</ion-option>\n          </ion-select>\n        </ion-item>\n  \n        <ion-item *ngIf="!billing_shipping_same">\n          <ion-label>State</ion-label>\n          <ion-select [(ngModel)]="newOrder.shipping.state">\n            <ion-option value="New Delhi">New Delhi</ion-option>\n            <ion-option value="Uttar Pradesh">Uttar Pradesh</ion-option>\n            <ion-option value="Maharashtra">Maharashtra</ion-option>\n            <ion-option value="Tamil Nadu">Tamil Nadu</ion-option>\n            <ion-option value="Madhya Pradesh">Madhya Pradesh</ion-option>\n          </ion-select>\n        </ion-item>\n  \n        <ion-item *ngIf="!billing_shipping_same">\n          <ion-label>City</ion-label>\n          <ion-input type="text" [(ngModel)]="newOrder.shipping.city"></ion-input>        \n        </ion-item>\n  \n        <ion-item *ngIf="!billing_shipping_same">\n          <ion-label>Postal Code</ion-label>\n          <ion-input type="number" clearInput [(ngModel)]="newOrder.shipping.postcode"></ion-input>        \n        </ion-item>\n  \n        <ion-item *ngIf="!billing_shipping_same">\n          <ion-label>Phone</ion-label>\n          <ion-input type="tel" clearInput [(ngModel)]="newOrder.shipping.phone"></ion-input>        \n        </ion-item>\n   -->\n        <ion-item-divider >Payment Details</ion-item-divider>\n  \n        <ion-item>\n          <ion-label>Payment Method</ion-label>\n          <ion-select [(ngModel)]="newOrder.payment_type">\n            <ion-option *ngFor="let p of paymentMethods" value="{{p.method_id}}">{{ p.method_title }}</ion-option>\n          </ion-select>\n        </ion-item>\n  \n      </ion-list>\n  \n  </ion-content>\n  \n  <ion-footer>\n    <button ion-button block  (click)="placeOrder()">Place Order</button>\n  </ion-footer>\n  '/*ion-inline-end:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\product\checkout\checkout.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_carts_service_carts_service__["a" /* CartsService */]])
-    ], CartPage);
-    return CartPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_4__providers_store_product__["a" /* ProductProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_carts_service_carts_service__["a" /* CartsService */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */]])
+    ], CheckoutPage);
+    return CheckoutPage;
 }());
 
-//# sourceMappingURL=cart.js.map
+//# sourceMappingURL=checkout.js.map
 
 /***/ })
 

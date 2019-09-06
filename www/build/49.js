@@ -5,36 +5,36 @@ webpackJsonp([49],{
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SubOptionOnePageModule", function() { return SubOptionOnePageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserStoreSearchPageModule", function() { return UserStoreSearchPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__sub_option_one__ = __webpack_require__(129);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user_store_search__ = __webpack_require__(260);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-// Angular
 
-// Ionic
 
-// Pages
 
-var SubOptionOnePageModule = /** @class */ (function () {
-    function SubOptionOnePageModule() {
+var UserStoreSearchPageModule = /** @class */ (function () {
+    function UserStoreSearchPageModule() {
     }
-    SubOptionOnePageModule = __decorate([
+    UserStoreSearchPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
-            declarations: [__WEBPACK_IMPORTED_MODULE_2__sub_option_one__["b" /* SubOptionOnePage */]],
-            imports: [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__sub_option_one__["b" /* SubOptionOnePage */])],
-            exports: [__WEBPACK_IMPORTED_MODULE_2__sub_option_one__["b" /* SubOptionOnePage */]]
+            declarations: [
+                __WEBPACK_IMPORTED_MODULE_2__user_store_search__["b" /* UserStoreSearchPage */],
+            ],
+            imports: [
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__user_store_search__["b" /* UserStoreSearchPage */]),
+            ],
         })
-    ], SubOptionOnePageModule);
-    return SubOptionOnePageModule;
+    ], UserStoreSearchPageModule);
+    return UserStoreSearchPageModule;
 }());
 
-//# sourceMappingURL=sub-option-one.module.js.map
+//# sourceMappingURL=user-store-search.module.js.map
 
 /***/ })
 

@@ -1,0 +1,15 @@
+<!-- Generated template for the HeaderComponent component -->
+<ion-header>
+    <ion-navbar color="primary">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Home</ion-title>
+      <ion-buttons end (click)="goToCart()">
+        <button ion-button >
+          <ion-badge item-end>{{selectedItems.length}}</ion-badge>
+          <ion-icon name="md-cart"></ion-icon>
+        </button>
+       </ion-buttons>
+    </ion-navbar>
+  </ion-header>

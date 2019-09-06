@@ -1,14 +1,14 @@
 webpackJsonp([14],{
 
-/***/ 398:
+/***/ 402:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReferralEarningsPageModule", function() { return ReferralEarningsPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TaskEarningsPageModule", function() { return TaskEarningsPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__referral_earnings__ = __webpack_require__(451);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__task_earnings__ = __webpack_require__(457);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,37 +18,36 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ReferralEarningsPageModule = /** @class */ (function () {
-    function ReferralEarningsPageModule() {
+var TaskEarningsPageModule = /** @class */ (function () {
+    function TaskEarningsPageModule() {
     }
-    ReferralEarningsPageModule = __decorate([
+    TaskEarningsPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__referral_earnings__["a" /* ReferralEarningsPage */],
+                __WEBPACK_IMPORTED_MODULE_2__task_earnings__["a" /* TaskEarningsPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__referral_earnings__["a" /* ReferralEarningsPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__task_earnings__["a" /* TaskEarningsPage */]),
             ],
         })
-    ], ReferralEarningsPageModule);
-    return ReferralEarningsPageModule;
+    ], TaskEarningsPageModule);
+    return TaskEarningsPageModule;
 }());
 
-//# sourceMappingURL=referral-earnings.module.js.map
+//# sourceMappingURL=task-earnings.module.js.map
 
 /***/ }),
 
-/***/ 451:
+/***/ 457:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReferralEarningsPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TaskEarningsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_invitees_invitees__ = __webpack_require__(250);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_wallet_wallet__ = __webpack_require__(252);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_profit_report_profit_report__ = __webpack_require__(251);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_storage__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_wallet_wallet__ = __webpack_require__(253);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_profit_report_profit_report__ = __webpack_require__(252);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_storage__ = __webpack_require__(22);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -63,23 +62,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 /**
- * Generated class for the ReferralEarningsPage page.
+ * Generated class for the TaskEarningsPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var ReferralEarningsPage = /** @class */ (function () {
-    function ReferralEarningsPage(navCtrl, navParams, storage, inviteesProvider, walletProvider, profitReportProvider) {
+var TaskEarningsPage = /** @class */ (function () {
+    function TaskEarningsPage(navCtrl, navParams, storage, walletProvider, profitReportProvider) {
         var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.storage = storage;
-        this.inviteesProvider = inviteesProvider;
         this.walletProvider = walletProvider;
         this.profitReportProvider = profitReportProvider;
-        this.total_earnings = 0;
         this.wallet_income_overview = {
             "wallet_balance": 0,
             "total_direct_referral_income": 0,
@@ -91,25 +87,16 @@ var ReferralEarningsPage = /** @class */ (function () {
             _this.getdata(val.token);
         });
     }
-    ReferralEarningsPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad ReferralEarningsPage');
+    TaskEarningsPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad TaskEarningsPage');
     };
-    ReferralEarningsPage.prototype.getdata = function (token) {
+    TaskEarningsPage.prototype.getdata = function (token) {
         var _this = this;
-        /******* Overview *******/
-        this.inviteesProvider.getReferralOveriew(token).subscribe(function (res) {
-            console.log(res);
-            _this.overview = res.message;
-            console.log(_this.overview);
-        });
         // referral earning API
-        this.profitReportProvider.getDirectReferral(token).subscribe(function (data) {
+        this.profitReportProvider.getTasksEarningReport(token).subscribe(function (data) {
             console.log(data);
             if (data.status) {
-                _this.earning_reports = data.message;
-                _this.earning_reports.forEach(function (ele) {
-                    _this.total_earnings += parseFloat(ele.commission_amount);
-                });
+                _this.task_reports = data.message;
             }
         });
         this.walletProvider.getWalletOverview(token).subscribe(function (data) {
@@ -120,27 +107,26 @@ var ReferralEarningsPage = /** @class */ (function () {
             }
         });
     };
-    ReferralEarningsPage.prototype.getparseFloat = function (val) {
+    TaskEarningsPage.prototype.getparseFloat = function (val) {
         return parseFloat(val).toFixed(2);
     };
-    ReferralEarningsPage.prototype.getArray = function (array) {
+    TaskEarningsPage.prototype.getArray = function (array) {
         return Array.isArray(array);
     };
-    ReferralEarningsPage = __decorate([
+    TaskEarningsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-referral-earnings',template:/*ion-inline-start:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\profit-report\referral-earnings\referral-earnings.html"*/'<!--\n   Generated template for the ReferralEarningsPage page.\n   \n   See http://ionicframework.com/docs/components/#navigation for more info on\n   Ionic pages and navigation.\n   -->\n<ion-header>\n   <ion-navbar color="primary">\n      <button ion-button menuToggle>\n         <ion-icon name="menu"></ion-icon>\n      </button>\n      <ion-title>Referral Earnings</ion-title>\n   </ion-navbar>\n</ion-header>\n<ion-content padding>\n   <div class="dt-root">\n      <div>\n         <div class="row">\n            <div col-6>\n               <div class="card dt-card__full-height">\n                  <!-- Card Body -->\n                  <div class="card-body p-3 bg-gradient-blueberry">\n                     <div class="row" >\n                        <div class="col-md-12" padding-left>\n                           <i class="fa fa-money  faa-horizontal animated" style="font-size: 30px; margin-bottom: 10px;" aria-hidden="true"></i>\n                           <div class="row" padding-left>\n                              <!-- <div col-6>\n                                 <p>Total Earning</p>\n                                 <p class="display-3 mb-2">{{earning_reports.length}}</p>\n                                 </div> -->\n                              <div col-6>\n                                 <p>Earnings</p>\n                                 <p class="display-4 mb-2">{{overview?.direct_referral_income}}</p>\n                              </div>\n                           </div>\n                        </div>\n                     </div>\n                  </div>\n                  <!-- /card body -->\n               </div>\n            </div>\n            <div col-6>\n               <div class="card dt-card__full-height">\n                  <!-- Card Body -->\n                  <div class="card-body p-3 bg-gradient-purple" padding-left>\n                     <h5 style="color: #fff;">Todays Earning</h5>\n                     <div class="row" padding-left>\n                        <div col-6>\n                           <p>Users</p>\n                           <p class="display-3 mb-2">{{overview?.todays_refferals}}</p>\n                        </div>\n                        <div col-6>\n                           <p>Earnings</p>\n                           <p class="display-4 mb-2">{{wallet_income_overview.today_direct_referral_income}}</p>\n                        </div>\n                     </div>\n                  </div>\n                  <!-- /card body -->\n               </div>\n            </div>\n         </div>\n      </div>\n      <div class="dt-card">\n         <!-- Card Body -->\n         <div class="dt-card__body">\n            <h4>Referral Earning Report</h4>\n            <!-- Tables -->\n            <div class="table-responsive">\n               <table id="data-table" class="table table-striped table-bordered table-hover">\n                  <thead>\n                     <tr>\n                        <th>#</th>\n                        <th>Date</th>\n                        <th>User(User ID)</th>\n                        <th>Position</th>\n                        <th>Type of Income(%)</th>\n                        <th>Earning(USD)</th>\n                     </tr>\n                  </thead>\n                  <tbody *ngIf="getArray(earning_reports)">\n                     <tr class="gradeX" *ngFor="let report of earning_reports; let i = index">\n                        <td>{{i+1}}</td>\n                        <td>{{report.date_n_time | date:\'MMM d, y, h:mm a\'}}</td>\n                        <td>{{report.full_name}}({{report.user_name}})</td>\n                        <td *ngIf="report.user_position == \'L\'">Left</td>\n                        <td *ngIf="report.user_position == \'R\'">Right</td>\n                        <td>{{ getparseFloat( report.commission_percentage )}}</td>\n                        <td>{{ getparseFloat( report.commission_amount )}} $</td>\n                     </tr>\n                  </tbody>\n                  <tbody *ngIf="!getArray(earning_reports)">\n                     <tr class="gradeX text-center">\n                        <td colspan="6">No Records Found</td>\n                     </tr>\n                  </tbody>\n               </table>\n            </div>\n            <!-- /tables -->\n         </div>\n         <!-- /card body -->\n      </div>\n   </div>\n</ion-content>'/*ion-inline-end:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\profit-report\referral-earnings\referral-earnings.html"*/,
+            selector: 'page-task-earnings',template:/*ion-inline-start:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\profit-report\task-earnings\task-earnings.html"*/'<!--\n  Generated template for the TaskEarningsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n   <ion-navbar color="primary">\n      <button ion-button menuToggle>\n         <ion-icon name="menu"></ion-icon>\n      </button>\n      <ion-title>Pairs Earnings</ion-title>\n   </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n<div class="dt-root">\n\n	<ion-row text-center>\n	<div col-3></div>	\n	 <div col-6>\n  \n              <!-- Card -->\n              <div class="card dt-chart">\n  \n                <!-- Chart Header -->\n                <div class="dt-chart__header pt-4">\n                  <div class="d-flex align-items-center">\n                    <h4 class="mb-0 text-success mr-1">$ {{wallet_income_overview.total_task_earned_income}}</h4>\n                    <p class="mb-0 f-12">Total Task Earning</p>\n                  </div>\n                </div>\n                <!-- /chart header -->  \n              </div>\n              <!-- /chart card -->  \n            </div>\n	</ion-row>\n	\n	  <div class="dt-card">\n        <div class="dt-card__body">\n        <h4>Task Earning Report</h4>\n        <!-- Tables -->\n        <div class="table-responsive">\n          <table id="data-table" class="table table-hover">\n          <thead>\n          <tr>\n            <th>#</th>\n            <th>Date</th>\n            <th>Task Type</th>\n            <th>Code</th>\n            <th>Approved Date</th>\n            <th>Reward</th>                    \n          </tr>\n          </thead>\n          <tbody *ngIf="getArray(task_reports)">\n          <tr *ngFor="let item of task_reports;let i = index;">\n            \n            <th>{{i+1}}</th>\n            <th>{{item.completed_date_n_time | date}}</th>\n            <th>{{item.task_type_name}}</th>\n            <th>{{item.task_code}}</th>\n            <th>{{item.completed_date_n_time | date}}</th>\n            <th>{{item.task_reward }}</th>\n          </tr>\n          </tbody>\n          <tbody *ngIf="!getArray(task_reports)">\n            <tr class="text-center"><td colspan="6">No Records Found</td></tr>\n          </tbody>\n           \n          </table>\n  \n        </div>\n        <!-- /tables -->\n  \n        </div>\n        <!-- /card body -->\n  \n      </div>\n      \n</div>\n</ion-content>\n'/*ion-inline-end:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\profit-report\task-earnings\task-earnings.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_5__ionic_storage__["b" /* Storage */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_invitees_invitees__["a" /* InviteesProvider */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_wallet_wallet__["a" /* WalletProvider */],
-            __WEBPACK_IMPORTED_MODULE_4__providers_profit_report_profit_report__["a" /* ProfitReportProvider */]])
-    ], ReferralEarningsPage);
-    return ReferralEarningsPage;
+            __WEBPACK_IMPORTED_MODULE_4__ionic_storage__["b" /* Storage */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_wallet_wallet__["a" /* WalletProvider */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_profit_report_profit_report__["a" /* ProfitReportProvider */]])
+    ], TaskEarningsPage);
+    return TaskEarningsPage;
 }());
 
-//# sourceMappingURL=referral-earnings.js.map
+//# sourceMappingURL=task-earnings.js.map
 
 /***/ })
 

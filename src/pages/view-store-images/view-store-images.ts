@@ -20,39 +20,39 @@ import { COUNTRY_LIST } from '../../services/constants.service';
 export class ViewStoreImagesPage {
 
   storeDetail: any;
-  category:any;
-  dashboardme:any;
-  otherImages:any;
+  category: any;
+  dashboardme: any;
+  otherImages: any;
   countries = COUNTRY_LIST;
   tabswitch = 'About';
-  token:any;
+  token: any;
   constructor(
-  	public navCtrl: NavController,
-  	public toastCtrl: ToastController, 
+    public navCtrl: NavController,
+    public toastCtrl: ToastController,
     private storage: Storage,
-  	public navParams: NavParams,
-  	private storeProvider:StoreProvider) {
-  	  this.storage.get('me').then((val:any)=>{
-	  		this.getdata(val.token)
-	  	})
+    public navParams: NavParams,
+    private storeProvider: StoreProvider) {
+    this.storage.get('me').then((val: any) => {
+      this.getdata(val.token)
+    })
   }
 
-  getdata(token){  
+  getdata(token) {
 
-  	this.token = token;
-	this.storeProvider.getStoreDetail(token).subscribe(
-	 (resp:any) => {
+    this.token = token;
+    this.storeProvider.getStoreDetail(token).subscribe(
+      (resp: any) => {
         console.log(resp);
-        if(resp.status){
+        if (resp.status) {
           this.storeDetail = resp.message
         }
       }
     )
 
     this.storeProvider.getCategoryList().subscribe(
-	 (data:any) => {
+      (data: any) => {
         console.log(data);
-        if(data.status){
+        if (data.status) {
           this.category = data.message
         }
       }
@@ -60,147 +60,147 @@ export class ViewStoreImagesPage {
 
   }
 
-   
- 
+
+
   phoneMask(phoneValue: number | string, country: string): any {
     var country_id = this.getCountry(country)
 
     try {
-      const phoneNumber = parsePhoneNumberFromString(country_id+phoneValue);
+      const phoneNumber = parsePhoneNumberFromString(country_id + phoneValue);
       return phoneNumber.formatNational();
     } catch (error) {
       return phoneValue;
     }
-}
+  }
 
- getphoneuri(phoneValue: number | string, country: string): any {
+  getphoneuri(phoneValue: number | string, country: string): any {
     var country_id = this.getCountry(country)
     console.log(country_id)
     try {
-      const phoneNumber = parsePhoneNumberFromString(country_id+phoneValue);
+      const phoneNumber = parsePhoneNumberFromString(country_id + phoneValue);
       return phoneNumber.getURI();
     } catch (error) {
       return phoneValue;
     }
   }
-  
-  goToEdit(){
-    this.navCtrl.push('EditStorePage',{store:this.storeDetail});
+
+  goToEdit() {
+    this.navCtrl.push('EditStorePage', { store: this.storeDetail });
   }
 
- reviewRatings(val){
+  reviewRatings(val) {
     var rating = [];
-          for( var i = 0 ; i< parseInt(val); i++){
-          rating.push('star')
-        }
-      return rating;
+    for (var i = 0; i < parseInt(val); i++) {
+      rating.push('star')
+    }
+    return rating;
   }
-  
-  getCountry(id){
-  	if(id){
-  	  return this.countries.filter(country => country.country_id == id)[0].country_code;
+
+  getCountry(id) {
+    if (id) {
+      return this.countries.filter(country => country.country_id == id)[0].country_code;
     }
   }
-  
-  
-  getCatName(val){
-    if(val){
-    	return  this.category.filter(cat => cat.id == val)[0].category_name;
+
+
+  getCatName(val) {
+    if (val) {
+      return this.category.filter(cat => cat.id == val)[0].category_name;
     }
   }
-  
-  getPaymentMethod(str){
-  	if(str){  		
+
+  getPaymentMethod(str) {
+    if (str) {
       var res = str.split(",");
-	   var payment = [];
-      if(this.findInArray(res, '1') >= 0){
+      var payment = [];
+      if (this.findInArray(res, '1') >= 0) {
         payment.push('Cash');
       }
-      if(this.findInArray(res, '2') >= 0){
+      if (this.findInArray(res, '2') >= 0) {
         payment.push('Credit Card');
       }
-      
-      if(this.findInArray(res, '3') >= 0){
+
+      if (this.findInArray(res, '3') >= 0) {
         payment.push('Debit Card');
       }
       var method = payment.toString()
       var regex = /,/gi;
-      return method.replace(regex , '/')
-  	}
+      return method.replace(regex, '/')
     }
-     
+  }
+
   findInArray(ar, val) {
-      for (var i = 0,len = ar.length; i < len; i++) {
-          if ( ar[i] === val ) { // strict equality test
-              return i;
-          }
+    for (var i = 0, len = ar.length; i < len; i++) {
+      if (ar[i] === val) { // strict equality test
+        return i;
       }
-      return -1;
+    }
+    return -1;
   }
 
 
-  addMoreImages(){
-    document.getElementById('add_other_images').click();  
+  addMoreImages() {
+    document.getElementById('add_other_images').click();
   }
 
   getOtherImage(files: FileList) {
-    var form_data = new FormData(); 
-    this.storeProvider.UploadOtherImage(this.token,files.item(0),this.storeDetail.id).subscribe((res4:any) => {
-      if (res4.status){
-      this.presentToast(res4.message);
-      this.storage.get('me').then((val:any)=>{
-	  		this.getdata(val.token)
-	  	})
+    var form_data = new FormData();
+    this.storeProvider.UploadOtherImage(this.token, files.item(0), this.storeDetail.id).subscribe((res4: any) => {
+      if (res4.status) {
+        this.presentToast(res4.message);
+        this.storage.get('me').then((val: any) => {
+          this.getdata(val.token)
+        })
       }
-      else{
-      this.presentToast(res4.message);
+      else {
+        this.presentToast(res4.message);
       }
     })
   }
-  enable_disable(val){
-      var form_data = new FormData();    
-      console.clear();
-      form_data.append('visible_status',val);
-      form_data.append("token", localStorage.getItem('token') );
-      this.storeProvider.storeEnableDisable(this.token,val).subscribe((res4:any) => {
-        if (res4.status){
+  enable_disable(val) {
+    var form_data = new FormData();
+    console.clear();
+    form_data.append('visible_status', val);
+    form_data.append("token", localStorage.getItem('token'));
+    this.storeProvider.storeEnableDisable(this.token, val).subscribe((res4: any) => {
+      if (res4.status) {
         this.presentToast(res4.message);
-        this.storage.get('me').then((val:any)=>{
-	  		this.getdata(val.token)
-	  	})
-        }
-        else{
+        this.storage.get('me').then((val: any) => {
+          this.getdata(val.token)
+        })
+      }
+      else {
         this.presentToast(res4.message);
-        }
+      }
     })
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad ViewStorePage');
   }
 
-  presentToast(msg){
+  presentToast(msg) {
     let toast = this.toastCtrl.create({
-          message: msg,
-          duration: 3000
-        });
+      message: msg,
+      duration: 3000
+    });
 
-        toast.onDidDismiss(() => {
-          console.log('Dismissed toast');
-        });
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
 
-        toast.present();
+    toast.present();
   }
 
-  deleteImage(other_image_id){
-  	this.storeProvider.removeStoreImage(this.token,other_image_id).subscribe((res4:any) => {
-      if (res4.status){
-      this.presentToast(res4.message);
-      this.storage.get('me').then((val:any)=>{
-	  		this.getdata(val.token)
-	  	})
+  deleteImage(other_image_id) {
+    this.storeProvider.removeStoreImage(this.token, other_image_id).subscribe((res4: any) => {
+      if (res4.status) {
+        this.presentToast(res4.message);
+        this.storage.get('me').then((val: any) => {
+          this.getdata(val.token)
+        })
       }
-      else{
-      this.presentToast(res4.message);
+      else {
+        this.presentToast(res4.message);
       }
     })
   }

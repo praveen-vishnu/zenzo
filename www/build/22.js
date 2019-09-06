@@ -1,14 +1,14 @@
 webpackJsonp([22],{
 
-/***/ 388:
+/***/ 394:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MyOrdersPageModule", function() { return MyOrdersPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChangePasswordPageModule", function() { return ChangePasswordPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__my_orders__ = __webpack_require__(441);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__change_password__ = __webpack_require__(449);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,37 +18,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var MyOrdersPageModule = /** @class */ (function () {
-    function MyOrdersPageModule() {
+var ChangePasswordPageModule = /** @class */ (function () {
+    function ChangePasswordPageModule() {
     }
-    MyOrdersPageModule = __decorate([
+    ChangePasswordPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__my_orders__["a" /* MyOrdersPage */],
+                __WEBPACK_IMPORTED_MODULE_2__change_password__["a" /* ChangePasswordPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__my_orders__["a" /* MyOrdersPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__change_password__["a" /* ChangePasswordPage */]),
             ],
         })
-    ], MyOrdersPageModule);
-    return MyOrdersPageModule;
+    ], ChangePasswordPageModule);
+    return ChangePasswordPageModule;
 }());
 
-//# sourceMappingURL=my-orders.module.js.map
+//# sourceMappingURL=change-password.module.js.map
 
 /***/ }),
 
-/***/ 441:
+/***/ 449:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyOrdersPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChangePasswordPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_store_product__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_constants_service__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__store_orders_store_orders__ = __webpack_require__(256);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth__ = __webpack_require__(129);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(22);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -62,88 +60,83 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-
 /**
- * Generated class for the MyOrdersPage page.
+ * Generated class for the ChangePasswordPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var MyOrdersPage = /** @class */ (function () {
-    function MyOrdersPage(navCtrl, navParams, storage, toastCtrl, productProvider) {
+var ChangePasswordPage = /** @class */ (function () {
+    function ChangePasswordPage(navCtrl, navParams, toastCtrl, storage, auth) {
         var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.storage = storage;
         this.toastCtrl = toastCtrl;
-        this.productProvider = productProvider;
-        this.ORDER_DETAIL = __WEBPACK_IMPORTED_MODULE_5__store_orders_store_orders__["a" /* OrderDetail */];
-        this.base_url = __WEBPACK_IMPORTED_MODULE_4__services_constants_service__["b" /* BASE_URL */];
-        console.clear();
-        this.storage.get("me").then(function (val) {
-            _this.getdata(val.token);
+        this.storage = storage;
+        this.auth = auth;
+        this.dashboardme = [];
+        this.passwordupdate = {
+            old_password: '',
+            new_password: '',
+            confirm_password: '',
+            token: ''
+        };
+        this.storage.get('me').then(function (val) {
+            _this.get_dashboard(val.token);
+            _this.passwordupdate.token = val.token;
         });
     }
-    MyOrdersPage.prototype.presentToast = function (msg) {
+    ChangePasswordPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ChangePasswordPage');
+    };
+    ChangePasswordPage.prototype.get_dashboard = function (token) {
+        var _this = this;
+        console.clear();
+        this.auth.getDash(token).subscribe(function (res) {
+            if (res.status) {
+                _this.storage.set('me', res.message);
+                console.log(res.message);
+                _this.dashboardme = res.message;
+            }
+        });
+    };
+    ChangePasswordPage.prototype.updatepasswordform = function () {
+        var _this = this;
+        console.log(this.passwordupdate);
+        this.auth.updatePassword(this.passwordupdate).subscribe(function (res) {
+            console.log(res);
+            _this.presentToast(res.message);
+            if (res.status) {
+                _this.passwordupdate.old_password = '';
+                _this.passwordupdate.new_password = '';
+                _this.passwordupdate.confirm_password = '';
+            }
+        });
+    };
+    ChangePasswordPage.prototype.presentToast = function (msg) {
         var toast = this.toastCtrl.create({
             message: msg,
             duration: 3000
         });
         toast.onDidDismiss(function () {
-            console.log("Dismissed toast");
+            console.log('Dismissed toast');
         });
         toast.present();
     };
-    MyOrdersPage.prototype.getdata = function (token) {
-        var _this = this;
-        this.token = token;
-        this.productProvider
-            .getUserOrderList(this.token)
-            .subscribe(function (res4) {
-            if (res4.status) {
-                _this.products = res4.message;
-                _this.products.forEach(function (element) {
-                    _this.productProvider.getUserOrder(_this.token, element.id).subscribe(function (data) {
-                        if (data.status) {
-                            element.myorder = true;
-                            element.token = _this.token;
-                            element.image_name = _this.getImage(element.image_name);
-                            element.full_detial = data.message;
-                        }
-                    });
-                });
-                console.log(_this.products);
-            }
-            else {
-                _this.presentToast(res4.message);
-            }
-        });
-    };
-    MyOrdersPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad MyOrdersPage');
-    };
-    MyOrdersPage.prototype.getImage = function (img) {
-        console.log(this.base_url + "/uploads/stores/products/" + img);
-        return this.base_url + "/uploads/stores/products/" + img;
-    };
-    MyOrdersPage.prototype.getArray = function (array) {
-        return Array.isArray(array);
-    };
-    MyOrdersPage = __decorate([
+    ChangePasswordPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-my-orders',template:/*ion-inline-start:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\product\my-orders\my-orders.html"*/'<!--\n  Generated template for the MyOrdersPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n\n<ion-header>\n  <ion-navbar color="primary">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>My Orders</ion-title>\n    <ion-buttons end>\n      <button ion-button>\n        <!-- <ion-icon name="log-out"></ion-icon> -->\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n  <ion-list no-lines *ngIf="getArray(products)">\n    <ion-item detail *ngFor="let item of products;let i = index;" [navPush]="ORDER_DETAIL" [navParams] = "item">\n      <ion-thumbnail item-start>\n        <img class="" src="{{item.image_name}}">\n      </ion-thumbnail>\n      <h2>\n        {{item.pr_name | titlecase}}\n      </h2>\n      <!-- 0=Pending, 1=Accepted, 2=in process, 3=Shipped, 4=Completed, 5=Rejected	 -->\n      <p *ngIf="item.order_status == \'0\'">Pending</p>\n      <p *ngIf="item.order_status == \'1\'">Accepted</p>\n      <p *ngIf="item.order_status == \'2\'">Inprocess</p>\n      <p *ngIf="item.order_status == \'3\'">Shipped</p>\n      <p *ngIf="item.order_status == \'4\'">Delivered</p>\n      <p *ngIf="item.order_status == \'5\'">Rejected</p>\n    </ion-item>\n  </ion-list>\n  <ion-list no-lines *ngIf="!getArray(products)">\n    <ion-item>\n      <ion-label text-center>No records found.</ion-label>\n    </ion-item>\n  </ion-list>\n</ion-content>'/*ion-inline-end:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\product\my-orders\my-orders.html"*/,
+            selector: 'page-change-password',template:/*ion-inline-start:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\profile\change-password\change-password.html"*/'<!--\n  Generated template for the ChangePasswordPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar color="primary">\n    <ion-title >Change Password</ion-title>\n    <ion-buttons end>\n      <button ion-button >\n        <!-- <ion-icon name="log-out"></ion-icon> -->\n      </button>\n     </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n<div class="dt-root">\n    <div class="dt-card">\n\n                              <div id="tab-pane-3" #emailPane class="tab-pane active">\n                                 <div class="card-body">\n                                    <div class="row">\n                                       <div class="col-md-12">\n                                          <form #form="ngForm">\n                                             <div class="row">\n                                                <div class="col-md-3 ">\n                                                   <label for="email">Old Password <span style="color: red;">*</span>:</label>\n                                                </div>\n                                                <div class="col-md-6">\n                                                   <div class="form-group package_buy_input">\n                                                      <input type="password" class="form-control" id="email" name="old_password" [(ngModel)]="passwordupdate.old_password">\n                                                   </div>\n                                                </div>\n                                             </div>\n                                             <div class="row">\n                                                <div class="col-md-3 ">\n                                                   <label for="email">New Password <span style="color: red;">*</span>:</label>\n                                                </div>\n                                                <div class="col-md-6">\n                                                   <div class="form-group package_buy_input">\n                                                      <input type="password" class="form-control" id="email" name="new_password" [(ngModel)]="passwordupdate.new_password">\n                                                   </div>\n                                                </div>\n                                             </div>\n                                             <div class="row">\n                                                <div class="col-md-3 ">\n                                                   <label for="email">Confirm New Password <span style="color: red;">*</span>:</label>\n                                                </div>\n                                                <div class="col-md-6">\n                                                   <div class="form-group package_buy_input">\n                                                      <input type="password" class="form-control" id="email" name="confirm_password" [(ngModel)]="passwordupdate.confirm_password">\n                                                   </div>\n                                                </div>\n                                             </div>\n                                             <div class="row">\n                                                <div class="col-md-3 ">\n                                                </div>\n                                                <div class="col-md-6 text-right">\n                                                   <button type="submit" (click)="updatepasswordform()" ion-button block>Update</button>\n                                                </div>\n                                             </div>\n                                          </form>\n                                       </div>\n                                    </div>\n                                 </div>\n                              </div>\n    </div>\n</div>\n</ion-content>\n'/*ion-inline-end:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\profile\change-password\change-password.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_store_product__["a" /* ProductProvider */]])
-    ], MyOrdersPage);
-    return MyOrdersPage;
+            __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth__["a" /* AuthProvider */]])
+    ], ChangePasswordPage);
+    return ChangePasswordPage;
 }());
 
-//# sourceMappingURL=my-orders.js.map
+//# sourceMappingURL=change-password.js.map
 
 /***/ })
 

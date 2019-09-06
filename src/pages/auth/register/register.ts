@@ -26,7 +26,7 @@ user_position: any;
 country_code: any = '';
 countrySelected: boolean = false;
 countryList = COUNTRY_LIST;
-cats = [{"id":"1","category_name":"Store","category_image":"http:\/\/alpademo.com\/zomo\/uploads\/Store.png","category_status":"1","date_only":"2019-06-06"},{"id":"2","category_name":"Reseller","category_image":"http:\/\/alpademo.com\/zomo\/uploads\/Promoter.png","category_status":"1","date_only":"2019-06-06"},{"id":"3","category_name":"Manufactures","category_image":"http:\/\/alpademo.com\/zomo\/uploads\/Manufactures.png","category_status":"1","date_only":"2019-06-06"},{"id":"4","category_name":"Franchise","category_image":"http:\/\/alpademo.com\/zomo\/uploads\/Franchise.png","category_status":"1","date_only":"2019-06-06"}];
+cats = [{"id":"1","category_name":"Store","category_image":"http:\/\/192.168.1.100:81\/zomo\/uploads\/Store.png","category_status":"1","date_only":"2019-06-06"},{"id":"2","category_name":"Reseller","category_image":"http:\/\/192.168.1.100:81\/zomo\/uploads\/Promoter.png","category_status":"1","date_only":"2019-06-06"},{"id":"3","category_name":"Manufactures","category_image":"http:\/\/192.168.1.100:81\/zomo\/uploads\/Manufactures.png","category_status":"1","date_only":"2019-06-06"},{"id":"4","category_name":"Franchise","category_image":"http:\/\/192.168.1.100:81\/zomo\/uploads\/Franchise.png","category_status":"1","date_only":"2019-06-06"}];
 
   constructor(
     public navCtrl: NavController, 

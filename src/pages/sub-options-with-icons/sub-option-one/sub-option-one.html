@@ -27,7 +27,7 @@
                         <!-- Avatar Wrapper -->
                         <div class="dt-avatar-wrapper">
                            <!-- Avatar -->
-                           <img class="dt-avatar dt-avatar__shadow size-90 mr-sm-4" src="http://alpademo.com/zomo/uploads/stores/{{storeDetail?.store_image}}" alt="{{storeDetail?.store_name | titlecase}}">
+                           <img class="dt-avatar dt-avatar__shadow size-90 mr-sm-4" src="http://192.168.1.100:81/zomo/uploads/stores/{{storeDetail?.store_image}}" alt="{{storeDetail?.store_name | titlecase}}">
                            <!-- /avatar -->
                            <!-- Info -->
                            <div class="dt-avatar-info">
@@ -137,7 +137,7 @@
                                     <div class="dt-card__body">
                                        <!-- List -->
                                        <ul class="dt-gallery-list">
-                                          <li  *ngFor="let img of storeDetail?.store_other_images;let i = index;"><img (click)="goToGallery(i)" src="http://alpademo.com/zomo/uploads/stores/{{img.image_name}}" class="img-fluid w-100" alt="Image Title"></li>
+                                          <li  *ngFor="let img of storeDetail?.store_other_images;let i = index;"><img (click)="goToGallery(i)" src="http://192.168.1.100:81/zomo/uploads/stores/{{img.image_name}}" class="img-fluid w-100" alt="Image Title"></li>
                                        </ul>
                                        <!-- /list -->
                            <!--             <div class="mt-5" *ngIf="storeDetail?.store_status == '1'">
@@ -461,15 +461,14 @@
                               </div>
                               <!-- /card -->
                            </div>
-                           <div class="card products">
-                              <!-- Card Body -->
+                           <!-- <div class="card products">
                                <div class="card-body">
                                  <h2 class="card-title" >Products</h2>
                                     <ul col-12 >
                                           <li *ngFor="let product of products" (click)='goToProductList(product.id)'>
                                                 <ion-row>
                                                    <ion-col>
-                                                      <img src="http://alpademo.com/zomo/uploads/stores/products/{{product.pr_image}}" onError="this.src='./assets/images/not-available.jpg'" style="width:100px;height:100px" alt="">
+                                                      <img src="http://192.168.1.100:81/zomo/uploads/stores/products/{{product.pr_image}}" onError="this.src='./assets/images/not-available.jpg'" style="width:100px;height:100px" alt="">
                                                    </ion-col>
                                                 </ion-row>
                                                 <ion-row>
@@ -477,26 +476,14 @@
                                                       <h2 style="margin-bottom: 0">{{product.pr_name | titlecase}}</h2>
                                                    </ion-col>
                                                 </ion-row>
-                                                <!-- <ion-row>
-                                                   <ion-col>
-                                                         <p><span>Variants: </span><span *ngFor="let variant of toArray(product.pr_colors)">{{variant | titlecase}}&nbsp;&nbsp;</span></p>
-                                                         <button ion-button small outline *ngFor="let size of toArray(product.pr_sizes)">{{size | titlecase}}</button>                                            
-                                                   </ion-col>
-                                                </ion-row>
-                                                <ion-row>
-                                                      <ion-col>
-                                                         <span style="color:#faad14;text-decoration: line-through;">₹ {{product.pr_original_amount}}</span>                                             
-                                                         <span> ₹ {{product.pr_sale_amount}}</span>
-                                                      </ion-col>
-                                                </ion-row> -->
+                                            
                                           </li>
                                     </ul>
                                  
-                              <!-- Card Body -->
                               
                                </div>
-                              <!-- /card body -->
-                              </div>
+                              </div> -->
+
                            <!-- Card -->
                            <!--<div class="card">-->
                            <!-- Card Body -->

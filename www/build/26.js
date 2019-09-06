@@ -1,14 +1,14 @@
 webpackJsonp([26],{
 
-/***/ 386:
+/***/ 390:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddProductPageModule", function() { return AddProductPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CartPageModule", function() { return CartPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__add_product__ = __webpack_require__(439);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cart__ = __webpack_require__(445);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,37 +18,42 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var AddProductPageModule = /** @class */ (function () {
-    function AddProductPageModule() {
+var CartPageModule = /** @class */ (function () {
+    function CartPageModule() {
     }
-    AddProductPageModule = __decorate([
+    CartPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__add_product__["a" /* AddProductPage */],
+                __WEBPACK_IMPORTED_MODULE_2__cart__["a" /* CartPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__add_product__["a" /* AddProductPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__cart__["a" /* CartPage */]),
             ],
         })
-    ], AddProductPageModule);
-    return AddProductPageModule;
+    ], CartPageModule);
+    return CartPageModule;
 }());
 
-//# sourceMappingURL=add-product.module.js.map
+//# sourceMappingURL=cart.module.js.map
 
 /***/ }),
 
-/***/ 439:
+/***/ 445:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddProductPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CartPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_store_product__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_constants_service__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_forms__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_carts_service_carts_service__ = __webpack_require__(67);
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -61,161 +66,112 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-
-
 /**
- * Generated class for the AddProductPage page.
+ * Generated class for the CartPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var AddProductPage = /** @class */ (function () {
-    function AddProductPage(navCtrl, toastCtrl, storage, navParams, productProvider, formBuilder) {
-        var _this = this;
+var CartPage = /** @class */ (function () {
+    function CartPage(navCtrl, navParams, cartService) {
         this.navCtrl = navCtrl;
-        this.toastCtrl = toastCtrl;
-        this.storage = storage;
         this.navParams = navParams;
-        this.productProvider = productProvider;
-        this.formBuilder = formBuilder;
-        this.segment = "0";
-        this.countries = __WEBPACK_IMPORTED_MODULE_4__services_constants_service__["c" /* COUNTRY_LIST */];
-        this.store = this.formBuilder.group({
-            pr_name: [""],
-            brand_name: [""],
-            pr_main_category_id: [""],
-            pr_category_id: [""],
-            pr_sub_category_id: ["", [__WEBPACK_IMPORTED_MODULE_5__angular_forms__["i" /* Validators */].required]],
-            shipping_type: [""],
-            shipping_charge_amount: [""],
-            delivery_min_num_of_day: [""],
-            delivery_max_num_of_day: [""],
-            pr_description: [""],
-            search_keywords: [""],
-            country_publication_id: [""],
-            pr_description_warranty: [""],
-            pr_colors: [""],
-            pr_sizes: [""],
-            pr_original_amount: [""],
-            pr_discount_percentage: [""],
-            pr_inventory_stock: [""]
-        });
-        this.storage.get("me").then(function (val) {
-            _this.getdata(val.token);
-        });
+        this.cartService = cartService;
+        this.selectedItems = [];
+        this.total = 0;
+        this.showEmptyCartMessage = false;
     }
-    AddProductPage.prototype.openImage = function () {
-        document.getElementById('pr-image').click();
-    };
-    AddProductPage.prototype.getdata = function (token) {
-        var _this = this;
-        this.token = token;
-        this.productProvider.getMainCategory().subscribe(function (data) {
-            console.log(data);
-            if (data.status) {
-                _this.maincategory = data.message;
+    CartPage.prototype.ngOnInit = function () {
+        var items = this.cartService.getCart();
+        var selected = {};
+        for (var _i = 0, items_1 = items; _i < items_1.length; _i++) {
+            var obj = items_1[_i];
+            obj.pr_size = this.toArray(obj.pr_sizes)[0];
+            obj.pr_color = this.toArray(obj.pr_colors)[0];
+            if (selected[obj.id]) {
+                selected[obj.id].count++;
             }
-        });
-    };
-    AddProductPage.prototype.shippingCharge = function (eve) {
-        eve = parseInt(eve);
-        console.log(eve);
-        if (eve == 0) {
-            this.store.value.shipping_charge_amount = eve;
-            console.log(this.store.value);
+            else {
+                selected[obj.id] = __assign({}, obj, { count: 1 });
+            }
         }
+        this.selectedItems = Object.keys(selected).map(function (key) { return selected[key]; });
+        // this.selectedItems = [
+        //   {
+        //      brand_name: "puma",       ​​
+        //      category_name: "Clothing",       ​​
+        //      date_n_time: "2019-08-21 11:57:58",       ​​
+        //      date_only: "2019-08-21",       ​​
+        //      delivery_max_num_of_day: "3",       ​​
+        //      delivery_min_num_of_day: "2",       ​​
+        //      id: "1",       ​​
+        //      count:1,
+        //      main_category_name: "Men",       ​​
+        //      pr_category_id: "5",       ​​
+        //      pr_color: "red",       ​​
+        //      pr_colors: "red,green",       ​​
+        //      pr_description: "puma shoes",       ​​
+        //      pr_description_warranty: "puma shoes",       ​​
+        //      pr_discount_percentage: "12.00",       ​​
+        //      pr_inventory_stock: "22",       ​​
+        //      pr_main_category_id: "3",       ​​
+        //      pr_main_image: "http://192.168.1.100:81/zomo//uploads/stores/products/2019-08-21552038face18jpg.jpg",       ​​
+        //      pr_name: "puma shoes",       ​​
+        //      pr_original_amount: "530.00",       ​​
+        //      pr_rating: "0.00",       ​​
+        //      pr_remaining_stock: "19",       ​​      
+        //      pr_sale_amount: "466.40",       ​​
+        //      pr_size: "small",       ​​
+        //      pr_sizes: "small,medium,large, ",       ​​
+        //      pr_sub_category_id: "1",       ​​
+        //      pr_unique_id: "ZOPI120",       ​​
+        //      search_keywords: "puma shoes",       ​​
+        //      shipping_charge_amount: "0.00",       ​​
+        //      shipping_type: "0",       ​​
+        //      sub_category_name: "Jeans",
+        //      user_row_id: "9",        
+        //     }
+        // ];
+        if (this.selectedItems.length == 0) {
+            this.showEmptyCartMessage = true;
+        }
+        this.total = this.selectedItems.reduce(function (a, b) { return a + (b.count * b.pr_sale_amount); }, 0);
     };
-    AddProductPage.prototype.selectSubCat = function (category_id) {
-        var _this = this;
-        this.category_id = category_id;
-        this.subcategory = [];
-        this.productProvider
-            .getSubCategory(this.main_category_id, this.category_id)
-            .subscribe(function (data) {
-            console.log(data);
-            _this.subcategory = data;
-        });
+    CartPage.prototype.gettotal = function () {
+        this.total = this.selectedItems.reduce(function (a, b) { return a + (b.count * b.pr_sale_amount); }, 0);
     };
-    AddProductPage.prototype.selectCat = function (id) {
-        var _this = this;
-        this.main_category_id = id;
-        this.category = [];
-        console.log(this.main_category_id);
-        this.productProvider
-            .getCategory(this.main_category_id)
-            .subscribe(function (data) {
-            console.log(data);
-            _this.category = data;
-        });
+    CartPage.prototype.ionViewDidLoad = function () {
+        console.clear();
+        console.log(this.cartService.getCart());
     };
-    AddProductPage.prototype.ionViewDidLoad = function () {
-        console.log("ionViewDidLoad ListStorePage");
-        this.slides.lockSwipes(true);
+    CartPage.prototype.goToCheckout = function () {
+        console.log(this.selectedItems);
+        this.cartService.setCart(this.selectedItems);
+        this.navCtrl.push("CheckoutPage");
     };
-    AddProductPage.prototype.segmentChanged = function (eve) {
-        this.slides.lockSwipes(false);
-        this.slides.slideTo(parseInt(eve._value), 500);
-        this.slides.lockSwipes(true);
+    CartPage.prototype.removeFromCart = function (item, i) {
     };
-    AddProductPage.prototype.slideChanged = function () {
-        var currentIndex = this.slides.getActiveIndex();
-        this.segment = currentIndex + "";
-    };
-    AddProductPage.prototype.changeListener = function ($event) {
-        this.file = $event.target.files[0];
-    };
-    AddProductPage.prototype.imageUpload = function () {
-        document.getElementById("imageUpload").click();
-    };
-    AddProductPage.prototype.onSubmit = function (nextSlide) {
-        var _this = this;
-        console.log(nextSlide);
-        console.log(this.store.value);
-        if (nextSlide == "s") {
-            this.productProvider
-                .create(this.token, this.store.value)
-                .subscribe(function (res) {
-                console.log(res);
-                if (res.satus) {
-                    _this.store.reset();
-                }
-                var toast = _this.toastCtrl.create({
-                    message: res.message,
-                    duration: 3000
-                });
-                toast.onDidDismiss(function () {
-                    console.log("Dismissed toast");
-                });
-                toast.present();
-            });
+    CartPage.prototype.toArray = function (arr) {
+        if (arr) {
+            return arr
+                .replace(/,/gi, " ")
+                .trim()
+                .split(" ");
         }
         else {
-            this.slides.lockSwipes(false);
-            this.slides.slideTo(parseInt(nextSlide), 500);
-            this.segment = nextSlide;
-            this.slides.lockSwipes(true);
+            return arr;
         }
     };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* Slides */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* Slides */])
-    ], AddProductPage.prototype, "slides", void 0);
-    AddProductPage = __decorate([
+    CartPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: "page-add-product",template:/*ion-inline-start:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\product\add-product\add-product.html"*/'<!--\n  Generated template for the ListProductPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="primary">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Add Product</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n  \n  <ion-segment (ionChange)="segmentChanged($event)" mode="md" [(ngModel)]="segment">\n    <ion-segment-button value="0">\n      <ion-label>Product Category</ion-label>\n    </ion-segment-button>\n    <ion-segment-button value="1">\n      <ion-label>Product Info</ion-label>\n    </ion-segment-button>\n    <ion-segment-button value="2">\n      <ion-label>ProductPricing</ion-label>\n    </ion-segment-button>\n    <ion-segment-button value="3">\n      <ion-label>Shipping & Inventory</ion-label>\n    </ion-segment-button>\n  </ion-segment>\n\n  <div>\n    <ion-slides (ionSlideDidChange)="slideChanged()">\n      <ion-slide class="store">\n        <form [formGroup]="store" (ngSubmit)="onSubmit(\'1\')">\n          <ion-item no-lines>\n            <ion-label stacked>Main Category</ion-label>\n            <ion-select formControlName="pr_main_category_id" placeholder="Select Main Category"\n              (ionChange)="selectCat($event)">\n              <ion-option *ngFor="let cat of maincategory" value="{{cat.id}}">{{cat.main_category_name}}</ion-option>\n            </ion-select>\n          </ion-item>\n          <ion-item no-lines>\n            <ion-label stacked>Category</ion-label>\n            <ion-select formControlName="pr_category_id" placeholder="Select Category"\n              (ionChange)="selectSubCat($event)">\n              <ion-option *ngFor="let cat of category" value="{{cat.id}}">{{cat.category_name}}</ion-option>\n            </ion-select>\n          </ion-item>\n          <ion-item no-lines>\n            <ion-label stacked>Sub Category</ion-label>\n            <ion-select formControlName="pr_sub_category_id" placeholder="Select Sub Category">\n              <ion-option *ngFor="let service of subcategory" value="{{service.id}}">{{service.sub_category_name}}\n              </ion-option>\n            </ion-select>\n          </ion-item>\n\n          <ion-item no-lines> <button style="padding: 15px;font-size: 13px;" margin-top ion-button block\n              type="submit">Next</button></ion-item>\n        </form>\n      </ion-slide>\n\n      <ion-slide class="location">\n        <form [formGroup]="store" (ngSubmit)="onSubmit(\'2\')">\n          <ion-item no-lines>\n            <ion-label stacked>Product Name </ion-label>\n            <ion-input type="text" formControlName="pr_name"></ion-input>\n          </ion-item>\n          <ion-item no-lines>\n            <ion-label stacked>Brand Name </ion-label>\n            <ion-input type="text" formControlName="brand_name"></ion-input>\n          </ion-item>\n          <ion-item no-lines>\n            <ion-label stacked>Description</ion-label>\n            <ion-textarea rows="4" formControlName="pr_description"></ion-textarea>\n          </ion-item>\n          <ion-item no-lines>\n            <ion-label stacked>Product Warranty</ion-label>\n            <ion-input type="text" formControlName="pr_description_warranty"></ion-input>\n          </ion-item>\n          <ion-item no-lines>\n            <ion-label stacked>Variation (Colors)</ion-label>\n            <ion-input type="text" formControlName="pr_colors"></ion-input>\n          </ion-item>\n          <ion-item no-lines>\n            <ion-label stacked>Sizes</ion-label>\n            <ion-input type="text" formControlName="pr_sizes"></ion-input>\n          </ion-item>\n          <ion-item no-lines> <button style="padding: 15px;font-size: 13px;" margin-top ion-button block\n              type="submit">Next</button></ion-item>\n        </form>\n      </ion-slide>\n\n      <ion-slide class="contact">\n        <form [formGroup]="store" (ngSubmit)="onSubmit(\'3\')">\n          <ion-item no-lines>\n            <ion-label stacked>Price</ion-label>\n            <ion-input type="number" formControlName="pr_original_amount"></ion-input>\n          </ion-item>\n          <ion-item no-lines>\n            <ion-label stacked>Discount on Product</ion-label>\n            <ion-input type="number" formControlName="pr_discount_percentage"></ion-input>\n          </ion-item>\n          <ion-item no-lines>\n            <ion-label stacked>Search Keyword</ion-label>\n            <ion-input type="text" formControlName="search_keywords"></ion-input>\n          </ion-item>\n          <ion-item no-lines>\n            <!-- <ion-label stacked>Upload Image </ion-label> -->\n            <button (click)="openImage()" type="button" ion-button block style="padding: 15px;font-size: 13px;" item-end icon-start>\n              <ion-icon name="image"></ion-icon>\n              Add Product Image\n            </button>\n          </ion-item>\n          <!-- <input type="file" (change)="changeListener($event)" name="pr-image" id="pr-image" style="visibility: hidden">\n          <ion-item no-lines> <button style="padding: 15px;font-size: 13px;" margin-top ion-button block\n              type="submit">Next</button></ion-item> -->\n        </form>\n      </ion-slide>\n\n      <ion-slide class="social">\n\n        <form [formGroup]="store" (ngSubmit)="onSubmit(\'s\')">\n          <ion-item no-lines>\n            <ion-label stacked>Stock in Inventory</ion-label>\n            <ion-input type="number" formControlName="pr_inventory_stock"></ion-input>\n          </ion-item>\n          <ion-item no-lines>\n            <ion-label stacked>Shipping Type</ion-label>\n            <!-- <ion-input type="text" formControlName="shipping_type"></ion-input> -->\n            <ion-select formControlName="shipping_type" placeholder="Select Shipping Type"\n            (ionChange)="shippingCharge($event)">\n            <ion-option value="0">Free Delivery</ion-option>\n            <ion-option value="1">Paid Delivery</ion-option>\n          </ion-select>\n          </ion-item>\n          <ion-item no-lines>\n            <ion-label stacked>Shipping Charge </ion-label>\n            <ion-input type="number" [(ngModel)]="store.value.shipping_charge_amount" formControlName="shipping_charge_amount"></ion-input>\n          </ion-item>\n          <ion-item no-lines>\n            <ion-label stacked>Min Days of Delivery</ion-label>\n            <ion-input placeholder="0" type="number" formControlName="delivery_min_num_of_day"></ion-input>\n          </ion-item>\n          <ion-item no-lines>\n            <ion-label stacked>Max Days of Delivery</ion-label>\n            <ion-input placeholder="0" type="number" formControlName="delivery_max_num_of_day"></ion-input>\n          </ion-item>\n          <ion-item no-lines> <button style="padding: 15px;font-size: 13px;" margin-top ion-button block\n              type="submit">Submit</button></ion-item>\n        </form>\n      </ion-slide>\n\n    </ion-slides>\n  </div>\n</ion-content>'/*ion-inline-end:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\product\add-product\add-product.html"*/
+            selector: 'page-cart',template:/*ion-inline-start:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\product\cart\cart.html"*/'<ion-header>\n	<ion-navbar color="primary">\n		<ion-title>My Cart</ion-title>\n	</ion-navbar>\n</ion-header>\n\n<ion-content>\n	<!-- <ion-list>\n	  <ion-item *ngFor="let item of selectedItems" inset>\n		\n		<ion-label end text-left>{{ item.count }} x {{ item.pr_name }} - {{ item.pr_sale_amount | currency:\'INR\':\'symbol\' }}</ion-label>\n		<ion-label end text-right>{{ (item.pr_sale_amount * item.count) | currency:\'INR\':\'symbol\' }}</ion-label>\n	  </ion-item>\n	  <ion-item>\n		Total: <span end>{{ total | currency:\'INR\':\'symbol\' }}</span>\n	  </ion-item>\n	</ion-list> -->\n\n	<ion-card>\n		<ion-grid>\n			<ion-row>\n				<ion-col>Your Cart Description</ion-col>\n			</ion-row>\n			<ion-row [hidden]="!showEmptyCartMessage" text-center>\n				<ion-col>\n					<h2>There are no products in your cart!</h2>\n				</ion-col>\n			</ion-row>\n		</ion-grid>\n	</ion-card>\n\n	<ion-card class="products" *ngFor="let item of selectedItems; let i = index">\n		<ion-grid>\n			<ion-row>\n				<ion-col>\n					<ion-item>\n						<ion-thumbnail item-left>\n							<img [src]="item.pr_main_image" style="width: 60px !important; height: 60px !important;" />\n						</ion-thumbnail>\n						<h2>{{ item.pr_name | titlecase }}</h2>\n						<p>{{ item.count }} *\n							<span>{{  (item.pr_sale_amount * item.count) | currency:\'INR\':\'symbol\' }}</span>\n					</ion-item>\n				</ion-col>\n				<ion-col>\n					<ion-row no-padding>\n						<ion-col>\n							<ion-row>\n								<ion-col style="text-align: center">\n									<button ion-button icon-only clear (click)="item.count = item.count - 1;gettotal();">\n										<ion-icon name="remove-circle"></ion-icon>\n									</button>\n									<button ion-button clear> {{ item.count }} </button>\n									<button ion-button icon-only clear (click)="item.count = item.count + 1;gettotal();">\n										<ion-icon name="add-circle"></ion-icon>\n									</button>\n								</ion-col>\n							</ion-row>\n							<ion-row style="text-align: right;">\n								<ion-col col-3 style="text-align: center">\n									<button ion-button small outline (click)="removeFromCart(item, i)" color="danger"\n										style="width: 64px;">Remove</button>\n								</ion-col>\n							</ion-row>\n						</ion-col>\n					</ion-row>\n				</ion-col>\n			</ion-row>\n			<ion-row>\n				<ion-col>\n					<ion-item>\n						<ion-label>Size:</ion-label>\n						<ion-select [(ngModel)]="item.pr_size">\n							<ion-option *ngFor="let size of toArray(item.pr_sizes)" placeholder="Select Size *"\n								value="{{size}}">{{size | titlecase}}</ion-option>\n						</ion-select>\n					</ion-item>\n				</ion-col>\n				<ion-col>\n					<ion-item>\n						<ion-label>Color:</ion-label>\n						<ion-select [(ngModel)]="item.pr_color">\n							<ion-option *ngFor="let color of toArray(item.pr_colors)" placeholder="Select Color *"\n								value="{{color}}">{{color | titlecase}}</ion-option>\n						</ion-select>\n					</ion-item>\n				</ion-col>\n			</ion-row>\n		</ion-grid>\n	</ion-card>\n	<ion-grid [hidden]="showEmptyCartMessage">\n		<ion-card>\n			<ion-grid>\n				<ion-row>\n\n					<ion-col col-4>\n						<b>TOTAL</b>\n					</ion-col>\n					<ion-col col-3>\n\n					</ion-col>\n					<ion-col col-3 style="text-align: right">\n						<b> {{ total | currency:\'INR\':\'symbol\' }} </b>\n					</ion-col>\n\n\n				</ion-row>\n			</ion-grid>\n		</ion-card>\n	</ion-grid>\n\n</ion-content>\n\n<ion-footer [hidden]="showEmptyCartMessage">\n	<ion-toolbar>\n		<ion-grid>\n			<ion-row>\n				<ion-col>\n					<button ion-button block (click)="goToCheckout()">Checkout</button>\n				</ion-col>\n			</ion-row>\n		</ion-grid>\n	</ion-toolbar>\n</ion-footer>'/*ion-inline-end:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\product\cart\cart.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ToastController */],
-            __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_store_product__["a" /* ProductProvider */],
-            __WEBPACK_IMPORTED_MODULE_5__angular_forms__["b" /* FormBuilder */]])
-    ], AddProductPage);
-    return AddProductPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_carts_service_carts_service__["a" /* CartsService */]])
+    ], CartPage);
+    return CartPage;
 }());
 
-//# sourceMappingURL=add-product.js.map
+//# sourceMappingURL=cart.js.map
 
 /***/ })
 

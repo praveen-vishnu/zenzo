@@ -196,6 +196,11 @@ export class MyApp {
           component: "AddProductPage"
         },
         {
+          displayText: "Product List",
+          iconName: "",
+          component: "ProductsListPage"
+        },
+        {
           displayText: "Store Orders",
           iconName: "",
           component: "StoreOrdersPage"

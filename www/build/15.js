@@ -1,14 +1,14 @@
 webpackJsonp([15],{
 
-/***/ 397:
+/***/ 401:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ParsEarningsPageModule", function() { return ParsEarningsPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReferralEarningsPageModule", function() { return ReferralEarningsPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pars_earnings__ = __webpack_require__(450);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__referral_earnings__ = __webpack_require__(456);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,35 +18,37 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ParsEarningsPageModule = /** @class */ (function () {
-    function ParsEarningsPageModule() {
+var ReferralEarningsPageModule = /** @class */ (function () {
+    function ReferralEarningsPageModule() {
     }
-    ParsEarningsPageModule = __decorate([
+    ReferralEarningsPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__pars_earnings__["a" /* ParsEarningsPage */],
+                __WEBPACK_IMPORTED_MODULE_2__referral_earnings__["a" /* ReferralEarningsPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__pars_earnings__["a" /* ParsEarningsPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__referral_earnings__["a" /* ReferralEarningsPage */]),
             ],
         })
-    ], ParsEarningsPageModule);
-    return ParsEarningsPageModule;
+    ], ReferralEarningsPageModule);
+    return ReferralEarningsPageModule;
 }());
 
-//# sourceMappingURL=pars-earnings.module.js.map
+//# sourceMappingURL=referral-earnings.module.js.map
 
 /***/ }),
 
-/***/ 450:
+/***/ 456:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ParsEarningsPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReferralEarningsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_profit_report_profit_report__ = __webpack_require__(251);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_invitees_invitees__ = __webpack_require__(251);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_wallet_wallet__ = __webpack_require__(253);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_profit_report_profit_report__ = __webpack_require__(252);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_storage__ = __webpack_require__(22);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -60,67 +62,85 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 /**
- * Generated class for the ParsEarningsPage page.
+ * Generated class for the ReferralEarningsPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var ParsEarningsPage = /** @class */ (function () {
-    function ParsEarningsPage(navCtrl, navParams, storage, profitReportProvider) {
+var ReferralEarningsPage = /** @class */ (function () {
+    function ReferralEarningsPage(navCtrl, navParams, storage, inviteesProvider, walletProvider, profitReportProvider) {
         var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.storage = storage;
+        this.inviteesProvider = inviteesProvider;
+        this.walletProvider = walletProvider;
         this.profitReportProvider = profitReportProvider;
-        this.live_reports = {
-            left_business: 0,
-            pair_match_business: 0,
-            right_business: 0,
-            user_commission_amount: 0
+        this.total_earnings = 0;
+        this.wallet_income_overview = {
+            "wallet_balance": 0,
+            "total_direct_referral_income": 0,
+            "total_pairs_earned_income": 0,
+            "total_task_earned_income": 0,
+            "today_direct_referral_income": 0
         };
         this.storage.get('me').then(function (val) {
             _this.getdata(val.token);
         });
     }
-    ParsEarningsPage.prototype.getdata = function (token) {
+    ReferralEarningsPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ReferralEarningsPage');
+    };
+    ReferralEarningsPage.prototype.getdata = function (token) {
         var _this = this;
+        /******* Overview *******/
+        this.inviteesProvider.getReferralOveriew(token).subscribe(function (res) {
+            console.log(res);
+            _this.overview = res.message;
+            console.log(_this.overview);
+        });
         // referral earning API
-        this.profitReportProvider.getPairsEarningReport(token).subscribe(function (data) {
+        this.profitReportProvider.getDirectReferral(token).subscribe(function (data) {
             console.log(data);
             if (data.status) {
-                _this.pair_reports = data.message;
+                _this.earning_reports = data.message;
+                _this.earning_reports.forEach(function (ele) {
+                    _this.total_earnings += parseFloat(ele.commission_amount);
+                });
             }
         });
-        this.profitReportProvider.getPairsEarningLiveReport(token).subscribe(function (data) {
+        this.walletProvider.getWalletOverview(token).subscribe(function (data) {
+            console.clear();
             console.log(data);
             if (data.status) {
-                _this.live_reports = data.message;
+                _this.wallet_income_overview = data.message;
             }
         });
     };
-    ParsEarningsPage.prototype.getparseFloat = function (val) {
+    ReferralEarningsPage.prototype.getparseFloat = function (val) {
         return parseFloat(val).toFixed(2);
     };
-    ParsEarningsPage.prototype.getArray = function (array) {
+    ReferralEarningsPage.prototype.getArray = function (array) {
         return Array.isArray(array);
     };
-    ParsEarningsPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad ParsEarningsPage');
-    };
-    ParsEarningsPage = __decorate([
+    ReferralEarningsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-pars-earnings',template:/*ion-inline-start:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\profit-report\pars-earnings\pars-earnings.html"*/'<!--\n   Generated template for the ParsEarningsPage page.\n   \n   See http://ionicframework.com/docs/components/#navigation for more info on\n   Ionic pages and navigation.\n   -->\n<ion-header>\n   <ion-navbar color="primary">\n      <button ion-button menuToggle>\n         <ion-icon name="menu"></ion-icon>\n      </button>\n      <ion-title>Pairs Earnings</ion-title>\n   </ion-navbar>\n</ion-header>\n<ion-content padding>\n   <ion-row>\n      <!-- Grid Item -->\n      <div col-6>\n         <!-- Card -->\n         <div class="dt-card overflow-hidden">\n            <!-- Card Body -->\n            <div class="dt-card__body">\n               <div class="d-flex mb-3">\n                  <h6 class="mb-0 text-uppercase">Total Paring Match</h6>\n                  <div class="d-flex align-items-center ml-auto">\n                     <!-- \n                        <h5 class="mb-0 text-success font-weight-medium mr-1">67%</h5>\n                        <i class="icon icon-menu-up f-12 text-success"></i> -->\n                  </div>\n               </div>\n               <!-- Grid -->\n               <div class="row no-gutters">\n                  <!-- Grid Item -->\n                     <div class="row">\n                        <div col-6>\n                           <h6 class="mb-0 text-uppercase">Paring Match</h6>\n                           <h4 class="mb-0 font-weight-medium mr-1">{{live_reports.pair_match_business}} </h4>\n                        </div>\n                        <div col-6>\n                           <h6 class="mb-0 text-uppercase">Total Value</h6>\n                           <h4 class="mb-0 font-weight-medium mr-1">{{live_reports.user_commission_amount}}</h4>\n                        </div>\n                     </div>\n                  <!-- /grid item -->\n               </div>\n               <!-- /grid -->\n            </div>\n            <!-- /card body -->\n         </div>\n         <!-- /card -->\n      </div>\n      <div col-6>\n         <!-- Card -->\n         <div class="dt-card overflow-hidden">\n            <!-- Card Body -->\n            <div class="dt-card__body">\n               <div class="d-flex mb-3">\n                  <h6 class="mb-0 text-uppercase">Business</h6>\n                  <div class="d-flex align-items-center ml-auto">\n                     <!-- \n                        <h5 class="mb-0 text-success font-weight-medium mr-1">67%</h5>\n                        <i class="icon icon-menu-up f-12 text-success"></i> -->\n                  </div>\n               </div>\n               <!-- Grid -->\n               <div class="row no-gutters">\n                  <!-- Grid Item -->\n                  <div class="col-xl-7 pr-2">\n                     <div class="row">\n                        <div col-6>\n                           <h6 class="mb-0 text-uppercase">Left</h6>\n                           <h4 class="mb-0 font-weight-medium mr-1">{{live_reports.left_business}}</h4>\n                        </div>\n                        <div col-6>\n                           <h6 class="mb-0 text-uppercase">Right</h6>\n                           <h4 class="mb-0 font-weight-medium mr-1">{{live_reports.right_business}}</h4>\n                        </div>\n                     </div>\n                  </div>\n                  <!-- /grid item -->\n               </div>\n               <!-- /grid -->\n            </div>\n            <!-- /card body -->\n         </div>\n         <!-- /card -->\n      </div>\n   </ion-row>\n   <div class="dt-root">\n      <div class="dt-card">\n         <div class="dt-card__body">\n            <ul class="nav nav-underline flex-row border-bottom nav-card-tabs mt-0" role="tablist">\n               <li class="nav-item">\n                  <a class="nav-link active" data-toggle="tab" href="#tab-pane1" role="tab" aria-controls="tab-pane1"\n                     aria-selected="true">Pair Earning Report</a>\n               </li>\n               <!--  <li class="nav-item">\n                  <a class="nav-link" data-toggle="tab" href="#tab-pane2" role="tab" aria-controls="tab-pane2"\n                     aria-selected="true">Live Pair Report</a>\n                  </li> -->\n            </ul>\n            <div class="tab-content mt-5 services_page">\n               <div id="tab-pane1" class="tab-pane active show">\n                  <div class="table-responsive">\n                     <table id="data-table" class="table table-hover">\n                        <thead>\n                           <tr>\n                              <th>#</th>\n                              <th>Date</th>\n                              <th>Left Business</th>\n                              <th>Right  Business</th>\n                              <th>Pair Matching</th>\n                              <th>Left Carry Forward</th>\n                              <th>Right Carry Forward</th>\n                              <th>Earning(USD)</th>\n                           </tr>\n                        </thead>\n                        <tbody *ngIf="!getArray(pair_reports)">\n                           <tr class="text-center">\n                              <td colspan="8">No Records Found</td>\n                           </tr>\n                        </tbody>\n                        <tbody *ngIf="getArray(pair_reports)">\n                           <tr *ngFor="let report of pair_reports; let i = index">\n                              <td>{{i+1}}</td>\n                              <td>{{report?.date_n_time | date: \'MMM d, y, h:mm a\'}}</td>\n                              <td>{{ getparseFloat( report?.left_business )}} $</td>\n                              <td>{{ getparseFloat( report?.right_business )}} $</td>\n                              <td>{{ getparseFloat( report?.pair_match_business )}} $</td>\n                              <td>{{ getparseFloat( report?.left_cf_business )}} $</td>\n                              <td>{{ getparseFloat( report?.right_cf_business )}} $</td>\n                              <td>{{ getparseFloat( report?.user_commission_amount )}} $</td>\n                           </tr>\n                        </tbody>\n                     </table>\n                  </div>\n               </div>\n            </div>\n         </div>\n      </div>\n   </div>\n</ion-content>'/*ion-inline-end:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\profit-report\pars-earnings\pars-earnings.html"*/,
+            selector: 'page-referral-earnings',template:/*ion-inline-start:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\profit-report\referral-earnings\referral-earnings.html"*/'<!--\n   Generated template for the ReferralEarningsPage page.\n   \n   See http://ionicframework.com/docs/components/#navigation for more info on\n   Ionic pages and navigation.\n   -->\n<ion-header>\n   <ion-navbar color="primary">\n      <button ion-button menuToggle>\n         <ion-icon name="menu"></ion-icon>\n      </button>\n      <ion-title>Referral Earnings</ion-title>\n   </ion-navbar>\n</ion-header>\n<ion-content padding>\n   <div class="dt-root">\n      <div>\n         <div class="row">\n            <div col-6>\n               <div class="card dt-card__full-height">\n                  <!-- Card Body -->\n                  <div class="card-body p-3 bg-gradient-blueberry">\n                     <div class="row" >\n                        <div class="col-md-12" padding-left>\n                           <i class="fa fa-money  faa-horizontal animated" style="font-size: 30px; margin-bottom: 10px;" aria-hidden="true"></i>\n                           <div class="row" padding-left>\n                              <!-- <div col-6>\n                                 <p>Total Earning</p>\n                                 <p class="display-3 mb-2">{{earning_reports.length}}</p>\n                                 </div> -->\n                              <div col-6>\n                                 <p>Earnings</p>\n                                 <p class="display-4 mb-2">{{overview?.direct_referral_income}}</p>\n                              </div>\n                           </div>\n                        </div>\n                     </div>\n                  </div>\n                  <!-- /card body -->\n               </div>\n            </div>\n            <div col-6>\n               <div class="card dt-card__full-height">\n                  <!-- Card Body -->\n                  <div class="card-body p-3 bg-gradient-purple" padding-left>\n                     <h5 style="color: #fff;">Todays Earning</h5>\n                     <div class="row" padding-left>\n                        <div col-6>\n                           <p>Users</p>\n                           <p class="display-3 mb-2">{{overview?.todays_refferals}}</p>\n                        </div>\n                        <div col-6>\n                           <p>Earnings</p>\n                           <p class="display-4 mb-2">{{wallet_income_overview.today_direct_referral_income}}</p>\n                        </div>\n                     </div>\n                  </div>\n                  <!-- /card body -->\n               </div>\n            </div>\n         </div>\n      </div>\n      <div class="dt-card">\n         <!-- Card Body -->\n         <div class="dt-card__body">\n            <h4>Referral Earning Report</h4>\n            <!-- Tables -->\n            <div class="table-responsive">\n               <table id="data-table" class="table table-striped table-bordered table-hover">\n                  <thead>\n                     <tr>\n                        <th>#</th>\n                        <th>Date</th>\n                        <th>User(User ID)</th>\n                        <th>Position</th>\n                        <th>Type of Income(%)</th>\n                        <th>Earning(USD)</th>\n                     </tr>\n                  </thead>\n                  <tbody *ngIf="getArray(earning_reports)">\n                     <tr class="gradeX" *ngFor="let report of earning_reports; let i = index">\n                        <td>{{i+1}}</td>\n                        <td>{{report.date_n_time | date:\'MMM d, y, h:mm a\'}}</td>\n                        <td>{{report.full_name}}({{report.user_name}})</td>\n                        <td *ngIf="report.user_position == \'L\'">Left</td>\n                        <td *ngIf="report.user_position == \'R\'">Right</td>\n                        <td>{{ getparseFloat( report.commission_percentage )}}</td>\n                        <td>{{ getparseFloat( report.commission_amount )}} $</td>\n                     </tr>\n                  </tbody>\n                  <tbody *ngIf="!getArray(earning_reports)">\n                     <tr class="gradeX text-center">\n                        <td colspan="6">No Records Found</td>\n                     </tr>\n                  </tbody>\n               </table>\n            </div>\n            <!-- /tables -->\n         </div>\n         <!-- /card body -->\n      </div>\n   </div>\n</ion-content>'/*ion-inline-end:"D:\Praveen's\Ultimez\Ionic\Zomato App\working\src\pages\profit-report\referral-earnings\referral-earnings.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_profit_report_profit_report__["a" /* ProfitReportProvider */]])
-    ], ParsEarningsPage);
-    return ParsEarningsPage;
+            __WEBPACK_IMPORTED_MODULE_5__ionic_storage__["b" /* Storage */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_invitees_invitees__["a" /* InviteesProvider */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_wallet_wallet__["a" /* WalletProvider */],
+            __WEBPACK_IMPORTED_MODULE_4__providers_profit_report_profit_report__["a" /* ProfitReportProvider */]])
+    ], ReferralEarningsPage);
+    return ReferralEarningsPage;
 }());
 
-//# sourceMappingURL=pars-earnings.js.map
+//# sourceMappingURL=referral-earnings.js.map
 
 /***/ })
 
